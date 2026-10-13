@@ -1,0 +1,17 @@
+{
+  "game_id": "tomb-raider-anniversary",
+  "build_id": "842717",
+  "source_language": "en",
+  "target_language": "pt-BR",
+  "source_text_reference": "translations/tomb-raider-anniversary/hu.json (source fields only)",
+  "draft_status": "Initial translation draft; review by a native Brazilian Portuguese speaker and in-game QA is required.",
+  "translation_method": "Translated from English source strings; identical source strings within each section share a translation.",
+  "menu_unique_strings": 1122,
+  "subtitle_unique_strings": 476,
+  "font_replacement_included": false,
+  "subtitle_language_slots_cleared": [],
+  "notes": [
+    "Hungarian font asset and Hungarian subtitle-clearing settings were intentionally not copied.",
+    "English source text, resource hashes, paths, entry IDs, formatting placeholders, game glyphs, and line-break counts are retained."
+  ]
+}

@@ -1,0 +1,1 @@
+"""Binary text resource formats."""

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "game_id": "tomb-raider-legend-demo",
+  "build_id": "251815",
+  "filelist": "../pytrtt/resources/filelists/trld_filelist.txt",
+  "asset_root": "../translations/tomb-raider-legend-demo",
+  "runtime": {
+    "archive": {
+      "format": "bigfile",
+      "version": 1,
+      "boundary": 157286400,
+      "data_subdir": "."
+    },
+    "languages": {
+      "en": {
+        "archive_locale": 4294967265,
+        "subtitle_language": 0
+      }
+    },
+    "replacement_language": "en",
+    "resource_types": [
+      {
+        "section": "menu",
+        "pattern": "*/locals.bin",
+        "format": "locals",
+        "version": 1
+      },
+      {
+        "section": "subtitles",
+        "pattern": "*.mul",
+        "format": "cine",
+        "version": 1,
+        "skip_unrecognized": true
+      },
+      {
+        "section": "fonts",
+        "pattern": "*/conduitmed_pc.raw",
+        "format": "raw",
+        "version": 1,
+        "locale": 4294967295
+      }
+    ],
+    "character_substitutions": {},
+    "display_name": "Tomb Raider: Legend Demo"
+  },
+  "translation_defaults": {
+    "hu": {
+      "character_substitutions": {
+        "Ő": "Ô",
+        "ő": "ô",
+        "Ű": "Û",
+        "ű": "û"
+      },
+      "fonts": [
+        {
+          "resource_hash": "625B0E2D",
+          "resource_path": "pc-w\\conduitmed_pc.raw",
+          "replacement_file": "assets/fonts/625B0E2D-1e790ceb7b22.raw",
+          "source_sha256": "8743f75e1a1665b6f686b3eccb7e2dc84ee26f669e5fee26e9cafe93d9f7e1cb",
+          "replacement_sha256": "1e790ceb7b22ed0ba1fdccf4129737764b5491c3078b95a1cf33d27eea9cc6ac"
+        }
+      ],
+      "omit_subtitle_languages": [
+        1
+      ]
+    }
+  }
+}

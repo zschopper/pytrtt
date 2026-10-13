@@ -1,0 +1,105 @@
+# Copy this file to pytrtt.local.toml and adjust paths for games you own.
+# pytrtt.local.toml is ignored by Git; this example contains dummy/default paths.
+# Relative paths use this file's directory. Empty paths are unset.
+# Defining a game does not enable integration tests or claim format support.
+# install_dir: application/extraction; original_dir: clean test copy;
+# translated_dir: verified translated test copy; samples_dir: game/build sample folder.
+# Platform paths override the shared fields below. Use literal quotes for Windows paths.
+samples_dir = "work/samples"
+
+[games.tomb-raider-anniversary]
+aliases = ["tra"]
+samples_dir = "work/samples/tra/842717"
+original_dir = ""
+translated_dir = ""
+
+[games.tomb-raider-legend]
+aliases = ["trl"]
+
+[games.tomb-raider-underworld]
+aliases = ["tru"]
+
+[games.tomb-raider-2013]
+aliases = ["tr2013"]
+
+[games.rise-of-the-tomb-raider]
+aliases = ["rottr"]
+
+[games.shadow-of-the-tomb-raider]
+aliases = ["sottr"]
+
+[games.lara-croft-and-the-guardian-of-light]
+aliases = ["lcgol"]
+
+[games.lara-croft-and-the-temple-of-osiris]
+aliases = ["lctoo"]
+
+[platforms.windows.games.tomb-raider-anniversary]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider Anniversary'
+
+[platforms.windows.games.tomb-raider-legend]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider Legend'
+
+[platforms.windows.games.tomb-raider-underworld]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider Underworld'
+
+[platforms.windows.games.tomb-raider-2013]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider'
+
+[platforms.windows.games.rise-of-the-tomb-raider]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Rise of the Tomb Raider'
+
+[platforms.windows.games.shadow-of-the-tomb-raider]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Shadow of the Tomb Raider'
+
+[platforms.windows.games.lara-croft-and-the-guardian-of-light]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Lara Croft and the Guardian of Light'
+
+[platforms.windows.games.lara-croft-and-the-temple-of-osiris]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Lara Croft and the Temple of Osiris'
+
+[platforms.linux.games.tomb-raider-anniversary]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Tomb Raider Anniversary'
+
+[platforms.linux.games.tomb-raider-legend]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Tomb Raider Legend'
+
+[platforms.linux.games.tomb-raider-underworld]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Tomb Raider Underworld'
+
+[platforms.linux.games.tomb-raider-2013]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Tomb Raider'
+
+[platforms.linux.games.rise-of-the-tomb-raider]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Rise of the Tomb Raider'
+
+[platforms.linux.games.shadow-of-the-tomb-raider]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Shadow of the Tomb Raider'
+
+[platforms.linux.games.lara-croft-and-the-guardian-of-light]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Lara Croft and the Guardian of Light'
+
+[platforms.linux.games.lara-croft-and-the-temple-of-osiris]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Lara Croft and the Temple of Osiris'
+
+[games.tomb-raider-legend-demo]
+aliases = ["trld"]
+samples_dir = "work/samples/trld/251815"
+original_dir = ""
+translated_dir = ""
+
+[platforms.windows.games.tomb-raider-legend-demo]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider Legend Demo'
+
+[platforms.linux.games.tomb-raider-legend-demo]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Tomb Raider Legend Demo'
+
+# Download completion and translation support must be verified separately.
+[games.shadow-of-the-tomb-raider-trial]
+aliases = ["sottr-trial"]
+
+[platforms.windows.games.shadow-of-the-tomb-raider-trial]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Shadow of the Tomb Raider Trial'
+
+[platforms.linux.games.shadow-of-the-tomb-raider-trial]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Shadow of the Tomb Raider Trial'

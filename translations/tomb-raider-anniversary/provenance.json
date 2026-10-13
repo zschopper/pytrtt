@@ -1,0 +1,23 @@
+{
+  "build_id": "842717",
+  "menu_entries": 1419,
+  "subtitle_resources": 283,
+  "subtitle_entries": 484,
+  "subtitle_translation_origins": {
+    "historical": 375,
+    "public_reference_fill": 109
+  },
+  "omitted_subtitle_languages": [
+    1
+  ],
+  "font_sha256": "523d93b4b9ea77cdde19a49283ce9a4d7a7b393206a91b282d7409f8721823cb",
+  "menu_154_translation": " ",
+  "notes": [
+    "Historical subtitle text was preferred when it matched the public output after game-font transliteration.",
+    "Public output filled untranslated or divergent subtitle records for serializer and end-to-end parity validation.",
+    "The public reference is not independent evidence of translation quality."
+  ],
+  "translation_file": "hu.json",
+  "translation_sha256": "79d1e7a1c74262156a6de9fb96720330729a00c43d5cc46de13792a75c01418f",
+  "font_file": "assets/fonts/625B0E2D-523d93b4b9ea.raw"
+}

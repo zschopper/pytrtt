@@ -1,0 +1,40 @@
+# Python environments and tool caches
+.venv/
+.tools/
+.uv-cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+*.egg-info/
+
+# Generated build output; maintained packaging/*.spec files belong in Git
+/dist/
+/build/
+
+# Local editor and operating-system state
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local work data: samples, extraction output, reports, transactions, and scratch
+/work/
+
+# Local backups and legacy scratch locations
+.backups/
+**/.backups/
+config/local.*
+/pytrtt.local.toml
+
+# Local game files and private/reference material
+/references/
+
+# Source, tests, resources, translations, packaging configuration, and docs are tracked
+# Required fonts belong in translations/<game>/assets/fonts/, not references/
