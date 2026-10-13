@@ -1,2 +1,6 @@
-# pytrtt
-Tomb Raider Translation Toolkit, forged in Python 
+# PyTRTT - Tomb Raider Translation Toolkit
+
+Forged in Python,  
+Built for Adventure.
+
+stay tuned.
