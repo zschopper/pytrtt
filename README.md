@@ -15,9 +15,12 @@ files carry the configuration needed to apply the translation.
 | --- | --- | --- | --- |
 | Tomb Raider: Anniversary | PC Steam / `842717` | Hungarian | Supported: menus, subtitles and font replacement |
 | Tomb Raider: Anniversary | PC Steam / `842717` | Brazilian Portuguese | Draft; review and in-game testing pending |
-| Tomb Raider: Legend Demo | PC Steam / `251815` | Hungarian | In progress; dry run and sample round trip verified |
+| Tomb Raider: Legend | PC Steam / `251820` | Hungarian | Supported: menus, subtitles and font replacement |
+| Tomb Raider: Legend Demo | PC Steam / `251815` | Hungarian | Supported: menus, subtitles and font replacement |
+| Shadow of the Tomb Raider Trial | PC Steam / `3668420` | — | Next project; no translation yet |
 
-Support applies to the listed builds. Other games and formats are planned.
+The Anniversary, Legend and Legend Demo translations are supported for the listed Steam builds. Shadow Trial
+requires archive/text format investigation and new support before translation work. Other games and formats are planned.
 The current application runs from source through a CLI. A standalone Windows executable and a GUI
 are planned; their build and distribution workflows are not available yet.
 
@@ -40,9 +43,9 @@ are planned; their build and distribution workflows are not available yet.
 - Free space for recovery data and temporary archive files. The dry run estimates the required space;
   there is no fixed minimum that fits every game.
 
-The application currently has no third-party runtime dependencies.
-The supplied development setup targets **x86-64 Linux/WSL** and requires Bash, Git, curl and network access.
-It installs project-local Python and tools without changing the system interpreter or shell profiles.
+The application currently has no third-party runtime dependencies. Running it from source on Windows
+requires native Windows Python 3.13; Bash and WSL are not required. Git is needed for the clone command below;
+you can also download and extract the repository instead.
 
 The planned standalone release targets **Windows 10 or later**, with Windows 11 as the initial test target.
 It will use a PyInstaller onefile EXE and will not require a separate Python installation.
@@ -50,31 +53,31 @@ Native Windows builds need their own environment; a WSL virtual environment cann
 
 ## Quick start
 
-Run these commands from the repository root in Linux/WSL:
+The main examples use **Windows Command Prompt (cmd.exe)** with Python 3.13 installed.
+Run application commands from the repository root. In these examples, `^` continues a command onto the next line.
 
-```bash
+```bat
 git clone https://github.com/zschopper/pytrtt.git
 cd pytrtt
-bash scripts/setup.sh
+py -3.13 -m pytrtt --help
 ```
 
-The setup script installs the locked development tools and runs the project checks.
 For a new checkout, create your machine-local configuration:
 
-```bash
-cp pytrtt.local.example.toml pytrtt.local.toml
+```bat
+if not exist pytrtt.local.toml copy pytrtt.local.example.toml pytrtt.local.toml
 ```
 
-Edit the relevant `install_dir` for your platform. For WSL, use the `linux` settings.
+Edit the relevant `install_dir` under `platforms.windows.games` for your installation.
 The example contains placeholder paths; `pytrtt.local.toml` is ignored by Git. Keep an existing local
-configuration when updating your checkout. An explicit `--game-dir PATH` overrides its installation path.
+configuration when updating your checkout. An explicit `--game-dir "PATH"` overrides its installation path.
 
 ### Preview a translation
 
 This example uses the configured Anniversary installation and bundled Hungarian language file:
 
-```bash
-bash scripts/dev.sh run --locked python -m pytrtt \
+```bat
+py -3.13 -m pytrtt ^
   --translation-file translations/tomb-raider-anniversary/hu.json --ui-language en
 ```
 
@@ -86,9 +89,9 @@ available space without modifying the game directory. Use `--ui-language hu` for
 Close the game before applying a translation, and wait for Steam downloads or updates to finish.
 Choose a new transaction directory for each installation:
 
-```bash
-bash scripts/dev.sh run --locked python -m pytrtt \
-  --translation-file translations/tomb-raider-anniversary/hu.json \
+```bat
+py -3.13 -m pytrtt ^
+  --translation-file translations/tomb-raider-anniversary/hu.json ^
   --apply --transaction-dir work/transactions/tra/my-install
 ```
 
@@ -98,8 +101,8 @@ files can contain entire archive parts.
 
 Restore the same installation using its saved transaction:
 
-```bash
-bash scripts/dev.sh run --locked python -m pytrtt \
+```bat
+py -3.13 -m pytrtt ^
   --restore --game tra --transaction-dir work/transactions/tra/my-install
 ```
 
@@ -107,19 +110,33 @@ The transaction records the runtime settings, so restoration does not need the t
 a developer profile. It refuses unexpected archive changes. Restore before installing another
 translation; automatic detection of an already installed package is still planned.
 
-### Windows source usage
+### Linux/WSL source usage
 
-With Python 3.13 installed, run from the repository root in Windows Command Prompt:
+With Python 3.13 available, use the same CLI arguments with your interpreter instead of `py -3.13`:
 
-```bat
-py -3.13 -m pytrtt --help
-py -3.13 -m pytrtt --game-dir "C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider Anniversary" --translation-file translations/tomb-raider-anniversary/hu.json
+```bash
+python3.13 -m pytrtt --translation-file translations/tomb-raider-anniversary/hu.json --ui-language en
 ```
 
-Adjust the game path to your installation. The second command is a dry run. Windows examples require
-native Windows Python; the Linux/WSL wrapper is for the development environment described above.
+For a new checkout, create the configuration with `cp -n pytrtt.local.example.toml pytrtt.local.toml`
+and set the `linux` installation paths. If using the supplied development environment, replace `python3.13`
+with `bash scripts/dev.sh run --locked python`.
+
+These source-usage examples match the current CLI. The Windows commands have not been executed as part
+of this documentation update; native Windows application verification remains separate from Linux/WSL checks.
 
 ## Development and testing
+
+The supplied setup and check scripts target **x86-64 Linux/WSL** and require Bash, Git, curl and network
+access for setup. They install project-local Python and locked tools without changing the system interpreter
+or shell profiles. Run from the repository root:
+
+```bash
+bash scripts/setup.sh
+```
+
+The setup script installs the development and packaging dependencies and runs the complete checks.
+For subsequent checks:
 
 ```bash
 # Complete checks: Ruff, formatting, strict mypy, Markdown and unit tests.
@@ -155,7 +172,7 @@ See the [contributor guidelines](AGENTS.md) for task-specific development guidan
 
 ## Roadmap
 
-- Complete the full Legend Demo installation and in-game validation.
+- Investigate Shadow of the Tomb Raider Trial archive/text formats and implement read-only text extraction.
 - Build and test the standalone Windows EXE and manifest-based translation packages.
 - Add package/installation state detection, game discovery and restoration previews.
 - Support more archive versions, games and installed DLCs through tested handlers and profiles.
@@ -163,15 +180,8 @@ See the [contributor guidelines](AGENTS.md) for task-specific development guidan
 
 ## Translation credits
 
-### Tomb Raider: Anniversary — Hungarian
-
-- Translation: Credo, Hamster, Ironman, Jeges Helga and Petúnia.
-- Beta testing: DC Girlie and N0rby21.
-- Translation community: [TombRaider.hu](https://www.tombraider.hu/).
-
-### Tomb Raider: Anniversary — Brazilian Portuguese
-
-- Translation: Filipe Rodrigues (**frodrix**).
+The translations are collaborative works created by external contributors and communities;
+the credits belong to those contributors. See [TRANSLATION_CREDITS.md](TRANSLATION_CREDITS.md) for attribution notes.
 
 ## Support and contributions
 
@@ -181,6 +191,7 @@ For translation problems, send the generated diagnostic report to
 [tombraidertranslations@gmail.com](mailto:tombraidertranslations@gmail.com).
 Reports are stored in the user data directory; the CLI prints their location and does not send email automatically.
 
+Want to translate a supported game into another language? Start with the [translation guide](docs/TRANSLATING.md).
 Contributions to code, translations and testing are welcome. Include relevant checks with code changes;
 new game support needs a profile and evidence from extraction, translation and restoration tests.
 

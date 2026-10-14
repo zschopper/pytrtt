@@ -38,6 +38,9 @@ def test_demo_uses_shared_handlers_and_complete_historical_translation() -> None
     assert len(document.menu[0].entries) == 1184
     assert len(document.subtitles) == 445
     assert sum(len(r.entries) for r in document.subtitles) == 492
+    menu_entries = {entry.entry_id: entry for entry in document.menu[0].entries}
+    assert not menu_entries[50].substitution_disabled
+    assert not menu_entries[53].substitution_disabled
     for resource in (*document.menu, *document.subtitles):
         assert names[int(resource.resource_hash, 16)] == resource.resource_path
         assert all(entry.translation is not None for entry in resource.entries)
@@ -118,6 +121,8 @@ def test_demo_subset_translation_and_exact_restore(
         if not entry.substitution_disabled:
             expected = expected.translate(substitutions)
         assert menu.entries[entry.entry_id].text == expected
+    assert menu.entries[50].text == "Grafikus Vezérlô"
+    assert menu.entries[53].text == "Teljesképernyôs Effektek"
     for resource in document.subtitles:
         reference = next(
             r for r in archive.resources() if r.name_hash == int(resource.resource_hash, 16)

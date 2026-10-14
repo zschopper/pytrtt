@@ -2,7 +2,7 @@
   "build_id": "251815",
   "steam_app_id": 7030,
   "historical_package": "trld.v1.0",
-  "historical_translation_xml": "references/saj\u00e1t/trl_tra_magyar/trld.v1.0.tra.xml",
+  "historical_translation_xml": "references/saját/trl_tra_magyar/trld.v1.0.tra.xml",
   "historical_translation_sha256": "2c62ccc94bb7916d98a4d6fbcea96fbd2b0136d7dbb41548deaa517e6b9869bc",
   "original_index_sha256": "2f4284835d37e5b7b941913448142e76ff01093f1e218a6a2253ac95a4f715ad",
   "filelist_entries": 873,
@@ -27,7 +27,7 @@
   ],
   "font_sha256": "1e790ceb7b22ed0ba1fdccf4129737764b5491c3078b95a1cf33d27eea9cc6ac",
   "translation_file": "hu.json",
-  "translation_sha256": "c661e945993962e70be46f993e2ab1fd0840458b33a0ca93b579a911aa71adf0",
+  "translation_sha256": "0584a46da1fe73ef171174b6f1cfb368f4d03e324129afab58f24d300f975c42",
   "font_file": "assets/fonts/625B0E2D-1e790ceb7b22.raw",
   "notes": [
     "All current menu source text matches the historical export, allowing whitespace differences.",
@@ -35,6 +35,7 @@
     "Historical XML translation checksums were independently validated using the baseline algorithm.",
     "Empty menu translations are explicit empty strings; the writer stores one space.",
     "The legacy demo filelist omits 36 resources; all 873 current index hashes are resolved by the full Legend filelist.",
-    "Gameplay and comparison with an installed public demo translation remain unverified."
+    "Gameplay and comparison with an installed public demo translation remain unverified.",
+    "TRLD setup labels use the configured font substitutions for ő/ű; the native setup path did not render those glyphs in the user test."
   ]
 }

@@ -295,8 +295,7 @@
           "id": 46,
           "source": "Brightness",
           "translation": "Fényerő",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 47,
@@ -307,120 +306,103 @@
           "id": 48,
           "source": "Tomb Raider: Legend - Setup",
           "translation": "Tomb Raider: Legend - Beállítások",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 49,
           "source": "Contrast",
           "translation": "Kontraszt",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 50,
           "source": "Display Adapter",
           "translation": "Grafikus Vezérlő",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 51,
           "source": "Enable Anti Aliasing",
           "translation": "Élsimítás",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 52,
           "source": "Enable Depth of Field",
           "translation": "Mélységélesség",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 53,
           "source": "Enable Fullscreen Effects",
           "translation": "Teljesképernyős Effektek",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 54,
           "source": "Enable Reflections",
           "translation": "Tükröződések",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 55,
           "source": "Enable Shadows",
           "translation": "Árnyékok",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 56,
           "source": "Enable VSync",
           "translation": "VSync",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 57,
           "source": "Enable Water Effects",
           "translation": "Víz Effektusok",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 58,
           "source": "Next Generation Content",
           "translation": "Következő Generációs Mód",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 59,
           "source": "Ok",
           "translation": "Ok",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 60,
           "source": "Refresh Rate",
           "translation": "Képfrissítés",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 61,
           "source": "Rendering Setup",
           "translation": "Grafikai Beállítás",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 62,
           "source": "Resolution",
           "translation": "Felbontás",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 63,
           "source": "Set To Default",
           "translation": "Alapértelmezett",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 64,
           "source": "%d by %d",
           "translation": "%d x %d",
-          "comment": "Legacy directive: $SETUP",
-          "substitution_disabled": true
+          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
         },
         {
           "id": 69,

@@ -1,0 +1,37 @@
+{
+  "game_id": "tomb-raider-legend",
+  "target_build_id": "251820",
+  "translation_source": "Public TRL v1.2 Hungarian translation from the 080423-01 TRTR2 baseline.",
+  "historical_files": [
+    "references/saját/080423-01.trtr2/trans/trl.v1.2.hu/menu.txt",
+    "references/saját/080423-01.trtr2/trans/trl.v1.2.hu/subtitles.txt",
+    "references/saját/080423-01.trtr2/trans/trl.v1.2.hu/font_translated.raw"
+  ],
+  "source_extraction": "Tomb Raider Legend Steam build 251820 from the user-provided Tomb Raider Legend.orig copy.",
+  "menu_import": {
+    "legacy_rows": 1267,
+    "current_rows": 1268,
+    "missing_rows": [
+      131
+    ],
+    "exact_source_matches": 1249,
+    "whitespace_source_differences": 16,
+    "content_source_differences": 2,
+    "untranslated_rows": 0,
+    "user_completed_rows": [
+      131,
+      167,
+      671
+    ]
+  },
+  "subtitle_translation_records": 2459,
+  "font_original_matches_current_game": true,
+  "notes": [
+    "Historical menu rows 379 and 381 have source text differences from Steam build 251820; the legacy importer records these differences in comments.",
+    "Menu record 131 was absent from the public v1.2 translation and has since been supplied by the project translator.",
+    "The two legacy empty menu translations are represented by a single space, matching the agreed translation behavior.",
+    "The French subtitle slot is omitted, following the historical translation behavior.",
+    "18 historical subtitle translations used CRLF line breaks; these are normalized to LF because CINE uses CR as its field delimiter."
+  ],
+  "translation_sha256": "66a84993895435b2d640e64fc32d75b697ac023b7fdc5cefcb87f2f5eda4e45e"
+}
