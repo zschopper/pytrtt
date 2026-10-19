@@ -14,13 +14,10 @@ HEADER = bytes.fromhex(
     "70637836342d7700 0000000000000000 0000000000000000 0000000000000000"
 )
 # 64-bit name hash/locale, 37 bytes, raw, part zero, IDs 1/27, offset 96.
-ROW = bytes.fromhex(
-    "808edbc39b331f33 0104ffffffffffff 25000000 00000000 0000 01 1b 60000000"
-)
+ROW = bytes.fromhex("808edbc39b331f33 0104ffffffffffff 25000000 00000000 0000 01 1b 60000000")
 # Language 0, three slots: placeholder, record at 32, alias to the same record.
 MENU = bytes.fromhex(
-    "00000000 03000000 0000000000000000 2000000000000000 2000000000000000"
-    "4b20c59100"
+    "00000000 03000000 0000000000000000 2000000000000000 20000000000000004b20c59100"
 )
 
 
@@ -81,7 +78,9 @@ def test_parses_unicode_keys_placeholders_and_shared_offsets() -> None:
     result = parse_keyed_locals(MENU)
     assert result.language_id == 0
     assert [(e.index, e.offset, e.key, e.text) for e in result.entries] == [
-        (0, 0, None, None), (1, 32, "K", "ő"), (2, 32, "K", "ő")
+        (0, 0, None, None),
+        (1, 32, "K", "ő"),
+        (2, 32, "K", "ő"),
     ]
     assert result.original_data == MENU
 

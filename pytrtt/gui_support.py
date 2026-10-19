@@ -4,51 +4,25 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
-import re
 from collections.abc import Callable
-from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from enum import Enum
 from pathlib import Path, PurePosixPath, PureWindowsPath
-from typing import Protocol, cast
 
+from pytrtt import gui_discovery as _discovery
 from pytrtt.archives.transaction import journal_data_dir_matches
-from pytrtt.packages.translation import TranslationPackageError
+from pytrtt.packages.translation import TranslationDocument, TranslationPackageError
+from pytrtt.services.translation import TranslationBuild
 
-CATALOG_PATH = Path(__file__).resolve().parent / "resources" / "gui_games.json"
 ProgressCallback = Callable[[int, int, str], None]
-
-
-class RegistryModule(Protocol):
-    HKEY_CURRENT_USER: int
-    HKEY_LOCAL_MACHINE: int
-    KEY_READ: int
-    KEY_WOW64_32KEY: int
-
-    def OpenKey(
-        self, hive: int, path: str, reserved: int, access: int
-    ) -> AbstractContextManager[object]: ...
-
-    def QueryValueEx(self, key: object, name: str) -> tuple[object, int]: ...
-
-
-@dataclass(frozen=True, slots=True)
-class GameCatalogEntry:
-    game_id: str
-    display_name: str
-    steam_app_id: str
-    install_dir_name: str
-    translation_file: Path
-
-
-@dataclass(frozen=True, slots=True)
-class InstallationCandidate:
-    game: GameCatalogEntry
-    path: Path
-    source: str
-    build_id: str = ""
+GameCatalogEntry = _discovery.GameCatalogEntry
+InstallationCandidate = _discovery.InstallationCandidate
+discover_steam_installations = _discovery.discover_steam_installations
+installation_choices = _discovery.installation_choices
+load_game_catalog = _discovery.load_game_catalog
+registry_steam_roots = _discovery.registry_steam_roots
+validate_packaged_catalog = _discovery.validate_packaged_catalog
 
 
 class InstallationStatus(Enum):
@@ -69,163 +43,15 @@ class InstallationInspection:
     translation_path: Path
     detail: str = ""
     restore_path: Path | None = None
+    prepared: PreparedTranslation | None = None
 
 
-def installation_choices(
-    candidates: tuple[InstallationCandidate, ...], game_id: str
-) -> dict[str, InstallationCandidate]:
-    """Keep separate folder choices for every installation of one game."""
-    return {str(item.path): item for item in candidates if item.game.game_id == game_id}
+@dataclass(frozen=True, slots=True)
+class PreparedTranslation:
+    """Validated document and write plan retained between GUI check and apply."""
 
-
-def _required_text(value: object, field: str) -> str:
-    if not isinstance(value, str) or not value:
-        raise ValueError(f"invalid GUI game catalog field: {field}")
-    return value
-
-
-def load_game_catalog(path: Path = CATALOG_PATH) -> tuple[GameCatalogEntry, ...]:
-    """Load the declarative list shown by the graphical client."""
-    value: object = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(value, list):
-        raise ValueError("GUI game catalog must be an array")
-    games = []
-    for item in value:
-        if not isinstance(item, dict) or set(item) != {
-            "game_id",
-            "display_name",
-            "steam_app_id",
-            "install_dir_name",
-            "translation_file",
-        }:
-            raise ValueError("invalid GUI game catalog entry")
-        relative = Path(_required_text(item["translation_file"], "translation_file"))
-        if relative.is_absolute() or ".." in relative.parts:
-            raise ValueError("translation_file must be a safe relative path")
-        games.append(
-            GameCatalogEntry(
-                _required_text(item["game_id"], "game_id"),
-                _required_text(item["display_name"], "display_name"),
-                _required_text(item["steam_app_id"], "steam_app_id"),
-                _required_text(item["install_dir_name"], "install_dir_name"),
-                relative,
-            )
-        )
-    if len({game.game_id for game in games}) != len(games):
-        raise ValueError("duplicate game_id in GUI game catalog")
-    return tuple(games)
-
-
-def default_steam_roots() -> tuple[Path, ...]:
-    """Return plausible Steam roots without touching the registry or the network."""
-    roots: list[Path] = []
-    for variable in ("PROGRAMFILES(X86)", "PROGRAMFILES"):
-        value = os.environ.get(variable)
-        if value:
-            roots.append(Path(value) / "Steam")
-    if os.name == "nt":
-        roots.extend(registry_steam_roots())
-    if os.name != "nt":
-        roots.extend((Path.home() / ".steam/steam", Path.home() / ".local/share/Steam"))
-    return tuple(dict.fromkeys(roots))
-
-
-def registry_steam_roots(registry: RegistryModule | None = None) -> tuple[Path, ...]:
-    """Read Steam installation roots from the Windows registry when available."""
-    if registry is None:
-        if os.name != "nt":
-            return ()
-        import winreg
-
-        active_registry = cast(RegistryModule, winreg)
-    else:
-        active_registry = registry
-    locations = (
-        (active_registry.HKEY_CURRENT_USER, r"Software\Valve\Steam", 0),
-        (
-            active_registry.HKEY_LOCAL_MACHINE,
-            r"Software\Valve\Steam",
-            active_registry.KEY_WOW64_32KEY,
-        ),
-    )
-    roots: list[Path] = []
-    seen: set[str] = set()
-    for hive, key_path, view in locations:
-        try:
-            with active_registry.OpenKey(hive, key_path, 0, active_registry.KEY_READ | view) as key:
-                for name in ("SteamPath", "InstallPath", "SteamExe"):
-                    try:
-                        raw, _kind = active_registry.QueryValueEx(key, name)
-                    except OSError:
-                        continue
-                    if not isinstance(raw, str) or not raw.strip():
-                        continue
-                    windows_path = PureWindowsPath(raw)
-                    if name == "SteamExe":
-                        windows_path = windows_path.parent
-                    value = Path(str(windows_path))
-                    normalized = str(value).casefold()
-                    if normalized not in seen:
-                        seen.add(normalized)
-                        roots.append(value)
-        except OSError:
-            continue
-    return tuple(roots)
-
-
-def _vdf_pairs(text: str) -> dict[str, str]:
-    return {
-        key.casefold(): value.replace("\\\\", "\\")
-        for key, value in re.findall(r'"([^"\\]+)"\s+"((?:\\.|[^"\\])*)"', text)
-    }
-
-
-def _steam_libraries(root: Path) -> tuple[Path, ...]:
-    libraries = [root]
-    library_file = root / "steamapps/libraryfolders.vdf"
-    try:
-        text = library_file.read_text(encoding="utf-8-sig")
-    except OSError:
-        return tuple(libraries)
-    for value in re.findall(r'"path"\s+"((?:\\.|[^"\\])*)"', text, re.IGNORECASE):
-        path = Path(value.replace("\\\\", "\\"))
-        if path not in libraries:
-            libraries.append(path)
-    return tuple(libraries)
-
-
-def discover_steam_installations(
-    games: tuple[GameCatalogEntry, ...],
-    steam_roots: tuple[Path, ...] | None = None,
-) -> tuple[InstallationCandidate, ...]:
-    """Discover complete Steam installations from their manifests."""
-    by_app_id = {game.steam_app_id: game for game in games}
-    candidates: list[InstallationCandidate] = []
-    seen: set[tuple[str, Path]] = set()
-    for root in steam_roots if steam_roots is not None else default_steam_roots():
-        for library in _steam_libraries(root):
-            steamapps = library / "steamapps"
-            for app_id, game in by_app_id.items():
-                manifest = steamapps / f"appmanifest_{app_id}.acf"
-                try:
-                    fields = _vdf_pairs(manifest.read_text(encoding="utf-8-sig"))
-                    complete = int(fields.get("stateflags", "0")) & 4
-                except (OSError, UnicodeError, ValueError):
-                    continue
-                install_dir = fields.get("installdir", game.install_dir_name)
-                path = steamapps / "common" / install_dir
-                key = (game.game_id, path)
-                if complete and path.is_dir() and key not in seen:
-                    seen.add(key)
-                    candidates.append(
-                        InstallationCandidate(
-                            game,
-                            path,
-                            "Steam",
-                            fields.get("buildid", ""),
-                        )
-                    )
-    return tuple(candidates)
+    document: TranslationDocument
+    build: TranslationBuild
 
 
 def inspect_installation(
@@ -430,6 +256,7 @@ def check_translation(
             status,
             inspection.translation_path,
             detail,
+            prepared=PreparedTranslation(document, result),
         )
     except TranslationPackageError as exc:
         return InstallationInspection(
@@ -463,27 +290,17 @@ def apply_translation(
         )
     try:
         from pytrtt.composition import create_translation_service
-        from pytrtt.packages.translation import parse_translation_document
 
-        if progress is not None:
-            progress(0, 4, "gui_progress_package")
-        document = parse_translation_document(
-            inspection.translation_path.read_text(encoding="utf-8")
-        )
-        if progress is not None:
-            progress(1, 4, "gui_progress_plan")
+        prepared = inspection.prepared
+        if prepared is None:
+            return InstallationInspection(
+                inspection.candidate,
+                InstallationStatus.ERROR,
+                inspection.translation_path,
+                "the checked translation plan is unavailable",
+            )
         service = create_translation_service()
-        result = service.plan(
-            inspection.candidate.path,
-            document,
-            package_dir=inspection.translation_path.parent,
-            expected_build_id=inspection.candidate.build_id or None,
-            progress=(
-                (lambda current, total: progress(current, total, "gui_progress_plan_resources"))
-                if progress is not None
-                else None
-            ),
-        )
+        result = prepared.build
         if result.plan is None:
             return check_translation(inspection, transaction_roots=(transaction_root,))
         stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ")
@@ -575,3 +392,48 @@ def restore_translation(
         inspection.translation_path,
         "no safe restore transaction is available",
     )
+
+
+def run_translation_operation(
+    inspection: InstallationInspection,
+    action: str,
+    *,
+    transaction_root: Path,
+    transaction_roots: tuple[Path, ...],
+    safe_exit_requested: bool = False,
+    progress: ProgressCallback | None = None,
+) -> tuple[InstallationInspection, bool]:
+    """Run one GUI operation and complete a requested post-install safe exit."""
+    if action == "restore":
+        result = restore_translation(
+            inspection,
+            transaction_roots=transaction_roots,
+            progress=progress,
+        )
+    elif action == "install":
+        result = apply_translation(
+            inspection,
+            transaction_root=transaction_root,
+            progress=progress,
+        )
+    else:
+        result = check_translation(
+            inspection,
+            transaction_roots=transaction_roots,
+            progress=progress,
+        )
+    if (
+        action == "install"
+        and safe_exit_requested
+        and result.status is InstallationStatus.ALREADY_TRANSLATED
+        and result.restore_path is not None
+    ):
+        return (
+            restore_translation(
+                result,
+                transaction_roots=transaction_roots,
+                progress=progress,
+            ),
+            True,
+        )
+    return result, False

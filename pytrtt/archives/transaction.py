@@ -13,10 +13,7 @@ from contextlib import contextmanager
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 
-from pytrtt.archives.bigfile_v2 import BigFileV2WritePlan
-from pytrtt.archives.tiger_v3 import TigerV3WritePlan
-from pytrtt.archives.tiger_v4 import TigerV4WritePlan
-from pytrtt.archives.write_plan import BigFileWritePlan, serialize_bigfile_index
+from pytrtt.archives.contracts import ArchiveWritePlan
 
 FILE_NAME = re.compile(r"[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*\.[0-9]{3}(?:\.tiger)?\Z")
 JOURNAL_NAME = "journal.json"
@@ -165,7 +162,7 @@ def _backup_path(transaction_root: Path, name: str) -> Path:
 
 def _apply_write_plan_locked(
     data_dir: Path,
-    plan: BigFileWritePlan | TigerV3WritePlan | TigerV4WritePlan | BigFileV2WritePlan,
+    plan: ArchiveWritePlan,
     transaction_dir: Path,
     runtime_settings: dict[str, Any] | None = None,
 ) -> Path:
@@ -173,11 +170,10 @@ def _apply_write_plan_locked(
     data_root, transaction_root = _validate_roots(data_dir, transaction_dir)
     if transaction_root.exists():
         raise TransactionError("transaction directory already exists")
-    if isinstance(plan, (TigerV3WritePlan, TigerV4WritePlan, BigFileV2WritePlan)):
-        try:
-            plan.validate_inputs(data_root)
-        except ValueError as exc:
-            raise TransactionError(str(exc)) from exc
+    try:
+        plan.validate_inputs(data_root)
+    except ValueError as exc:
+        raise TransactionError(str(exc)) from exc
     transaction_root.parent.mkdir(parents=True, exist_ok=True)
     if plan.files.keys() != {write.file_name for write in plan.writes}:
         raise TransactionError("write plan file list does not match its writes")
@@ -190,11 +186,7 @@ def _apply_write_plan_locked(
         file_plan = plan.files[write.file_name]
         if write.offset < 0 or write.offset + len(write.data) > file_plan.final_size:
             raise TransactionError(f"write plan range exceeds {write.file_name}")
-    indexes = (
-        {"bigfile.000": serialize_bigfile_index(plan.index)}
-        if isinstance(plan, BigFileWritePlan)
-        else plan.index_data
-    )
+    indexes = plan.index_data
     index_writes = [write for write in plan.writes if write.kind == "index"]
     if (
         not indexes
@@ -374,7 +366,7 @@ def _apply_write_plan_locked(
 
 def apply_write_plan(
     data_dir: Path,
-    plan: BigFileWritePlan | TigerV3WritePlan | TigerV4WritePlan | BigFileV2WritePlan,
+    plan: ArchiveWritePlan,
     transaction_dir: Path,
     *,
     runtime_settings: dict[str, Any] | None = None,

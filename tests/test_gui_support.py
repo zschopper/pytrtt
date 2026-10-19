@@ -3,18 +3,28 @@
 import hashlib
 import json
 from contextlib import AbstractContextManager
+from dataclasses import replace
 from pathlib import Path
 
-from pytrtt.gui_support import (
+import pytest
+
+from pytrtt.gui_discovery import (
     GameCatalogEntry,
     InstallationCandidate,
-    InstallationStatus,
+    discover_installations,
     discover_steam_installations,
+    load_game_catalog,
+    local_config_installations,
+    registry_steam_roots,
+    validate_packaged_catalog,
+)
+from pytrtt.gui_support import (
+    InstallationInspection,
+    InstallationStatus,
     find_interrupted_transactions,
     find_restorable_transaction,
     inspect_installation,
-    load_game_catalog,
-    registry_steam_roots,
+    run_translation_operation,
 )
 
 
@@ -38,6 +48,136 @@ def test_catalog_is_data_driven_and_contains_anniversary() -> None:
     ids = {game.game_id for game in games}
     assert "tomb-raider-legend-demo" in ids
     assert "shadow-of-the-tomb-raider-trial" in ids
+    assert anniversary.package_available
+
+
+def test_local_config_discovery_is_an_injectable_fake(tmp_path: Path) -> None:
+    installation = tmp_path / "installed-game"
+    installation.mkdir()
+    config = tmp_path / "pytrtt.local.toml"
+    config.write_text('[games.fixture-game]\ninstall_dir = "installed-game"\n', encoding="utf-8")
+
+    assert local_config_installations((_entry(),), config) == (
+        InstallationCandidate(_entry(), installation, "Local config"),
+    )
+
+
+def test_discovery_pipeline_combines_future_store_adapters_without_duplicates(
+    tmp_path: Path,
+) -> None:
+    candidate = InstallationCandidate(_entry(), tmp_path / "game", "Steam")
+
+    def steam(_games: tuple[GameCatalogEntry, ...]) -> tuple[InstallationCandidate, ...]:
+        return (candidate,)
+
+    def future_store(
+        _games: tuple[GameCatalogEntry, ...],
+    ) -> tuple[InstallationCandidate, ...]:
+        return (replace(candidate, source="Future store"),)
+
+    assert discover_installations((_entry(),), (steam, future_store)) == (candidate,)
+
+
+def test_available_catalog_packages_are_self_consistent() -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    assert validate_packaged_catalog(load_game_catalog(), project_root) == ()
+
+
+def test_packaged_catalog_reports_missing_and_mismatched_packages(tmp_path: Path) -> None:
+    missing = GameCatalogEntry(
+        "missing-game", "Missing", "1", "Missing", Path("translations/missing/hu.json"), True
+    )
+    mismatched = GameCatalogEntry(
+        "expected-game", "Mismatch", "2", "Mismatch", Path("translations/mismatch/hu.json"), True
+    )
+    package = tmp_path / mismatched.translation_file
+    package.parent.mkdir(parents=True)
+    package.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "metadata": {
+                    "game_id": "different-game",
+                    "build_id": "1",
+                    "source_language": "en",
+                    "target_language": "hu",
+                    "archive_format": "bigfile",
+                    "archive_version": 1,
+                },
+                "menu": [],
+                "subtitles": [],
+                "fonts": [],
+                "clear_subtitle_languages": [],
+                "omit_subtitle_languages": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert validate_packaged_catalog((missing, mismatched), tmp_path) == (
+        "missing-game: translation package is missing",
+        "expected-game: package metadata targets different-game",
+    )
+
+
+def test_safe_exit_restores_a_just_installed_translation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    inspection = InstallationInspection(
+        InstallationCandidate(_entry(), tmp_path / "game", "Manual"),
+        InstallationStatus.CHANGES_AVAILABLE,
+        tmp_path / "hu.json",
+    )
+    installed = replace(
+        inspection,
+        status=InstallationStatus.ALREADY_TRANSLATED,
+        restore_path=tmp_path / "transaction",
+    )
+    restored = replace(installed, status=InstallationStatus.RESTORED)
+    calls = []
+
+    monkeypatch.setattr("pytrtt.gui_support.apply_translation", lambda *_args, **_kwargs: installed)
+
+    def restore(*_args: object, **_kwargs: object) -> InstallationInspection:
+        calls.append("restore")
+        return restored
+
+    monkeypatch.setattr("pytrtt.gui_support.restore_translation", restore)
+
+    result, safe_exit_completed = run_translation_operation(
+        inspection,
+        "install",
+        transaction_root=tmp_path / "transactions",
+        transaction_roots=(tmp_path / "transactions",),
+        safe_exit_requested=True,
+    )
+
+    assert result is restored
+    assert safe_exit_completed
+    assert calls == ["restore"]
+
+
+def test_failed_restore_is_returned_without_safe_exit(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    inspection = InstallationInspection(
+        InstallationCandidate(_entry(), tmp_path / "game", "Manual"),
+        InstallationStatus.ALREADY_TRANSLATED,
+        tmp_path / "hu.json",
+        restore_path=tmp_path / "transaction",
+    )
+    failed = replace(inspection, status=InstallationStatus.ERROR, detail="restore failed")
+    monkeypatch.setattr("pytrtt.gui_support.restore_translation", lambda *_args, **_kwargs: failed)
+
+    result, safe_exit_completed = run_translation_operation(
+        inspection,
+        "restore",
+        transaction_root=tmp_path / "transactions",
+        transaction_roots=(tmp_path / "transactions",),
+    )
+
+    assert result is failed
+    assert not safe_exit_completed
 
 
 def test_steam_discovery_reads_default_and_additional_libraries(tmp_path: Path) -> None:

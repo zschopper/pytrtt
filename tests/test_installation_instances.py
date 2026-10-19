@@ -7,16 +7,14 @@ from pathlib import Path
 import pytest
 
 from pytrtt.archives.transaction import journal_data_dir_matches
+from pytrtt.gui_discovery import GameCatalogEntry, InstallationCandidate, installation_choices
 from pytrtt.gui_support import (
-    GameCatalogEntry,
-    InstallationCandidate,
     InstallationInspection,
     InstallationStatus,
     apply_translation,
     check_translation,
     find_restorable_transaction,
     inspect_installation,
-    installation_choices,
     restore_translation,
 )
 from pytrtt.packages.translation import serialize_translation_document
@@ -60,7 +58,9 @@ def test_two_identical_translated_copies_restore_independently(tmp_path: Path) -
             inspect_installation(candidate, project_root=package), transaction_roots=roots
         )
 
-    a_installed = apply_translation(check(a), transaction_root=transactions)
+    prepared_a = check(a)
+    assert prepared_a.prepared is not None
+    a_installed = apply_translation(prepared_a, transaction_root=transactions)
     assert a_installed.status is InstallationStatus.ALREADY_TRANSLATED
     assert check(b).status is InstallationStatus.CHANGES_AVAILABLE
     assert find_restorable_transaction(second, roots) is None

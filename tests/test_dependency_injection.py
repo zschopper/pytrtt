@@ -22,8 +22,12 @@ from tests.test_generic_translation import document
 class MemoryPlan:
     writes: tuple[PlannedWrite, ...] = ()
     files: dict[str, PlannedFile] = field(default_factory=dict)
+    index_data: dict[str, bytes] = field(default_factory=dict)
     backup_bytes: int = 0
     sufficient_space: bool = True
+
+    def validate_inputs(self, _directory: Path) -> None:
+        return None
 
 
 @dataclass

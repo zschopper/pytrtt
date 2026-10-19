@@ -14,20 +14,22 @@ from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
 from pytrtt.application_paths import transaction_root, transaction_search_roots
-from pytrtt.gui_flow import WizardFlow, WizardStep
-from pytrtt.gui_support import (
+from pytrtt.gui_discovery import (
     InstallationCandidate,
-    InstallationInspection,
-    InstallationStatus,
-    apply_translation,
-    check_translation,
-    discover_steam_installations,
-    find_interrupted_transactions,
-    inspect_installation,
+    InstallationDetector,
+    discover_installations,
     installation_choices,
     load_game_catalog,
+)
+from pytrtt.gui_flow import AsyncOperationState, GuiEventJournal, WizardFlow, WizardStep
+from pytrtt.gui_support import (
+    InstallationInspection,
+    InstallationStatus,
+    check_translation,
+    find_interrupted_transactions,
+    inspect_installation,
     recover_interrupted_transaction,
-    restore_translation,
+    run_translation_operation,
 )
 from pytrtt.i18n import Translator
 
@@ -67,13 +69,24 @@ def apply_platform_style(root: tk.Tk) -> None:
 
 
 class TranslationGui:
-    """Four-step wizard that keeps the first implementation read-only."""
+    """Four-step wizard for checking, installing, and restoring translations."""
 
-    def __init__(self, root: tk.Tk, translator: Translator) -> None:
+    def __init__(
+        self,
+        root: tk.Tk,
+        translator: Translator,
+        *,
+        discoverer: InstallationDetector | None = None,
+        event_journal: GuiEventJournal | None = None,
+    ) -> None:
         self.root = root
         apply_platform_style(root)
         self.translator = translator
-        self.flow = WizardFlow()
+        self.event_journal = event_journal
+        recorder = event_journal.record if event_journal is not None else None
+        self.flow = WizardFlow(record_event=recorder)
+        self.workers = AsyncOperationState(record_event=recorder)
+        self.discoverer = discoverer or discover_installations
         self.games = load_game_catalog()
         self.candidates: tuple[InstallationCandidate, ...] = ()
         self.current_candidate: InstallationCandidate | None = None
@@ -101,6 +114,10 @@ class TranslationGui:
 
     def _text(self, key: str, **parameters: object) -> str:
         return self.translator.text(key, **parameters)
+
+    def _record_event(self, name: str, **details: str | int | bool) -> None:
+        if self.event_journal is not None:
+            self.event_journal.record(name, details)
 
     def _schedule(self, callback: Callable[..., object], *arguments: object) -> None:
         if self.closed:
@@ -418,10 +435,11 @@ class TranslationGui:
         self.refresh()
 
     def _discover(self) -> None:
-        candidates = discover_steam_installations(self.games)
+        candidates = self.discoverer(self.games)
         self._schedule(self._show_discovery, candidates)
 
     def _show_discovery(self, candidates: tuple[InstallationCandidate, ...]) -> None:
+        self._record_event("discovery.finished", count=len(candidates))
         manual = tuple(item for item in self.candidates if item.source == "Manual")
         self.candidates = candidates + manual
         self.discovery.set(self._text("gui_found", count=len(candidates)))
@@ -462,6 +480,13 @@ class TranslationGui:
                 self._select_candidate(candidate)
 
     def _select_candidate(self, candidate: InstallationCandidate) -> None:
+        self._record_event(
+            "installation.selected",
+            game_id=candidate.game.game_id,
+            path=str(candidate.path),
+            source=candidate.source,
+        )
+        generation = self.workers.begin_check()
         self.candidates = tuple(
             item
             for item in self.candidates
@@ -486,21 +511,28 @@ class TranslationGui:
             self._start_live_progress("check", self.check_progress, self.game_status)
             threading.Thread(
                 target=self._inspect_worker,
-                args=(self.current_inspection,),
+                args=(self.current_inspection, generation),
                 daemon=True,
             ).start()
 
-    def _inspect_worker(self, inspection: InstallationInspection) -> None:
+    def _inspect_worker(self, inspection: InstallationInspection, generation: int) -> None:
         result = check_translation(
             inspection,
             transaction_roots=transaction_search_roots(),
-            progress=self._queue_check_progress,
+            progress=lambda current, total, message: self._queue_check_progress(
+                generation, current, total, message
+            ),
         )
-        self._schedule(self._inspection_finished, result)
+        self._schedule(self._inspection_finished, result, generation)
 
-    def _inspection_finished(self, result: InstallationInspection) -> None:
-        if self.current_candidate != result.candidate:
+    def _inspection_finished(self, result: InstallationInspection, generation: int) -> None:
+        if not self.workers.accepts_check(generation) or self.current_candidate != result.candidate:
             return
+        self._record_event(
+            "inspection.finished",
+            game_id=result.candidate.game.game_id,
+            status=result.status.value,
+        )
         self._stop_live_progress("check")
         self.check_progress.grid_remove()
         self.current_inspection = result
@@ -576,9 +608,10 @@ class TranslationGui:
         self._show_step()
 
     def _start_operation(self) -> None:
-        if self.current_inspection is None:
+        if self.current_inspection is None or not self.workers.begin_operation():
             return
         action = self.selected_action.get()
+        self._record_event("operation.action_selected", action=action)
         keys = {
             "check": "gui_status_checking",
             "install": "gui_status_installing",
@@ -594,48 +627,35 @@ class TranslationGui:
         ).start()
 
     def _operation_worker(self, inspection: InstallationInspection, action: str) -> None:
-        if action == "restore":
-            result = restore_translation(
-                inspection,
-                transaction_roots=transaction_search_roots(),
-                progress=self._queue_operation_progress,
-            )
-        elif action == "install":
-            result = apply_translation(
-                inspection,
-                transaction_root=transaction_root(),
-                progress=self._queue_operation_progress,
-            )
-        else:
-            result = check_translation(
-                inspection,
-                transaction_roots=transaction_search_roots(),
-                progress=self._queue_operation_progress,
-            )
-        if (
-            action == "install"
-            and self.safe_exit_requested.is_set()
-            and result.status is InstallationStatus.ALREADY_TRANSLATED
-            and result.restore_path is not None
-        ):
-            result = restore_translation(
-                result,
-                transaction_roots=transaction_search_roots(),
-                progress=self._queue_operation_progress,
-            )
+        result, safe_exit_completed = run_translation_operation(
+            inspection,
+            action,
+            transaction_root=transaction_root(),
+            transaction_roots=transaction_search_roots(),
+            safe_exit_requested=self.safe_exit_requested.is_set(),
+            progress=self._queue_operation_progress,
+        )
+        if safe_exit_completed:
             self._schedule(self._safe_exit_finished, result)
             return
         self._schedule(self._operation_finished, result)
 
     def _safe_exit_finished(self, result: InstallationInspection) -> None:
         if result.status is InstallationStatus.RESTORED:
+            if not self.workers.finish_operation():
+                return
+            self.workers.close()
             self.closed = True
             self.root.destroy()
             return
         self.safe_exit_requested.clear()
         self._operation_finished(result)
 
-    def _queue_check_progress(self, current: int, total: int, message: str) -> None:
+    def _queue_check_progress(
+        self, generation: int, current: int, total: int, message: str
+    ) -> None:
+        if not self.workers.accepts_check(generation):
+            return
         self._schedule(
             self._show_progress,
             self.check_progress,
@@ -749,8 +769,11 @@ class TranslationGui:
         bar.configure(mode="determinate", value=0)
 
     def _operation_finished(self, result: InstallationInspection) -> None:
+        if not self.workers.finish_operation():
+            return
         self._stop_live_progress("operation")
         self.active_action = None
+        self._record_event("operation.result", status=result.status.value)
         if result.status is InstallationStatus.ALREADY_TRANSLATED:
             title = self._text("gui_status_translated")
         elif result.status is InstallationStatus.CHANGES_AVAILABLE:
@@ -777,6 +800,7 @@ class TranslationGui:
     def exit(self) -> None:
         if self.flow.step is WizardStep.PROGRESS:
             if self.active_action == "check":
+                self.workers.close()
                 self.closed = True
                 self.root.destroy()
                 return
@@ -809,9 +833,11 @@ class TranslationGui:
                     icon="warning",
                     parent=self.root,
                 ):
+                    self.workers.close()
                     self.closed = True
                     self.root.destroy()
                 return
+        self.workers.close()
         self.closed = True
         self.root.destroy()
 

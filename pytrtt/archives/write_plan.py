@@ -40,6 +40,13 @@ class BigFileWritePlan:
         """Whether the conservative transaction peak fits on the data volume."""
         return self.additional_bytes_required <= self.free_bytes
 
+    @property
+    def index_data(self) -> dict[str, bytes]:
+        return {"bigfile.000": serialize_bigfile_index(self.index)}
+
+    def validate_inputs(self, _directory: Path) -> None:
+        """Bigfile v1 inputs are fully covered by the per-file plan hashes."""
+
 
 def _align(value: int) -> int:
     return (value + BLOCK_SIZE - 1) // BLOCK_SIZE * BLOCK_SIZE
