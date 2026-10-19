@@ -11,8 +11,10 @@ import pytest
 from pytrtt.gui_discovery import (
     GameCatalogEntry,
     InstallationCandidate,
+    discover_installations,
     discover_steam_installations,
     load_game_catalog,
+    local_config_installations,
     registry_steam_roots,
     validate_packaged_catalog,
 )
@@ -47,6 +49,33 @@ def test_catalog_is_data_driven_and_contains_anniversary() -> None:
     assert "tomb-raider-legend-demo" in ids
     assert "shadow-of-the-tomb-raider-trial" in ids
     assert anniversary.package_available
+
+
+def test_local_config_discovery_is_an_injectable_fake(tmp_path: Path) -> None:
+    installation = tmp_path / "installed-game"
+    installation.mkdir()
+    config = tmp_path / "pytrtt.local.toml"
+    config.write_text('[games.fixture-game]\ninstall_dir = "installed-game"\n', encoding="utf-8")
+
+    assert local_config_installations((_entry(),), config) == (
+        InstallationCandidate(_entry(), installation, "Local config"),
+    )
+
+
+def test_discovery_pipeline_combines_future_store_adapters_without_duplicates(
+    tmp_path: Path,
+) -> None:
+    candidate = InstallationCandidate(_entry(), tmp_path / "game", "Steam")
+
+    def steam(_games: tuple[GameCatalogEntry, ...]) -> tuple[InstallationCandidate, ...]:
+        return (candidate,)
+
+    def future_store(
+        _games: tuple[GameCatalogEntry, ...],
+    ) -> tuple[InstallationCandidate, ...]:
+        return (replace(candidate, source="Future store"),)
+
+    assert discover_installations((_entry(),), (steam, future_store)) == (candidate,)
 
 
 def test_available_catalog_packages_are_self_consistent() -> None:

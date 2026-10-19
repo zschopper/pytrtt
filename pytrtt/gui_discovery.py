@@ -6,11 +6,13 @@ import hashlib
 import json
 import os
 import re
+from collections.abc import Callable
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Protocol, cast
 
+from pytrtt.environment import load_local_environment
 from pytrtt.packages.translation import TranslationPackageError
 
 CATALOG_PATH = Path(__file__).resolve().parent / "resources" / "gui_games.json"
@@ -45,6 +47,11 @@ class InstallationCandidate:
     path: Path
     source: str
     build_id: str = ""
+
+
+type InstallationDetector = Callable[
+    [tuple[GameCatalogEntry, ...]], tuple[InstallationCandidate, ...]
+]
 
 
 def installation_choices(
@@ -241,4 +248,34 @@ def discover_steam_installations(
                             fields.get("buildid", ""),
                         )
                     )
+    return tuple(candidates)
+
+
+def local_config_installations(
+    games: tuple[GameCatalogEntry, ...], local_config: Path | None = None
+) -> tuple[InstallationCandidate, ...]:
+    """Expose configured local installations as a deterministic discovery fake."""
+    configured = load_local_environment(local_config)
+    candidates = []
+    for game in games:
+        paths = configured.find_game(game.game_id)
+        if paths is not None and paths.install_dir is not None and paths.install_dir.is_dir():
+            candidates.append(InstallationCandidate(game, paths.install_dir, "Local config"))
+    return tuple(candidates)
+
+
+def discover_installations(
+    games: tuple[GameCatalogEntry, ...],
+    detectors: tuple[InstallationDetector, ...] | None = None,
+) -> tuple[InstallationCandidate, ...]:
+    """Combine store adapters behind one boundary, keeping the first result per path."""
+    active_detectors = detectors or (discover_steam_installations,)
+    candidates = []
+    seen: set[tuple[str, Path]] = set()
+    for detector in active_detectors:
+        for candidate in detector(games):
+            key = (candidate.game.game_id, candidate.path)
+            if key not in seen:
+                seen.add(key)
+                candidates.append(candidate)
     return tuple(candidates)
