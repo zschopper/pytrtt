@@ -8,19 +8,21 @@ from pathlib import Path
 
 import pytest
 
-from pytrtt.gui_support import (
+from pytrtt.gui_discovery import (
     GameCatalogEntry,
     InstallationCandidate,
+    discover_steam_installations,
+    load_game_catalog,
+    registry_steam_roots,
+    validate_packaged_catalog,
+)
+from pytrtt.gui_support import (
     InstallationInspection,
     InstallationStatus,
-    discover_steam_installations,
     find_interrupted_transactions,
     find_restorable_transaction,
     inspect_installation,
-    load_game_catalog,
-    registry_steam_roots,
     run_translation_operation,
-    validate_packaged_catalog,
 )
 
 

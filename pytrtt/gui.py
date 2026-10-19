@@ -14,17 +14,19 @@ from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
 from pytrtt.application_paths import transaction_root, transaction_search_roots
+from pytrtt.gui_discovery import (
+    InstallationCandidate,
+    discover_steam_installations,
+    installation_choices,
+    load_game_catalog,
+)
 from pytrtt.gui_flow import AsyncOperationState, WizardFlow, WizardStep
 from pytrtt.gui_support import (
-    InstallationCandidate,
     InstallationInspection,
     InstallationStatus,
     check_translation,
-    discover_steam_installations,
     find_interrupted_transactions,
     inspect_installation,
-    installation_choices,
-    load_game_catalog,
     recover_interrupted_transaction,
     run_translation_operation,
 )

@@ -7,16 +7,14 @@ from pathlib import Path
 import pytest
 
 from pytrtt.archives.transaction import journal_data_dir_matches
+from pytrtt.gui_discovery import GameCatalogEntry, InstallationCandidate, installation_choices
 from pytrtt.gui_support import (
-    GameCatalogEntry,
-    InstallationCandidate,
     InstallationInspection,
     InstallationStatus,
     apply_translation,
     check_translation,
     find_restorable_transaction,
     inspect_installation,
-    installation_choices,
     restore_translation,
 )
 from pytrtt.packages.translation import serialize_translation_document
