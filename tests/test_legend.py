@@ -32,8 +32,10 @@ def test_legend_hungarian_package_is_complete_for_the_verified_build() -> None:
     assert len(document.menu[0].entries) == 1268
     assert len(document.subtitles) == 1628
     assert sum(len(resource.entries) for resource in document.subtitles) == 2459
-    for resource in (*document.menu, *document.subtitles, *document.fonts):
+    for resource in (*document.menu, *document.subtitles):
         assert names[int(resource.resource_hash, 16)] == resource.resource_path
+    for font in document.fonts:
+        assert names[int(font.resource_hash, 16)] == font.resource_path
 
     menu = {entry.entry_id: entry for entry in document.menu[0].entries}
     assert menu[131].translation is not None
@@ -43,8 +45,8 @@ def test_legend_hungarian_package_is_complete_for_the_verified_build() -> None:
     assert menu[46].substitution_disabled
     assert menu[50].substitution_disabled
     assert menu[53].substitution_disabled
-    assert "Historical source differed:" in menu[379].comment
-    assert "Historical source differed:" in menu[381].comment
+    assert any(note.startswith("Historical source differed:") for note in menu[379].comment or ())
+    assert any(note.startswith("Historical source differed:") for note in menu[381].comment or ())
     assert all(entry.translation is not None for r in document.subtitles for entry in r.entries)
 
     font = document.fonts[0]

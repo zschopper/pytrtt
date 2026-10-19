@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "game_id": "lara-croft-and-the-temple-of-osiris",
+  "build_id": "477027",
+  "filelist": "../pytrtt/resources/filelists/lctoo_filelist.txt",
+  "asset_root": "../translations/lara-croft-and-the-temple-of-osiris",
+  "runtime": {
+    "archive": {
+      "format": "tiger",
+      "version": 4,
+      "boundary": 2146435072,
+      "families": [
+        "base",
+        "english",
+        "update",
+        "update_english"
+      ],
+      "index_files": {
+        "base": "bigfile.000.tiger",
+        "english": "bigfile_ENGLISH.000.tiger",
+        "update": "bigfile.update1.000.000.tiger",
+        "update_english": "bigfile.update1.000_ENGLISH.000.tiger"
+      }
+    },
+    "languages": {
+      "en": {
+        "archive_locale": 1,
+        "subtitle_language": 0,
+        "locale_is_mask": true
+      }
+    },
+    "replacement_language": "en",
+    "resource_types": [
+      {
+        "section": "menu",
+        "pattern": "*/locals.bin",
+        "format": "locals",
+        "version": 2
+      },
+      {
+        "section": "subtitles",
+        "pattern": "*.mul",
+        "format": "cine",
+        "version": 2,
+        "skip_unrecognized": true
+      },
+      {
+        "section": "subtitles",
+        "pattern": "*.sch",
+        "format": "sch",
+        "version": 2
+      }
+    ],
+    "character_substitutions": {},
+    "display_name": "Lara Croft and the Temple of Osiris"
+  },
+  "translation_defaults": {}
+}

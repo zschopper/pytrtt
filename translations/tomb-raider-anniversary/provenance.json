@@ -18,6 +18,22 @@
     "The public reference is not independent evidence of translation quality."
   ],
   "translation_file": "hu.json",
-  "translation_sha256": "79d1e7a1c74262156a6de9fb96720330729a00c43d5cc46de13792a75c01418f",
-  "font_file": "assets/fonts/625B0E2D-523d93b4b9ea.raw"
+  "translation_sha256": "f25f9b359d82c76fa57cd033d9ac3f28a5c867833afb2df5c660fdc4e76ea3f3",
+  "font_file": "assets/fonts/625B0E2D-523d93b4b9ea.raw",
+  "user_verification": {
+    "date": "2026-10-19",
+    "language": "hu",
+    "game_test_result": "passed",
+    "reported_by": "user",
+    "original_translation_manually_proofread": true,
+    "scope": "User confirmed that the Hungarian version works correctly and that the original translation was manually proofread."
+  },
+  "current_steam_state": {
+    "date": "2026-10-19",
+    "language": "en",
+    "hungarian_package_active": false,
+    "restoration_requested_by": "user",
+    "verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
+    "historical_translation_and_game_test_results_preserved": true
+  }
 }

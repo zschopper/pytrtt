@@ -26,6 +26,10 @@ Thumbs.db
 
 # Local work data: samples, extraction output, reports, transactions, and scratch
 /work/
+/transactions/
+
+# Optional personal agent guidance; each maintainer may use different local instructions
+/guidance/user-local-guidance.md
 
 # Local backups and legacy scratch locations
 .backups/

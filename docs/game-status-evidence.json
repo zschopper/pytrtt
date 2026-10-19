@@ -1,0 +1,1745 @@
+{
+  "observed_date": "2026-10-16",
+  "method": "Read-only index inventory and filename-hash verification; 32-bit CRC-style name hashes, 64-bit FNV-1a for Shadow. Scope differs by game as listed; these percentages do not measure text extraction.",
+  "games": [
+    {
+      "game": "trld",
+      "game_directory_name": "Tomb Raider Legend Demo",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000",
+          "records": 3105,
+          "distinct_hashes": 873,
+          "index_sha256": "142e9a0a33df6b6ad0dfefbceeab6ab9279a09fb8e969ffa60109a4e99fbe706",
+          "platform": null
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/trl_filelist.txt",
+          "sha256": "69178da4a8f43147af31739a47c7642ab3a1cc260709fb7882029775c68b4eab",
+          "valid_name_hashes": 4328,
+          "rejected_hash_mismatches": 0
+        },
+        {
+          "file": "pytrtt/resources/filelists/trld_filelist.txt",
+          "sha256": "3de0687d64984dacc6598277befae941e339ef96a0e8149b52b9fd3a1fb02766",
+          "valid_name_hashes": 873,
+          "rejected_hash_mismatches": 0
+        },
+        {
+          "file": "pytrtt/resources/filelists/trl_filelist.txt",
+          "sha256": "69178da4a8f43147af31739a47c7642ab3a1cc260709fb7882029775c68b4eab",
+          "valid_name_hashes": 4328,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 873,
+      "resolved_hashes": 873,
+      "unresolved_hashes": 0,
+      "resolved_percent": 100.0,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "Selected base/update/language/DLC indexes listed explicitly below; not all language installations."
+    },
+    {
+      "game": "trl",
+      "game_directory_name": "Tomb Raider Legend",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000",
+          "records": 12119,
+          "distinct_hashes": 4315,
+          "index_sha256": "db02036b3e7af1e33732c1d4c5d0e20770e56db678015cd40b93f906f89a5aa1",
+          "platform": null
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/trl_filelist.txt",
+          "sha256": "69178da4a8f43147af31739a47c7642ab3a1cc260709fb7882029775c68b4eab",
+          "valid_name_hashes": 4328,
+          "rejected_hash_mismatches": 0
+        },
+        {
+          "file": "pytrtt/resources/filelists/trl_filelist.txt",
+          "sha256": "69178da4a8f43147af31739a47c7642ab3a1cc260709fb7882029775c68b4eab",
+          "valid_name_hashes": 4328,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 4315,
+      "resolved_hashes": 4315,
+      "unresolved_hashes": 0,
+      "resolved_percent": 100.0,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "Selected base/update/language/DLC indexes listed explicitly below; not all language installations."
+    },
+    {
+      "game": "tra",
+      "game_directory_name": "Tomb Raider Anniversary",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000",
+          "records": 4304,
+          "distinct_hashes": 2967,
+          "index_sha256": "b4bc45b6a924d4a35b73f6679f39a7cdeebc1312907fdad761133dc0dccdbb71",
+          "platform": null
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/tra_filelist.txt",
+          "sha256": "10404df0172595bcec89059aeef1c8a81f284dec026182460f73a25c08d0debd",
+          "valid_name_hashes": 2967,
+          "rejected_hash_mismatches": 0
+        },
+        {
+          "file": "pytrtt/resources/filelists/tra_filelist.txt",
+          "sha256": "10404df0172595bcec89059aeef1c8a81f284dec026182460f73a25c08d0debd",
+          "valid_name_hashes": 2967,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 2967,
+      "resolved_hashes": 2967,
+      "unresolved_hashes": 0,
+      "resolved_percent": 100.0,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "Selected base/update/language/DLC indexes listed explicitly below; not all language installations."
+    },
+    {
+      "game": "trud",
+      "game_directory_name": "Tomb Raider Underworld Demo",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000",
+          "records": 3168,
+          "distinct_hashes": 1135,
+          "index_sha256": "28ac72f70dbe2a0f751ea513eb9dac3a30235a971ccf094c811cb8bb38d9f097",
+          "platform": null
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/tru_filelist.txt",
+          "sha256": "dd7c0559d96bb0d5d677491f93e5fae41d115e2aca1f7304ad11ba0a5435112c",
+          "valid_name_hashes": 3239,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 1135,
+      "resolved_hashes": 17,
+      "unresolved_hashes": 1118,
+      "resolved_percent": 1.497797356828194,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "Selected base/update/language/DLC indexes listed explicitly below; not all language installations."
+    },
+    {
+      "game": "tru",
+      "game_directory_name": "Tomb Raider Underworld",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000",
+          "records": 7339,
+          "distinct_hashes": 3218,
+          "index_sha256": "5e948f6b5254df58ee587257a6b77fdcfaef86c7c901ab7fa88009f6651a225b",
+          "platform": null
+        },
+        {
+          "file": "patch.000",
+          "records": 9,
+          "distinct_hashes": 4,
+          "index_sha256": "028a18b18903161e8099f71c4ba9d9b13cd9e5b2350b8da2749a0c5d36ffac2a",
+          "platform": null
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/tru_filelist.txt",
+          "sha256": "dd7c0559d96bb0d5d677491f93e5fae41d115e2aca1f7304ad11ba0a5435112c",
+          "valid_name_hashes": 3239,
+          "rejected_hash_mismatches": 0
+        },
+        {
+          "file": "pytrtt/resources/filelists/tru_filelist.txt",
+          "sha256": "ee0e5c34a827be8493ce7c2eeeb35d32849b975644c89a99d6b7e24b190aa29f",
+          "valid_name_hashes": 3218,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 3218,
+      "resolved_hashes": 3218,
+      "unresolved_hashes": 0,
+      "resolved_percent": 100.0,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "Selected base/update/language/DLC indexes listed explicitly below; not all language installations."
+    },
+    {
+      "game": "lcgol",
+      "game_directory_name": "Lara Croft and the Guardian of Light",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000",
+          "records": 1395,
+          "distinct_hashes": 1086,
+          "index_sha256": "d11e63864ee93d48111d8c643235c50cefa6745079e2a45b3886b84f5aa53bfa",
+          "platform": null
+        },
+        {
+          "file": "PACK1.000",
+          "records": 50,
+          "distinct_hashes": 44,
+          "index_sha256": "e0838141cfe5b7cb72b60a414f4027ff23d5a19e159135646bdf2ac5e5ce5661",
+          "platform": null
+        },
+        {
+          "file": "PACK2.000",
+          "records": 56,
+          "distinct_hashes": 50,
+          "index_sha256": "263217a50b0b1606e94ecf15559ecb94ee87b5077687b32c546f934b64193759",
+          "platform": null
+        },
+        {
+          "file": "PACK3.000",
+          "records": 59,
+          "distinct_hashes": 53,
+          "index_sha256": "6c78e4369e89ecf3eb84e98cf5d2893b82c24e1cc312694a020d3561401aa8d9",
+          "platform": null
+        },
+        {
+          "file": "PACK4.000",
+          "records": 155,
+          "distinct_hashes": 112,
+          "index_sha256": "9258c032ee0f7fc04d4390c7e2b0d34a2d2742ea3724f5738a0aa54a6782c355",
+          "platform": null
+        },
+        {
+          "file": "PACK5.000",
+          "records": 156,
+          "distinct_hashes": 113,
+          "index_sha256": "2a39add0beb87866581dd422be80c9c3d545686c995a9a58f1b8df66a9c788ca",
+          "platform": null
+        },
+        {
+          "file": "patch.000",
+          "records": 14,
+          "distinct_hashes": 10,
+          "index_sha256": "fd985721c4ab1c106c2834c44fac49f2f701607515277e2f53ad8396a579dfaa",
+          "platform": null
+        },
+        {
+          "file": "patch.001",
+          "records": 5,
+          "distinct_hashes": 1,
+          "index_sha256": "4e7b87c6eda002c53019993b796264bd816ccd504c71af9bacb334c0afd683f8",
+          "platform": null
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/lcgol_filelist.txt",
+          "sha256": "712ba5087d8ca250647ba1faf49ae83c2d641849455fb4faf1df3c1bf03f395e",
+          "valid_name_hashes": 1170,
+          "rejected_hash_mismatches": 0
+        },
+        {
+          "file": "pytrtt/resources/filelists/lcgol_filelist.txt",
+          "sha256": "f6918cf8d407fa0c63f0fe65fc757d1328d4e09931650b49a6ce023685111b43",
+          "valid_name_hashes": 1148,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 1358,
+      "resolved_hashes": 1148,
+      "unresolved_hashes": 210,
+      "resolved_percent": 84.5360824742268,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "Selected base/update/language/DLC indexes listed explicitly below; not all language installations."
+    },
+    {
+      "game": "tr2013",
+      "game_directory_name": "Tomb Raider",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000.tiger",
+          "records": 6759,
+          "distinct_hashes": 6759,
+          "index_sha256": "2ae464ff6017dd5d724682651432cc3af1ac6a4791d1b16a6aa295010ae97eb9",
+          "platform": null
+        },
+        {
+          "file": "bigfile_ENGLISH.000.tiger",
+          "records": 8641,
+          "distinct_hashes": 8641,
+          "index_sha256": "17fb88c9ed79419edb2871877956b356ddd93c60cbd000af6d255411ab09b938",
+          "platform": null
+        },
+        {
+          "file": "jcontent.000.tiger",
+          "records": 177,
+          "distinct_hashes": 165,
+          "index_sha256": "c35b57580a9c120141bc7c967f738bc38def543d9b3f6ab26562605aeba58d91",
+          "platform": null
+        },
+        {
+          "file": "jcontent_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "0fc6fd589c349f607b099ff756271df218cddaef53e2c2ff7c19a803c7778e6a",
+          "platform": null
+        },
+        {
+          "file": "patch.000.tiger",
+          "records": 3658,
+          "distinct_hashes": 3646,
+          "index_sha256": "a509a6dfc93bd0fb4fc6e1d93111434454cbc0ec05bc652bed2f3a8761411831",
+          "platform": null
+        },
+        {
+          "file": "patch2.000.tiger",
+          "records": 160,
+          "distinct_hashes": 148,
+          "index_sha256": "91a4a9569a7316de84d28fe8c93e855aa49d28f6744f370c3a3fab968cf7647a",
+          "platform": null
+        },
+        {
+          "file": "patch2_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "929dd9858d1a890d8daeb864c26defeb0af484a64ba7d3376f0f56c0ddfbb47a",
+          "platform": null
+        },
+        {
+          "file": "patch3.000.tiger",
+          "records": 17,
+          "distinct_hashes": 4,
+          "index_sha256": "cb4ac1647fa455208a9c12fce112bbb3e77f3dc89bd0749619f8377b9878982f",
+          "platform": null
+        },
+        {
+          "file": "patch_ENGLISH.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "d1fcdb37d82c784f32ad617a14897abe855637b4a465529eff249aa3659695c4",
+          "platform": null
+        },
+        {
+          "file": "title.000.tiger",
+          "records": 3741,
+          "distinct_hashes": 3729,
+          "index_sha256": "f400b1d12a97b6b9484a457f8c4f138627e6495da7575002871445c35389bc4b",
+          "platform": null
+        },
+        {
+          "file": "title_ENGLISH.000.tiger",
+          "records": 11,
+          "distinct_hashes": 11,
+          "index_sha256": "37c1b2a7980bd13c06e8004ca8119eaa74c862cb280af1fd87ec9a92bb09a396",
+          "platform": null
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/tr2013_filelist.txt",
+          "sha256": "165d794773651f80848d6cdded018c8c4fa888f8cfaed20e5603c86d4a4a422f",
+          "valid_name_hashes": 15580,
+          "rejected_hash_mismatches": 0
+        },
+        {
+          "file": "work/runs/tr2013/9573671/filelist.txt",
+          "sha256": "ccefbd64388c796c87e9205d7047abb3dd031b3d1484ac79bd097c5dad1569c6",
+          "valid_name_hashes": 14526,
+          "rejected_hash_mismatches": 3
+        }
+      ],
+      "total_hashes": 15394,
+      "resolved_hashes": 15392,
+      "unresolved_hashes": 2,
+      "resolved_percent": 99.98700792516564,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "Selected base/update/language/DLC indexes listed explicitly below; not all language installations."
+    },
+    {
+      "game": "lctoo",
+      "game_directory_name": "Lara Croft and the Temple of Osiris",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000.tiger",
+          "records": 2750,
+          "distinct_hashes": 2750,
+          "index_sha256": "02f61d0f5bb8e1719ea5ee25fe740b123f7b2c13f8946c7748fb61e356c753e2",
+          "platform": "pc-w"
+        },
+        {
+          "file": "bigfile_ENGLISH.000.tiger",
+          "records": 984,
+          "distinct_hashes": 984,
+          "index_sha256": "62491dc197e24ea3682fe62873968739627485727bfac912fac91f44880fe649",
+          "platform": "pc-w"
+        },
+        {
+          "file": "bigfile.update1.000.000.tiger",
+          "records": 1095,
+          "distinct_hashes": 1095,
+          "index_sha256": "8845b7e62a67be3b2bcd8e50243b5a67b61e89d00edbb45f8cadacb2d64081b6",
+          "platform": "pc-w"
+        },
+        {
+          "file": "bigfile.update1.000_ENGLISH.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "6a4634f0bafa1eb2466474da19fe898a5ee2949842c94c4952972588932ffeea",
+          "platform": "pc-w"
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/lctoo_filelist.txt",
+          "sha256": "f16f2fd18755bc2ea9666ed3d29c7d4985f61f403ef5d5e718b762bfb23aa08a",
+          "valid_name_hashes": 2673,
+          "rejected_hash_mismatches": 1
+        },
+        {
+          "file": "pytrtt/resources/filelists/lctoo_filelist.txt",
+          "sha256": "d10c67802f4279903bcd74bba0878cbcf8111bc609e76b69c8f88bd32dee95c1",
+          "valid_name_hashes": 2667,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 3817,
+      "resolved_hashes": 2667,
+      "unresolved_hashes": 1150,
+      "resolved_percent": 69.87162693214566,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "Selected base/update/language/DLC indexes listed explicitly below; not all language installations."
+    },
+    {
+      "game": "rottr",
+      "game_directory_name": "Rise of the Tomb Raider",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000.tiger",
+          "records": 15239,
+          "distinct_hashes": 15226,
+          "index_sha256": "33bca43099efbd89bc9ae812f5cc8da53212658a843201137430605c151c60f9",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000.000.tiger",
+          "records": 668,
+          "distinct_hashes": 668,
+          "index_sha256": "c053dfe696d878fe4b0481446287aeb53e00ea7f1e3ae1c92fcaef61b5eb1cca",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_ARABIC.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "084e29b1923488282a524eba059bb661bd98245fc9bb33a2f36b2d2fb2172718",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_CHINESE.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "947b01eb6a24dda68b6975ea711633afbeafd2a7d6419f9115f1264e4fdaf71f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_ENGLISH.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "e65e6251afe613832a95af154c52835299ddf83b66755e4608e92bed7c3181f7",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_FRENCH.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "93c33e4cfe7962c0e918a5ce727055cb4c3be9ab15276908661d9012f69bb27e",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_GERMAN.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "30f14eddc75e0b021d44eafc9f3e3fb91996c8a7e5b395cdaf4119a09238dce7",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_IBERSPANISH.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "9b282d561218372f5ce2422aabc3fedb621d0fe701fca079abe5820d6aa83be2",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_ITALIAN.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "97952eb659079801e2e27e8cee304d2b3d8f3caeafeb26b5bdbf638672a8bfe1",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_JAPANESE.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "b1f61c1ed53c3f55134153d363021e96bd3e68764eecbf083ef40f7cf580ff87",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_KOREAN.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "5a852a6bc130acee585297c4596fadb98ec735c616e87bf0c3a1493ed10ab6b0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_KSA_ENGLISH.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "852ac96019064c16e21c8d7b8d99ac8a4a69eb7d2dd4d8becb0cc3008dcac840",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_LATAMSPANISH.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "d0c3932b1f795ff5748256ba8b57479243ecab2837221211b059c6d6851c9796",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_POLISH.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "b21294d8f45ccc329ca64bd43a856120e442d3acbe76714b988b57519a461398",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_PORTUGUESE.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "e0d92e216d4c7a34ab588e2c8e5db3f96320e60907a563768309cc9115d58d20",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_RUSSIAN.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "e5f098b4aaa30b237fa255585080d2ed22166a1dbcd0bf39d2dd1ba3f5bc3043",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.bloodties.000_SIMPLECHINESE.000.tiger",
+          "records": 311,
+          "distinct_hashes": 311,
+          "index_sha256": "c6676acc57bf37f2f7e2616bb523101e948d093742537e2ffb683f71353f8240",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000.000.tiger",
+          "records": 2682,
+          "distinct_hashes": 2682,
+          "index_sha256": "05ae4dabec1985f62cf757597be2ae905584e43c568ba1713aaef7bef271e1c7",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_ARABIC.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "823034966ab5d7479554f04f0062d217a6c8fd040fec948f2e365172c82986d9",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_CHINESE.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "72aea887a3af060222cfdedb0ed487f94c89fb7ddce24d4d3d5798e7e49575a1",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_ENGLISH.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "8f5808ee7c1e3a735b7a8a798c9f211f9987046c0f9d6cfc25d4b5076ab7596d",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_FRENCH.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "4e7d72a81450f5f9ba7795b06141e3e088cbdfc01c992d8397e9099646dc2c43",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_GERMAN.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "fd66958d93898375491e83385379221eedd0c8f96702554bcc37bf409dd3e4e4",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_IBERSPANISH.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "a576982f3cae9ffe5e21972550714e6a3e5cd44e2b5c23482bd72fed83a3c992",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_ITALIAN.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "1dfb1af07d9a65b7b81e211c0b1d468ed75946f73733eb418b355f47e062ca7e",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_JAPANESE.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "cc678d8e164492fe9c9c0908d0d24e4523ff508a5337bcfba04d0ce1ae8264f8",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_KOREAN.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "41bc5185d7b4d124a3ba5b5e90c2777acd2c967d9ce9b34588f74eeeee1ef8a0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_KSA_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "39617870b48ffc03cb17a6bbdc9ce88fc1ac8d21da7899b34d13947c6341d951",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_LATAMSPANISH.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "26fab7af510dbef5c1c7677c9c17bffee6d60b8d6ef721f250bceca49d8e3b1b",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_POLISH.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "94bcb16065c28dd3dbcf2027b02302a50c5b88c7db800a49ac364aa20f528e33",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_PORTUGUESE.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "b815132684fdf8c3e0813420a1344479c0bda2a78e9f7261e48c2e17d36897f6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_RUSSIAN.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "0500a27977393a611d6bfd8eb3c3a48dc0390abfd8b9e6672be579082d6c807b",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.colddarkness.000_SIMPLECHINESE.000.tiger",
+          "records": 370,
+          "distinct_hashes": 370,
+          "index_sha256": "e26f9ef0ba21b0e9426a585c3b6b25d212a32de4c7d159b0be840e08a311d163",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000.000.tiger",
+          "records": 1773,
+          "distinct_hashes": 1773,
+          "index_sha256": "444c0f0d3bb776e3bbb31bd214faeb51522ec62721b1b7b2ca31e21550e61c7d",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_CHINESE.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "a9e12a0cd7e07e63858eb3f9538365724a2a0f3125eb341d076da08e2d35c88e",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_ENGLISH.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "e28f25a4393caeafe4b7643ea308e82ca4cba8fb26190f674ea4b991a8da8d28",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_FRENCH.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "380fc0ab3dbbe453b951e10387200827abdab7cfc32f11c9537272148e88115f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_GERMAN.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "deb4512151e661dfad6c237db747f2cfa640859d84bbfd805c706bfc34d9c731",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_IBERSPANISH.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "73acad1e3d0c5f3b68d5efb52fe73188251ca803d66508b4fccb217cdc609d08",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_ITALIAN.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "28e12a554c1d28219929558627d20fa50bebf1d6393789cc2efea43a6ae29a8f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_JAPANESE.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "162efb136847e593d53498f733c0b757b72767e771f91b1dede7d484a0bbffff",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_KOREAN.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "3ec1b6e1ef866e8a9a7d51ea60552a50fa4fc5aab6ab59442268dde3044ba4f1",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_KSA_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "877f887e606318907c43c2cf8643d17174965690825d30cdc7d6a24e39f8fc8a",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_LATAMSPANISH.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "f18650f362ce951b1cfcdc6272091bad0a3613bd87e99df918632030cd1437f7",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_POLISH.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "5c2d30c775bd05fdb7a84aa71b3307afee4de9dc10c8c7573fa65f500e0963ee",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_PORTUGUESE.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "c7602dd746b39b60d507f5dc2802b2f1b30fe205c57d6fa3dd3c5d92f717655c",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_RUSSIAN.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "201e1a76d22fa843f86f844a40e9851346cdbcddc123e36ec782f7a97c6d5f21",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.mode.endurance.000_SIMPLECHINESE.000.tiger",
+          "records": 211,
+          "distinct_hashes": 211,
+          "index_sha256": "6f754444eaa0b45a4033f92b08d40511b7770a5870146485c301783b69e6d1fd",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000.000.tiger",
+          "records": 4709,
+          "distinct_hashes": 4709,
+          "index_sha256": "55d36ba62e2291ae02d9e6fd49c5fc41f1a6436ce8dcfb38f02a0b751c4060ff",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_CHINESE.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "23c8f807bc8076fe48361aaeebe993b65daaa630bb03c029f65e83a1019dddd5",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_ENGLISH.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "1116ad18869d7540f747c32a05db044bfd53ca305a0ecc5d2bf9e668bc9edc20",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_FRENCH.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "60cf2a2a2e2b2de91d9593a482e4bef746a8d2d6a1dbfd8642f0b8a668297fdd",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_GERMAN.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "30a8470fa979e2254e5dee4e94b78c2e1b25adbf69a4651519b967fa75fd4533",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_IBERSPANISH.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "aabe8914b581377620ba93de859d45690e65d6ac2612c412d32a06c7301239e6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_ITALIAN.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "dc0e748d0aff6b55ce0b735fb5de443682b9a0d8949042198bced5267be8e0b6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_JAPANESE.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "e75077c0cec057f31aac200180850faeb79939da62f300bb7eb8f66963255285",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_KOREAN.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "9d991110d1a99f55d8e1dfc528347169fe7629efbe13b121bae68008817ee3eb",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_KSA_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "a4a8893abdab0798a6fb19e68e1f95bcee8fd08ab62ef5c8528a747afbe3695d",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_LATAMSPANISH.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "78cc1988e00bc8649de9b433d7ae06e0927584c328beb185c3c2f77bbb6cf84f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_POLISH.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "04f6e45a4c13b5957c90521f77166904626ea25f376c27d2e91d0315ca83c55c",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_PORTUGUESE.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "404c39660805c495422af21833feeff627a93d884c03845de8c90d467d8157ee",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_RUSSIAN.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "53cf6403b3f61b2e90e9b42629dd35f3bc8aaf3b776ecdda3b4772ee9be249a0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.story.babayaga.000_SIMPLECHINESE.000.tiger",
+          "records": 334,
+          "distinct_hashes": 334,
+          "index_sha256": "9eb366f5995fec8a84ea595c23f1d6d64c28bac1f896cb80dcb986e9b5fa27db",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.000.000.tiger",
+          "records": 14316,
+          "distinct_hashes": 14302,
+          "index_sha256": "7aaa19cd916162a71bddcfbb23823c346f4183f34cf07dcc3a53890f53dc8e41",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.000_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "f35ea4c6ac8aa092a51e00b6ce505089c1bc2b1a3862bfe25b347b9fcae41912",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.000_KSA_ENGLISH.000.tiger",
+          "records": 116,
+          "distinct_hashes": 116,
+          "index_sha256": "86d9634a30a0b1044960d92734d56dca5d4f2e738d93c5546cf4f06960f1f4dd",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.000.000.tiger",
+          "records": 17404,
+          "distinct_hashes": 17389,
+          "index_sha256": "1d2ab66f45e9fc8ec0c71b16b90cf8ce7a342574ea58f1b850211599a8f4d497",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.000_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "ddc04e9f7b55848f18ad3597e28c45f2712af2fee0157d4022e1c7e2448458f6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.000_KSA_ENGLISH.000.tiger",
+          "records": 2,
+          "distinct_hashes": 2,
+          "index_sha256": "795a5ab119f60fcbed068af87ee5f9fd910d72c97c678372f0e159dceb907db2",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.000.000.tiger",
+          "records": 9743,
+          "distinct_hashes": 9728,
+          "index_sha256": "468ae2dacb5eda62c6f2eb6b0dba9b61e6ee8c285331be79ca288b258fb645b1",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.000_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "74db4972c532248fefcbf297a9a249c440e0ba7c3b01c20a5857b5c131a00dd6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.000_KSA_ENGLISH.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "74db4972c532248fefcbf297a9a249c440e0ba7c3b01c20a5857b5c131a00dd6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_ENGLISH.000.tiger",
+          "records": 8438,
+          "distinct_hashes": 8438,
+          "index_sha256": "2389dd6d2cf06cc3154a9c72e464a8a23a6e1f2016207c47b08bd43c8de4cb10",
+          "platform": "pcx64-w"
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/rottr_filelist.txt",
+          "sha256": "ec07f75a82e2d1c79218878d7eebd1a2e3d0046966448bc99e75e2bdd0850e12",
+          "valid_name_hashes": 35770,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 41931,
+      "resolved_hashes": 35744,
+      "unresolved_hashes": 6187,
+      "resolved_percent": 85.24480694474255,
+      "errors": [],
+      "hash_bits": 32,
+      "scope_note": "All top-level .000.tiger indexes in the inspected installation; target build not established."
+    },
+    {
+      "game": "sottr-trial",
+      "game_directory_name": "Shadow of the Tomb Raider Trial",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000.tiger",
+          "records": 24556,
+          "distinct_hashes": 24556,
+          "index_sha256": "681de759c47a51599b4a3fbb4ed88a15f4e361334ddcc3c3f5c4165521ba38c4",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_alltxt_allvo_neutral.000.tiger",
+          "records": 381,
+          "distinct_hashes": 381,
+          "index_sha256": "9ba5a4ff1f8459f45d9bf1eb0949f5819d28fa421760adb6276d7206374735dc",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_alltxt_english_allplt.000.tiger",
+          "records": 28635,
+          "distinct_hashes": 28635,
+          "index_sha256": "bf5453a062d607dd7b9026e3952272b247d1060677a9e0405ea32b8c7275b0ad",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_arabic_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "d3e7a8e32a6e7868f59f92a7acdeb7152b225060afe45448ad08c8bcdab0e42a",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_chinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "0ea40ef19b036efed4e2e9110ad9e036c176696a753b91cd832e056a94029819",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_english_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "bdee624bc41f28b881af3a8767aee79370e8f6565a6efb44e4510b65951342a1",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_french_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "f1e258632c448eb0f368c01dcbfbaf204d80d0deb31840fffbdd4d50800c1c0f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_german_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "ad0a24ae63d09829ed78cef31a4b5732a03fb94e9e11aceafe3b0fe1753df737",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_iberspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "369f7dc18199a4f653b8de61da88595b3ee0c159b31cba7db672c8431bc2e964",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_italian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "b506a3acc0ff96a58fd00d78f7207dcd316e0b5de9828c21fc0a8a6a5e91b9bf",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_korean_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "2210c6c059a5b0eee5a1ca4552831b31031f0d4b7eda3f240b1e79241ae52740",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_latamspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "bb8754cfe833919abedf7abcc0993942ad5a06469f84e4ee4ee0486b9c630f46",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_polish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "9138664dfe0386e8d9bf6f1b2d74d56bb2eb7a8e806fac0abaf7f0effd9c447f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_portuguese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "e673efe3598da265cbd2331d4c6b8d01471dab826f4aaaf4954f245d66bb7e7c",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_russian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "03a03865208a43fd1861942ad52ed7ae34ca76a1fe5040f1ae1d9fc2d7f2b9d6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_simplechinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "24299b62fa3c78d4f25a29c79f00a337193974c1c814e7402663bac9fe6b5fc3",
+          "platform": "pcx64-w"
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/sottr_filelist.txt",
+          "sha256": "1a0e449038e2d0df9f03a78756069c923cfef171486f5b229e3f44c443e8931d",
+          "valid_name_hashes": 63844,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 53573,
+      "resolved_hashes": 49417,
+      "unresolved_hashes": 4156,
+      "resolved_percent": 92.24236089074721,
+      "errors": [],
+      "hash_bits": 64,
+      "scope_note": "All top-level .000.tiger indexes in the inspected installation."
+    },
+    {
+      "game": "sottr",
+      "game_directory_name": "Shadow of the Tomb Raider",
+      "scope": "Selected index families; unique resource-name hashes across locales and overrides. Raw hash labels and hash-mismatched candidate names are excluded.",
+      "index_files": [
+        {
+          "file": "bigfile.000.tiger",
+          "records": 35714,
+          "distinct_hashes": 35714,
+          "index_sha256": "00599823627340a1cd1f7da5895dd3f2a55009e0333ba2986b043ecdb0ab2443",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.outfit.10.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "9d163927dd9f5148d25b163d9f95791c6a348bff30795a53f1895f4319fd19d0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.outfit.4.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "7f7cf1e1a43a1fe00f55acfc6f28e6a7c40f3351c9733c7976c8eba9893614d0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.outfit.5.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "e8fe9629dd616173d17d4bf12e240631550e66caa7555e546a006b7b07968c47",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.outfitpack.1.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "3e5fcbed91626c0474be3d3d14ab17bb112511a386fe991b2dbb6dfa8c7fd97c",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.outfitpack.2.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "777381fa5f90de1b3749892ebfe2c5f08ad2cf6a61fb7ed67eeb093eaa00e1e9",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.outfitpack.3.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "47267ead118819e161ab4ca20330fda6df8ab11b108b78bde35558e0ca15ca12",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.weapon.10.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "cc761033cab4d30ecd55e040006601ae6449769f023277e2a7b6d76c1a0a8f46",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.weapon.4.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "2f77068ea15fc087fe6422c51e37390ba6b6f4b9eb03d521996583ad1ed23a5f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.weapon.5.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "01b35ceeaddf9c5b3365e88ea8d74f1f787eea9129a978a107550319e5f1c8e8",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.weaponpack.1.002.000.tiger",
+          "records": 39,
+          "distinct_hashes": 39,
+          "index_sha256": "fddcea97c407798d5d459f9a3b24cb666c8e8617c18871181989a40f39aaefe6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.weaponpack.2.002.000.tiger",
+          "records": 38,
+          "distinct_hashes": 38,
+          "index_sha256": "7e8e132189081b587bdc90954f78a3a38b451fa8586637d6902d309b855d8026",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc.weaponpack.3.002.000.tiger",
+          "records": 60,
+          "distinct_hashes": 60,
+          "index_sha256": "5c9d9d974bb53c37c0b75e25484515da8f56e70bd55cf4a840973e994b8d08d0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc1.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "9caedb4f65e1805e79e36ac23fb00ac61a54821b505a04a2ce4a9b9d82f51498",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.dlc2.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "4336a68cf424676bbba44a166dfd044ae9df771f58bc11cea037090f7ef1ef37",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.full.dlc3.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "ba592a0656683fcc693d87c97abca1692faeca9cc6d33207cd1462ce8e0ff2d8",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.full.dlc4.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "00e3f5d123b8655548e91d60c8eecd57d9794d809d879595402e960aadd1ad8d",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.full.dlc5.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "52f7e0b1b03bab7494c8bc9e52e6153223e50ef0fb30a224d004c8c150758290",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.full.dlc6.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "4e4f99c04ec93f89eab4d3f5d65cc05c865bb9ab9624b995f54d02f8c4410ae9",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.full.dlc7.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "845783a9cd72d751f3f6c8eb1a791c6d896945156e95a3efd9954bed0bbb9d0c",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.full.dlc8.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "3e51e93ae99d6fed02cdfdbd1d6c7fe7831462b68d30be54ec6b5951fa3e916a",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002.000.tiger",
+          "records": 11575,
+          "distinct_hashes": 11575,
+          "index_sha256": "c7fb296ba3d7f61f36b4ee22171e01fc6c6261e780afc9377f29b7359a88046c",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_alltxt_allvo_neutral.000.tiger",
+          "records": 658,
+          "distinct_hashes": 658,
+          "index_sha256": "4e8af018bf1fbc04d518c3eb7f78a4dbe90862cc8c9b78bde9c8fab6dd958bd0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_alltxt_english_allplt.000.tiger",
+          "records": 1525,
+          "distinct_hashes": 1525,
+          "index_sha256": "57a1958b66ada2591ed7aa4463ffdc0b0aa8df235851e780e2bf77e15924a947",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_arabic_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "6cfd8c73c5ac930537fd203df818f5622a5ab1fe2f9dba694f08ef7a56518b7a",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_chinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "244f43336c6a5191aaf285a5fd864a2d1a74892dfcd6fc274a81ce75baff3375",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_english_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "725560f5efbccbdd56a2661f1a011d123a3822fd06347be2812667e73a6758bd",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_french_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "5480f0ad60e94faa8c0ecb0f16f9a0f696ac39f8fc2d2ad0e0bd1d41e01c97cc",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_german_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "69c3329906b78dcff492a14095133841586ddc9576a166fab895f45ba7638539",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_iberspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "b3350cd446857fbd6cfbd595691c7147f992ac05aa86c2d604bd7b8f606afa86",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_italian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "47972d5c0168628d70cace24f586cfa1d08ba73361f6cf5cd36152887fa770d3",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_korean_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "a8021800e5a0afa7c81c44b42188480f83ca6dbef52b5f0b30fc193a1e7db0b2",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_latamspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "19420d4e6fa2053579cda451cc81e520119eb1faad29a2f300e538cd27f3ba90",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_polish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "ed27e8874a5d319e40cb6df9d45d378b3accc06eff4ad811ab1c481df0ce9389",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_portuguese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "0dcfc723fa35d637da6aa4ac04f8c393b90ef832230f48b3429bc0ec21cd3a37",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_russian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "ee62b87588d03068c0d1c58a54efdcbb48e87992c6a2f55af2dbb764cd33f560",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update1.002_simplechinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "8f627b71c75ae927f5e7d2f70eb8342a48853f63bd97343e29393b6d681eb129",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002.000.tiger",
+          "records": 8430,
+          "distinct_hashes": 8430,
+          "index_sha256": "a1e5b33e0bff9fe41a834fc237de5993fe206ba58b233988c89e3d293cf3faf0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_alltxt_allvo_neutral.000.tiger",
+          "records": 19,
+          "distinct_hashes": 19,
+          "index_sha256": "07fea7c4410384b5cc4504134e1501823f7ffefe50c2c65ea4a4627ed2c303e9",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_alltxt_english_allplt.000.tiger",
+          "records": 889,
+          "distinct_hashes": 889,
+          "index_sha256": "7c33ba93aac65cf562d922fd0eb89c0624f3be2b9b725287e544106722d65eea",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_arabic_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "646ae5e464f7204909000c96c4ab4d1e3b765684594cf902f7844367ec9d5e16",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_chinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "135948ccdc60e1ff6b1d70fbe884d1fbd037b4b2cf49a7ce072bcfde47b8a0a4",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_english_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "b895526822fda1ba2a4d523f9002c9e90a30c28103ed0856c87759120c2f6550",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_french_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "3d93a636702c521c597b960620d1946ce837368777f6fc0705d4ef865f1dac49",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_german_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "53c2929005e404969b5f75ece26b8443da2035442f0d1d48f53e837f7d3e7137",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_iberspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "481ef7a8e327c50a0e387729c97c8a8c75d2d0a20aceae65be186674bc5622f1",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_italian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "6a3aa4983f351fbd838733f63bd44674b39299cb3f0f3f70b41943b25aabbf76",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_korean_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "cd6b872aa99101d79058a3817963cf8f4c682c1204f308a6b69d20586de04ec5",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_latamspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "d951152ad4a4cadf625742d9f834cfe1a7cbe223cff96e0d2b832b7fc9098292",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_polish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "cd4c938037af263899046818ef775cde11dc2168b599eaee5095ad5d2a1fb991",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_portuguese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "7bae823bab57cced043d00bfa8907ad8d99f3349709c5d2ea4b33fbe5bb36eb4",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_russian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "9342c6cd6e26c2e3fc0888f82d21ac570333fc063f499b267318b74b10615c21",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update2.002_simplechinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "ce3175503eb6744691e56558cc4b2895bf66b94c9c6bd3d4299c66300ce3f684",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002.000.tiger",
+          "records": 7874,
+          "distinct_hashes": 7874,
+          "index_sha256": "ce6a7a3fe6b2d4be647f3d8a4c0e3942eed00abc115d88e80843724934197290",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_alltxt_allvo_neutral.000.tiger",
+          "records": 7,
+          "distinct_hashes": 7,
+          "index_sha256": "19a174816a38f1518c10636be02d6fa1a3f5905de1f5d06a6cdcc22a9e67aba4",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_alltxt_english_allplt.000.tiger",
+          "records": 20,
+          "distinct_hashes": 20,
+          "index_sha256": "601fc489d8618166eb5551d2e18386b548fc526f04dae2165c61a7479378185f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_arabic_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "26f28ac8de6d15c796ef07bd238b467cadd73d68dd6bad3665b40424a0c6467c",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_chinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "767b86e94d1acf9f23dcf7407869b7f482d5fd3da9b15575209012552e8b931a",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_english_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "e6f6ca7abc9d0af867137d0a8523b771d4b0b030127ae82445aa70e173a2c3ef",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_french_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "98a744f2c003f0f9c8956562cfb637bcb7e43011cd111452bb60e0e1c10a1939",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_german_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "673a822197d50598c186ccdc466dc2de2acbfd7ec52f822491d082f62d7744c9",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_iberspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "22c82658dfa4e11e812fb5fed8feee9cbfe7bd52c9b1e9cffdae1f053cdfc9de",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_italian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "aa71a2fa5f4568d339fafabacb5123f5cc37377bb82ae072a06759fa6598ecaa",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_korean_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "81431d842711e25d4693a2b11c48f7c308c7d18ee99a7f9f027fac50c7f80bd8",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_latamspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "d0fcf6bda9cd83cfa399694db889cc77a4b80e2a5ce08b35aa71c5eabc321bee",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_polish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "47f5be4a274428fca4ef5d6a4d0db02958708f91d7417147f7ecb76b1ab83cce",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_portuguese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "1b223a03ebe98d60df791bbd6c78677531521afce0671446e5f045eb6b3d4c51",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_russian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "66a77291b993c0e858c26ec894d19c416cb7be4f593ed0ae0021ae1bdf18308b",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.update3.002_simplechinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "b6ded1039c1461f30a2da7dddcfa94d8456be629686f5634d227cd9a6d765571",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.weapon.outfit.dlc3.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "d09a02f7207e93740246e411491068b30b9bc0042d915aa1fb17530a6503d8b6",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.weapon.outfit.dlc4.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "58449e9c600a645e19a877b26ad892229ea74e69f884b06d7bff4a71c6634d48",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.weapon.outfit.dlc5.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "f5aa502654814cfc9a8ddde89674643ed5bed627e5847804119a493bff1f8c26",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.weapon.outfit.dlc6.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "96a74916ede766e5f73cb4fe37f9082fd8f14d057aa08ce92161cae9baa102c0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile.weapon.outfit.dlc7.002.000.tiger",
+          "records": 0,
+          "distinct_hashes": 0,
+          "index_sha256": "f283a42fdb9851ae68abe9ff6bc06f04de370268e27d3e470f0568c67116156f",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_alltxt_allvo_neutral.000.tiger",
+          "records": 812,
+          "distinct_hashes": 812,
+          "index_sha256": "a9ab29602bce14d429782c9c4f98e4bfcb5af770f116b50567ceacd0a935c31c",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_alltxt_english_allplt.000.tiger",
+          "records": 28294,
+          "distinct_hashes": 28294,
+          "index_sha256": "72a8b4b20108596e774950529e25015ced0fe0b0849899aa270cee5b82bf815d",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_arabic_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "93c6103a3d82cbff6a84a8a1dbbc7f871c9bbb5ae78273c29594e13095a5dc67",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_chinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "b1aace41b5c73d4ecc9f756b769d647e9e54f7bdd6d2a381a199afeddb94bee0",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_english_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "e9db79f1bc6c9ffc87b04f1a4f6e8330fd52d65bda23e99c26119b4e61dbf943",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_french_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "469e6d01e85ee19c5cab2d60ee1f62b8228a7178ff7c908440e461ad08cf2c99",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_german_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "d28715ef0f5f2602f8922cb9967bfdc41a116021a5d4d7e899121e094e1e7a95",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_iberspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "10872db900903be68370478a3774ee175130eb5fdf4de5128433d250f1a68e90",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_italian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "6fef21c457d72db8d67585fa886d895e543ce10237ee510e5646e9d395942bb4",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_korean_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "2e1858fc51dc1b871d5d09f06c751f7293784034133a445e15a62d57b9adf124",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_latamspanish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "215b6f2df18f243ba0de8fa8b12bb5d4491a6b2b4e57660026d47a04f63e1510",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_polish_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "d2f0c154ba8deb57cd33787072d3584e5bdddd48ac7ac7ad988d6ad41f125fee",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_portuguese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "f58d033c091a1467223c1a24d74fcdc0680e22f9c203e0a5fc5ab26b576a8aa1",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_russian_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "0eab583a3e1950be20424c10d7e3ca53ac884f50b9c04cc80f8062a85a6bfcd8",
+          "platform": "pcx64-w"
+        },
+        {
+          "file": "bigfile_simplechinese_allvo_allplt.000.tiger",
+          "records": 1,
+          "distinct_hashes": 1,
+          "index_sha256": "60ce145c67ae647a35e5ef10ca2d3ae3a04e607b4fe413d41f6b3ec8c821f12f",
+          "platform": "pcx64-w"
+        }
+      ],
+      "name_lists": [
+        {
+          "file": "references/filelists/sottr_filelist.txt",
+          "sha256": "1a0e449038e2d0df9f03a78756069c923cfef171486f5b229e3f44c443e8931d",
+          "valid_name_hashes": 63844,
+          "rejected_hash_mismatches": 0
+        }
+      ],
+      "total_hashes": 69817,
+      "resolved_hashes": 63820,
+      "unresolved_hashes": 5997,
+      "resolved_percent": 91.41040147815002,
+      "errors": [],
+      "hash_bits": 64,
+      "scope_note": "All top-level .000.tiger indexes in the inspected installation."
+    }
+  ]
+}

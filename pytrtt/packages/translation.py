@@ -24,7 +24,14 @@ PACKAGE_KEYS = {
     "target_language",
     "entries",
 }
-ENTRY_KEYS = {"id", "source", "translation", "comment", "substitution_disabled"}
+ENTRY_KEYS = {
+    "id",
+    "source",
+    "translation",
+    "comment",
+    "substitution_disabled",
+}
+DOCUMENT_ENTRY_KEYS = ENTRY_KEYS | {"source_language", "legacy_tuid", "legacy_context"}
 DOCUMENT_KEYS = {
     "schema_version",
     "metadata",
@@ -33,6 +40,7 @@ DOCUMENT_KEYS = {
     "fonts",
     "clear_subtitle_languages",
     "omit_subtitle_languages",
+    "entry_identity",
 }
 METADATA_KEYS = {
     "game_id",
@@ -42,7 +50,7 @@ METADATA_KEYS = {
     "archive_format",
     "archive_version",
 }
-RESOURCE_KEYS = {"resource_hash", "resource_path", "entries"}
+RESOURCE_KEYS = {"resource_hash", "resource_path", "entries", "archive_locale", "archive_family"}
 FONT_KEYS = {
     "resource_hash",
     "resource_path",
@@ -50,6 +58,7 @@ FONT_KEYS = {
     "source_sha256",
     "replacement_sha256",
 }
+EMBEDDED_FONT_KEYS = {"embedded_type", "embedded_id", "archive_locale", "character_substitutions"}
 
 
 class TranslationPackageError(ValueError):
@@ -58,13 +67,16 @@ class TranslationPackageError(ValueError):
 
 @dataclass(frozen=True, slots=True)
 class TranslationEntry:
-    """One source string, optional translation, and optional translator comment."""
+    """One source string, optional translation, and ordered translator notes."""
 
     entry_id: int
     source: str
     translation: str | None
-    comment: str | None = None
+    comment: tuple[str, ...] | None = None
     substitution_disabled: bool = False
+    source_language: str | None = None
+    legacy_tuid: str | None = None
+    legacy_context: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -98,6 +110,8 @@ class TranslationResource:
     resource_hash: str
     resource_path: str
     entries: tuple[TranslationEntry, ...]
+    archive_locale: int | None = None
+    archive_family: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -109,6 +123,11 @@ class FontAsset:
     replacement_file: str
     source_sha256: str
     replacement_sha256: str
+    embedded_type: int | None = None
+    embedded_id: int | None = None
+    archive_locale: int = 0xFFFFFFFF
+    character_substitutions: tuple[tuple[str, str], ...] = ()
+    archive_family: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -122,6 +141,7 @@ class TranslationDocument:
     clear_subtitle_languages: frozenset[int] = frozenset()
     omit_subtitle_languages: frozenset[int] = frozenset()
     runtime: RuntimeSettings | None = None
+    entry_identity: str = "record"
 
 
 def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -150,6 +170,17 @@ def _nonempty_string(value: Any, name: str) -> str:
 
 def _reject_constant(value: str) -> None:
     raise TranslationPackageError(f"non-standard JSON constant is unsupported: {value}")
+
+
+def _parse_comments(value: Any, field: str) -> tuple[str, ...] | None:
+    """Normalize legacy string notes; write all new notes as JSON arrays."""
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return tuple(value.split("\n"))
+    if not isinstance(value, list) or any(not isinstance(note, str) for note in value):
+        raise TranslationPackageError(f"{field} must be an array of strings or null")
+    return tuple(value)
 
 
 def parse_translation_package(content: str) -> TranslationPackage:
@@ -195,7 +226,7 @@ def parse_translation_package(content: str) -> TranslationPackage:
 
         source = value["source"]
         translation = value.get("translation")
-        comment = value.get("comment")
+        comment = _parse_comments(value.get("comment"), f"entries[{position}].comment")
         substitution_disabled = value.get("substitution_disabled", False)
         if not isinstance(source, str):
             raise TranslationPackageError(f"entries[{position}].source must be a string")
@@ -203,8 +234,6 @@ def parse_translation_package(content: str) -> TranslationPackage:
             raise TranslationPackageError(
                 f"entries[{position}].translation must be a string or null"
             )
-        if comment is not None and not isinstance(comment, str):
-            raise TranslationPackageError(f"entries[{position}].comment must be a string or null")
         if type(substitution_disabled) is not bool:
             raise TranslationPackageError(
                 f"entries[{position}].substitution_disabled must be a boolean"
@@ -242,7 +271,7 @@ def serialize_translation_package(package: TranslationPackage) -> str:
             "translation": entry.translation,
         }
         if entry.comment is not None:
-            value["comment"] = entry.comment
+            value["comment"] = list(entry.comment)
         if entry.substitution_disabled:
             value["substitution_disabled"] = True
         serialized_entries.append(value)
@@ -260,7 +289,17 @@ def _parse_entries(value: Any, field: str) -> tuple[TranslationEntry, ...]:
         if not isinstance(item, dict):
             raise TranslationPackageError(f"{field_name} must be a JSON object")
         _require_keys(
-            item, ENTRY_KEYS, ENTRY_KEYS - {"translation", "comment", "substitution_disabled"}
+            item,
+            DOCUMENT_ENTRY_KEYS,
+            DOCUMENT_ENTRY_KEYS
+            - {
+                "translation",
+                "comment",
+                "substitution_disabled",
+                "source_language",
+                "legacy_tuid",
+                "legacy_context",
+            },
         )
         entry_id = item["id"]
         if type(entry_id) is not int or entry_id < 0:
@@ -270,18 +309,36 @@ def _parse_entries(value: Any, field: str) -> tuple[TranslationEntry, ...]:
         entry_ids.add(entry_id)
         source = item["source"]
         translation = item.get("translation")
-        comment = item.get("comment")
+        comment = _parse_comments(item.get("comment"), f"{field_name}.comment")
         substitution_disabled = item.get("substitution_disabled", False)
+        source_language = item.get("source_language")
         if not isinstance(source, str):
             raise TranslationPackageError(f"{field_name}.source must be a string")
         if translation is not None and not isinstance(translation, str):
             raise TranslationPackageError(f"{field_name}.translation must be a string or null")
-        if comment is not None and not isinstance(comment, str):
-            raise TranslationPackageError(f"{field_name}.comment must be a string or null")
         if type(substitution_disabled) is not bool:
             raise TranslationPackageError(f"{field_name}.substitution_disabled must be a boolean")
+        if source_language is not None:
+            source_language = _nonempty_string(source_language, f"{field_name}.source_language")
+        legacy_tuid = item.get("legacy_tuid")
+        if legacy_tuid is not None:
+            legacy_tuid = _nonempty_string(legacy_tuid, f"{field_name}.legacy_tuid")
+        context = item.get("legacy_context", {})
+        if not isinstance(context, dict) or any(
+            not isinstance(k, str) or not isinstance(v, str) for k, v in context.items()
+        ):
+            raise TranslationPackageError(f"{field_name}.legacy_context must map strings")
         entries.append(
-            TranslationEntry(entry_id, source, translation, comment, substitution_disabled)
+            TranslationEntry(
+                entry_id,
+                source,
+                translation,
+                comment,
+                substitution_disabled,
+                source_language,
+                legacy_tuid,
+                tuple(context.items()),
+            )
         )
     return tuple(entries)
 
@@ -289,15 +346,28 @@ def _parse_entries(value: Any, field: str) -> tuple[TranslationEntry, ...]:
 def _parse_resource(value: Any, field: str) -> TranslationResource:
     if not isinstance(value, dict):
         raise TranslationPackageError(f"{field} must be a JSON object")
-    _require_keys(value, RESOURCE_KEYS, RESOURCE_KEYS)
+    _require_keys(value, RESOURCE_KEYS, RESOURCE_KEYS - {"archive_locale", "archive_family"})
     resource_hash = _nonempty_string(value["resource_hash"], f"{field}.resource_hash")
     if re.fullmatch(r"[0-9A-Fa-f]{8}", resource_hash) is None:
         raise TranslationPackageError(f"{field}.resource_hash must be eight hexadecimal digits")
     resource_path = _nonempty_string(value["resource_path"], f"{field}.resource_path")
+    archive_locale = value.get("archive_locale")
+    archive_family = value.get("archive_family")
+    if archive_family is not None and (
+        not isinstance(archive_family, str)
+        or re.fullmatch(r"[A-Za-z0-9_-]+", archive_family) is None
+    ):
+        raise TranslationPackageError(f"{field}.archive_family must be a safe archive name")
+    if archive_locale is not None and (
+        type(archive_locale) is not int or not 0 <= archive_locale <= 0xFFFFFFFF
+    ):
+        raise TranslationPackageError(f"{field}.archive_locale must be an unsigned 32-bit integer")
     return TranslationResource(
         resource_hash.upper(),
         resource_path,
         _parse_entries(value["entries"], f"{field}.entries"),
+        archive_locale,
+        archive_family,
     )
 
 
@@ -314,8 +384,13 @@ def parse_translation_document(content: str) -> TranslationDocument:
     if not isinstance(root, dict):
         raise TranslationPackageError("document root must be a JSON object")
     _require_keys(root, DOCUMENT_KEYS, {"schema_version", "metadata"})
-    if type(root["schema_version"]) is not int or root["schema_version"] not in (1, 2):
+    if type(root["schema_version"]) is not int or root["schema_version"] not in (1, 2, 3, 4, 5):
         raise TranslationPackageError("unsupported translation document schema version")
+    identity = root.get("entry_identity", "record")
+    if identity not in ("record", "source_text"):
+        raise TranslationPackageError("unsupported entry_identity")
+    if "entry_identity" in root and root["schema_version"] < 4:
+        raise TranslationPackageError("entry_identity requires schema version 4")
 
     metadata_value = root["metadata"]
     if not isinstance(metadata_value, dict):
@@ -365,28 +440,81 @@ def parse_translation_document(content: str) -> TranslationDocument:
         _parse_resource(item, f"subtitles[{position}]")
         for position, item in enumerate(subtitles_value)
     )
-    resource_hashes: set[str] = set()
+    if root["schema_version"] < 3 and any(
+        entry.source_language is not None
+        for resource in (*menu, *subtitles)
+        for entry in resource.entries
+    ):
+        raise TranslationPackageError("entry source_language requires schema version 3")
+    if any(
+        entry.legacy_tuid is not None or entry.legacy_context
+        for resource in (*menu, *subtitles)
+        for entry in resource.entries
+    ) and (root["schema_version"] < 4 or identity != "source_text"):
+        raise TranslationPackageError("legacy context requires schema version 4 source_text memory")
+    if identity == "source_text" and runtime is not None:
+        raise TranslationPackageError("translation memory cannot contain installation runtime")
+    if root["schema_version"] < 4 and any(
+        resource.archive_locale is not None or resource.archive_family is not None
+        for resource in (*menu, *subtitles)
+    ):
+        raise TranslationPackageError("resource archive_locale requires schema version 4")
+    resource_hashes: set[tuple[str, int | None, str | None]] = set()
     for resource in (*menu, *subtitles):
-        if resource.resource_hash in resource_hashes:
+        key = resource.resource_hash, resource.archive_locale, resource.archive_family
+        if key in resource_hashes:
             raise TranslationPackageError(f"duplicate resource hash: {resource.resource_hash}")
-        resource_hashes.add(resource.resource_hash)
+        resource_hashes.add(key)
     fonts_value = root.get("fonts", [])
     if not isinstance(fonts_value, list):
         raise TranslationPackageError("fonts must be a JSON array")
     fonts: list[FontAsset] = []
-    font_hashes: set[str] = set()
+    font_hashes: set[tuple[str, int | None, int | None, int, str | None]] = set()
     for position, value in enumerate(fonts_value):
         field = f"fonts[{position}]"
         if not isinstance(value, dict):
             raise TranslationPackageError(f"{field} must be a JSON object")
-        _require_keys(value, FONT_KEYS, FONT_KEYS)
+        _require_keys(value, FONT_KEYS | EMBEDDED_FONT_KEYS | {"archive_family"}, FONT_KEYS)
+        archive_family = value.get("archive_family")
+        if archive_family is not None:
+            if (
+                not isinstance(archive_family, str)
+                or re.fullmatch(r"[A-Za-z0-9_-]+", archive_family) is None
+            ):
+                raise TranslationPackageError(f"{field}.archive_family must be a safe archive name")
+            if root["schema_version"] < 5:
+                raise TranslationPackageError("font archive_family requires schema version 5")
+        embedded_type = value.get("embedded_type")
+        embedded_id = value.get("embedded_id")
+        font_locale = value.get("archive_locale", 0xFFFFFFFF)
+        substitutions = value.get("character_substitutions", {})
+        if EMBEDDED_FONT_KEYS & value.keys():
+            if archive_family is not None:
+                raise TranslationPackageError("embedded fonts do not support archive_family")
+            if root["schema_version"] < 5:
+                raise TranslationPackageError("embedded fonts require schema version 5")
+            if (
+                type(embedded_type) is not int
+                or not 0 <= embedded_type <= 255
+                or type(embedded_id) is not int
+                or not 0 <= embedded_id <= 0xFFFFFF
+                or type(font_locale) is not int
+                or not 0 <= font_locale <= 0xFFFFFFFF
+            ):
+                raise TranslationPackageError("embedded fonts require a valid type and id")
+        if not isinstance(substitutions, dict) or any(
+            not isinstance(k, str) or len(k) != 1 or not isinstance(v, str) or len(v) != 1
+            for k, v in substitutions.items()
+        ):
+            raise TranslationPackageError("invalid font character substitutions")
         resource_hash = _nonempty_string(value["resource_hash"], f"{field}.resource_hash")
         if re.fullmatch(r"[0-9A-Fa-f]{8}", resource_hash) is None:
             raise TranslationPackageError(f"{field}.resource_hash must be eight hexadecimal digits")
         normalized_hash = resource_hash.upper()
-        if normalized_hash in font_hashes:
+        font_key = normalized_hash, embedded_type, embedded_id, font_locale, archive_family
+        if font_key in font_hashes:
             raise TranslationPackageError(f"duplicate font resource hash: {normalized_hash}")
-        font_hashes.add(normalized_hash)
+        font_hashes.add(font_key)
         source_sha256 = _nonempty_string(value["source_sha256"], f"{field}.source_sha256")
         replacement_sha256 = _nonempty_string(
             value["replacement_sha256"], f"{field}.replacement_sha256"
@@ -412,6 +540,11 @@ def parse_translation_document(content: str) -> TranslationDocument:
                 replacement_file,
                 source_sha256.lower(),
                 replacement_sha256.lower(),
+                embedded_type,
+                embedded_id,
+                font_locale,
+                tuple(substitutions.items()),
+                archive_family,
             )
         )
 
@@ -438,6 +571,7 @@ def parse_translation_document(content: str) -> TranslationDocument:
         clear_languages,
         omitted_languages,
         runtime,
+        identity,
     )
 
 
@@ -450,9 +584,15 @@ def _serialize_entries(entries: tuple[TranslationEntry, ...]) -> list[dict[str, 
             "translation": entry.translation,
         }
         if entry.comment is not None:
-            value["comment"] = entry.comment
+            value["comment"] = list(entry.comment)
         if entry.substitution_disabled:
             value["substitution_disabled"] = True
+        if entry.source_language is not None:
+            value["source_language"] = entry.source_language
+        if entry.legacy_tuid is not None:
+            value["legacy_tuid"] = entry.legacy_tuid
+        if entry.legacy_context:
+            value["legacy_context"] = dict(entry.legacy_context)
         result.append(value)
     return result
 
@@ -462,6 +602,16 @@ def _serialize_resource(resource: TranslationResource) -> dict[str, Any]:
         "resource_hash": resource.resource_hash.upper(),
         "resource_path": resource.resource_path,
         "entries": _serialize_entries(resource.entries),
+        **(
+            {"archive_locale": resource.archive_locale}
+            if resource.archive_locale is not None
+            else {}
+        ),
+        **(
+            {"archive_family": resource.archive_family}
+            if resource.archive_family is not None
+            else {}
+        ),
     }
 
 
@@ -482,11 +632,33 @@ def serialize_translation_document(document: TranslationDocument) -> str:
     if document.runtime is not None:
         root["schema_version"] = 2
         root["metadata"]["runtime"] = runtime_to_dict(document.runtime)
+    if any(
+        entry.source_language is not None
+        for resource in (*document.menu, *document.subtitles)
+        for entry in resource.entries
+    ):
+        root["schema_version"] = 3
+    if (
+        document.entry_identity != "record"
+        or any(
+            resource.archive_locale is not None or resource.archive_family is not None
+            for resource in (*document.menu, *document.subtitles)
+        )
+        or any(
+            e.legacy_tuid is not None or e.legacy_context
+            for r in (*document.menu, *document.subtitles)
+            for e in r.entries
+        )
+    ):
+        root["schema_version"] = 4
+        root["entry_identity"] = document.entry_identity
     if document.menu:
         root["menu"] = [_serialize_resource(resource) for resource in document.menu]
     if document.subtitles:
         root["subtitles"] = [_serialize_resource(resource) for resource in document.subtitles]
     if document.fonts:
+        if any(f.embedded_type is not None or f.archive_family is not None for f in document.fonts):
+            root["schema_version"] = 5
         root["fonts"] = [
             {
                 "resource_hash": font.resource_hash.upper(),
@@ -494,6 +666,25 @@ def serialize_translation_document(document: TranslationDocument) -> str:
                 "replacement_file": font.replacement_file,
                 "source_sha256": font.source_sha256.lower(),
                 "replacement_sha256": font.replacement_sha256.lower(),
+                **(
+                    {"archive_family": font.archive_family}
+                    if font.archive_family is not None
+                    else {}
+                ),
+                **(
+                    {
+                        "embedded_type": font.embedded_type,
+                        "embedded_id": font.embedded_id,
+                        "archive_locale": font.archive_locale,
+                        **(
+                            {"character_substitutions": dict(font.character_substitutions)}
+                            if font.character_substitutions
+                            else {}
+                        ),
+                    }
+                    if font.embedded_type is not None
+                    else {}
+                ),
             }
             for font in document.fonts
         ]

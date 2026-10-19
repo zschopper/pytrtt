@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "game_id": "rise-of-the-tomb-raider",
+  "build_id": "9575745",
+  "filelist": "../pytrtt/resources/filelists/rottr_filelist.txt",
+  "asset_root": "../translations/rise-of-the-tomb-raider",
+  "runtime": {
+    "archive": {
+      "format": "tiger",
+      "version": 4,
+      "boundary": 2147483648,
+      "families": [
+        "layer00",
+        "layer01",
+        "layer02",
+        "layer03",
+        "layer04",
+        "layer05",
+        "layer06",
+        "layer07",
+        "layer08",
+        "layer09",
+        "layer10",
+        "layer11",
+        "layer12"
+      ],
+      "index_files": {
+        "layer00": "bigfile.000.tiger",
+        "layer01": "bigfile.dlc.mode.bloodties.000.000.tiger",
+        "layer02": "bigfile.dlc.mode.bloodties.000_ENGLISH.000.tiger",
+        "layer03": "bigfile.dlc.mode.colddarkness.000.000.tiger",
+        "layer04": "bigfile.dlc.mode.colddarkness.000_ENGLISH.000.tiger",
+        "layer05": "bigfile.dlc.mode.endurance.000.000.tiger",
+        "layer06": "bigfile.dlc.mode.endurance.000_ENGLISH.000.tiger",
+        "layer07": "bigfile.dlc.story.babayaga.000.000.tiger",
+        "layer08": "bigfile.dlc.story.babayaga.000_ENGLISH.000.tiger",
+        "layer09": "bigfile.update1.000.000.tiger",
+        "layer10": "bigfile.update2.000.000.tiger",
+        "layer11": "bigfile.update3.000.000.tiger",
+        "layer12": "bigfile_ENGLISH.000.tiger"
+      },
+      "include_overridden": true
+    },
+    "languages": {
+      "en": {
+        "archive_locale": 1,
+        "subtitle_language": 0,
+        "locale_is_mask": true
+      }
+    },
+    "replacement_language": "en",
+    "resource_types": [
+      {
+        "section": "menu",
+        "pattern": "*/locals.bin",
+        "format": "locals",
+        "version": 3
+      },
+      {
+        "section": "subtitles",
+        "pattern": "*.mul",
+        "format": "cine",
+        "version": 2,
+        "skip_unrecognized": true
+      },
+      {
+        "section": "subtitles",
+        "pattern": "*.sch",
+        "format": "sch",
+        "version": 3
+      },
+      {
+        "section": "subtitles",
+        "pattern": "unresolved-hash:*",
+        "format": "sch",
+        "version": 3
+      }
+    ],
+    "character_substitutions": {},
+    "display_name": "Rise of the Tomb Raider"
+  },
+  "translation_defaults": {}
+}

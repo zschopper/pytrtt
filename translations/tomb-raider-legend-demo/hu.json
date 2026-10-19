@@ -196,13 +196,17 @@
           "id": 27,
           "source": "Tomb Raider: Legend can only be played on a PC that supports the MMX instruction set. Please read the readme.rtf or contact Eidos technical support\n\n",
           "translation": "A Tomb Raider: Legend csak MMX utasításkészletet támogató PC-n futtatható. Olvasd el a readme fájlt, vagy vedd fel a kapcsolatot az Eidos-szal.",
-          "comment": "CREDO: itt eredetileg két üres sor volt, megtartottam, ahogy kommentben is"
+          "comment": [
+            "CREDO: itt eredetileg két üres sor volt, megtartottam, ahogy kommentben is"
+          ]
         },
         {
           "id": 28,
           "source": "Extended Information",
           "translation": "Kibővített Információ",
-          "comment": "CREDO: ez mi?"
+          "comment": [
+            "CREDO: ez mi?"
+          ]
         },
         {
           "id": 29,
@@ -278,13 +282,17 @@
           "id": 43,
           "source": "Tomb Raider: Legend can only be played on a PC that supports the SSE instruction set. Please read the readme.rtf or contact Eidos technical support\n\n",
           "translation": "A Tomb Raider: Legend csak SSE utasításkészletet támogató PC-n futtatható. Olvasd el a readme fájlt, vagy vedd fel a kapcsolatot az Eidos-szal.",
-          "comment": "CREDO: itt eredetileg két üres sor volt, megtartottam, ahogy kommentben is"
+          "comment": [
+            "CREDO: itt eredetileg két üres sor volt, megtartottam, ahogy kommentben is"
+          ]
         },
         {
           "id": 44,
           "source": "Tomb Raider: Legend requires a operating system like Windows 2000, Windows XP, or higher. Please read the readme.rtf or contact Eidos technical support\n\n",
           "translation": "A Tomb Raider: Legend futásához Windows 2000, XP vagy későbbi operációs rendszer szükséges. Kérlek, olvasd el a readme fájlt, vagy vedd fel a kapcsolatot az Eidos-szal.",
-          "comment": "CREDO: itt eredetileg két üres sor volt, megtartottam, ahogy kommentben is"
+          "comment": [
+            "CREDO: itt eredetileg két üres sor volt, megtartottam, ahogy kommentben is"
+          ]
         },
         {
           "id": 45,
@@ -295,7 +303,9 @@
           "id": 46,
           "source": "Brightness",
           "translation": "Fényerő",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 47,
@@ -306,103 +316,144 @@
           "id": 48,
           "source": "Tomb Raider: Legend - Setup",
           "translation": "Tomb Raider: Legend - Beállítások",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 49,
           "source": "Contrast",
           "translation": "Kontraszt",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 50,
           "source": "Display Adapter",
           "translation": "Grafikus Vezérlő",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 51,
           "source": "Enable Anti Aliasing",
           "translation": "Élsimítás",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló",
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 52,
           "source": "Enable Depth of Field",
           "translation": "Mélységélesség",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló",
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 53,
           "source": "Enable Fullscreen Effects",
           "translation": "Teljesképernyős Effektek",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló",
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 54,
           "source": "Enable Reflections",
           "translation": "Tükröződések",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló",
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 55,
           "source": "Enable Shadows",
           "translation": "Árnyékok",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló",
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 56,
           "source": "Enable VSync",
           "translation": "VSync",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló",
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 57,
           "source": "Enable Water Effects",
           "translation": "Víz Effektusok",
-          "comment": "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló\nLegacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "CREDO: a Teljesképernyős Effektek Engedélyezése nem fér ki a -setupnál, mindegyiket csonkoltam, a checkboxból egyértelmű, hogy ki/be kapcsoló",
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 58,
           "source": "Next Generation Content",
           "translation": "Következő Generációs Mód",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 59,
           "source": "Ok",
           "translation": "Ok",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 60,
           "source": "Refresh Rate",
           "translation": "Képfrissítés",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 61,
           "source": "Rendering Setup",
           "translation": "Grafikai Beállítás",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 62,
           "source": "Resolution",
           "translation": "Felbontás",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 63,
           "source": "Set To Default",
           "translation": "Alapértelmezett",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 64,
           "source": "%d by %d",
           "translation": "%d x %d",
-          "comment": "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          "comment": [
+            "Legacy directive: $SETUP; runtime character substitution enabled because TRLD setup cannot display ő/ű directly"
+          ]
         },
         {
           "id": 69,
@@ -418,7 +469,9 @@
           "id": 74,
           "source": "Display HUD",
           "translation": "HUD Megjelenítése",
-          "comment": "CREDO: az OSD (On-screen display) és HUD (Head-up display) lényegében ugyanaz, más területeken használva, az OSD-t többen ismerik, lehetne az is"
+          "comment": [
+            "CREDO: az OSD (On-screen display) és HUD (Head-up display) lényegében ugyanaz, más területeken használva, az OSD-t többen ismerik, lehetne az is"
+          ]
         },
         {
           "id": 76,
@@ -459,7 +512,10 @@
           "id": 93,
           "source": "Lock/Unlock Target",
           "translation": "Célzás",
-          "comment": "CREDO: Célbefogás/Befogás Feloldás csúnya lenne, de alternatíva, szerintem így is egyértelmű\nCélbefogás"
+          "comment": [
+            "CREDO: Célbefogás/Befogás Feloldás csúnya lenne, de alternatíva, szerintem így is egyértelmű",
+            "Célbefogás"
+          ]
         },
         {
           "id": 94,
@@ -585,7 +641,9 @@
           "id": 166,
           "source": "Default dialog body.",
           "translation": "?",
-          "comment": "CREDO: teszt dolog szerintem, tehát"
+          "comment": [
+            "CREDO: teszt dolog szerintem, tehát"
+          ]
         },
         {
           "id": 167,
@@ -636,7 +694,9 @@
           "id": 179,
           "source": "Standard field use medkit that will replenish health when used.",
           "translation": "Szabványos egészségügyi csomag, használatkor gyógyítja a pácienst.",
-          "comment": "Szabványos egészségügyi csomag, használatakor megtelik az energiacsík."
+          "comment": [
+            "Szabványos egészségügyi csomag, használatakor megtelik az energiacsík."
+          ]
         },
         {
           "id": 180,
@@ -667,7 +727,9 @@
           "id": 185,
           "source": "Zoom %3.0f%%",
           "translation": "Zoom %3.0f%%",
-          "comment": "CREDO: magyarban is hivalatos jövevényszó, meg a nagyítás nem egészen fedné, azért az egy alternatíva"
+          "comment": [
+            "CREDO: magyarban is hivalatos jövevényszó, meg a nagyítás nem egészen fedné, azért az egy alternatíva"
+          ]
         },
         {
           "id": 186,
@@ -743,13 +805,17 @@
           "id": 218,
           "source": "G+",
           "translation": "G+",
-          "comment": "CREDO: passz, hogy mi lehet, talán valami rövidítés, szerintem nem jelenik meg, de azért meghagyom"
+          "comment": [
+            "CREDO: passz, hogy mi lehet, talán valami rövidítés, szerintem nem jelenik meg, de azért meghagyom"
+          ]
         },
         {
           "id": 219,
           "source": "-H",
           "translation": "-H",
-          "comment": "CREDO: passz, hogy mi lehet, talán valami rövidítés, szerintem nem jelenik meg, de azért meghagyom"
+          "comment": [
+            "CREDO: passz, hogy mi lehet, talán valami rövidítés, szerintem nem jelenik meg, de azért meghagyom"
+          ]
         },
         {
           "id": 225,
@@ -765,19 +831,26 @@
           "id": 268,
           "source": "There is no sub goal.",
           "translation": "Itt nincs részfeladat.",
-          "comment": "CREDO: Zsoltnak nem tetszik az alfeladat, en sem erzem tokeletesnek, de az al-feladat rosszabb, a mellekfeladat es mellek-feladat jelentesben is rosszabb\nItt nincs alfeladat."
+          "comment": [
+            "CREDO: Zsoltnak nem tetszik az alfeladat, en sem erzem tokeletesnek, de az al-feladat rosszabb, a mellekfeladat es mellek-feladat jelentesben is rosszabb",
+            "Itt nincs alfeladat."
+          ]
         },
         {
           "id": 278,
           "source": "Submitting scan for analysis...",
           "translation": "Adatok feltöltése elemzésre...",
-          "comment": "Vizsgálat küldése analízisre..."
+          "comment": [
+            "Vizsgálat küldése analízisre..."
+          ]
         },
         {
           "id": 351,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: teszt dolog szerintem, tehát"
+          "comment": [
+            "CREDO: teszt dolog szerintem, tehát"
+          ]
         },
         {
           "id": 352,
@@ -808,7 +881,9 @@
           "id": 371,
           "source": "Press ᠂ to release your grip and drop down.",
           "translation": "Nyomj ᠂ gombot a kapaszkodás abbahagyásához és a leugráshoz.",
-          "comment": "CREDO: kicsit gyenge, fáradt vagyok, tud valaki finomítani rajta?"
+          "comment": [
+            "CREDO: kicsit gyenge, fáradt vagyok, tud valaki finomítani rajta?"
+          ]
         },
         {
           "id": 373,
@@ -954,7 +1029,10 @@
           "id": 443,
           "source": "Move mouse towards an on-screen enemy while in Lock-On mode to make it your new target.",
           "translation": "Befogás módban vidd az egeret egy képernyőn látható ellenfél irányába, hogy az új célpontoddá tedd.",
-          "comment": "régi eredeti: Press movement keys towards an on-screen enemy while in Lock-On mode to make it your new target.\nrégi fordítása: Befogás módban nyomj mozgásgombot egy képen látható ellenfél irányába, hogy az új célpontoddá tedd."
+          "comment": [
+            "régi eredeti: Press movement keys towards an on-screen enemy while in Lock-On mode to make it your new target.",
+            "régi fordítása: Befogás módban nyomj mozgásgombot egy képen látható ellenfél irányába, hogy az új célpontoddá tedd."
+          ]
         },
         {
           "id": 444,
@@ -1035,7 +1113,9 @@
           "id": 471,
           "source": "Escape",
           "translation": "Escape",
-          "comment": "CREDO: TRA-nal Esc-et szavaztunk meg, de hagyom defaultban, ha már a többséget úgy szavaztuk meg"
+          "comment": [
+            "CREDO: TRA-nal Esc-et szavaztunk meg, de hagyom defaultban, ha már a többséget úgy szavaztuk meg"
+          ]
         },
         {
           "id": 472,
@@ -1581,19 +1661,25 @@
           "id": 601,
           "source": "Alternative 1",
           "translation": "Alternatív 1",
-          "comment": "CREDO: azt hiszem ez PS2-es, de nem biztos"
+          "comment": [
+            "CREDO: azt hiszem ez PS2-es, de nem biztos"
+          ]
         },
         {
           "id": 602,
           "source": "Alternative 2",
           "translation": "Alternatív 2",
-          "comment": "CREDO: azt hiszem ez PS2-es, de nem biztos"
+          "comment": [
+            "CREDO: azt hiszem ez PS2-es, de nem biztos"
+          ]
         },
         {
           "id": 603,
           "source": "Alternative 3",
           "translation": "Alternatív 3",
-          "comment": "CREDO: azt hiszem ez PS2-es, de nem biztos"
+          "comment": [
+            "CREDO: azt hiszem ez PS2-es, de nem biztos"
+          ]
         },
         {
           "id": 604,
@@ -1639,13 +1725,17 @@
           "id": 616,
           "source": "Please reconnect the controller and press START to continue.",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 617,
           "source": "Controller Diagram",
           "translation": "Irányító Ábra",
-          "comment": "CREDO: passz, szerintem a PS2-es gamepad rajzát mutatja a kiosztással, de bent hagyom, nem biztos"
+          "comment": [
+            "CREDO: passz, szerintem a PS2-es gamepad rajzát mutatja a kiosztással, de bent hagyom, nem biztos"
+          ]
         },
         {
           "id": 618,
@@ -1771,7 +1861,9 @@
           "id": 652,
           "source": "Display",
           "translation": "Kijelző",
-          "comment": "CREDO: valószínűleg valamelyik grafikai menüben szerepel, így a Grafika talán optimálisabb, tesztelni"
+          "comment": [
+            "CREDO: valószínűleg valamelyik grafikai menüben szerepel, így a Grafika talán optimálisabb, tesztelni"
+          ]
         },
         {
           "id": 653,
@@ -2112,7 +2204,9 @@
           "id": 767,
           "source": "Your Xbox doesn't have enough free blocks to save new games, but you can overwrite existing games. You need %d free blocks to create a new save game.",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 780,
@@ -2123,25 +2217,33 @@
           "id": 781,
           "source": "Monitor Frequency PAL-60",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 782,
           "source": "Does your TV display PAL-60 mode correctly and do you want to keep these settings?",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 783,
           "source": "PAL 50/60 Selection",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 784,
           "source": "About to test PAL-60 mode, if there is a problem with the display, please wait 10 seconds and your TV will revert back to PAL-50 mode.",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 787,
@@ -2197,7 +2299,9 @@
           "id": 816,
           "source": "Please press the button you would like to map to the selection action. Press Escape to cancel.",
           "translation": "Nyomd meg a kívánt billentyűt a kiválasztott cselekvéshez. Nyomj Escape-et az elvetéshez.",
-          "comment": "CREDO: pontosan \"a kiválasztás gombot\" kellene meghatározni, de valószínűleg elírás az angolban, tesztnél kijön, ha mégsem"
+          "comment": [
+            "CREDO: pontosan \"a kiválasztás gombot\" kellene meghatározni, de valószínűleg elírás az angolban, tesztnél kijön, ha mégsem"
+          ]
         },
         {
           "id": 817,
@@ -2253,19 +2357,25 @@
           "id": 832,
           "source": "Progressive Scan Mode",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 833,
           "source": "The display is now in progressive mode.\nDo you want to keep this display mode?\n(After 15 seconds, the display will switch back to the original display mode if there is no response.)",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 834,
           "source": "Warning.\nSwitching to progressive mode may not produce proper display results on your television. In such an\nevent, please wait 15 seconds for the automatic switch back to the original display mode.\n\nDo you wish to play in Progressive Scan mode?",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 835,
@@ -2351,7 +2461,9 @@
           "id": 852,
           "source": "᠒ Rotate",
           "translation": "᠒ Váltás",
-          "comment": "CREDO: lehet forgatás is, megnézni, hogy hol van, valószínűleg nem kameraforgatásra, hanem menüpont váltásra utal"
+          "comment": [
+            "CREDO: lehet forgatás is, megnézni, hogy hol van, valószínűleg nem kameraforgatásra, hanem menüpont váltásra utal"
+          ]
         },
         {
           "id": 853,
@@ -2382,13 +2494,17 @@
           "id": 865,
           "source": "Screen Position L/R",
           "translation": "Kép Pozíció J/B",
-          "comment": "CREDO: azt hiszem ez is PS2-es, de nem biztos"
+          "comment": [
+            "CREDO: azt hiszem ez is PS2-es, de nem biztos"
+          ]
         },
         {
           "id": 866,
           "source": "Screen Position U/D",
           "translation": "Kép Pozíció F/L",
-          "comment": "CREDO: azt hiszem ez is PS2-es, de nem biztos"
+          "comment": [
+            "CREDO: azt hiszem ez is PS2-es, de nem biztos"
+          ]
         },
         {
           "id": 868,
@@ -2449,7 +2565,9 @@
           "id": 887,
           "source": "Online/Offline Stats",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 889,
@@ -2610,7 +2728,9 @@
           "id": 962,
           "source": "Mission Prep - Bolivia",
           "translation": "Felkészülés a Küldetésre - Bolívia",
-          "comment": "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          "comment": [
+            "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          ]
         },
         {
           "id": 963,
@@ -2626,7 +2746,10 @@
           "id": 966,
           "source": "\"I've been looking for certain artifacts...\"",
           "translation": "\"Bizonyos ereklyéket keresek...\"",
-          "comment": "CREDO: szinkonban tartani 30.1-el\n\"Bizonyos leletek után kutattam...\""
+          "comment": [
+            "CREDO: szinkonban tartani 30.1-el",
+            "\"Bizonyos leletek után kutattam...\""
+          ]
         },
         {
           "id": 967,
@@ -2657,7 +2780,9 @@
           "id": 975,
           "source": "Mission Prep",
           "translation": "Felkészülés a Küldetésre",
-          "comment": "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          "comment": [
+            "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          ]
         },
         {
           "id": 976,
@@ -2703,7 +2828,9 @@
           "id": 989,
           "source": "Mission Prep - Japan",
           "translation": "Felkészülés a Küldetésre - Japán",
-          "comment": "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          "comment": [
+            "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          ]
         },
         {
           "id": 990,
@@ -2719,7 +2846,9 @@
           "id": 993,
           "source": "\"Conventional reason doesn't work with Yakuza..\"",
           "translation": "\"A hagyományos érvek nem hatnak a Jakuzára..\"",
-          "comment": "CREDO: változtatás esetén szinkronba hozni 39.1-el"
+          "comment": [
+            "CREDO: változtatás esetén szinkronba hozni 39.1-el"
+          ]
         },
         {
           "id": 994,
@@ -2750,7 +2879,9 @@
           "id": 1002,
           "source": "Mission Prep - Ghana",
           "translation": "Felkészülés a Küldetésre - Ghána",
-          "comment": "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          "comment": [
+            "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          ]
         },
         {
           "id": 1003,
@@ -2766,7 +2897,10 @@
           "id": 1006,
           "source": "\"Long-distance relationships inevitably come to an end...\"",
           "translation": "\"A távkapcsolatoknak elkerülhetetlenül vége szakad...\"",
-          "comment": "CREDO: a 007.1-ben is idézve van, ha az egyik változik, szinkronba kell hozni\n\"A távkapcsolatok elkerülhetetlenül szakításhoz vezetnek...\""
+          "comment": [
+            "CREDO: a 007.1-ben is idézve van, ha az egyik változik, szinkronba kell hozni",
+            "\"A távkapcsolatok elkerülhetetlenül szakításhoz vezetnek...\""
+          ]
         },
         {
           "id": 1007,
@@ -2797,7 +2931,9 @@
           "id": 1015,
           "source": "Mission Prep - Kazakhstan",
           "translation": "Felkészülés a Küldetésre - Kazahsztán",
-          "comment": "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          "comment": [
+            "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          ]
         },
         {
           "id": 1016,
@@ -2813,7 +2949,9 @@
           "id": 1019,
           "source": "\"There seems to be trouble below...\"",
           "translation": "\"Úgy tűnik, problémák adódtak lent...\"",
-          "comment": "CREDO: 21.1-ből idézet, szinkronban kell tartani"
+          "comment": [
+            "CREDO: 21.1-ből idézet, szinkronban kell tartani"
+          ]
         },
         {
           "id": 1020,
@@ -2844,7 +2982,9 @@
           "id": 1028,
           "source": "Mission Prep - England",
           "translation": "Felkészülés a Küldetésre - Anglia",
-          "comment": "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          "comment": [
+            "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          ]
         },
         {
           "id": 1029,
@@ -2890,7 +3030,9 @@
           "id": 1041,
           "source": "Mission Prep - Nepal",
           "translation": "Felkészülés a Küldetésre - Nepál",
-          "comment": "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          "comment": [
+            "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          ]
         },
         {
           "id": 1042,
@@ -2906,7 +3048,9 @@
           "id": 1045,
           "source": "\"This has always been what it's about...\"",
           "translation": "\"Mindig is erről szólt a történet...\"",
-          "comment": "CREDO: szinkronban tartani 37.1-el"
+          "comment": [
+            "CREDO: szinkronban tartani 37.1-el"
+          ]
         },
         {
           "id": 1046,
@@ -2937,7 +3081,9 @@
           "id": 1054,
           "source": "Mission Prep - Bolivia Redux",
           "translation": "Felkészülés a Küldetésre - Ismét Bolíviában",
-          "comment": "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          "comment": [
+            "CREDO: gondolom a ruha és nehézség kiválasztó menü, de nem biztos, ellenőrizni"
+          ]
         },
         {
           "id": 1055,
@@ -2973,7 +3119,9 @@
           "id": 1062,
           "source": "PLACEHOLDER Mission E3 Objective 1",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1065,
@@ -3044,7 +3192,9 @@
           "id": 1083,
           "source": "This is the test objective 1 description string.",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1084,
@@ -3230,19 +3380,25 @@
           "id": 1134,
           "source": "No Memory Card (8MB)(for PlayStation®2) in MEMORY CARD slot 1.\n",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1135,
           "source": "No Tomb Raider: Legend save data present on Memory Card (8MB)(for PlayStation®2) in MEMORY CARD slot 1.\n",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1136,
           "source": "Memory Card (8MB)(for PlayStation®2) in MEMORY CARD slot 1 is unformatted. ",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1137,
@@ -3348,13 +3504,17 @@
           "id": 1174,
           "source": "BOOT missing memory card with %3.0fK free space.",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1176,
           "source": "Insufficient free space to save game: needs %3.0fK to save a game.",
           "translation": "Nincs elég szabad hely a mentéshez, %3.0fK helyre van szükség.",
-          "comment": "CREDO: talán konzolos, de lehet PC-s is"
+          "comment": [
+            "CREDO: talán konzolos, de lehet PC-s is"
+          ]
         },
         {
           "id": 1178,
@@ -3375,7 +3535,9 @@
           "id": 1181,
           "source": "Please reconnect the controller to any controller port and press START to continue.",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1182,
@@ -3451,7 +3613,9 @@
           "id": 1197,
           "source": "Please reconnect the controller to any controller port and press START to continue.",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1214,
@@ -3512,7 +3676,9 @@
           "id": 1226,
           "source": "There is not enough space on the selected storage device to save a game.  You must select a different device, or overwrite or delete an existing saved game.",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1227,
@@ -3533,67 +3699,89 @@
           "id": 1231,
           "source": "continue without signing in",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1232,
           "source": "return to save menu",
           "translation": "visszatérés az állásmentő menübe",
-          "comment": "CREDO: a szövegkörnyezetből gyanítom XBox 360-as"
+          "comment": [
+            "CREDO: a szövegkörnyezetből gyanítom XBox 360-as"
+          ]
         },
         {
           "id": 1234,
           "source": "display device selector",
           "translation": "megjelenítő választó",
-          "comment": "CREDO: a szövegkörnyezetből gyanítom XBox 360-as"
+          "comment": [
+            "CREDO: a szövegkörnyezetből gyanítom XBox 360-as"
+          ]
         },
         {
           "id": 1235,
           "source": "sign in",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1236,
           "source": "Signed In As: ",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1237,
           "source": "The active gamer profile has changed.  You must now return to the main menu.",
           "translation": "Az aktív profil megváltozott. Vissza kell térned a főmenübe.",
-          "comment": "CREDO: a szövegkörnyezetből gyanítom XBox 360-as"
+          "comment": [
+            "CREDO: a szövegkörnyezetből gyanítom XBox 360-as"
+          ]
         },
         {
           "id": 1238,
           "source": "Not Signed In",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1239,
           "source": "You are not signed in with a gamer profile.  You will be unable to save game progress if you continue without signing in.  Would you like to sign in now?",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1240,
           "source": "No storage device has been selected.  You must select a device, or continue without saving?",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1241,
           "source": "You are not signed in with a gamer profile.  You must sign in to access storage devices.",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1242,
           "source": "The storage device has become unavailable, or a new storage device has been inserted.  You must select a device, or continue without saving?",
           "translation": "?",
-          "comment": "CREDO: tuti konzolos"
+          "comment": [
+            "CREDO: tuti konzolos"
+          ]
         },
         {
           "id": 1243,
@@ -3704,13 +3892,17 @@
           "id": 1269,
           "source": "Unlock all Extras \n To use: Hold \n Then press: ",
           "translation": "Minden Extra megnyitása\n A használatához: Tartsd nyomva\n Majd nyomj:",
-          "comment": "CREDO: a ragozás miatt ellenőrizni, nincs semmi jel, nem tudjuk mi jelenik meg"
+          "comment": [
+            "CREDO: a ragozás miatt ellenőrizni, nincs semmi jel, nem tudjuk mi jelenik meg"
+          ]
         },
         {
           "id": 1270,
           "source": "Unlock all Levels \n To use: Hold \n Then press: ",
           "translation": "Minden Pálya megnyitása\n A használatához: Tartsd nyomva\n Majd nyomj:",
-          "comment": "CREDO: a ragozás miatt ellenőrizni, nincs semmi jel, nem tudjuk mi jelenik meg"
+          "comment": [
+            "CREDO: a ragozás miatt ellenőrizni, nincs semmi jel, nem tudjuk mi jelenik meg"
+          ]
         },
         {
           "id": 1271,
@@ -3721,7 +3913,9 @@
           "id": 1272,
           "source": "Wield Soul Reaver\n Hold backspace and hit 0",
           "translation": "Soul Reaver Forgatása\n Backspace nyomva tartása mellé nyomj 0-át",
-          "comment": "CREDO: utal a cég azonos című játékára is, azért fordítsuk Lélekfosztónak?"
+          "comment": [
+            "CREDO: utal a cég azonos című játékára is, azért fordítsuk Lélekfosztónak?"
+          ]
         },
         {
           "id": 1273,
@@ -3772,7 +3966,9 @@
           "id": 1304,
           "source": "First Contact",
           "translation": "Első Kapcsolat",
-          "comment": "CREDO: Ellenfél is lehetne, de a második kapcsolat nem egy ellenfél, végül is jó így, tükörfordításban, de változtathatunk"
+          "comment": [
+            "CREDO: Ellenfél is lehetne, de a második kapcsolat nem egy ellenfél, végül is jó így, tükörfordításban, de változtathatunk"
+          ]
         },
         {
           "id": 1305,
@@ -3788,13 +3984,18 @@
           "id": 1307,
           "source": "Falling In Love Again",
           "translation": "Ismét Szerelembe Esve",
-          "comment": "CREDO: 32.1-re utal, ha változik, szinkronizálni, bár nincs teljesen szinkonban és úgy is jó"
+          "comment": [
+            "CREDO: 32.1-re utal, ha változik, szinkronizálni, bár nincs teljesen szinkonban és úgy is jó"
+          ]
         },
         {
           "id": 1308,
           "source": "Death By Irony",
           "translation": "Ironikus Halál",
-          "comment": "CREDO: lefordíthatatlan szóvicc, ugye ironikus, gúnyos számunkra a katonák halála, ugyanakkor vaspengék (azaz iron-pengék) végeztek velük\nCREDO: szinkronban van 32.1-el, de ha valaki változtat, szinkronizálja"
+          "comment": [
+            "CREDO: lefordíthatatlan szóvicc, ugye ironikus, gúnyos számunkra a katonák halála, ugyanakkor vaspengék (azaz iron-pengék) végeztek velük",
+            "CREDO: szinkronban van 32.1-el, de ha valaki változtat, szinkronizálja"
+          ]
         },
         {
           "id": 1309,
@@ -3805,19 +4006,25 @@
           "id": 1310,
           "source": "Placeholder title",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1311,
           "source": "Placeholder title",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1312,
           "source": "Viracocha's Staff",
           "translation": "Viracocha Pálcája",
-          "comment": "CREDO: lehet Virakocsa is, az is elterjedt, de a Viracocha magyarban is gyakoribb, könyvcímek stb."
+          "comment": [
+            "CREDO: lehet Virakocsa is, az is elterjedt, de a Viracocha magyarban is gyakoribb, könyvcímek stb."
+          ]
         },
         {
           "id": 1313,
@@ -3868,7 +4075,9 @@
           "id": 1323,
           "source": "Going Back In",
           "translation": "Visszatérés",
-          "comment": "CREDO: ez hol is van?"
+          "comment": [
+            "CREDO: ez hol is van?"
+          ]
         },
         {
           "id": 1324,
@@ -3879,25 +4088,33 @@
           "id": 1325,
           "source": "Placeholder",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1326,
           "source": "placeholder",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1327,
           "source": "placeholder",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1328,
           "source": "placeholder",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1329,
@@ -3908,7 +4125,9 @@
           "id": 1330,
           "source": "Placeholder",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1331,
@@ -3929,7 +4148,9 @@
           "id": 1334,
           "source": "Fashionably Late in Tokyo",
           "translation": "Elegáns Késés Tokióban",
-          "comment": "CREDO: jó sokat kerestem, remélem tényleg ez az illemkódexes kifejezés megfelelő fordítása, használatos még a megengedett, illendő"
+          "comment": [
+            "CREDO: jó sokat kerestem, remélem tényleg ez az illemkódexes kifejezés megfelelő fordítása, használatos még a megengedett, illendő"
+          ]
         },
         {
           "id": 1335,
@@ -3950,7 +4171,9 @@
           "id": 1338,
           "source": "Artifact Revealed",
           "translation": "Lelet Felfedve",
-          "comment": "CREDO: ha a Takamoto karddarabra írja, ahogy a sorrend sejteti, nem jó"
+          "comment": [
+            "CREDO: ha a Takamoto karddarabra írja, ahogy a sorrend sejteti, nem jó"
+          ]
         },
         {
           "id": 1339,
@@ -3966,25 +4189,33 @@
           "id": 1341,
           "source": "placeholder",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1342,
           "source": "placeholder",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1343,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1344,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1345,
@@ -4050,37 +4281,49 @@
           "id": 1357,
           "source": "Runaway Train",
           "translation": "Szökevény Vonat",
-          "comment": "CREDO: a Word egyben is elfogadja, de a durván 1000 Google találat vagy a filmet vagy az abból származtatott szót dobja ki"
+          "comment": [
+            "CREDO: a Word egyben is elfogadja, de a durván 1000 Google találat vagy a filmet vagy az abból származtatott szót dobja ki"
+          ]
         },
         {
           "id": 1358,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1359,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1360,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1361,
           "source": "Runaway Train",
           "translation": "Szökevény Vonat",
-          "comment": "CREDO: a Word egyben is elfogadja, de a durván 1000 Google találat vagy a filmet vagy az abból származtatott szót dobja ki"
+          "comment": [
+            "CREDO: a Word egyben is elfogadja, de a durván 1000 Google találat vagy a filmet vagy az abból származtatott szót dobja ki"
+          ]
         },
         {
           "id": 1362,
           "source": "Reunion with Amanda",
           "translation": "Találkozás Amandával",
-          "comment": "CREDO: egyértelmű, hogy a szó osztálytalálkozó jelentésére is akar egyben poénból utalni, de a vicc két szereplőre nem fordítható le így"
+          "comment": [
+            "CREDO: egyértelmű, hogy a szó osztálytalálkozó jelentésére is akar egyben poénból utalni, de a vicc két szereplőre nem fordítható le így"
+          ]
         },
         {
           "id": 1363,
@@ -4091,31 +4334,44 @@
           "id": 1364,
           "source": "Headset Hijack",
           "translation": "Rádiókalóz",
-          "comment": "CREDO: headset hackelés vagy eltérítés is lehetne, kevésbé magyarul, azt hiszem ez az, amikor Amanda leleplezi magát, hogy meghackelte a rádiónkat\nRádió Feltörés\nKalózrádiós"
+          "comment": [
+            "CREDO: headset hackelés vagy eltérítés is lehetne, kevésbé magyarul, azt hiszem ez az, amikor Amanda leleplezi magát, hogy meghackelte a rádiónkat",
+            "Rádió Feltörés",
+            "Kalózrádiós"
+          ]
         },
         {
           "id": 1365,
           "source": "Leviathan Pinned",
           "translation": "Hidra Elintézve",
-          "comment": "CREDO: lehetne Leviatán is, én Hamstertől vettem át a Hidrát, szerintem is jobb a lényre, az alábbi nem tükörfordítás, de bármelyik kiiktatására áll\nCREDO: valószínűleg szóvicc akart lenni a kapus részre, de megússza, nem nyársalódik fel a kapura, így a leszúrva, leszögezve nem lenne jó"
+          "comment": [
+            "CREDO: lehetne Leviatán is, én Hamstertől vettem át a Hidrát, szerintem is jobb a lényre, az alábbi nem tükörfordítás, de bármelyik kiiktatására áll",
+            "CREDO: valószínűleg szóvicc akart lenni a kapus részre, de megússza, nem nyársalódik fel a kapura, így a leszúrva, leszögezve nem lenne jó"
+          ]
         },
         {
           "id": 1366,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1367,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1368,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1369,
@@ -4151,13 +4407,17 @@
           "id": 1376,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1377,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1378,
@@ -4183,25 +4443,33 @@
           "id": 1382,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1383,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1384,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1385,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1386,
@@ -4212,7 +4480,12 @@
           "id": 1387,
           "source": "Excalibur Reforged",
           "translation": "Excalibur Egybeforrasztva",
-          "comment": "CREDO: bár szótár szerinti, elég durva az én verzióm a helyzetre, ugyanakkor jelképesen a kard újrakovácsolásáról van szó\nCREDO: ha változik (mondjuk vissza az egybenre), változtatni kell a 39.1-ben is\nExcalibur Egyben\nExcalibur Újrakovácsolva"
+          "comment": [
+            "CREDO: bár szótár szerinti, elég durva az én verzióm a helyzetre, ugyanakkor jelképesen a kard újrakovácsolásáról van szó",
+            "CREDO: ha változik (mondjuk vissza az egybenre), változtatni kell a 39.1-ben is",
+            "Excalibur Egyben",
+            "Excalibur Újrakovácsolva"
+          ]
         },
         {
           "id": 1388,
@@ -4233,13 +4506,17 @@
           "id": 1392,
           "source": "New English Text",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1398,
           "source": "Test Cine",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy szövegmaradvány"
+          ]
         },
         {
           "id": 1399,
@@ -4345,13 +4622,17 @@
           "id": 1429,
           "source": "BIRTHDAY:",
           "translation": "SZÜLETETT:",
-          "comment": "CREDO: az életrajzba inkább hivatalosabb szöveg illik, nem születésnap, de azt hiszem az lbs, birthday, country és a többi meg sem jelenik, maradvány"
+          "comment": [
+            "CREDO: az életrajzba inkább hivatalosabb szöveg illik, nem születésnap, de azt hiszem az lbs, birthday, country és a többi meg sem jelenik, maradvány"
+          ]
         },
         {
           "id": 1430,
           "source": "COUNTRY OF ORIGIN:",
           "translation": "SZÁRMAZÁSI ORSZÁG:",
-          "comment": "CREDO: kicsit erőltetett, talán elég a származás, bár azt hiszem ez sem jelenik meg"
+          "comment": [
+            "CREDO: kicsit erőltetett, talán elég a származás, bár azt hiszem ez sem jelenik meg"
+          ]
         },
         {
           "id": 1431,
@@ -4387,7 +4668,9 @@
           "id": 1437,
           "source": "28",
           "translation": "28",
-          "comment": "CREDO: de megfiatalodott a kis hölgy, azért eredetileg 68-as volt, tehát a Legend megjelenésekor 38, de asszem ez sem jelenik meg"
+          "comment": [
+            "CREDO: de megfiatalodott a kis hölgy, azért eredetileg 68-as volt, tehát a Legend megjelenésekor 38, de asszem ez sem jelenik meg"
+          ]
         },
         {
           "id": 1438,
@@ -4403,7 +4686,9 @@
           "id": 1440,
           "source": "England",
           "translation": "Anglia",
-          "comment": "CREDO: persze, ha a hivatalosabb hangnemű életrajzban megjelenik, és ez valóban oda passzol, akkor Nagy-Britannia, de szerintem nem jelenik meg"
+          "comment": [
+            "CREDO: persze, ha a hivatalosabb hangnemű életrajzban megjelenik, és ez valóban oda passzol, akkor Nagy-Britannia, de szerintem nem jelenik meg"
+          ]
         },
         {
           "id": 1441,
@@ -4474,7 +4759,9 @@
           "id": 1459,
           "source": "Country?",
           "translation": "Ország?",
-          "comment": "CREDO: ha ez a hivatalosabb életrajz része, lakhely, bár azt hiszem nem jelenik meg"
+          "comment": [
+            "CREDO: ha ez a hivatalosabb életrajz része, lakhely, bár azt hiszem nem jelenik meg"
+          ]
         },
         {
           "id": 1460,
@@ -4505,7 +4792,9 @@
           "id": 1465,
           "source": "ᠠ Character Profile - Sea Serpent",
           "translation": "ᠠ Életrajz - Hidra",
-          "comment": "CREDO: szerintem nem jelenik meg"
+          "comment": [
+            "CREDO: szerintem nem jelenik meg"
+          ]
         },
         {
           "id": 1466,
@@ -4546,7 +4835,9 @@
           "id": 1473,
           "source": "Shogo Takamoto was a rising star in the Japanese mob for years and now is a Yakuza Kumicho (boss).  He has a love of ancient weapons, and he became a fixture in the upscale black market, frustrating collectors and adventurers alike with his mixing of forgeries with authentic rare items, using the strength of the Yakuza to protect himself from cheated buyers.  A confrontation with Lara Croft over some forged items, however, led to a loss of face so extreme that he was forced to withdraw from the antiquities underground.  Why he did not kill her remains a mystery within the Yakuza, because the idea of him being unable to kill her is beyond belief.",
           "translation": "Shogo Takamoto évekig emelkedő csillag volt a japán maffia egén, mostanra Jakuza Kumicsóvá (főnökké) vált. Imádja a régi fegyvereket, és bebetonozta magát a feketepiac élvonalába, a gyűjtőket és a kalandorokat egyaránt összezavarja a változatos hamisítványaival és a valódi ritkaságaival, az átvert vásárlóitól pedig a Jakuza erejével védi önmagát. Egy hamisítványok körüli nézeteltérése Lara Crofttal ugyanakkor olyan komoly megaláztatáshoz vezetett, aminek következtében kénytelen volt visszavonulni a régiségkereskedő alvilágból. Az, hogy miért nem végzett a nővel, máig megválaszolatlan kérdés a Jakuza köreiben, mivel az elképzelhetetlen, hogy ő maradt volna alul.",
-          "comment": "CREDO: a japán szöveget, mivel az oroszhoz hasonlóan más karakterekkel írják, ejtés alapján írjuk át, innen a Jakuza Kumicsó, persze változtathatunk"
+          "comment": [
+            "CREDO: a japán szöveget, mivel az oroszhoz hasonlóan más karakterekkel írják, ejtés alapján írjuk át, innen a Jakuza Kumicsó, persze változtathatunk"
+          ]
         },
         {
           "id": 1474,
@@ -4602,7 +4893,9 @@
           "id": 1490,
           "source": "England",
           "translation": "Anglia",
-          "comment": "CREDO: persze, ha a hivatalosabb hangnemű életrajzban megjelenik, és ez valóban oda passzol, akkor Nagy-Britannia, de szerintem nem jelenik meg"
+          "comment": [
+            "CREDO: persze, ha a hivatalosabb hangnemű életrajzban megjelenik, és ez valóban oda passzol, akkor Nagy-Britannia, de szerintem nem jelenik meg"
+          ]
         },
         {
           "id": 1491,
@@ -4628,13 +4921,17 @@
           "id": 1495,
           "source": "Bios/Concepts",
           "translation": "Életrajzok/Ismertetők",
-          "comment": "CREDO: itt úgy rémlik a Concepts pályaleírásokat takar, ezt írtam régebben, később majd ellenőrzöm"
+          "comment": [
+            "CREDO: itt úgy rémlik a Concepts pályaleírásokat takar, ezt írtam régebben, később majd ellenőrzöm"
+          ]
         },
         {
           "id": 1496,
           "source": "ᠠ Location Concepts",
           "translation": "ᠠ Helyszín Ismertetők",
-          "comment": "CREDO: szintén ellenőrizni, hogy nem koncepciós rajzokra értette-e"
+          "comment": [
+            "CREDO: szintén ellenőrizni, hogy nem koncepciós rajzokra értette-e"
+          ]
         },
         {
           "id": 1497,
@@ -4665,7 +4962,9 @@
           "id": 1502,
           "source": "PLACEHOLDER Bolivia is kick ass. You should go there. There are lots of rocks and some nice streams and stuff. My brother drowned in a stream when he was five, but that's another story. Anyway, Bolivia is really hot and there are a lot of mosquitos, which probably means you'll catch like West Nile virus or yellow fever or something if you get bitten by one. I wear lots of bug repellant so I don't die.\n\nI got drunk and woke up in this sweet old ruined temple. There were carvings of scary stuff and a bunch of bodies stuffed into old potato sacks. I did some looting and then flow home in a drug smuggling plane so I could sell my wares on e-bay.",
           "translation": "?",
-          "comment": "CREDO: nyilvánvaló, hogy tesztszöveg, de kurvára vicces"
+          "comment": [
+            "CREDO: nyilvánvaló, hogy tesztszöveg, de kurvára vicces"
+          ]
         },
         {
           "id": 1503,
@@ -4686,7 +4985,9 @@
           "id": 1506,
           "source": "Timoteca Cenotes",
           "translation": "Timoteca Cenotes",
-          "comment": "CREDO: passz, szerintem valami maradvány"
+          "comment": [
+            "CREDO: passz, szerintem valami maradvány"
+          ]
         },
         {
           "id": 1507,
@@ -4702,7 +5003,9 @@
           "id": 1509,
           "source": "ᠠ Location Concepts - Bolivia",
           "translation": "ᠠ Helyszín Vázlatok - Bolívia",
-          "comment": "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          "comment": [
+            "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          ]
         },
         {
           "id": 1510,
@@ -4713,7 +5016,9 @@
           "id": 1511,
           "source": "ᠠ Location Concepts - England",
           "translation": "ᠠ Helyszín Vázlatok - Anglia",
-          "comment": "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          "comment": [
+            "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          ]
         },
         {
           "id": 1512,
@@ -4724,7 +5029,9 @@
           "id": 1513,
           "source": "ᠠ Location Concepts - Nepal",
           "translation": "ᠠ Helyszín Vázlatok - Nepál",
-          "comment": "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          "comment": [
+            "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          ]
         },
         {
           "id": 1514,
@@ -4735,7 +5042,9 @@
           "id": 1515,
           "source": "ᠠ Location Concepts - Japan",
           "translation": "ᠠ Helyszín Vázlatok - Japán",
-          "comment": "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          "comment": [
+            "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          ]
         },
         {
           "id": 1516,
@@ -4751,7 +5060,9 @@
           "id": 1520,
           "source": "ᠠ Location Concepts - Peru",
           "translation": "ᠠ Helyszín Vázlatok - Peru",
-          "comment": "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          "comment": [
+            "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          ]
         },
         {
           "id": 1521,
@@ -4762,7 +5073,9 @@
           "id": 1522,
           "source": "ᠠ Location Concepts - Kazakhstan",
           "translation": "ᠠ Helyszín Vázlatok - Kazahsztán",
-          "comment": "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          "comment": [
+            "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          ]
         },
         {
           "id": 1523,
@@ -4773,7 +5086,9 @@
           "id": 1524,
           "source": "ᠠ Location Concepts - West Africa",
           "translation": "ᠠ Helyszín Vázlatok - Nyugat-Afrika",
-          "comment": "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          "comment": [
+            "CREDO: lehet, hogy nem koncepciós rajzok vannak itt, hanem ide is az Ismertető a jó, ellenőrizni"
+          ]
         },
         {
           "id": 1527,
@@ -4829,7 +5144,9 @@
           "id": 1541,
           "source": "Catsuit",
           "translation": "Tolvajruha",
-          "comment": "CREDO: avagy a Cicaruci visszatér"
+          "comment": [
+            "CREDO: avagy a Cicaruci visszatér"
+          ]
         },
         {
           "id": 1542,
@@ -4870,13 +5187,17 @@
           "id": 1549,
           "source": "Goth",
           "translation": "Goth",
-          "comment": "CREDO: meghagyom, inkább \"goth szubkultúraként\" használják ezt nálunk is, mert nem kizárólag \"gótikus\" elemekből épül divat, viktoriánussal kevert"
+          "comment": [
+            "CREDO: meghagyom, inkább \"goth szubkultúraként\" használják ezt nálunk is, mert nem kizárólag \"gótikus\" elemekből épül divat, viktoriánussal kevert"
+          ]
         },
         {
           "id": 1550,
           "source": "Goth, Lace Shirt",
           "translation": "Goth, Csipkés Felsővel",
-          "comment": "CREDO: meghagyom, inkább \"goth szubkultúraként\" használják ezt nálunk is, mert nem kizárólag \"gótikus\" elemekből épül divat, viktoriánussal kevert"
+          "comment": [
+            "CREDO: meghagyom, inkább \"goth szubkultúraként\" használják ezt nálunk is, mert nem kizárólag \"gótikus\" elemekből épül divat, viktoriánussal kevert"
+          ]
         },
         {
           "id": 1552,
@@ -4902,7 +5223,9 @@
           "id": 1556,
           "source": "Legend, Pink",
           "translation": "Legend, Rózsaszín",
-          "comment": "CREDO: bár a pink is jövevényszónak számít, ha akadémiai szinten nem is, divat, design stb. szakmákban igen, ha gondoljátok, mehet az"
+          "comment": [
+            "CREDO: bár a pink is jövevényszónak számít, ha akadémiai szinten nem is, divat, design stb. szakmákban igen, ha gondoljátok, mehet az"
+          ]
         },
         {
           "id": 1559,
@@ -4948,7 +5271,9 @@
           "id": 1568,
           "source": "Winter, Pink",
           "translation": "Téli, Rózsaszín",
-          "comment": "CREDO: bár a pink is jövevényszónak számít, ha akadémiai szinten nem is, divat, design stb. szakmákban igen, ha gondoljátok, mehet az"
+          "comment": [
+            "CREDO: bár a pink is jövevényszónak számít, ha akadémiai szinten nem is, divat, design stb. szakmákban igen, ha gondoljátok, mehet az"
+          ]
         },
         {
           "id": 1570,
@@ -4964,7 +5289,9 @@
           "id": 1572,
           "source": "Winter, Pink No Coat",
           "translation": "Téli, Rózsaszín, Kabát Nélkül",
-          "comment": "CREDO: bár a pink is jövevényszónak számít, ha akadémiai szinten nem is, divat, design stb. szakmákban igen, ha gondoljátok, mehet az"
+          "comment": [
+            "CREDO: bár a pink is jövevényszónak számít, ha akadémiai szinten nem is, divat, design stb. szakmákban igen, ha gondoljátok, mehet az"
+          ]
         },
         {
           "id": 1575,
@@ -4990,13 +5317,17 @@
           "id": 1588,
           "source": "Textureless Mode Cheatcode Enabled",
           "translation": "Textúra Nélküli Mód Csalás Engedélyezve",
-          "comment": "CREDO: de lehet, hogy bekapcsolva, attól függ, a cheat megnyitásakor vagy alkalmazásakor írja-e ki"
+          "comment": [
+            "CREDO: de lehet, hogy bekapcsolva, attól függ, a cheat megnyitásakor vagy alkalmazásakor írja-e ki"
+          ]
         },
         {
           "id": 1589,
           "source": "Wireframe Mode Cheatcode Enabled",
           "translation": "Dróthálós Mód Csalás Engedélyezve",
-          "comment": "CREDO: de lehet, hogy bekapcsolva, attól függ, a cheat megnyitásakor vagy alkalmazásakor írja-e ki"
+          "comment": [
+            "CREDO: de lehet, hogy bekapcsolva, attól függ, a cheat megnyitásakor vagy alkalmazásakor írja-e ki"
+          ]
         },
         {
           "id": 1594,
@@ -5077,7 +5408,9 @@
           "id": 1609,
           "source": "The Bestiary (TR5)",
           "translation": "A Bestiárium (TR5)",
-          "comment": "CREDO: passz, hogy mi lehet ez a játékban, ellenőrizni, ha kell, változtatni"
+          "comment": [
+            "CREDO: passz, hogy mi lehet ez a játékban, ellenőrizni, ha kell, változtatni"
+          ]
         },
         {
           "id": 1610,
@@ -5168,7 +5501,9 @@
           "id": 1634,
           "source": "FILE    EDIT    VIEW   OPTIONS    HELP",
           "translation": "ÁLLOMÁNY    SZERKESZTÉS    MEGTEKINTÉS   BEÁLLÍTÁSOK    SEGÍTSÉG",
-          "comment": "CREDO: nem tudom megjelenik-e valahol, látszólag a formázás fontos, lehet, hogy sűrűbbre kell húzni, tesztelni"
+          "comment": [
+            "CREDO: nem tudom megjelenik-e valahol, látszólag a formázás fontos, lehet, hogy sűrűbbre kell húzni, tesztelni"
+          ]
         },
         {
           "id": 1635,
@@ -5189,7 +5524,9 @@
           "id": 1638,
           "source": "Location Concepts",
           "translation": "Helyszín Ismertetők",
-          "comment": "CREDO: szintén ellenőrizni, hogy nem koncepciós rajzokra értette-e"
+          "comment": [
+            "CREDO: szintén ellenőrizni, hogy nem koncepciós rajzokra értette-e"
+          ]
         },
         {
           "id": 1639,
@@ -5215,7 +5552,9 @@
           "id": 1645,
           "source": "Pistol Upgrades",
           "translation": "Pisztoly Fejlesztések",
-          "comment": "CREDO: a Word egyben is elfogadja, legyen úgy?"
+          "comment": [
+            "CREDO: a Word egyben is elfogadja, legyen úgy?"
+          ]
         },
         {
           "id": 1646,
@@ -5291,7 +5630,9 @@
           "id": 1660,
           "source": "Skull Bridge",
           "translation": "Koponya Híd",
-          "comment": "CREDO: a Word elfogadja egyben is, legyen úgy?"
+          "comment": [
+            "CREDO: a Word elfogadja egyben is, legyen úgy?"
+          ]
         },
         {
           "id": 1661,
@@ -5332,7 +5673,9 @@
           "id": 1668,
           "source": "Ducati Monster",
           "translation": "Ducati Monster",
-          "comment": "CREDO: mivel márkanév, nem fordítjuk szörnyetegnek :)"
+          "comment": [
+            "CREDO: mivel márkanév, nem fordítjuk szörnyetegnek :)"
+          ]
         },
         {
           "id": 1669,
@@ -5343,13 +5686,17 @@
           "id": 1670,
           "source": "Jeep Commander",
           "translation": "Jeep Commander",
-          "comment": "CREDO: márkanév"
+          "comment": [
+            "CREDO: márkanév"
+          ]
         },
         {
           "id": 1671,
           "source": "Jeep Wrangler",
           "translation": "Jeep Wrangler",
-          "comment": "CREDO: márkanév"
+          "comment": [
+            "CREDO: márkanév"
+          ]
         },
         {
           "id": 1672,
@@ -5630,7 +5977,9 @@
           "id": 1727,
           "source": "Lady Croft",
           "translation": "Lady Croft",
-          "comment": "CREDO: felteszem maradhat, a TRA-nál is behoztuk a Lord Croft szöveget a beszélőknél"
+          "comment": [
+            "CREDO: felteszem maradhat, a TRA-nál is behoztuk a Lord Croft szöveget a beszélőknél"
+          ]
         },
         {
           "id": 1728,
@@ -5641,7 +5990,9 @@
           "id": 1729,
           "source": "Pool Platform",
           "translation": "Medence Emelvény",
-          "comment": "CREDO: nem tudom pontoan melyik tárgy lehet, de nem a dobbantó, talán a kihúzható platform, ellenőrizni"
+          "comment": [
+            "CREDO: nem tudom pontoan melyik tárgy lehet, de nem a dobbantó, talán a kihúzható platform, ellenőrizni"
+          ]
         },
         {
           "id": 1730,
@@ -5877,7 +6228,9 @@
           "id": 1778,
           "source": "Ducati Superbike",
           "translation": "Ducati Superbike",
-          "comment": "CREDO: márkanév"
+          "comment": [
+            "CREDO: márkanév"
+          ]
         },
         {
           "id": 1779,
@@ -5888,7 +6241,9 @@
           "id": 1780,
           "source": "Evening Lara - Alt.",
           "translation": "Estélyis Lara - 2",
-          "comment": "CREDO: vagy mi legyen itt, az alternatív jövevényszó, lehetne a kettőt A-B vagy 1-2 módszerrel jelezni, de hátha a második meg nem jelenő maradvány"
+          "comment": [
+            "CREDO: vagy mi legyen itt, az alternatív jövevényszó, lehetne a kettőt A-B vagy 1-2 módszerrel jelezni, de hátha a második meg nem jelenő maradvány"
+          ]
         },
         {
           "id": 1781,
@@ -5974,7 +6329,9 @@
           "id": 1799,
           "source": "Pistol Upgrades",
           "translation": "Pisztoly Fejlesztések",
-          "comment": "CREDO: a Word egyben is elfogadja, legyen úgy?"
+          "comment": [
+            "CREDO: a Word egyben is elfogadja, legyen úgy?"
+          ]
         },
         {
           "id": 1800,
@@ -6015,7 +6372,9 @@
           "id": 1808,
           "source": "ᠠ Pistol Upgrades",
           "translation": "ᠠ Pisztoly Fejlesztések",
-          "comment": "CREDO: a Word egyben is elfogadja, legyen úgy?"
+          "comment": [
+            "CREDO: a Word egyben is elfogadja, legyen úgy?"
+          ]
         },
         {
           "id": 4873,

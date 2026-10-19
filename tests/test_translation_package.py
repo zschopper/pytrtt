@@ -24,7 +24,7 @@ VALID_PACKAGE = """{
       "id": 0,
       "source": "Choose \\\"quality\\\"\\nnow",
       "translation": "Válassz minőséget",
-      "comment": "Rövid gombfelirat."
+      "comment": ["Rövid gombfelirat."]
     },
     {"id": 1, "source": "Not translated", "translation": null},
     {"id": 2, "source": "Intentionally empty", "translation": ""}
@@ -40,7 +40,7 @@ def test_parse_package_keeps_metadata_comments_and_translation_states() -> None:
     assert package.target_language == "hu"
     assert package.entries[0].source == 'Choose "quality"\nnow'
     assert package.entries[0].translation == "Válassz minőséget"
-    assert package.entries[0].comment == "Rövid gombfelirat."
+    assert package.entries[0].comment == ("Rövid gombfelirat.",)
     assert package.entries[1].translation is None
     assert package.entries[2].translation == ""
 
@@ -87,7 +87,7 @@ def test_serialize_and_parse_keeps_legacy_character_substitution_flag() -> None:
         VALID_PACKAGE.replace(
             '"game_id": "tomb-raider-anniversary",', '"game_id": "x", "game_id": "y",'
         ),
-        VALID_PACKAGE.replace('"comment": "Rövid gombfelirat."', '"comment": 7'),
+        VALID_PACKAGE.replace('"comment": ["Rövid gombfelirat."]', '"comment": 7'),
     ],
 )
 def test_rejects_duplicate_keys_ids_unsupported_schemas_and_invalid_types(content: str) -> None:
@@ -110,7 +110,9 @@ def test_export_apply_round_trip_preserves_comments_outside_game_resource() -> N
         source_language=editable.source_language,
         target_language=editable.target_language,
         entries=(
-            TranslationEntry(translated.entry_id, translated.source, "Árvíztűrő ŐőŰű", "Fit check"),
+            TranslationEntry(
+                translated.entry_id, translated.source, "Árvíztűrő ŐőŰű", ("Fit check",)
+            ),
             editable.entries[1],
         ),
     )

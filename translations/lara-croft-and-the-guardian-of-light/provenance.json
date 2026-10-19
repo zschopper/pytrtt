@@ -1,0 +1,260 @@
+{
+  "game_id": "lara-croft-and-the-guardian-of-light",
+  "steam_build_id": "11395",
+  "steam_app_id": "35130",
+  "source_language": "en",
+  "target_language": "hu",
+  "support_status": "experimental; Steam installation/readback and copy restoration verified; in-game appearance pending",
+  "historical_reference": {
+    "directory": "references/saját/lcgol_magyaritas",
+    "description": "Legacy Hungarian v0.9 for game 1.03; info.xml generated 2014-06-28; TMX generated 2015-06-02",
+    "units": 994,
+    "archive_members_equal_loose_files": true,
+    "files": [
+      {
+        "file": "hu.tmx",
+        "sha256": "5057dd84086c5fd73daa30eba71ad9f8e7d1c33a5ebcb228d2ddf10b0b67c7b8"
+      },
+      {
+        "file": "info.xml",
+        "sha256": "fae0726c044cab3fa1babba6f9e89c3727f9d03d120ff47bc2c84aba3e4061bf"
+      },
+      {
+        "file": "lcgol.trtr",
+        "sha256": "9b1f1f640a41928e3517ce6723a6524069b0d1f750f01f6abd20c431ffa64bff"
+      }
+    ],
+    "individual_translation_authors": "Not identified in the supplied info.xml or TMX; existing translation credits remain with their contributors."
+  },
+  "records": {
+    "menu": 8214,
+    "subtitles": 283
+  },
+  "missing_translations": 0,
+  "controller_icon_binding": "Replace each source icon by a numbered legacy placeholder; reinsert the original glyph into the Hungarian text; reject icon-count differences.",
+  "runtime_character_substitutions": {
+    "ő": "ô",
+    "ű": "û",
+    "Ő": "Ô",
+    "Ű": "Û"
+  },
+  "font_note": "The maintained package now patches the active DRM v19 / PCD9 DXT5 Latin atlas. Existing runtime substitutions map ŐőŰű to ÔôÛû; these four atlas slots now draw double-acutes using the native acute strokes and outlines. Editable JSON remains correct Unicode. The character table, metrics, references, unrelated DRM sections and existing game text are unchanged. In-game appearance of this new font is not yet verified.",
+  "font_replacement_applied": true,
+  "gameplay_verified": false,
+  "package_sha256": "a53b3a2f91bfdebfbdb6002f66de685070cb7b2cee7f3dc528129949c0fbaf89",
+  "baseline_report": "work/runs/lcgol/11395/original-baseline.json",
+  "extraction_report": "work/runs/lcgol/11395/export-en/extraction-report.json",
+  "discovery_report": "work/runs/lcgol/11395/discovery.json",
+  "manual_unique_additions": 115,
+  "coverage_report": "work/runs/lcgol/11395/coverage-report.json",
+  "verification": {
+    "tests_passed": 236,
+    "default_tests_deselected": 18,
+    "scoped_ruff": "passed",
+    "scoped_mypy": "passed",
+    "profile_compilation_reproduces_package": true
+  },
+  "copy_cycle": {
+    "verified_records": 8497,
+    "unchanged_opaque_cine_blocks": 78653,
+    "errors": [],
+    "original_regions_unchanged": true,
+    "package_sha256": "f525e163022200e11d0b8457fff22553418409b4e3d6e4364e1a644e1e536045",
+    "transaction": "work/transactions/lcgol/11395/copy-verification",
+    "changed_files": [
+      "bigfile.000",
+      "PACK2.000",
+      "PACK4.000",
+      "bigfile.001",
+      "patch.001",
+      "PACK1.000",
+      "patch.000",
+      "PACK5.000",
+      "PACK3.000"
+    ],
+    "backup_bytes": 37832,
+    "missing_translations": 0,
+    "build_id": "11395",
+    "gameplay_verified": false,
+    "restored_sha256_match": true
+  },
+  "user_authorized_steam_installation": true,
+  "first_steam_recovery_journal": "work/transactions/lcgol/11395/steam-hu",
+  "current_profile_sha256": "fbf506cb6118e58fdd060b0cc95cd8ba557bfc7fb148c70cd176842ab87805fe",
+  "profile_note": "The current profile adds a whole-resource fonts/raw/1 rule for the generalbank collection. Existing archive and text rules and Hungarian fallback substitutions are unchanged.",
+  "steam_installation": {
+    "verified_records": 8497,
+    "unchanged_opaque_cine_blocks": 78653,
+    "errors": [],
+    "original_regions_unchanged": true,
+    "package_sha256": "f525e163022200e11d0b8457fff22553418409b4e3d6e4364e1a644e1e536045",
+    "transaction": "work/transactions/lcgol/11395/steam-hu",
+    "changed_files": [
+      "bigfile.001",
+      "PACK2.000",
+      "bigfile.000",
+      "PACK3.000",
+      "PACK5.000",
+      "patch.000",
+      "PACK1.000",
+      "patch.001",
+      "PACK4.000"
+    ],
+    "backup_bytes": 37832,
+    "missing_translations": 0,
+    "build_id": "11395",
+    "gameplay_verified": false
+  },
+  "steam_installation_report": "work/runs/lcgol/11395/steam-installed-verification.json",
+  "translation_quality": "Historical wording retained; new unique additions need contextual in-game review.",
+  "user_menu_verification": {
+    "date": "2026-10-15",
+    "translation": "User confirmed the menu translation works correctly.",
+    "glyphs": "User confirmed circumflex accents, consistent with the configured historical fallback.",
+    "scope": "Menu observation only; subtitle, DLC and full-game coverage not established.",
+    "native_double_acutes_verified": false
+  },
+  "font_localization": {
+    "date": "2026-10-18",
+    "archive": "patch.000",
+    "archive_family": "patch0",
+    "resource_path": "pc-w\\generalbank.drm",
+    "resource_hash": "B3AAAFD6",
+    "archive_locale": "FFFFFFFF",
+    "decoded_format": "DRM v19",
+    "font_metadata": {
+      "type": 7,
+      "id": 33,
+      "entries": 205,
+      "changed": false
+    },
+    "glyph_atlas": {
+      "type": 5,
+      "id": 2671,
+      "format": "PCD9 DXT5",
+      "width": 1024,
+      "height": 512,
+      "mip_levels": 10
+    },
+    "method": "Replace the four established circumflex fallback images with native-styled Hungarian double-acutes; duplicate the existing acute accents and preserve their color/alpha outlines. Only DXT blocks covering these accents and their mip footprints change.",
+    "prepared": {
+      "original_cdrm_sha256": "f282693f79f670b038da902901b2c1fa05d53341167e585992c9555fac21f954",
+      "replacement_cdrm_sha256": "055ec9412b608cdc3c662467bcaab5e240fb23c1790960e974f46636068dc3f6",
+      "source_bytes": 1925196,
+      "replacement_bytes": 1925404,
+      "decoded_size": 10032785,
+      "only_changed_embedded_resource": {
+        "type": 5,
+        "id": 2671
+      },
+      "character_table_unchanged": true,
+      "unrelated_resources_unchanged": true,
+      "all_mip_levels_updated": true,
+      "glyph_changes": [
+        {
+          "slot": "Ô",
+          "display": "Ő",
+          "width": 33,
+          "x": 762,
+          "y": 155,
+          "accent_rows": 9
+        },
+        {
+          "slot": "ô",
+          "display": "ő",
+          "width": 26,
+          "x": 746,
+          "y": 206,
+          "accent_rows": 15
+        },
+        {
+          "slot": "Û",
+          "display": "Ű",
+          "width": 29,
+          "x": 46,
+          "y": 206,
+          "accent_rows": 9
+        },
+        {
+          "slot": "û",
+          "display": "ű",
+          "width": 24,
+          "x": 940,
+          "y": 206,
+          "accent_rows": 15
+        }
+      ],
+      "font_asset": "translations/lara-croft-and-the-guardian-of-light/assets/fonts/generalbank-patch-hu.cdrm",
+      "package_sha256": "7680c144a99e5e0a3fd92ad0ee4beb8447ab5ab6d9d66b840b2d2aed2813c653",
+      "gameplay_verified": false,
+      "rgba_outline_preserved": true,
+      "unmodified_texture_blocks_identical": true
+    },
+    "copy_verification": {
+      "font_sha256_verified": true,
+      "original_archive_regions_unchanged": true,
+      "all_preexisting_text_resource_bodies_unchanged": true,
+      "transaction": "work/transactions/lcgol/11395/font-hu-copy-rgba-20261018",
+      "writes": 2,
+      "package_sha256": "7680c144a99e5e0a3fd92ad0ee4beb8447ab5ab6d9d66b840b2d2aed2813c653",
+      "gameplay_verified": false,
+      "restored_twice_sha256_match": true,
+      "input_patch_sha256": "0917d75f54a749182627eedabbcb0867c02d2f37a29314959c78f4a26a63dfb7"
+    },
+    "steam_verification": {
+      "font_sha256_verified": true,
+      "original_archive_regions_unchanged": true,
+      "all_preexisting_text_resource_bodies_unchanged": true,
+      "transaction": "work/transactions/lcgol/11395/steam-font-hu-20261018",
+      "changed_files": [
+        "patch.000"
+      ],
+      "package_sha256": "7680c144a99e5e0a3fd92ad0ee4beb8447ab5ab6d9d66b840b2d2aed2813c653",
+      "gameplay_verified": false,
+      "installed_patch_sha256": "d2a0017202d2fb10bd9d6fde3afc98ef607139bbefcbac6dc16ff8ed130e596d",
+      "first_translation_recovery_preserved": true
+    },
+    "full_package_dry_run": {
+      "package_sha256": "7680c144a99e5e0a3fd92ad0ee4beb8447ab5ab6d9d66b840b2d2aed2813c653",
+      "missing_translations": 0,
+      "writes": 73,
+      "files": [
+        "PACK2.000",
+        "patch.000",
+        "PACK3.000",
+        "PACK1.000",
+        "bigfile.001",
+        "bigfile.000",
+        "PACK4.000",
+        "patch.001",
+        "PACK5.000"
+      ],
+      "font_family": "patch0",
+      "source": "Unmodified .orig backup; read-only planning only"
+    },
+    "tests_passed": 275,
+    "integration_tests_deselected": 18,
+    "scoped_ruff": "passed",
+    "scoped_mypy": "passed",
+    "windows_gameplay_verified": false,
+    "first_recovery_journal_preserved": true,
+    "restoration_order": "Restore steam-font-hu-20261018 first to return to the previous Hungarian installation; only then restore the original steam-hu transaction if returning to English.",
+    "layered_font_extraction_preserves_separate_recovery_files": true
+  },
+  "setup_annotations": {
+    "marked_records": 288,
+    "report": "work/runs/lctoo/477027/steam-hu-20261018/setup-annotations.json",
+    "translations_changed": false,
+    "substitutions_changed": false,
+    "steam_reinstall_required": false,
+    "installed_runtime_payload_unchanged": true
+  },
+  "current_steam_state": {
+    "date": "2026-10-19",
+    "language": "en",
+    "hungarian_package_active": false,
+    "restoration_requested_by": "user",
+    "verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
+    "historical_translation_and_game_test_results_preserved": true
+  }
+}

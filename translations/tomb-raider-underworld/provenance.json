@@ -1,0 +1,5115 @@
+{
+  "source_directory": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider Underworld.HU",
+  "source_kind": "Official Hungarian edition according to user; Central European language slots independently observed.",
+  "build_id": "official-hu-2008",
+  "build_id_kind": "local reference label; not a verified Steam build ID",
+  "menu_language_code": 2,
+  "subtitle_language_code": 12,
+  "archive_boundary": 2146435072,
+  "index_entries": 3220,
+  "menu_resources": 1,
+  "menu_records": 1448,
+  "subtitle_resources": 539,
+  "subtitle_records": 859,
+  "bilingual_subtitle_records": 863,
+  "counters": {
+    "cine_candidates": 1725,
+    "parsed_cine_resources": 1724,
+    "parsed_cine_blocks": 744058,
+    "cine_without_subtitles": 1189,
+    "menu_placeholders": 3687
+  },
+  "rejected_candidates": [
+    {
+      "index": 618,
+      "hash": "2D1E9879",
+      "reason": "invalid or unsupported CINE block"
+    }
+  ],
+  "unpaired_subtitle_occurrences": [
+    {
+      "hash": "9D674583",
+      "block_id": 1259,
+      "english_count": 1,
+      "hungarian_count": 0
+    },
+    {
+      "hash": "C1399929",
+      "block_id": 611,
+      "english_count": 1,
+      "hungarian_count": 0
+    },
+    {
+      "hash": "C1399929",
+      "block_id": 1105,
+      "english_count": 1,
+      "hungarian_count": 0
+    },
+    {
+      "hash": "C1399929",
+      "block_id": 1219,
+      "english_count": 1,
+      "hungarian_count": 0
+    },
+    {
+      "hash": "9A8C5301",
+      "block_id": 347,
+      "english_count": 1,
+      "hungarian_count": 0
+    },
+    {
+      "hash": "9A8C5301",
+      "block_id": 353,
+      "english_count": 0,
+      "hungarian_count": 1
+    },
+    {
+      "hash": "243C50D2",
+      "block_id": 677,
+      "english_count": 1,
+      "hungarian_count": 0
+    },
+    {
+      "hash": "DF1A6565",
+      "block_id": 953,
+      "english_count": 1,
+      "hungarian_count": 0
+    },
+    {
+      "hash": "7BCC947F",
+      "block_id": 8033,
+      "english_count": 0,
+      "hungarian_count": 1
+    },
+    {
+      "hash": "7BCC947F",
+      "block_id": 8237,
+      "english_count": 0,
+      "hungarian_count": 1
+    }
+  ],
+  "resources": [
+    {
+      "index": 777,
+      "hash": "3B1C492A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246013952,
+      "size": 76720,
+      "section": "cine"
+    },
+    {
+      "index": 41,
+      "hash": "02F3A960",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246091776,
+      "size": 91184,
+      "section": "cine"
+    },
+    {
+      "index": 2472,
+      "hash": "BE6CB434",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246183936,
+      "size": 74080,
+      "section": "cine"
+    },
+    {
+      "index": 175,
+      "hash": "0AE88C6A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246259712,
+      "size": 71408,
+      "section": "cine"
+    },
+    {
+      "index": 820,
+      "hash": "3EFC1453",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246331392,
+      "size": 74960,
+      "section": "cine"
+    },
+    {
+      "index": 198,
+      "hash": "0D1E6F6C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246407168,
+      "size": 76880,
+      "section": "cine"
+    },
+    {
+      "index": 2699,
+      "hash": "D3B81F2F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246484992,
+      "size": 68688,
+      "section": "cine"
+    },
+    {
+      "index": 2845,
+      "hash": "DFFC4812",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246554624,
+      "size": 82976,
+      "section": "cine"
+    },
+    {
+      "index": 1146,
+      "hash": "56C8E231",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246638592,
+      "size": 87344,
+      "section": "cine"
+    },
+    {
+      "index": 2737,
+      "hash": "D7E76D18",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246726656,
+      "size": 124160,
+      "section": "cine"
+    },
+    {
+      "index": 2726,
+      "hash": "D6584256",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246851584,
+      "size": 112608,
+      "section": "cine"
+    },
+    {
+      "index": 2665,
+      "hash": "D0118E1E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 246964224,
+      "size": 97232,
+      "section": "cine"
+    },
+    {
+      "index": 1166,
+      "hash": "58E805BA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247062528,
+      "size": 87376,
+      "section": "cine"
+    },
+    {
+      "index": 2573,
+      "hash": "C7D1270C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247150592,
+      "size": 85632,
+      "section": "cine"
+    },
+    {
+      "index": 2743,
+      "hash": "D878A5DD",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247236608,
+      "size": 84688,
+      "section": "cine"
+    },
+    {
+      "index": 2492,
+      "hash": "C027C40A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247322624,
+      "size": 165504,
+      "section": "cine"
+    },
+    {
+      "index": 1230,
+      "hash": "5D0858C3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247488512,
+      "size": 116112,
+      "section": "cine"
+    },
+    {
+      "index": 2580,
+      "hash": "C83CE100",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247605248,
+      "size": 115136,
+      "section": "cine"
+    },
+    {
+      "index": 2817,
+      "hash": "DD98F8A4",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247721984,
+      "size": 72272,
+      "section": "cine"
+    },
+    {
+      "index": 2660,
+      "hash": "CFCA0206",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247795712,
+      "size": 117792,
+      "section": "cine"
+    },
+    {
+      "index": 904,
+      "hash": "44A9CAAC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247914496,
+      "size": 65808,
+      "section": "cine"
+    },
+    {
+      "index": 2936,
+      "hash": "E7BDB324",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 247982080,
+      "size": 118784,
+      "section": "cine"
+    },
+    {
+      "index": 2539,
+      "hash": "C4396ACB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248100864,
+      "size": 74896,
+      "section": "cine"
+    },
+    {
+      "index": 2849,
+      "hash": "E04B5022",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248176640,
+      "size": 107056,
+      "section": "cine"
+    },
+    {
+      "index": 2226,
+      "hash": "AA8438A6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248285184,
+      "size": 117984,
+      "section": "cine"
+    },
+    {
+      "index": 664,
+      "hash": "30AEFD11",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248403968,
+      "size": 99184,
+      "section": "cine"
+    },
+    {
+      "index": 587,
+      "hash": "2A1498C1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248504320,
+      "size": 88432,
+      "section": "cine"
+    },
+    {
+      "index": 735,
+      "hash": "37581E17",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248594432,
+      "size": 136816,
+      "section": "cine"
+    },
+    {
+      "index": 2285,
+      "hash": "AF6465DF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248731648,
+      "size": 61440,
+      "section": "cine"
+    },
+    {
+      "index": 825,
+      "hash": "3F433B1D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248793088,
+      "size": 88288,
+      "section": "cine"
+    },
+    {
+      "index": 655,
+      "hash": "2FF4C5B8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248883200,
+      "size": 76720,
+      "section": "cine"
+    },
+    {
+      "index": 752,
+      "hash": "38B5D81B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 248961024,
+      "size": 94704,
+      "section": "cine"
+    },
+    {
+      "index": 2109,
+      "hash": "A1448254",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249057280,
+      "size": 93696,
+      "section": "cine"
+    },
+    {
+      "index": 643,
+      "hash": "2F757109",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249151488,
+      "size": 69488,
+      "section": "cine"
+    },
+    {
+      "index": 478,
+      "hash": "21D42233",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249221120,
+      "size": 100784,
+      "section": "cine"
+    },
+    {
+      "index": 569,
+      "hash": "2883920F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249323520,
+      "size": 110848,
+      "section": "cine"
+    },
+    {
+      "index": 2143,
+      "hash": "A4A4DF2D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249436160,
+      "size": 91072,
+      "section": "cine"
+    },
+    {
+      "index": 464,
+      "hash": "2098B705",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249528320,
+      "size": 175504,
+      "section": "cine"
+    },
+    {
+      "index": 510,
+      "hash": "24347F4A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249704448,
+      "size": 75776,
+      "section": "cine"
+    },
+    {
+      "index": 556,
+      "hash": "276E5403",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249780224,
+      "size": 63280,
+      "section": "cine"
+    },
+    {
+      "index": 2448,
+      "hash": "BD054D42",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249843712,
+      "size": 60368,
+      "section": "cine"
+    },
+    {
+      "index": 228,
+      "hash": "0F19E521",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249905152,
+      "size": 79280,
+      "section": "cine"
+    },
+    {
+      "index": 809,
+      "hash": "3D95ED25",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 249985024,
+      "size": 162880,
+      "section": "cine"
+    },
+    {
+      "index": 144,
+      "hash": "08EF0627",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 250148864,
+      "size": 158480,
+      "section": "cine"
+    },
+    {
+      "index": 2144,
+      "hash": "A4B0AD23",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 250308608,
+      "size": 114256,
+      "section": "cine"
+    },
+    {
+      "index": 202,
+      "hash": "0D831AA9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 250423296,
+      "size": 139536,
+      "section": "cine"
+    },
+    {
+      "index": 508,
+      "hash": "24200D44",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 250564608,
+      "size": 107280,
+      "section": "cine"
+    },
+    {
+      "index": 170,
+      "hash": "0A75F9AF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 250673152,
+      "size": 88432,
+      "section": "cine"
+    },
+    {
+      "index": 2111,
+      "hash": "A150F05A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 250763264,
+      "size": 116944,
+      "section": "cine"
+    },
+    {
+      "index": 34,
+      "hash": "026EDCA5",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 250882048,
+      "size": 152240,
+      "section": "cine"
+    },
+    {
+      "index": 476,
+      "hash": "21C0503D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 251035648,
+      "size": 82208,
+      "section": "cine"
+    },
+    {
+      "index": 85,
+      "hash": "05983FA3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 251119616,
+      "size": 136848,
+      "section": "cine"
+    },
+    {
+      "index": 2286,
+      "hash": "AF7017D1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 251256832,
+      "size": 105440,
+      "section": "cine"
+    },
+    {
+      "index": 269,
+      "hash": "125896B1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 251363328,
+      "size": 96560,
+      "section": "cine"
+    },
+    {
+      "index": 650,
+      "hash": "2FE0B7B6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 251461632,
+      "size": 115264,
+      "section": "cine"
+    },
+    {
+      "index": 329,
+      "hash": "15AE75B7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 251578368,
+      "size": 195952,
+      "section": "cine"
+    },
+    {
+      "index": 2228,
+      "hash": "AA904AA8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 251774976,
+      "size": 129648,
+      "section": "cine"
+    },
+    {
+      "index": 436,
+      "hash": "1DB550BD",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 251906048,
+      "size": 165568,
+      "section": "cine"
+    },
+    {
+      "index": 585,
+      "hash": "2A00EACF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 252071936,
+      "size": 105328,
+      "section": "cine"
+    },
+    {
+      "index": 383,
+      "hash": "1A43B3BB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 252178432,
+      "size": 169280,
+      "section": "cine"
+    },
+    {
+      "index": 2333,
+      "hash": "B331D8C7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 252348416,
+      "size": 107136,
+      "section": "cine"
+    },
+    {
+      "index": 682,
+      "hash": "32340299",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 252456960,
+      "size": 158368,
+      "section": "cine"
+    },
+    {
+      "index": 700,
+      "hash": "33A178A0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 252616704,
+      "size": 115232,
+      "section": "cine"
+    },
+    {
+      "index": 723,
+      "hash": "35C2E19F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 252733440,
+      "size": 180768,
+      "section": "cine"
+    },
+    {
+      "index": 1232,
+      "hash": "5D1C2ACD",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 252915712,
+      "size": 112576,
+      "section": "cine"
+    },
+    {
+      "index": 2905,
+      "hash": "E5274CAC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253028352,
+      "size": 130800,
+      "section": "cine"
+    },
+    {
+      "index": 2816,
+      "hash": "DD8C8AAA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253159424,
+      "size": 105328,
+      "section": "cine"
+    },
+    {
+      "index": 2881,
+      "hash": "E2D1AFAA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253265920,
+      "size": 195968,
+      "section": "cine"
+    },
+    {
+      "index": 1167,
+      "hash": "58FC77B4",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253462528,
+      "size": 69392,
+      "section": "cine"
+    },
+    {
+      "index": 2974,
+      "hash": "EACA8AA0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253532160,
+      "size": 115152,
+      "section": "cine"
+    },
+    {
+      "index": 2741,
+      "hash": "D86CD7D3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253648896,
+      "size": 67568,
+      "section": "cine"
+    },
+    {
+      "index": 3000,
+      "hash": "ED3C69A6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253716480,
+      "size": 81248,
+      "section": "cine"
+    },
+    {
+      "index": 1148,
+      "hash": "56DC903F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253798400,
+      "size": 88416,
+      "section": "cine"
+    },
+    {
+      "index": 3163,
+      "hash": "FAFCC0B4",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253888512,
+      "size": 72144,
+      "section": "cine"
+    },
+    {
+      "index": 2725,
+      "hash": "D64C3058",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 253962240,
+      "size": 103424,
+      "section": "cine"
+    },
+    {
+      "index": 3184,
+      "hash": "FD0A23B2",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254066688,
+      "size": 102800,
+      "section": "cine"
+    },
+    {
+      "index": 1089,
+      "hash": "533CCD46",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254171136,
+      "size": 103488,
+      "section": "cine"
+    },
+    {
+      "index": 3097,
+      "hash": "F51106B8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254275584,
+      "size": 125264,
+      "section": "cine"
+    },
+    {
+      "index": 2697,
+      "hash": "D3AC6D21",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254402560,
+      "size": 89168,
+      "section": "cine"
+    },
+    {
+      "index": 3068,
+      "hash": "F2E7E5BE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254492672,
+      "size": 114352,
+      "section": "cine"
+    },
+    {
+      "index": 976,
+      "hash": "4A9D5F29",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254607360,
+      "size": 66720,
+      "section": "cine"
+    },
+    {
+      "index": 2774,
+      "hash": "DA90549C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254674944,
+      "size": 83808,
+      "section": "cine"
+    },
+    {
+      "index": 2604,
+      "hash": "CA0DFF4E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254758912,
+      "size": 116288,
+      "section": "cine"
+    },
+    {
+      "index": 2812,
+      "hash": "DD66B79A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254875648,
+      "size": 109984,
+      "section": "cine"
+    },
+    {
+      "index": 2396,
+      "hash": "B8D98629",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 254986240,
+      "size": 130560,
+      "section": "cine"
+    },
+    {
+      "index": 1590,
+      "hash": "77D8D5D9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255117312,
+      "size": 73040,
+      "section": "cine"
+    },
+    {
+      "index": 744,
+      "hash": "3849264E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255191040,
+      "size": 70256,
+      "section": "cine"
+    },
+    {
+      "index": 1477,
+      "hash": "702E36DF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255262720,
+      "size": 88432,
+      "section": "cine"
+    },
+    {
+      "index": 2452,
+      "hash": "BD39DB50",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255352832,
+      "size": 46928,
+      "section": "cine"
+    },
+    {
+      "index": 1596,
+      "hash": "783513D5",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255399936,
+      "size": 92064,
+      "section": "cine"
+    },
+    {
+      "index": 810,
+      "hash": "3DA97B37",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255492096,
+      "size": 71104,
+      "section": "cine"
+    },
+    {
+      "index": 1680,
+      "hash": "7FC3F0D3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255563776,
+      "size": 126896,
+      "section": "cine"
+    },
+    {
+      "index": 2331,
+      "hash": "B3193CDB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255690752,
+      "size": 56832,
+      "section": "cine"
+    },
+    {
+      "index": 1364,
+      "hash": "680359C1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255748096,
+      "size": 62256,
+      "section": "cine"
+    },
+    {
+      "index": 699,
+      "hash": "33899CBC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255811584,
+      "size": 66816,
+      "section": "cine"
+    },
+    {
+      "index": 1473,
+      "hash": "6FF5BAC7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255879168,
+      "size": 64128,
+      "section": "cine"
+    },
+    {
+      "index": 2513,
+      "hash": "C1E5A1A0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 255944704,
+      "size": 98112,
+      "section": "cine"
+    },
+    {
+      "index": 2000,
+      "hash": "988A60DA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256043008,
+      "size": 108928,
+      "section": "cine"
+    },
+    {
+      "index": 3016,
+      "hash": "EE95F897",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256153600,
+      "size": 77520,
+      "section": "cine"
+    },
+    {
+      "index": 2436,
+      "hash": "BC2D7633",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256231424,
+      "size": 76704,
+      "section": "cine"
+    },
+    {
+      "index": 1417,
+      "hash": "6BE50589",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256309248,
+      "size": 77360,
+      "section": "cine"
+    },
+    {
+      "index": 2342,
+      "hash": "B4365339",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256387072,
+      "size": 63232,
+      "section": "cine"
+    },
+    {
+      "index": 2984,
+      "hash": "EB75A5EE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256450560,
+      "size": 60480,
+      "section": "cine"
+    },
+    {
+      "index": 2338,
+      "hash": "B3C0B03F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256512000,
+      "size": 74880,
+      "section": "cine"
+    },
+    {
+      "index": 1334,
+      "hash": "65C5E202",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256587776,
+      "size": 70320,
+      "section": "cine"
+    },
+    {
+      "index": 2140,
+      "hash": "A400192D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256659456,
+      "size": 89104,
+      "section": "cine"
+    },
+    {
+      "index": 2908,
+      "hash": "E5554265",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256749568,
+      "size": 78256,
+      "section": "cine"
+    },
+    {
+      "index": 2138,
+      "hash": "A3F6FA2B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256829440,
+      "size": 99136,
+      "section": "cine"
+    },
+    {
+      "index": 1277,
+      "hash": "6025BF7B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256929792,
+      "size": 67648,
+      "section": "cine"
+    },
+    {
+      "index": 2245,
+      "hash": "ABEDDF21",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 256999424,
+      "size": 99008,
+      "section": "cine"
+    },
+    {
+      "index": 2856,
+      "hash": "E0B51F1C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257099776,
+      "size": 48848,
+      "section": "cine"
+    },
+    {
+      "index": 2248,
+      "hash": "AC1B3C27",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257148928,
+      "size": 84784,
+      "section": "cine"
+    },
+    {
+      "index": 1604,
+      "hash": "79842D14",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257234944,
+      "size": 91888,
+      "section": "cine"
+    },
+    {
+      "index": 1746,
+      "hash": "846C8D05",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257327104,
+      "size": 92816,
+      "section": "cine"
+    },
+    {
+      "index": 3141,
+      "hash": "F9148D73",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257421312,
+      "size": 115120,
+      "section": "cine"
+    },
+    {
+      "index": 1736,
+      "hash": "839A6E03",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257538048,
+      "size": 84848,
+      "section": "cine"
+    },
+    {
+      "index": 1989,
+      "hash": "97A9DF1E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257624064,
+      "size": 90976,
+      "section": "cine"
+    },
+    {
+      "index": 1092,
+      "hash": "537FC330",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257716224,
+      "size": 125184,
+      "section": "cine"
+    },
+    {
+      "index": 348,
+      "hash": "17397F79",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257843200,
+      "size": 121424,
+      "section": "cine"
+    },
+    {
+      "index": 1112,
+      "hash": "54892036",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 257966080,
+      "size": 75872,
+      "section": "cine"
+    },
+    {
+      "index": 1927,
+      "hash": "92498267",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 258043904,
+      "size": 130448,
+      "section": "cine"
+    },
+    {
+      "index": 1223,
+      "hash": "5C92053C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 258174976,
+      "size": 90064,
+      "section": "cine"
+    },
+    {
+      "index": 283,
+      "hash": "12D92200",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 258265088,
+      "size": 109616,
+      "section": "cine"
+    },
+    {
+      "index": 2051,
+      "hash": "9C6965EC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 258490368,
+      "size": 90064,
+      "section": "cine"
+    },
+    {
+      "index": 1006,
+      "hash": "4CA44F28",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 258580480,
+      "size": 99200,
+      "section": "cine"
+    },
+    {
+      "index": 425,
+      "hash": "1CF9C58B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 258680832,
+      "size": 90064,
+      "section": "cine"
+    },
+    {
+      "index": 986,
+      "hash": "4B52AC2E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 258770944,
+      "size": 175344,
+      "section": "cine"
+    },
+    {
+      "index": 2010,
+      "hash": "99893895",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 258947072,
+      "size": 96352,
+      "section": "cine"
+    },
+    {
+      "index": 372,
+      "hash": "191998F2",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 259155968,
+      "size": 102720,
+      "section": "cine"
+    },
+    {
+      "index": 905,
+      "hash": "44BF6A22",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 259260416,
+      "size": 88288,
+      "section": "cine"
+    },
+    {
+      "index": 1690,
+      "hash": "8028AAFA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 259350528,
+      "size": 90064,
+      "section": "cine"
+    },
+    {
+      "index": 1426,
+      "hash": "6CC8DB00",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 259440640,
+      "size": 146784,
+      "section": "cine"
+    },
+    {
+      "index": 11,
+      "hash": "00B80A9D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 259588096,
+      "size": 87232,
+      "section": "cine"
+    },
+    {
+      "index": 1408,
+      "hash": "6B3E3806",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 259676160,
+      "size": 100960,
+      "section": "cine"
+    },
+    {
+      "index": 2012,
+      "hash": "999D4A9B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 259778560,
+      "size": 119712,
+      "section": "cine"
+    },
+    {
+      "index": 1452,
+      "hash": "6E522488",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 259899392,
+      "size": 133216,
+      "section": "cine"
+    },
+    {
+      "index": 370,
+      "hash": "190DEAFC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260034560,
+      "size": 74848,
+      "section": "cine"
+    },
+    {
+      "index": 1391,
+      "hash": "69A4C78E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260110336,
+      "size": 82880,
+      "section": "cine"
+    },
+    {
+      "index": 2053,
+      "hash": "9C7D17E2",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260194304,
+      "size": 75696,
+      "section": "cine"
+    },
+    {
+      "index": 1296,
+      "hash": "61BFE284",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260270080,
+      "size": 108976,
+      "section": "cine"
+    },
+    {
+      "index": 424,
+      "hash": "1CEDB785",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260380672,
+      "size": 91856,
+      "section": "cine"
+    },
+    {
+      "index": 1343,
+      "hash": "66490182",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260472832,
+      "size": 113664,
+      "section": "cine"
+    },
+    {
+      "index": 1928,
+      "hash": "925DF069",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260587520,
+      "size": 117024,
+      "section": "cine"
+    },
+    {
+      "index": 1499,
+      "hash": "7189A890",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260706304,
+      "size": 131440,
+      "section": "cine"
+    },
+    {
+      "index": 280,
+      "hash": "12CD500E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260839424,
+      "size": 48864,
+      "section": "cine"
+    },
+    {
+      "index": 1568,
+      "hash": "767F4B96",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260888576,
+      "size": 82816,
+      "section": "cine"
+    },
+    {
+      "index": 1990,
+      "hash": "97BDAD10",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 260972544,
+      "size": 80240,
+      "section": "cine"
+    },
+    {
+      "index": 1663,
+      "hash": "7E646E9C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261054464,
+      "size": 118032,
+      "section": "cine"
+    },
+    {
+      "index": 347,
+      "hash": "172D0D77",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261173248,
+      "size": 78416,
+      "section": "cine"
+    },
+    {
+      "index": 1606,
+      "hash": "79928D9A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261253120,
+      "size": 63072,
+      "section": "cine"
+    },
+    {
+      "index": 1870,
+      "hash": "8E1C3F7F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261316608,
+      "size": 78352,
+      "section": "cine"
+    },
+    {
+      "index": 1068,
+      "hash": "51E53CB8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261396480,
+      "size": 99040,
+      "section": "cine"
+    },
+    {
+      "index": 220,
+      "hash": "0E8C9F18",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261496832,
+      "size": 86480,
+      "section": "cine"
+    },
+    {
+      "index": 1134,
+      "hash": "5613DFBE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261584896,
+      "size": 122400,
+      "section": "cine"
+    },
+    {
+      "index": 1278,
+      "hash": "6031CD75",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261707776,
+      "size": 69344,
+      "section": "cine"
+    },
+    {
+      "index": 1779,
+      "hash": "86F6728D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261777408,
+      "size": 93728,
+      "section": "cine"
+    },
+    {
+      "index": 2855,
+      "hash": "E0A16D12",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261871616,
+      "size": 107040,
+      "section": "cine"
+    },
+    {
+      "index": 1702,
+      "hash": "8100918B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 261980160,
+      "size": 96304,
+      "section": "cine"
+    },
+    {
+      "index": 1336,
+      "hash": "65D1900C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262078464,
+      "size": 70304,
+      "section": "cine"
+    },
+    {
+      "index": 1810,
+      "hash": "891BB481",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262150144,
+      "size": 126096,
+      "section": "cine"
+    },
+    {
+      "index": 2907,
+      "hash": "E541306B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262277120,
+      "size": 112368,
+      "section": "cine"
+    },
+    {
+      "index": 1879,
+      "hash": "8EED5787",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262389760,
+      "size": 123456,
+      "section": "cine"
+    },
+    {
+      "index": 1420,
+      "hash": "6BF17787",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262514688,
+      "size": 97296,
+      "section": "cine"
+    },
+    {
+      "index": 2006,
+      "hash": "992DFE95",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262612992,
+      "size": 114336,
+      "section": "cine"
+    },
+    {
+      "index": 2983,
+      "hash": "EB61D7E0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262727680,
+      "size": 67696,
+      "section": "cine"
+    },
+    {
+      "index": 2085,
+      "hash": "9EDB1D93",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262797312,
+      "size": 91952,
+      "section": "cine"
+    },
+    {
+      "index": 1448,
+      "hash": "6E112AFE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 262889472,
+      "size": 117888,
+      "section": "cine"
+    },
+    {
+      "index": 1981,
+      "hash": "96C03899",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263008256,
+      "size": 86672,
+      "section": "cine"
+    },
+    {
+      "index": 3015,
+      "hash": "EE818A99",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263096320,
+      "size": 116864,
+      "section": "cine"
+    },
+    {
+      "index": 1909,
+      "hash": "9136DB9F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263215104,
+      "size": 131376,
+      "section": "cine"
+    },
+    {
+      "index": 1588,
+      "hash": "77B0B891",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263348224,
+      "size": 83904,
+      "section": "cine"
+    },
+    {
+      "index": 2402,
+      "hash": "B9416ABD",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263432192,
+      "size": 117088,
+      "section": "cine"
+    },
+    {
+      "index": 3119,
+      "hash": "F72018F6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263550976,
+      "size": 67648,
+      "section": "cine"
+    },
+    {
+      "index": 2478,
+      "hash": "BEB789BB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263620608,
+      "size": 90976,
+      "section": "cine"
+    },
+    {
+      "index": 1758,
+      "hash": "85F46191",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263712768,
+      "size": 81936,
+      "section": "cine"
+    },
+    {
+      "index": 301,
+      "hash": "1409EBF8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263796736,
+      "size": 65792,
+      "section": "cine"
+    },
+    {
+      "index": 83,
+      "hash": "0564C1F6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263864320,
+      "size": 107264,
+      "section": "cine"
+    },
+    {
+      "index": 300,
+      "hash": "13FF08FE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 263972864,
+      "size": 101024,
+      "section": "cine"
+    },
+    {
+      "index": 1685,
+      "hash": "80143CE8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264075264,
+      "size": 112544,
+      "section": "cine"
+    },
+    {
+      "index": 404,
+      "hash": "1BE42DF4",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264187904,
+      "size": 156592,
+      "section": "cine"
+    },
+    {
+      "index": 6,
+      "hash": "00849C8F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264345600,
+      "size": 40736,
+      "section": "cine"
+    },
+    {
+      "index": 411,
+      "hash": "1C12CEF2",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264386560,
+      "size": 76672,
+      "section": "cine"
+    },
+    {
+      "index": 1872,
+      "hash": "8E34DB63",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264464384,
+      "size": 41808,
+      "section": "cine"
+    },
+    {
+      "index": 186,
+      "hash": "0BD267E0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264507392,
+      "size": 53424,
+      "section": "cine"
+    },
+    {
+      "index": 222,
+      "hash": "0EA47B04",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264562688,
+      "size": 75712,
+      "section": "cine"
+    },
+    {
+      "index": 190,
+      "hash": "0C2484E6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264638464,
+      "size": 83824,
+      "section": "cine"
+    },
+    {
+      "index": 177,
+      "hash": "0B44267D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264722432,
+      "size": 134960,
+      "section": "cine"
+    },
+    {
+      "index": 56,
+      "hash": "03C942EA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264857600,
+      "size": 99232,
+      "section": "cine"
+    },
+    {
+      "index": 95,
+      "hash": "0631AE92",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 264957952,
+      "size": 95440,
+      "section": "cine"
+    },
+    {
+      "index": 1287,
+      "hash": "61229741",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265054208,
+      "size": 107280,
+      "section": "cine"
+    },
+    {
+      "index": 1728,
+      "hash": "8341538C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265162752,
+      "size": 114464,
+      "section": "cine"
+    },
+    {
+      "index": 1387,
+      "hash": "6939B24B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265277440,
+      "size": 116992,
+      "section": "cine"
+    },
+    {
+      "index": 57,
+      "hash": "03D1F3EB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265396224,
+      "size": 75744,
+      "section": "cine"
+    },
+    {
+      "index": 1460,
+      "hash": "6ECF514D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265472000,
+      "size": 100096,
+      "section": "cine"
+    },
+    {
+      "index": 1862,
+      "hash": "8D61B407",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265572352,
+      "size": 104368,
+      "section": "cine"
+    },
+    {
+      "index": 1600,
+      "hash": "790FF85F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265676800,
+      "size": 194304,
+      "section": "cine"
+    },
+    {
+      "index": 212,
+      "hash": "0DF11460",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265871360,
+      "size": 94592,
+      "section": "cine"
+    },
+    {
+      "index": 1670,
+      "hash": "7EF91B59",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 265967616,
+      "size": 102800,
+      "section": "cine"
+    },
+    {
+      "index": 1796,
+      "hash": "8881E97E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266072064,
+      "size": 101648,
+      "section": "cine"
+    },
+    {
+      "index": 1574,
+      "hash": "76E23E53",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266174464,
+      "size": 95536,
+      "section": "cine"
+    },
+    {
+      "index": 127,
+      "hash": "08114919",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266270720,
+      "size": 64208,
+      "section": "cine"
+    },
+    {
+      "index": 1487,
+      "hash": "7114DD55",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266336256,
+      "size": 81200,
+      "section": "cine"
+    },
+    {
+      "index": 1906,
+      "hash": "91207B11",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266418176,
+      "size": 64208,
+      "section": "cine"
+    },
+    {
+      "index": 1172,
+      "hash": "59636C77",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266483712,
+      "size": 94640,
+      "section": "cine"
+    },
+    {
+      "index": 262,
+      "hash": "11B0DB76",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266579968,
+      "size": 65920,
+      "section": "cine"
+    },
+    {
+      "index": 1260,
+      "hash": "5E958F71",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266647552,
+      "size": 117936,
+      "section": "cine"
+    },
+    {
+      "index": 1671,
+      "hash": "7F0D891B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266766336,
+      "size": 106352,
+      "section": "cine"
+    },
+    {
+      "index": 1875,
+      "hash": "8E702242",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266872832,
+      "size": 55008,
+      "section": "cine"
+    },
+    {
+      "index": 3211,
+      "hash": "FF9D297C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 266928128,
+      "size": 101648,
+      "section": "cine"
+    },
+    {
+      "index": 1817,
+      "hash": "8986C144",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267030528,
+      "size": 96320,
+      "section": "cine"
+    },
+    {
+      "index": 1621,
+      "hash": "7AEDD462",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267128832,
+      "size": 101648,
+      "section": "cine"
+    },
+    {
+      "index": 1711,
+      "hash": "819DE44E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267231232,
+      "size": 45392,
+      "section": "cine"
+    },
+    {
+      "index": 3158,
+      "hash": "FA7D7405",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267278336,
+      "size": 72224,
+      "section": "cine"
+    },
+    {
+      "index": 1766,
+      "hash": "866B0748",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267352064,
+      "size": 90144,
+      "section": "cine"
+    },
+    {
+      "index": 1539,
+      "hash": "74CD33E9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267444224,
+      "size": 68656,
+      "section": "cine"
+    },
+    {
+      "index": 1918,
+      "hash": "91ABAE5A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267513856,
+      "size": 111856,
+      "section": "cine"
+    },
+    {
+      "index": 3084,
+      "hash": "F45D938E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267626496,
+      "size": 80192,
+      "section": "cine"
+    },
+    {
+      "index": 1975,
+      "hash": "965D4D5C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267708416,
+      "size": 112560,
+      "section": "cine"
+    },
+    {
+      "index": 1491,
+      "hash": "712D6E90",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267821056,
+      "size": 98080,
+      "section": "cine"
+    },
+    {
+      "index": 2081,
+      "hash": "9E466856",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 267919360,
+      "size": 101856,
+      "section": "cine"
+    },
+    {
+      "index": 3053,
+      "hash": "F1BDCEF7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268021760,
+      "size": 91840,
+      "section": "cine"
+    },
+    {
+      "index": 2014,
+      "hash": "99B08B50",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268113920,
+      "size": 86704,
+      "section": "cine"
+    },
+    {
+      "index": 1378,
+      "hash": "688CFCFF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268201984,
+      "size": 119792,
+      "section": "cine"
+    },
+    {
+      "index": 2319,
+      "hash": "B1C73A72",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268322816,
+      "size": 132352,
+      "section": "cine"
+    },
+    {
+      "index": 2946,
+      "hash": "E81C5C98",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268455936,
+      "size": 127584,
+      "section": "cine"
+    },
+    {
+      "index": 2366,
+      "hash": "B631D974",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268584960,
+      "size": 181584,
+      "section": "cine"
+    },
+    {
+      "index": 1492,
+      "hash": "71391C9E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268767232,
+      "size": 81200,
+      "section": "cine"
+    },
+    {
+      "index": 2334,
+      "hash": "B35DC5FA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268849152,
+      "size": 134208,
+      "section": "cine"
+    },
+    {
+      "index": 3051,
+      "hash": "F1A9BCF9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 268984320,
+      "size": 79216,
+      "section": "cine"
+    },
+    {
+      "index": 2344,
+      "hash": "B4AB26FC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 269064192,
+      "size": 99232,
+      "section": "cine"
+    },
+    {
+      "index": 1542,
+      "hash": "74D941E7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 269164544,
+      "size": 121456,
+      "section": "cine"
+    },
+    {
+      "index": 2442,
+      "hash": "BCB003F6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 269287424,
+      "size": 110000,
+      "section": "cine"
+    },
+    {
+      "index": 3083,
+      "hash": "F449E180",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 269398016,
+      "size": 171552,
+      "section": "cine"
+    },
+    {
+      "index": 2425,
+      "hash": "BB46E0F0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 269570048,
+      "size": 166528,
+      "section": "cine"
+    },
+    {
+      "index": 1624,
+      "hash": "7AF9A66C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 269737984,
+      "size": 169056,
+      "section": "cine"
+    },
+    {
+      "index": 2251,
+      "hash": "AC8649E2",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 269907968,
+      "size": 87536,
+      "section": "cine"
+    },
+    {
+      "index": 3155,
+      "hash": "FA69060B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 269996032,
+      "size": 139424,
+      "section": "cine"
+    },
+    {
+      "index": 2242,
+      "hash": "AB70AAE4",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 270137344,
+      "size": 155632,
+      "section": "cine"
+    },
+    {
+      "index": 1672,
+      "hash": "7F19FB15",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 270292992,
+      "size": 106128,
+      "section": "cine"
+    },
+    {
+      "index": 2137,
+      "hash": "A36B8FEE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 270399488,
+      "size": 168336,
+      "section": "cine"
+    },
+    {
+      "index": 3209,
+      "hash": "FF895B72",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 270569472,
+      "size": 103488,
+      "section": "cine"
+    },
+    {
+      "index": 2142,
+      "hash": "A49D6CE8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 270673920,
+      "size": 144784,
+      "section": "cine"
+    },
+    {
+      "index": 1352,
+      "hash": "66B8697A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 270819328,
+      "size": 106272,
+      "section": "cine"
+    },
+    {
+      "index": 1850,
+      "hash": "8CEADDCA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 270925824,
+      "size": 143120,
+      "section": "cine"
+    },
+    {
+      "index": 2919,
+      "hash": "E628C91D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271069184,
+      "size": 100752,
+      "section": "cine"
+    },
+    {
+      "index": 1838,
+      "hash": "8B1C3ECC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271171584,
+      "size": 99136,
+      "section": "cine"
+    },
+    {
+      "index": 1799,
+      "hash": "88959B70",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271271936,
+      "size": 101648,
+      "section": "cine"
+    },
+    {
+      "index": 1212,
+      "hash": "5BF993FF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271374336,
+      "size": 101856,
+      "section": "cine"
+    },
+    {
+      "index": 126,
+      "hash": "08053B17",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271476736,
+      "size": 131488,
+      "section": "cine"
+    },
+    {
+      "index": 1213,
+      "hash": "5C0F70F9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271609856,
+      "size": 126144,
+      "section": "cine"
+    },
+    {
+      "index": 1864,
+      "hash": "8D75C609",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271736832,
+      "size": 131360,
+      "section": "cine"
+    },
+    {
+      "index": 1105,
+      "hash": "541455F3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271869952,
+      "size": 47072,
+      "section": "cine"
+    },
+    {
+      "index": 210,
+      "hash": "0DE5666E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271917056,
+      "size": 78448,
+      "section": "cine"
+    },
+    {
+      "index": 1100,
+      "hash": "53E2B6F5",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 271996928,
+      "size": 77600,
+      "section": "cine"
+    },
+    {
+      "index": 1731,
+      "hash": "83552182",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 272074752,
+      "size": 104448,
+      "section": "cine"
+    },
+    {
+      "index": 896,
+      "hash": "44221FE7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 272179200,
+      "size": 105440,
+      "section": "cine"
+    },
+    {
+      "index": 55,
+      "hash": "03C581E5",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 272285696,
+      "size": 101888,
+      "section": "cine"
+    },
+    {
+      "index": 891,
+      "hash": "43D4FCE1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 272388096,
+      "size": 83920,
+      "section": "cine"
+    },
+    {
+      "index": 1775,
+      "hash": "86B57CFB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 272472064,
+      "size": 123088,
+      "section": "cine"
+    },
+    {
+      "index": 994,
+      "hash": "4BCFD9EB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 272596992,
+      "size": 104416,
+      "section": "cine"
+    },
+    {
+      "index": 94,
+      "hash": "0625DC9C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 272701440,
+      "size": 135664,
+      "section": "cine"
+    },
+    {
+      "index": 1002,
+      "hash": "4C393AED",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 272838656,
+      "size": 166464,
+      "section": "cine"
+    },
+    {
+      "index": 2089,
+      "hash": "9F14EE94",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 273006592,
+      "size": 114128,
+      "section": "cine"
+    },
+    {
+      "index": 1319,
+      "hash": "644E8BCF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 273121280,
+      "size": 128752,
+      "section": "cine"
+    },
+    {
+      "index": 451,
+      "hash": "1F844EF3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 273250304,
+      "size": 218288,
+      "section": "cine"
+    },
+    {
+      "index": 1314,
+      "hash": "63B868C9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 273469440,
+      "size": 180784,
+      "section": "cine"
+    },
+    {
+      "index": 1433,
+      "hash": "6D503794",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 273651712,
+      "size": 166064,
+      "section": "cine"
+    },
+    {
+      "index": 2589,
+      "hash": "C9060A8A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 273819648,
+      "size": 91088,
+      "section": "cine"
+    },
+    {
+      "index": 3008,
+      "hash": "EDC097F3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 273911808,
+      "size": 225408,
+      "section": "cine"
+    },
+    {
+      "index": 2644,
+      "hash": "CEF0E98C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 274139136,
+      "size": 192496,
+      "section": "cine"
+    },
+    {
+      "index": 1380,
+      "hash": "68B06AED",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 274331648,
+      "size": 126736,
+      "section": "cine"
+    },
+    {
+      "index": 2563,
+      "hash": "C6EBCC86",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 274458624,
+      "size": 181776,
+      "section": "cine"
+    },
+    {
+      "index": 2947,
+      "hash": "E820CA8A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 274640896,
+      "size": 101648,
+      "section": "cine"
+    },
+    {
+      "index": 2500,
+      "hash": "C11D2F80",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 274743296,
+      "size": 101072,
+      "section": "cine"
+    },
+    {
+      "index": 1347,
+      "hash": "66908D66",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 274845696,
+      "size": 83696,
+      "section": "cine"
+    },
+    {
+      "index": 2730,
+      "hash": "D6DD8692",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 274929664,
+      "size": 67680,
+      "section": "cine"
+    },
+    {
+      "index": 2914,
+      "hash": "E6002D01",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 274999296,
+      "size": 119680,
+      "section": "cine"
+    },
+    {
+      "index": 2673,
+      "hash": "D12B6594",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275120128,
+      "size": 198592,
+      "section": "cine"
+    },
+    {
+      "index": 1310,
+      "hash": "6370D01F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275318784,
+      "size": 118784,
+      "section": "cine"
+    },
+    {
+      "index": 2755,
+      "hash": "D930409E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275437568,
+      "size": 99088,
+      "section": "cine"
+    },
+    {
+      "index": 2895,
+      "hash": "E3E07078",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275537920,
+      "size": 85728,
+      "section": "cine"
+    },
+    {
+      "index": 2826,
+      "hash": "DEC6A398",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275623936,
+      "size": 92112,
+      "section": "cine"
+    },
+    {
+      "index": 1617,
+      "hash": "7AD14270",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275716096,
+      "size": 81232,
+      "section": "cine"
+    },
+    {
+      "index": 3110,
+      "hash": "F6B112BA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275798016,
+      "size": 73120,
+      "section": "cine"
+    },
+    {
+      "index": 3153,
+      "hash": "FA41E217",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275871744,
+      "size": 80272,
+      "section": "cine"
+    },
+    {
+      "index": 3044,
+      "hash": "F147F1BC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 275953664,
+      "size": 84016,
+      "section": "cine"
+    },
+    {
+      "index": 1957,
+      "hash": "94FCB07A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 276039680,
+      "size": 70464,
+      "section": "cine"
+    },
+    {
+      "index": 475,
+      "hash": "21A25C8F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 276111360,
+      "size": 125248,
+      "section": "cine"
+    },
+    {
+      "index": 455,
+      "hash": "1FB8D8E1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 276238336,
+      "size": 116992,
+      "section": "cine"
+    },
+    {
+      "index": 318,
+      "hash": "14949E3D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 276357120,
+      "size": 111680,
+      "section": "cine"
+    },
+    {
+      "index": 1904,
+      "hash": "91089F0D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 276469760,
+      "size": 152880,
+      "section": "cine"
+    },
+    {
+      "index": 43,
+      "hash": "0354372F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 276623360,
+      "size": 154800,
+      "section": "cine"
+    },
+    {
+      "index": 259,
+      "hash": "11983F6A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 276779008,
+      "size": 173504,
+      "section": "cine"
+    },
+    {
+      "index": 75,
+      "hash": "04A2D429",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 276953088,
+      "size": 206800,
+      "section": "cine"
+    },
+    {
+      "index": 313,
+      "hash": "14786213",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 277159936,
+      "size": 147664,
+      "section": "cine"
+    },
+    {
+      "index": 179,
+      "hash": "0B4F1225",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 277309440,
+      "size": 183504,
+      "section": "cine"
+    },
+    {
+      "index": 1953,
+      "hash": "94CE37E7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 277493760,
+      "size": 158320,
+      "section": "cine"
+    },
+    {
+      "index": 1632,
+      "hash": "7B8F0A71",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 277653504,
+      "size": 71104,
+      "section": "cine"
+    },
+    {
+      "index": 263,
+      "hash": "11BECAF9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 277725184,
+      "size": 158960,
+      "section": "cine"
+    },
+    {
+      "index": 1526,
+      "hash": "73942F7B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 277884928,
+      "size": 147648,
+      "section": "cine"
+    },
+    {
+      "index": 1908,
+      "hash": "912E6A9E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 278034432,
+      "size": 161616,
+      "section": "cine"
+    },
+    {
+      "index": 1534,
+      "hash": "7462CC7D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 278196224,
+      "size": 126848,
+      "section": "cine"
+    },
+    {
+      "index": 454,
+      "hash": "1F9E2D72",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 278323200,
+      "size": 116240,
+      "section": "cine"
+    },
+    {
+      "index": 1313,
+      "hash": "63A2656F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 278439936,
+      "size": 95488,
+      "section": "cine"
+    },
+    {
+      "index": 2088,
+      "hash": "9F0E8D15",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 278536192,
+      "size": 91936,
+      "section": "cine"
+    },
+    {
+      "index": 1320,
+      "hash": "64548669",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 278628352,
+      "size": 119952,
+      "section": "cine"
+    },
+    {
+      "index": 388,
+      "hash": "1A7E700B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 278749184,
+      "size": 193072,
+      "section": "cine"
+    },
+    {
+      "index": 1425,
+      "hash": "6C4FA363",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 278943744,
+      "size": 123344,
+      "section": "cine"
+    },
+    {
+      "index": 2030,
+      "hash": "9AEED06C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 279068672,
+      "size": 93008,
+      "section": "cine"
+    },
+    {
+      "index": 1413,
+      "hash": "6BB94065",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 279162880,
+      "size": 187152,
+      "section": "cine"
+    },
+    {
+      "index": 59,
+      "hash": "03DFE264",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 279351296,
+      "size": 137424,
+      "section": "cine"
+    },
+    {
+      "index": 890,
+      "hash": "43CEF147",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 279490560,
+      "size": 117104,
+      "section": "cine"
+    },
+    {
+      "index": 1729,
+      "hash": "834F4203",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 279609344,
+      "size": 154480,
+      "section": "cine"
+    },
+    {
+      "index": 897,
+      "hash": "44381241",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 279764992,
+      "size": 99136,
+      "section": "cine"
+    },
+    {
+      "index": 3010,
+      "hash": "EDF2106E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 279865344,
+      "size": 158960,
+      "section": "cine"
+    },
+    {
+      "index": 1955,
+      "hash": "94DDBF72",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 280025088,
+      "size": 141360,
+      "section": "cine"
+    },
+    {
+      "index": 1434,
+      "hash": "6D62B009",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 280168448,
+      "size": 175280,
+      "section": "cine"
+    },
+    {
+      "index": 1935,
+      "hash": "932B5C74",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 280344576,
+      "size": 160224,
+      "section": "cine"
+    },
+    {
+      "index": 2944,
+      "hash": "E8124D17",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 280506368,
+      "size": 178000,
+      "section": "cine"
+    },
+    {
+      "index": 2033,
+      "hash": "9B30797E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 280684544,
+      "size": 150128,
+      "section": "cine"
+    },
+    {
+      "index": 1376,
+      "hash": "6882ED70",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 280836096,
+      "size": 203936,
+      "section": "cine"
+    },
+    {
+      "index": 2055,
+      "hash": "9CC69A78",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 281040896,
+      "size": 151376,
+      "section": "cine"
+    },
+    {
+      "index": 2920,
+      "hash": "E632AA9C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 281192448,
+      "size": 163392,
+      "section": "cine"
+    },
+    {
+      "index": 1837,
+      "hash": "8B06336A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 281356288,
+      "size": 87488,
+      "section": "cine"
+    },
+    {
+      "index": 1349,
+      "hash": "66A20AFB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 281444352,
+      "size": 154464,
+      "section": "cine"
+    },
+    {
+      "index": 1851,
+      "hash": "8CF0D06C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 281600000,
+      "size": 112672,
+      "section": "cine"
+    },
+    {
+      "index": 2893,
+      "hash": "E3D2F7E5",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 281714688,
+      "size": 154464,
+      "section": "cine"
+    },
+    {
+      "index": 1749,
+      "hash": "84EBF566",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 281870336,
+      "size": 126048,
+      "section": "cine"
+    },
+    {
+      "index": 1306,
+      "hash": "63425782",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 281997312,
+      "size": 175088,
+      "section": "cine"
+    },
+    {
+      "index": 1726,
+      "hash": "831D1660",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 282173440,
+      "size": 132368,
+      "section": "cine"
+    },
+    {
+      "index": 3157,
+      "hash": "FA73658A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 282306560,
+      "size": 187696,
+      "section": "cine"
+    },
+    {
+      "index": 2241,
+      "hash": "AB6AA742",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 282494976,
+      "size": 146880,
+      "section": "cine"
+    },
+    {
+      "index": 1620,
+      "hash": "7AE3C5ED",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 282642432,
+      "size": 165536,
+      "section": "cine"
+    },
+    {
+      "index": 2253,
+      "hash": "AC9C4444",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 282808320,
+      "size": 123376,
+      "section": "cine"
+    },
+    {
+      "index": 2892,
+      "hash": "E3C685EB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 282933248,
+      "size": 205696,
+      "section": "cine"
+    },
+    {
+      "index": 2219,
+      "hash": "A9F058CA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 283140096,
+      "size": 145152,
+      "section": "cine"
+    },
+    {
+      "index": 1307,
+      "hash": "6356258C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 283285504,
+      "size": 151760,
+      "section": "cine"
+    },
+    {
+      "index": 2267,
+      "hash": "AE06BBCC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 283439104,
+      "size": 94688,
+      "section": "cine"
+    },
+    {
+      "index": 2918,
+      "hash": "E626D892",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 283535360,
+      "size": 121648,
+      "section": "cine"
+    },
+    {
+      "index": 2159,
+      "hash": "A61D9EC6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 283658240,
+      "size": 126928,
+      "section": "cine"
+    },
+    {
+      "index": 1351,
+      "hash": "66B678F5",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 283785216,
+      "size": 128656,
+      "section": "cine"
+    },
+    {
+      "index": 2123,
+      "hash": "A1EB7DC0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 283914240,
+      "size": 113584,
+      "section": "cine"
+    },
+    {
+      "index": 2941,
+      "hash": "E8063F19",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284028928,
+      "size": 123312,
+      "section": "cine"
+    },
+    {
+      "index": 2364,
+      "hash": "B62BD4D2",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284153856,
+      "size": 113488,
+      "section": "cine"
+    },
+    {
+      "index": 1379,
+      "hash": "68969F7E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284268544,
+      "size": 91136,
+      "section": "cine"
+    },
+    {
+      "index": 2320,
+      "hash": "B1DD37D4",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284360704,
+      "size": 98288,
+      "section": "cine"
+    },
+    {
+      "index": 3009,
+      "hash": "EDE66260",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284459008,
+      "size": 155264,
+      "section": "cine"
+    },
+    {
+      "index": 2408,
+      "hash": "B9C612DE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284614656,
+      "size": 110784,
+      "section": "cine"
+    },
+    {
+      "index": 1435,
+      "hash": "6D76C207",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284727296,
+      "size": 130416,
+      "section": "cine"
+    },
+    {
+      "index": 2466,
+      "hash": "BE30F1D8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284858368,
+      "size": 92080,
+      "section": "cine"
+    },
+    {
+      "index": 3082,
+      "hash": "F447F00F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 284950528,
+      "size": 141056,
+      "section": "cine"
+    },
+    {
+      "index": 1972,
+      "hash": "964740FA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 285091840,
+      "size": 89136,
+      "section": "cine"
+    },
+    {
+      "index": 1541,
+      "hash": "74D75068",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 285181952,
+      "size": 158320,
+      "section": "cine"
+    },
+    {
+      "index": 1919,
+      "hash": "91B1A3FC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 285341696,
+      "size": 143296,
+      "section": "cine"
+    },
+    {
+      "index": 387,
+      "hash": "1A6A0205",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 285485056,
+      "size": 159760,
+      "section": "cine"
+    },
+    {
+      "index": 860,
+      "hash": "41540ECF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 285646848,
+      "size": 125232,
+      "section": "cine"
+    },
+    {
+      "index": 2031,
+      "hash": "9AFAA262",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 285773824,
+      "size": 120480,
+      "section": "cine"
+    },
+    {
+      "index": 926,
+      "hash": "46A2EDC9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 285894656,
+      "size": 87584,
+      "section": "cine"
+    },
+    {
+      "index": 453,
+      "hash": "1F8A5F7C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 285982720,
+      "size": 143840,
+      "section": "cine"
+    },
+    {
+      "index": 1033,
+      "hash": "4EB9C8C3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 286128128,
+      "size": 84784,
+      "section": "cine"
+    },
+    {
+      "index": 2090,
+      "hash": "9F1AFF1B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 286214144,
+      "size": 160800,
+      "section": "cine"
+    },
+    {
+      "index": 960,
+      "hash": "494F2BC5",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 286375936,
+      "size": 144080,
+      "section": "cine"
+    },
+    {
+      "index": 260,
+      "hash": "11AAB8F7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 286521344,
+      "size": 186720,
+      "section": "cine"
+    },
+    {
+      "index": 1259,
+      "hash": "5E8F82D7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 286709760,
+      "size": 142272,
+      "section": "cine"
+    },
+    {
+      "index": 1910,
+      "hash": "913A1890",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 286853120,
+      "size": 154576,
+      "section": "cine"
+    },
+    {
+      "index": 1175,
+      "hash": "597961D1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 287008768,
+      "size": 108128,
+      "section": "cine"
+    },
+    {
+      "index": 306,
+      "hash": "144AE58E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 287117312,
+      "size": 207536,
+      "section": "cine"
+    },
+    {
+      "index": 1062,
+      "hash": "516244DB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 287326208,
+      "size": 145920,
+      "section": "cine"
+    },
+    {
+      "index": 1954,
+      "hash": "94DA45E9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 287473664,
+      "size": 142928,
+      "section": "cine"
+    },
+    {
+      "index": 1144,
+      "hash": "5694A7DD",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 287617024,
+      "size": 90096,
+      "section": "cine"
+    },
+    {
+      "index": 211,
+      "hash": "0DEB77E1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 287707136,
+      "size": 159888,
+      "section": "cine"
+    },
+    {
+      "index": 1668,
+      "hash": "7EE316FF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 287868928,
+      "size": 153872,
+      "section": "cine"
+    },
+    {
+      "index": 1865,
+      "hash": "8D7BD786",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 288024576,
+      "size": 175056,
+      "section": "cine"
+    },
+    {
+      "index": 1601,
+      "hash": "7915F5F9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 288200704,
+      "size": 117952,
+      "section": "cine"
+    },
+    {
+      "index": 3215,
+      "hash": "FFAFAEE1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 288319488,
+      "size": 157216,
+      "section": "cine"
+    },
+    {
+      "index": 2696,
+      "hash": "D3AB97BA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 288477184,
+      "size": 133376,
+      "section": "cine"
+    },
+    {
+      "index": 1674,
+      "hash": "7F3F0E86",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 288612352,
+      "size": 168928,
+      "section": "cine"
+    },
+    {
+      "index": 3154,
+      "hash": "FA4FF398",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 288782336,
+      "size": 128704,
+      "section": "cine"
+    },
+    {
+      "index": 1619,
+      "hash": "7ADF53FF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 288911360,
+      "size": 118752,
+      "section": "cine"
+    },
+    {
+      "index": 3086,
+      "hash": "F46F1413",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 289030144,
+      "size": 88112,
+      "section": "cine"
+    },
+    {
+      "index": 1544,
+      "hash": "74FFB474",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 289120256,
+      "size": 90864,
+      "section": "cine"
+    },
+    {
+      "index": 3049,
+      "hash": "F18F496A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 289212416,
+      "size": 90096,
+      "section": "cine"
+    },
+    {
+      "index": 1488,
+      "hash": "711FE90D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 289302528,
+      "size": 198432,
+      "section": "cine"
+    },
+    {
+      "index": 2948,
+      "hash": "E82EDB05",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 289501184,
+      "size": 192336,
+      "section": "cine"
+    },
+    {
+      "index": 1381,
+      "hash": "68BE7B62",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 289693696,
+      "size": 110672,
+      "section": "cine"
+    },
+    {
+      "index": 90,
+      "hash": "0603290F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 289806336,
+      "size": 132992,
+      "section": "cine"
+    },
+    {
+      "index": 1770,
+      "hash": "86938968",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 289939456,
+      "size": 133024,
+      "section": "cine"
+    },
+    {
+      "index": 60,
+      "hash": "03E37476",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290072576,
+      "size": 63104,
+      "section": "cine"
+    },
+    {
+      "index": 1734,
+      "hash": "8373D411",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290136064,
+      "size": 168768,
+      "section": "cine"
+    },
+    {
+      "index": 206,
+      "hash": "0DC393FD",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290306048,
+      "size": 95408,
+      "section": "cine"
+    },
+    {
+      "index": 1859,
+      "hash": "8D53339A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290402304,
+      "size": 144896,
+      "section": "cine"
+    },
+    {
+      "index": 129,
+      "hash": "0823CE84",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290547712,
+      "size": 160768,
+      "section": "cine"
+    },
+    {
+      "index": 1802,
+      "hash": "88B36EE3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290709504,
+      "size": 65920,
+      "section": "cine"
+    },
+    {
+      "index": 257,
+      "hash": "11825CEB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290777088,
+      "size": 65920,
+      "section": "cine"
+    },
+    {
+      "index": 1905,
+      "hash": "9112FC8C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290844672,
+      "size": 126720,
+      "section": "cine"
+    },
+    {
+      "index": 132,
+      "hash": "0837BC8A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 290971648,
+      "size": 125664,
+      "section": "cine"
+    },
+    {
+      "index": 1801,
+      "hash": "88A71CED",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291098624,
+      "size": 120400,
+      "section": "cine"
+    },
+    {
+      "index": 209,
+      "hash": "0DD7E1F3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291219456,
+      "size": 120368,
+      "section": "cine"
+    },
+    {
+      "index": 1856,
+      "hash": "8D474194",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291340288,
+      "size": 111520,
+      "section": "cine"
+    },
+    {
+      "index": 62,
+      "hash": "03F70678",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291452928,
+      "size": 77536,
+      "section": "cine"
+    },
+    {
+      "index": 1733,
+      "hash": "8367A61F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291530752,
+      "size": 96240,
+      "section": "cine"
+    },
+    {
+      "index": 92,
+      "hash": "06175B01",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291627008,
+      "size": 77536,
+      "section": "cine"
+    },
+    {
+      "index": 2705,
+      "hash": "D45D74BC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291704832,
+      "size": 122560,
+      "section": "cine"
+    },
+    {
+      "index": 2797,
+      "hash": "DC4651B6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291827712,
+      "size": 110880,
+      "section": "cine"
+    },
+    {
+      "index": 2789,
+      "hash": "DBB0B2B0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 291940352,
+      "size": 152080,
+      "section": "cine"
+    },
+    {
+      "index": 2629,
+      "hash": "CC701BA2",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 292093952,
+      "size": 91952,
+      "section": "cine"
+    },
+    {
+      "index": 2619,
+      "hash": "CB86F8A4",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 292186112,
+      "size": 187872,
+      "section": "cine"
+    },
+    {
+      "index": 2534,
+      "hash": "C39DDDAE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 292374528,
+      "size": 132288,
+      "section": "cine"
+    },
+    {
+      "index": 2543,
+      "hash": "C46B3EA8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 292507648,
+      "size": 60560,
+      "section": "cine"
+    },
+    {
+      "index": 2990,
+      "hash": "EC1C8F8A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 292569088,
+      "size": 178208,
+      "section": "cine"
+    },
+    {
+      "index": 2987,
+      "hash": "EBEA6C8C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 292749312,
+      "size": 118864,
+      "section": "cine"
+    },
+    {
+      "index": 776,
+      "hash": "3B0FC1BF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 292870144,
+      "size": 157504,
+      "section": "cine"
+    },
+    {
+      "index": 800,
+      "hash": "3CF922B9",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293027840,
+      "size": 139408,
+      "section": "cine"
+    },
+    {
+      "index": 715,
+      "hash": "34E207B3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293169152,
+      "size": 96400,
+      "section": "cine"
+    },
+    {
+      "index": 693,
+      "hash": "3314E4B5",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293267456,
+      "size": 96560,
+      "section": "cine"
+    },
+    {
+      "index": 519,
+      "hash": "24D44DA7",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293365760,
+      "size": 141376,
+      "section": "cine"
+    },
+    {
+      "index": 497,
+      "hash": "2322AEA1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293509120,
+      "size": 111520,
+      "section": "cine"
+    },
+    {
+      "index": 597,
+      "hash": "2B398BAB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293621760,
+      "size": 158432,
+      "section": "cine"
+    },
+    {
+      "index": 616,
+      "hash": "2CCF68AD",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293781504,
+      "size": 98176,
+      "section": "cine"
+    },
+    {
+      "index": 76,
+      "hash": "04B8D98F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293879808,
+      "size": 99104,
+      "section": "cine"
+    },
+    {
+      "index": 42,
+      "hash": "034E3A89",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 293980160,
+      "size": 113456,
+      "section": "cine"
+    },
+    {
+      "index": 93,
+      "hash": "06222607",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 294094848,
+      "size": 125104,
+      "section": "cine"
+    },
+    {
+      "index": 27,
+      "hash": "01D4C501",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 294221824,
+      "size": 121792,
+      "section": "cine"
+    },
+    {
+      "index": 160,
+      "hash": "09CFE00B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 294344704,
+      "size": 102624,
+      "section": "cine"
+    },
+    {
+      "index": 214,
+      "hash": "0E39030D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 294449152,
+      "size": 160048,
+      "section": "cine"
+    },
+    {
+      "index": 378,
+      "hash": "19F9AA1F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 294610944,
+      "size": 75632,
+      "section": "cine"
+    },
+    {
+      "index": 440,
+      "hash": "1E0F4919",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 294686720,
+      "size": 196912,
+      "section": "cine"
+    },
+    {
+      "index": 335,
+      "hash": "16146C13",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 294885376,
+      "size": 72064,
+      "section": "cine"
+    },
+    {
+      "index": 1640,
+      "hash": "7C6A61E2",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 294959104,
+      "size": 155520,
+      "section": "cine"
+    },
+    {
+      "index": 2165,
+      "hash": "A680EB03",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 295114752,
+      "size": 65872,
+      "section": "cine"
+    },
+    {
+      "index": 3142,
+      "hash": "F91A9CFC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 295182336,
+      "size": 153808,
+      "section": "cine"
+    },
+    {
+      "index": 2275,
+      "hash": "AE9BCE09",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 295337984,
+      "size": 75888,
+      "section": "cine"
+    },
+    {
+      "index": 1605,
+      "hash": "798A3C9B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 295415808,
+      "size": 91040,
+      "section": "cine"
+    },
+    {
+      "index": 2208,
+      "hash": "A96D2D0F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 295507968,
+      "size": 95616,
+      "section": "cine"
+    },
+    {
+      "index": 3122,
+      "hash": "F73A7B77",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 295604224,
+      "size": 134896,
+      "section": "cine"
+    },
+    {
+      "index": 2477,
+      "hash": "BEAD841D",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 295739392,
+      "size": 101968,
+      "section": "cine"
+    },
+    {
+      "index": 1587,
+      "hash": "77AADB10",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 295841792,
+      "size": 177168,
+      "section": "cine"
+    },
+    {
+      "index": 2404,
+      "hash": "B95B671B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296019968,
+      "size": 194992,
+      "section": "cine"
+    },
+    {
+      "index": 3067,
+      "hash": "F2DA260E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296216576,
+      "size": 84720,
+      "section": "cine"
+    },
+    {
+      "index": 2313,
+      "hash": "B1404211",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296302592,
+      "size": 79312,
+      "section": "cine"
+    },
+    {
+      "index": 1505,
+      "hash": "724A8669",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296382464,
+      "size": 87312,
+      "section": "cine"
+    },
+    {
+      "index": 2376,
+      "hash": "B6B6A117",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296470528,
+      "size": 84848,
+      "section": "cine"
+    },
+    {
+      "index": 2985,
+      "hash": "EB7BB461",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296556544,
+      "size": 78288,
+      "section": "cine"
+    },
+    {
+      "index": 2083,
+      "hash": "9EC11035",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296636416,
+      "size": 91120,
+      "section": "cine"
+    },
+    {
+      "index": 1419,
+      "hash": "6BEB1406",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296728576,
+      "size": 100944,
+      "section": "cine"
+    },
+    {
+      "index": 2007,
+      "hash": "9937F333",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296830976,
+      "size": 111584,
+      "section": "cine"
+    },
+    {
+      "index": 82,
+      "hash": "0556466B",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 296943616,
+      "size": 91088,
+      "section": "cine"
+    },
+    {
+      "index": 966,
+      "hash": "49D25E00",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297035776,
+      "size": 108128,
+      "section": "cine"
+    },
+    {
+      "index": 1757,
+      "hash": "85C6E60C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297144320,
+      "size": 107952,
+      "section": "cine"
+    },
+    {
+      "index": 1026,
+      "hash": "4E24BD06",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297252864,
+      "size": 102880,
+      "section": "cine"
+    },
+    {
+      "index": 9,
+      "hash": "00B61B12",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297357312,
+      "size": 68448,
+      "section": "cine"
+    },
+    {
+      "index": 920,
+      "hash": "463F980C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297426944,
+      "size": 81104,
+      "section": "cine"
+    },
+    {
+      "index": 1689,
+      "hash": "8026BB75",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297508864,
+      "size": 74784,
+      "section": "cine"
+    },
+    {
+      "index": 867,
+      "hash": "41C97B0A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297584640,
+      "size": 74048,
+      "section": "cine"
+    },
+    {
+      "index": 221,
+      "hash": "0E96FC99",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297660416,
+      "size": 139360,
+      "section": "cine"
+    },
+    {
+      "index": 1133,
+      "hash": "5609D218",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297801728,
+      "size": 88448,
+      "section": "cine"
+    },
+    {
+      "index": 1868,
+      "hash": "8E065CFE",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 297891840,
+      "size": 107984,
+      "section": "cine"
+    },
+    {
+      "index": 1069,
+      "hash": "51FF311E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298000384,
+      "size": 100112,
+      "section": "cine"
+    },
+    {
+      "index": 182,
+      "hash": "0B76A1E0",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298100736,
+      "size": 91984,
+      "section": "cine"
+    },
+    {
+      "index": 1180,
+      "hash": "59E41414",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298192896,
+      "size": 169376,
+      "section": "cine"
+    },
+    {
+      "index": 1842,
+      "hash": "8BE60187",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298362880,
+      "size": 122272,
+      "section": "cine"
+    },
+    {
+      "index": 1254,
+      "hash": "5E12F712",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298485760,
+      "size": 106432,
+      "section": "cine"
+    },
+    {
+      "index": 282,
+      "hash": "12D7338F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298592256,
+      "size": 122272,
+      "section": "cine"
+    },
+    {
+      "index": 1564,
+      "hash": "76654630",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298715136,
+      "size": 94736,
+      "section": "cine"
+    },
+    {
+      "index": 1545,
+      "hash": "74FFB9B8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298811392,
+      "size": 72336,
+      "section": "cine"
+    },
+    {
+      "index": 859,
+      "hash": "4147865A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298885120,
+      "size": 53280,
+      "section": "cine"
+    },
+    {
+      "index": 2550,
+      "hash": "C551D522",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 298940416,
+      "size": 96416,
+      "section": "cine"
+    },
+    {
+      "index": 2538,
+      "hash": "C4377B44",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299038720,
+      "size": 68432,
+      "section": "cine"
+    },
+    {
+      "index": 2635,
+      "hash": "CD4AF028",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299108352,
+      "size": 135840,
+      "section": "cine"
+    },
+    {
+      "index": 903,
+      "hash": "44A7DB23",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299245568,
+      "size": 62224,
+      "section": "cine"
+    },
+    {
+      "index": 2612,
+      "hash": "CABC132E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299309056,
+      "size": 68448,
+      "section": "cine"
+    },
+    {
+      "index": 2215,
+      "hash": "A9E3D05F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299378688,
+      "size": 107376,
+      "section": "cine"
+    },
+    {
+      "index": 364,
+      "hash": "185E3450",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299487232,
+      "size": 98224,
+      "section": "cine"
+    },
+    {
+      "index": 613,
+      "hash": "2C932D41",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299585536,
+      "size": 92960,
+      "section": "cine"
+    },
+    {
+      "index": 244,
+      "hash": "1045115A",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299679744,
+      "size": 93792,
+      "section": "cine"
+    },
+    {
+      "index": 2247,
+      "hash": "AC038D26",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299773952,
+      "size": 133184,
+      "section": "cine"
+    },
+    {
+      "index": 355,
+      "hash": "17B3F25C",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 299909120,
+      "size": 147728,
+      "section": "cine"
+    },
+    {
+      "index": 490,
+      "hash": "22B3CACA",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300058624,
+      "size": 122288,
+      "section": "cine"
+    },
+    {
+      "index": 5,
+      "hash": "00735B4E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300181504,
+      "size": 113680,
+      "section": "cine"
+    },
+    {
+      "index": 2129,
+      "hash": "A2236AAD",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300296192,
+      "size": 104368,
+      "section": "cine"
+    },
+    {
+      "index": 116,
+      "hash": "0785B848",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300400640,
+      "size": 142224,
+      "section": "cine"
+    },
+    {
+      "index": 555,
+      "hash": "275397B3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300544000,
+      "size": 76656,
+      "section": "cine"
+    },
+    {
+      "index": 237,
+      "hash": "0F9E9D42",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300621824,
+      "size": 67648,
+      "section": "cine"
+    },
+    {
+      "index": 2185,
+      "hash": "A7C337D4",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300691456,
+      "size": 93728,
+      "section": "cine"
+    },
+    {
+      "index": 137,
+      "hash": "08687E44",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300785664,
+      "size": 67648,
+      "section": "cine"
+    },
+    {
+      "index": 819,
+      "hash": "3EF205DC",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300855296,
+      "size": 109600,
+      "section": "cine"
+    },
+    {
+      "index": 458,
+      "hash": "201FCF66",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 300965888,
+      "size": 58624,
+      "section": "cine"
+    },
+    {
+      "index": 2471,
+      "hash": "BE62A5BB",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 301025280,
+      "size": 118880,
+      "section": "cine"
+    },
+    {
+      "index": 561,
+      "hash": "27E92C60",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 301146112,
+      "size": 134208,
+      "section": "cine"
+    },
+    {
+      "index": 2671,
+      "hash": "D0DFF7D6",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 301281280,
+      "size": 101824,
+      "section": "cine"
+    },
+    {
+      "index": 3116,
+      "hash": "F70C8153",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 301383680,
+      "size": 152208,
+      "section": "cine"
+    },
+    {
+      "index": 1051,
+      "hash": "504F57B1",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 301537280,
+      "size": 81072,
+      "section": "cine"
+    },
+    {
+      "index": 3040,
+      "hash": "F0FA6255",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 301619200,
+      "size": 124992,
+      "section": "cine"
+    },
+    {
+      "index": 2712,
+      "hash": "D53FAAAF",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 301746176,
+      "size": 116832,
+      "section": "cine"
+    },
+    {
+      "index": 3140,
+      "hash": "F8E1475F",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 301864960,
+      "size": 170176,
+      "section": "cine"
+    },
+    {
+      "index": 1130,
+      "hash": "55AF0AC8",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 302036992,
+      "size": 90176,
+      "section": "cine"
+    },
+    {
+      "index": 3206,
+      "hash": "FF17A459",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 302129152,
+      "size": 93792,
+      "section": "cine"
+    },
+    {
+      "index": 2624,
+      "hash": "CC33584E",
+      "locale": "FFFFFB7F",
+      "part": 0,
+      "offset": 692107264,
+      "size": 119976,
+      "section": "menu"
+    },
+    {
+      "index": 2065,
+      "hash": "9D674583",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 817721344,
+      "size": 8688512,
+      "section": "cine"
+    },
+    {
+      "index": 2502,
+      "hash": "C1399929",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 826419200,
+      "size": 2648288,
+      "section": "cine"
+    },
+    {
+      "index": 590,
+      "hash": "2A5AE740",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 954982400,
+      "size": 3650896,
+      "section": "cine"
+    },
+    {
+      "index": 2027,
+      "hash": "9A8C5301",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 1246812160,
+      "size": 3103344,
+      "section": "cine"
+    },
+    {
+      "index": 2916,
+      "hash": "E6162AE3",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 1589676032,
+      "size": 14594640,
+      "section": "cine"
+    },
+    {
+      "index": 1375,
+      "hash": "6881898E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 1709615104,
+      "size": 4116832,
+      "section": "cine"
+    },
+    {
+      "index": 658,
+      "hash": "3027335E",
+      "locale": "FFFFFFFF",
+      "part": 0,
+      "offset": 1962764288,
+      "size": 10740544,
+      "section": "cine"
+    },
+    {
+      "index": 2413,
+      "hash": "BA493007",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 112910336,
+      "size": 1263328,
+      "section": "cine"
+    },
+    {
+      "index": 2037,
+      "hash": "9B6208DC",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 392800256,
+      "size": 2193936,
+      "section": "cine"
+    },
+    {
+      "index": 941,
+      "hash": "47FC6449",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 395003904,
+      "size": 6734832,
+      "section": "cine"
+    },
+    {
+      "index": 1156,
+      "hash": "582DBA47",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 401747968,
+      "size": 1447360,
+      "section": "cine"
+    },
+    {
+      "index": 677,
+      "hash": "31619022",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 532076544,
+      "size": 3641152,
+      "section": "cine"
+    },
+    {
+      "index": 149,
+      "hash": "094EA9A4",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 834666496,
+      "size": 4873520,
+      "section": "cine"
+    },
+    {
+      "index": 270,
+      "hash": "125A4DE6",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 839548928,
+      "size": 5900240,
+      "section": "cine"
+    },
+    {
+      "index": 1066,
+      "hash": "51D507F8",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 866592768,
+      "size": 10597248,
+      "section": "cine"
+    },
+    {
+      "index": 932,
+      "hash": "47008CAB",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 927469568,
+      "size": 11424336,
+      "section": "cine"
+    },
+    {
+      "index": 1638,
+      "hash": "7C2BB08D",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 939085824,
+      "size": 7593824,
+      "section": "cine"
+    },
+    {
+      "index": 845,
+      "hash": "40854E96",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 946870272,
+      "size": 11089552,
+      "section": "cine"
+    },
+    {
+      "index": 3100,
+      "hash": "F562672B",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 958150656,
+      "size": 1266480,
+      "section": "cine"
+    },
+    {
+      "index": 1845,
+      "hash": "8C58FEFF",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 1060358144,
+      "size": 939152,
+      "section": "cine"
+    },
+    {
+      "index": 687,
+      "hash": "32998BE0",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 1140547584,
+      "size": 5610720,
+      "section": "cine"
+    },
+    {
+      "index": 2915,
+      "hash": "E600B682",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 1146167296,
+      "size": 959152,
+      "section": "cine"
+    },
+    {
+      "index": 1308,
+      "hash": "6364CB57",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 1604810752,
+      "size": 2012432,
+      "section": "cine"
+    },
+    {
+      "index": 511,
+      "hash": "243C50D2",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 1796765696,
+      "size": 3555920,
+      "section": "cine"
+    },
+    {
+      "index": 3201,
+      "hash": "FE6A911C",
+      "locale": "FFFFFFFF",
+      "part": 1,
+      "offset": 2047471616,
+      "size": 2204208,
+      "section": "cine"
+    },
+    {
+      "index": 1821,
+      "hash": "89AED897",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 139235328,
+      "size": 3100304,
+      "section": "cine"
+    },
+    {
+      "index": 2830,
+      "hash": "DF1A6565",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 142344192,
+      "size": 2402896,
+      "section": "cine"
+    },
+    {
+      "index": 1047,
+      "hash": "4FADB1F7",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 145238016,
+      "size": 2749424,
+      "section": "cine"
+    },
+    {
+      "index": 1280,
+      "hash": "6096DC00",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 147996672,
+      "size": 3114608,
+      "section": "cine"
+    },
+    {
+      "index": 2793,
+      "hash": "DC1597A1",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 284362752,
+      "size": 7148960,
+      "section": "cine"
+    },
+    {
+      "index": 250,
+      "hash": "10CE790F",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 291520512,
+      "size": 2746640,
+      "section": "cine"
+    },
+    {
+      "index": 1707,
+      "hash": "815729F5",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 294277120,
+      "size": 196160,
+      "section": "cine"
+    },
+    {
+      "index": 124,
+      "hash": "07FD50F2",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 562112512,
+      "size": 4012288,
+      "section": "cine"
+    },
+    {
+      "index": 2311,
+      "hash": "B0F705F5",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 590632960,
+      "size": 3015792,
+      "section": "cine"
+    },
+    {
+      "index": 336,
+      "hash": "16174FEE",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 1004800000,
+      "size": 5896048,
+      "section": "cine"
+    },
+    {
+      "index": 1108,
+      "hash": "546AF6C5",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 1028599808,
+      "size": 10000608,
+      "section": "cine"
+    },
+    {
+      "index": 1576,
+      "hash": "76F45937",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 1058289664,
+      "size": 10309984,
+      "section": "cine"
+    },
+    {
+      "index": 1635,
+      "hash": "7BCC947F",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 1073360896,
+      "size": 19369072,
+      "section": "cine"
+    },
+    {
+      "index": 2149,
+      "hash": "A58F6E5C",
+      "locale": "FFFFFFFF",
+      "part": 2,
+      "offset": 1750579200,
+      "size": 7884,
+      "section": "sch"
+    }
+  ],
+  "archives": [
+    {
+      "file": "bigfile.000",
+      "size": 2137942016,
+      "sha256": "a635b8eb133b521a4a73d63b4df6674f30f747b84a8270d9feed637f212ceb4c"
+    },
+    {
+      "file": "bigfile.001",
+      "size": 2134667264,
+      "sha256": "3870d238e05eccaee1109598f305a3314a0542b6f79870a2b4cf072ceda79467"
+    },
+    {
+      "file": "bigfile.002",
+      "size": 1751228416,
+      "sha256": "26d317519939b020f451022c5bb23704784c2ccf61fb279e826b2945afcec8f8"
+    }
+  ],
+  "source_stamps_unchanged": true,
+  "runtime_included": false,
+  "game_modified": false,
+  "record_identity": {
+    "menu": "native pointer-table ordinal",
+    "cine": "native block ordinal * 65536 + occurrence in language",
+    "sch": "segment occurrence, with original timestamps in all-language-records.json"
+  },
+  "paths": "Hash paths are explicit unidentified resource labels, not confirmed original filenames.",
+  "reference_commit": "70f2d306652196e66f1e5eaa5f92a5cc753e6bcd",
+  "output_files": [
+    {
+      "file": "all-language-records.json",
+      "size": 2344032,
+      "sha256": "f6c6467631e3cddf411f2d6b8d54e966ad372c3d54055887c165577054a6fd67"
+    },
+    {
+      "file": "en-to-hu-subtitles.json",
+      "size": 280364,
+      "sha256": "da260418944d6a6f00b2822001cfd543cb4284a050d49faf63c36fde4e37917f"
+    },
+    {
+      "file": "hu-source.json",
+      "size": 471560,
+      "sha256": "f6a55b1f8e446656b6a4339d1f299a2ed3404f49124f60d6db7a10bd54212f0e"
+    },
+    {
+      "file": "hu-source.tsv",
+      "size": 225021,
+      "sha256": "340a49d64df716587a772856f741a3208108bac12a9607eb87cfe4220e2b1b73"
+    }
+  ],
+  "support_status": "experimental Steam 251883 translation; installation, readback and copy restoration verified; gameplay not yet verified",
+  "rejected_candidate_assessment": {
+    "hash": "2D1E9879",
+    "first_header_word": 87,
+    "hungarian_CR_language_markers": 0,
+    "result": "Structural false CINE candidate: its block sequence fails CINE bounds/type checks and contains no Hungarian CR language marker."
+  },
+  "bilingual_pairing_summary": {
+    "english_records": 863,
+    "paired_records": 856,
+    "english_without_hungarian": 7,
+    "hungarian_without_english": 3,
+    "pairing": "same native block and within-language occurrence; no guessing across blocks"
+  },
+  "verified_hungarian_characters": {
+    "Ő": 35,
+    "ő": 793,
+    "Ű": 10,
+    "ű": 279
+  },
+  "json_tsv_exact_record_match": 2307,
+  "maintained_files": [
+    {
+      "file": "hu-source.json",
+      "sha256": "6ffe86e6a2dcc1e7762d882dec2b8da79b61e8834615331fe10095dfea7cfd99"
+    },
+    {
+      "file": "en-to-hu-subtitles.json",
+      "sha256": "764008afd8d913b2e32416626097d34db78386cc8f99649a6c88d384beb3be08"
+    },
+    {
+      "file": "hu.json",
+      "sha256": "fe6353ac9093d824c400eac2e2b6cf1bc56cde48dcf95b1101aa4554b4f39c53"
+    }
+  ],
+  "raw_multilingual_export": "work/runs/tru/official-hu-2008/export-all-scenes/all-language-records.json",
+  "tsv_export": "work/runs/tru/official-hu-2008/export-all-scenes/hu-source.tsv",
+  "steam_translation_preparation": {
+    "build_id": "251883",
+    "app_id": "8140",
+    "target_directory": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider Underworld",
+    "backup_directory": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider Underworld.orig",
+    "user_authorized_installation": true,
+    "baseline": "work/runs/tru/251883/original-baseline.json",
+    "package": "translations/tomb-raider-underworld/hu.json",
+    "profile": "profiles/tomb-raider-underworld.json",
+    "binding_report": "work/runs/tru/251883/binding-report.json",
+    "menu_records": 2895,
+    "subtitle_records": 863,
+    "missing_translations": 0,
+    "font_substitutions": {},
+    "font_replacement_applied": false,
+    "gameplay_verified": false,
+    "skipped_text_resources": 0,
+    "copy_cycle": {
+      "verified_records": 3758,
+      "unchanged_opaque_cine_blocks": 263678,
+      "errors": [],
+      "original_regions_unchanged": true,
+      "package_sha256": "fe6353ac9093d824c400eac2e2b6cf1bc56cde48dcf95b1101aa4554b4f39c53",
+      "transaction": "work/transactions/tru/251883/copy-verification-complete",
+      "changed_files": [
+        "bigfile.003",
+        "bigfile.000",
+        "patch.000"
+      ],
+      "backup_bytes": 146968,
+      "missing_translations": 0,
+      "build_id": "251883",
+      "gameplay_verified": false,
+      "restored_sha256_match": true
+    },
+    "windows_game_running_before_installation": false,
+    "first_steam_recovery_journal": "work/transactions/tru/251883/steam-hu",
+    "installed_verification": {
+      "verified_records": 3758,
+      "unchanged_opaque_cine_blocks": 263678,
+      "errors": [],
+      "original_regions_unchanged": true,
+      "package_sha256": "fe6353ac9093d824c400eac2e2b6cf1bc56cde48dcf95b1101aa4554b4f39c53",
+      "transaction": "work/transactions/tru/251883/steam-hu",
+      "changed_files": [
+        "bigfile.003",
+        "patch.000",
+        "bigfile.000"
+      ],
+      "backup_bytes": 146968,
+      "missing_translations": 0,
+      "build_id": "251883",
+      "gameplay_verified": false
+    },
+    "installed_verification_report": "work/runs/tru/251883/steam-installed-verification.json"
+  },
+  "large_scene_correction": {
+    "previously_excluded_resources": 3,
+    "additional_hungarian_records": 55,
+    "reason": "128 KiB CINE block limit excluded three valid large ENIC scene headers; the new variant accepts bounded 1 MiB blocks.",
+    "report": "work/runs/tru/251883/additional-scene-report.json"
+  },
+  "font_comparison": {
+    "status": "Identified and compared: the installed Steam font lacks ŐőŰű; the official Hungarian reference contains them.",
+    "font_location": {
+      "installed": {
+        "archive": "patch.000",
+        "container_name": "pc-w\\generalbank.drm",
+        "container_hash": "B3AAAFD6",
+        "archive_locale": "FFFFFFFF"
+      },
+      "official": {
+        "archive": "bigfile",
+        "container_hash": "DD8A64DB",
+        "archive_locale": "FFFFFFFF",
+        "identity": "Matched by native root object ID 1 and embedded font/texture IDs; not an original-filename claim."
+      }
+    },
+    "font_metadata_type": 7,
+    "font_metadata_id": 46,
+    "font_atlas_type": 5,
+    "font_atlas_id": 109,
+    "auxiliary_atlas_id": 110,
+    "comparisons": {
+      "metadata_equal": false,
+      "atlas_equal": false,
+      "installed_font_equals_untranslated_steam_original": true,
+      "installed_base_and_patch_font_equal": true,
+      "all_four_hungarian_double_acute_glyphs_missing_from_steam": true,
+      "all_four_present_in_official": true
+    },
+    "report": "work/runs/tru/251883/font-comparison-current/comparison-report.json",
+    "user_report": "2026-10-15: boxes displayed instead of Hungarian ő/ű",
+    "font_replacement_applied": false
+  },
+  "current_steam_state": {
+    "date": "2026-10-19",
+    "language": "en",
+    "hungarian_package_active": false,
+    "restoration_requested_by": "user",
+    "verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
+    "historical_translation_and_game_test_results_preserved": true
+  }
+}

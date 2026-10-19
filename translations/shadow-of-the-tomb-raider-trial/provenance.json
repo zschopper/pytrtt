@@ -1,0 +1,131 @@
+{
+  "game_id": "shadow-of-the-tomb-raider-trial",
+  "target_build_id": "3668420",
+  "target_language": "hu",
+  "import_method": "match source and target records by stable key; retain Trial slot ids; ignore source slot ids",
+  "input": {
+    "filename": "bigfile.update3.002_english_allvo_allplt.000.tiger",
+    "size_bytes": 9496675,
+    "sha256": "6b878ca0669c0876b5b0cddb39d4ffa23949439a5ac6a15a09b68d62ee4976d3",
+    "archive_version": 5,
+    "archive_platform": "pcx64-w",
+    "archive_id": 12,
+    "archive_sub_id": 27,
+    "resource_hash": "331F339BC3DB8E80",
+    "resource_size_bytes": 4841859,
+    "resource_sha256": "d196fa5dd13a03f11b6e8795719dcff9143a504746c6990fb62518ba31ecca2c",
+    "locals_language_id": 0,
+    "build_identity": "not established from the supplied archive file",
+    "language_identification": "Hungarian values confirmed by inspection; translation quality not reviewed"
+  },
+  "target_source": {
+    "archive_filename": "bigfile_english_allvo_allplt.000.tiger",
+    "archive_size_bytes": 4631029,
+    "archive_sha256": "205bd7d8ee600ddc2c37bff532845f7f3831d3d883ff4c3cbb0c150ffcd3ce06",
+    "filename": "locals-en.bin",
+    "steam_build_id": "3668420",
+    "resource_hash": "331F339BC3DB8E80",
+    "sha256": "3524d497f7e39eea5790a808805ea67e4c57ac81c7fe27d1fa2acbcdd9ba0248",
+    "slots": 39345,
+    "populated_records": 38055
+  },
+  "import_result": {
+    "matched_and_imported": 38050,
+    "values_different_from_English_source": 36803,
+    "values_identical_to_English_source": 1247,
+    "empty_translations": 0,
+    "Trial_records_without_a_matching_translation": 5,
+    "patch_records_not_in_Trial_build": 184,
+    "unmatched_trial_records": [
+      {
+        "id": 36816,
+        "key": "600_dlc_dlc_07_000_torn_and_fred_not_for_localisation_569b07dd_9e1c_4a6f_a07f_611ba11abc55"
+      },
+      {
+        "id": 38754,
+        "key": "600_dlc_dlc_06_ct_dlc06_ctcom_020_doing_lines_trinity_soldier_01_bbab7857_9acf_478e_88df_1347f082b8c9"
+      },
+      {
+        "id": 38775,
+        "key": "600_dlc_dlc_06_ct_dlc06_ctcom_010_block_party_trinity_soldier_01_f2f05d6f_38e4_4213_8583_ba1f07975fe3"
+      },
+      {
+        "id": 39187,
+        "key": "600_dlc_dlc_06_ct_dlc06_ctcom_010_block_party_trinity_soldier_01_d064f5d6_2b2c_403a_9fd4_72a965fbad25"
+      },
+      {
+        "id": 39188,
+        "key": "600_dlc_dlc_06_ct_dlc06_ctcom_050_dead_left_trinity_soldier_01_cb0372c2_dc05_4c0e_8723_ee9783a57415"
+      }
+    ],
+    "patch_only_key_samples": [
+      "600_dlc_dlc_03_ct_dlc003_ct_120_vista_qorianka_27339f6c_7eb3_4dbc_9160_c03c39268941",
+      "600_dlc_dlc_03_ct_dlc003_ct_120_vista_qorianka_415ef092_061e_4399_875f_059b58a8260f",
+      "600_dlc_dlc_03_ct_dlc003_ct_120_vista_qorianka_7eb95c24_f359_4851_ad3d_78d78d2b4959",
+      "600_dlc_dlc_03_ct_dlc003_ct_180_at_codex_qorianka_330908e4_a877_4d4d_96e6_a659c55e2226",
+      "600_dlc_dlc_03_ct_dlc003_ct_180_at_codex_qorianka_60e69a6d_769d_4409_92c1_0a3c4d1dcf01",
+      "600_dlc_dlc_03_ct_dlc003_ct_180_at_codex_qorianka_bc02604d_811c_4f68_869d_245ecb7f0edc",
+      "600_dlc_dlc_05_ct_dlc05_ct_110_reach_raft_lara_2f2126a7_0998_40d9_aa9e_49179e95aeca",
+      "600_dlc_dlc_05_ct_dlc05_ct_110_reach_raft_qorianka_d220f309_28e8_47e7_b9e2_5604d4f0d9ca",
+      "600_dlc_dlc_05_ct_dlc05_ct_120_raft_blocked_lara_041d55b9_26c4_44a5_8782_01705b0ef109",
+      "600_dlc_dlc_05_ct_dlc05_ct_120_raft_blocked_qorianka_3528e682_0a2a_415f_b4d6_ebc08eff667d",
+      "600_dlc_dlc_05_ct_dlc05_ct_130_blades_lara_2f0540a8_04aa_44f4_ad0f_f71c88188622",
+      "600_dlc_dlc_05_ct_dlc05_ct_130_blades_qorianka_3f7175e9_a282_4241_b01b_c73d56591d76",
+      "600_dlc_dlc_05_ct_dlc05_ct_140_raft_wont_fit_lara_f70105b5_4fcf_4e2b_ac60_a6f0c5cae2c2",
+      "600_dlc_dlc_05_ct_dlc05_ct_140_raft_wont_fit_qorianka_2e2e1671_ddaf_46ce_af37_506ba4d3eba2",
+      "600_dlc_dlc_05_ct_dlc05_ct_150_back_on_raft_lara_a24d74ce_7575_4db7_a841_3bd7dbd29b1f",
+      "600_dlc_dlc_05_ct_dlc05_ct_150_back_on_raft_qorianka_a96c82d8_76ec_43f7_b046_8c52de4b94b1",
+      "600_dlc_dlc_05_ct_dlc05_ct_160_raft_wont_fit_2_lara_4f83d310_a149_4424_9b27_e074f03ce013",
+      "600_dlc_dlc_05_ct_dlc05_ct_160_raft_wont_fit_2_qorianka_e5c1594f_236f_426d_9082_435f6a70d9f8",
+      "600_dlc_dlc_05_ct_dlc05_ct_170_hit_by_blade_lara_2a8dd037_3909_4055_a561_c43c7216dd2c",
+      "600_dlc_dlc_05_ct_dlc05_ct_170_hit_by_blade_lara_7378c30a_f6e7_418d_ac56_a7d534d3402b"
+    ],
+    "quality_review": "The five Trial-only records were translated manually; the 38,050 shared-key records were reconciled against the full-game Hungarian package. Full linguistic review remains pending."
+  },
+  "translation_completion": {
+    "full_game_shared_keys": 38050,
+    "translations_matching_full_game": 38050,
+    "translations_updated_from_full_game": 2,
+    "trial_only_records_translated_manually": 5,
+    "remaining_missing_translations": 0
+  },
+  "steam_installation": {
+    "date": "2026-10-18",
+    "archive": "bigfile_english_allvo_allplt.000.tiger",
+    "translated_size_bytes": 4816923,
+    "translated_sha256": "20ded41a3aaa2000f969920728a866799c2688d5d7cccd731a6d83823a809465",
+    "translated_resource_size_bytes": 4816827,
+    "translated_resource_sha256": "d63c07a0d53d1c58352a39de61f46067399b72b543cb2afa8422697d789f66c5",
+    "translated_records_verified_by_readback": 38055,
+    "transaction": "work/transactions/sottr-trial/3668420-steam-install-20261018",
+    "game_test": {
+      "date": "2026-10-18",
+      "result": "passed",
+      "reported_by": "user",
+      "summary": "The user confirmed that the installed Hungarian translation works completely correctly in the Steam Trial."
+    }
+  },
+  "current_steam_state": {
+    "date": "2026-10-19",
+    "language": "en",
+    "hungarian_package_active": false,
+    "restoration_requested_by": "user",
+    "verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
+    "historical_translation_and_game_test_results_preserved": true
+  },
+  "english_source_export": {
+    "file": "en.json",
+    "sha256": "156fad3a028068ba19139b089aa7b9f684ba5f43764039730bf70c8d75671bad",
+    "date": "2026-10-19",
+    "source_language": "en",
+    "target_language": "hu",
+    "populated_records": 38055,
+    "placeholder_slots": 1290,
+    "total_slots": 39345,
+    "all_translation_fields_null": true,
+    "source_archive_sha256": "205bd7d8ee600ddc2c37bff532845f7f3831d3d883ff4c3cbb0c150ffcd3ce06",
+    "report": "work/runs/sottr-trial/3668420/en-template-20261019/extraction-report.json",
+    "format": "Standalone Shadow keyed-locals JSON; retains native ids and keys; not a generic runtime package.",
+    "coverage": "Entire selected English locals table, including UI and dialogue; not a complete archive/DLC/embedded-text coverage claim."
+  }
+}

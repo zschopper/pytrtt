@@ -1,0 +1,399 @@
+{
+  "game_id": "lara-croft-and-the-temple-of-osiris",
+  "steam_app_id": "289690",
+  "steam_build_id": "477027",
+  "source_language": "en",
+  "target_language": "hu",
+  "status": "Hungarian draft and Unicode font supplement installed; setup and in-game ŐőŰű accents user-verified; proofreading and English membership notice investigation remain",
+  "archive_variant": {
+    "format": "tiger",
+    "version": 4,
+    "platform": "pc-w",
+    "handler": "read/write; append-only indexed resources and embedded DRM v22 font replacement; journaled restoration",
+    "indexes": [
+      {
+        "alias": "base",
+        "file": "bigfile.000.tiger",
+        "archive_id": 1,
+        "platform": "pc-w",
+        "records": 2750,
+        "size": 2128494675,
+        "mtime_ns": 1791754257863111900,
+        "index_sha256": "02f61d0f5bb8e1719ea5ee25fe740b123f7b2c13f8946c7748fb61e356c753e2"
+      },
+      {
+        "alias": "english",
+        "file": "bigfile_ENGLISH.000.tiger",
+        "archive_id": 1,
+        "platform": "pc-w",
+        "records": 984,
+        "size": 55628240,
+        "mtime_ns": 1791754257863111900,
+        "index_sha256": "62491dc197e24ea3682fe62873968739627485727bfac912fac91f44880fe649"
+      },
+      {
+        "alias": "update",
+        "file": "bigfile.update1.000.000.tiger",
+        "archive_id": 10,
+        "platform": "pc-w",
+        "records": 1095,
+        "size": 98239384,
+        "mtime_ns": 1791754257863111900,
+        "index_sha256": "8845b7e62a67be3b2bcd8e50243b5a67b61e89d00edbb45f8cadacb2d64081b6"
+      },
+      {
+        "alias": "update_english",
+        "file": "bigfile.update1.000_ENGLISH.000.tiger",
+        "archive_id": 10,
+        "platform": "pc-w",
+        "records": 1,
+        "size": 77279,
+        "mtime_ns": 1791754388689352000,
+        "index_sha256": "6a4634f0bafa1eb2466474da19fe898a5ee2949842c94c4952972588932ffeea"
+      }
+    ]
+  },
+  "text_formats": {
+    "menu": "locals/2",
+    "dialogue": "cine/2, 8192-byte header",
+    "movies": "sch/2"
+  },
+  "records": {
+    "menu": 1744,
+    "subtitles": 1338
+  },
+  "coverage": {
+    "counts": {
+      "menu": 1744,
+      "subtitles": 1338
+    },
+    "resource_count": 986,
+    "menu_resources": 1,
+    "subtitle_resources": 985,
+    "known_text_headers_accounted_for": 985,
+    "uncovered_known_text_headers": 0,
+    "empty_resources": 443,
+    "skipped_resources": [],
+    "all_translations_unset": true,
+    "source_languages": [
+      "en"
+    ],
+    "original_archive_sizes_mtimes_and_index_hashes_unchanged": true,
+    "unresolved_original_filenames": 1150,
+    "limits": "Covers the selected effective English menu, CINE and SCH resources; no claim of arbitrary embedded text discovery in non-text resources."
+  },
+  "package": "en.json",
+  "package_sha256": "a90e390f7b316821f97ffbad7b312ce8795381dc7801a9e027f3e2b5eebe33bc",
+  "profile": "profiles/lara-croft-and-the-temple-of-osiris.json",
+  "profile_sha256": "d2e0ab5383338d04a886c61b8dcfaf391504d521500d94d31455231da1f0014c",
+  "filelist": "pytrtt/resources/filelists/lctoo_filelist.txt",
+  "filelist_sha256": "d10c67802f4279903bcd74bba0878cbcf8111bc609e76b69c8f88bd32dee95c1",
+  "source_backup": {
+    "directory": "/mnt/l/SteamLibrary/steamapps/common/Lara Croft and the Temple of Osiris.orig",
+    "reported_complete_by_user": true,
+    "used_for_writing": false,
+    "full_content_comparison_performed": false
+  },
+  "exe_filename_recovery": {
+    "exe_sha256": "5fc1b4042323c85256de2418846be8571f970b38af5dac197ea32be37bbafa32",
+    "raw_scanner_candidates": 22,
+    "complete_filename_patterns": 17,
+    "verified_derived_candidates": 61,
+    "new_resolutions": 8,
+    "report": "work/runs/lctoo/477027/exe-derived-names.json",
+    "verified_filelist": "work/runs/lctoo/477027/exe-verified-filelist.txt",
+    "literal_names_and_patterns": "work/runs/lctoo/477027/exe-filenames.txt",
+    "note": "Derived paths instantiate EXE printf templates using observed components and platform roots. Hash matches are candidate evidence, not proof against CRC collisions."
+  },
+  "lcgol_name_comparison": {
+    "valid_names_checked": 1170,
+    "shared_names": 9,
+    "new_resolutions": 0,
+    "conflicts": 0,
+    "report": "work/runs/lctoo/477027/lcgol-overlap.json"
+  },
+  "extraction_report": "work/runs/lctoo/477027/export-complete/extraction-report.json",
+  "coverage_report": "work/runs/lctoo/477027/coverage-report.json",
+  "verification": {
+    "tests_passed": 243,
+    "integration_tests_deselected": 18,
+    "scoped_ruff": "passed",
+    "scoped_mypy": "passed",
+    "json_roundtrip": "passed",
+    "game_files_modified": false,
+    "gameplay_tested": false
+  },
+  "hungarian_draft": {
+    "status": "First complete Hungarian text draft; contextual proofreading and gameplay verification pending",
+    "counts": {
+      "menu": 1744,
+      "subtitles": 1338
+    },
+    "total": 3082,
+    "missing": 0,
+    "reference_reused_records_before_refinement": 644,
+    "new_unique_strings": 2382,
+    "reference_sources": [
+      {
+        "file": "translations/lara-croft-and-the-guardian-of-light/hu.json",
+        "sha256": "f525e163022200e11d0b8457fff22553418409b4e3d6e4364e1a644e1e536045"
+      },
+      {
+        "file": "translations/tomb-raider-underworld/hu.json",
+        "sha256": "fe6353ac9093d824c400eac2e2b6cf1bc56cde48dcf95b1101aa4554b4f39c53"
+      },
+      {
+        "file": "translations/tomb-raider-legend/hu.json",
+        "sha256": "fd0098a86df30abcd7f72f46872eaa2b7a53a304f2f0f62b84d861bcae5eaef4"
+      },
+      {
+        "file": "translations/tomb-raider-anniversary/hu.json",
+        "sha256": "f25f9b359d82c76fa57cd033d9ac3f28a5c867833afb2df5c660fdc4e76ea3f3"
+      },
+      {
+        "file": "translations/tomb-raider/hu.json",
+        "sha256": "70149450aa1564dd795cdf943678f3a67d5d91183099f178cc9ea6857c6cef29"
+      }
+    ],
+    "checks": {
+      "schema_parse_and_roundtrip": "passed",
+      "source_and_identity_and_runtime_unchanged": true,
+      "original_comments_preserved": true,
+      "placeholders_macros_markup_and_glyphs": "passed",
+      "printf_order": "passed",
+      "line_breaks_tabs_and_boundary_whitespace": "passed",
+      "circumflex_substitutions": 0,
+      "game_files_modified": false,
+      "gameplay_tested": false
+    },
+    "terminology": {
+      "Osiris": "Ozirisz",
+      "Isis": "Ízisz",
+      "Horus": "Hórusz",
+      "Set": "Széth",
+      "Sobek": "Szobek",
+      "Ra": "Ré",
+      "Serket": "Szerket",
+      "Anubis": "Anubisz",
+      "Sekhmet": "Szahmet",
+      "Bes": "Bész",
+      "staff": "bot",
+      "grapple": "csáklya",
+      "ring": "gyűrű",
+      "amulet": "amulett",
+      "gem": "drágakő",
+      "braziers": "tűztartók",
+      "canopic jar": "kanópuszedény",
+      "shotgun": "vadászpuska",
+      "assault rifle": "rohampuska",
+      "power meter": "erősáv",
+      "timebomb": "időzített bomba"
+    },
+    "review_items": [
+      {
+        "section": "menu",
+        "resource_hash": "7CD333D3",
+        "entry_id": 148,
+        "source": "Fire And Health",
+        "translation": "Tűz és életerő",
+        "reason": "Context-sensitive item/mechanic or development label; verify in game."
+      },
+      {
+        "section": "menu",
+        "resource_hash": "7CD333D3",
+        "entry_id": 1675,
+        "source": "RandomTomb",
+        "translation": "Véletlen sír",
+        "reason": "Context-sensitive item/mechanic or development label; verify in game."
+      },
+      {
+        "section": "menu",
+        "resource_hash": "7CD333D3",
+        "entry_id": 1969,
+        "source": "Bronze Spirit Feet of Heb and Shen",
+        "translation": "Heb és Shen szellemi lábai (bronz)",
+        "reason": "Context-sensitive item/mechanic or development label; verify in game."
+      },
+      {
+        "section": "menu",
+        "resource_hash": "7CD333D3",
+        "entry_id": 2339,
+        "source": "Power Shot",
+        "translation": "Erőlövés",
+        "reason": "Context-sensitive item/mechanic or development label; verify in game."
+      },
+      {
+        "section": "menu",
+        "resource_hash": "7CD333D3",
+        "entry_id": 2362,
+        "source": "Augment Ring",
+        "translation": "Fejlesztőgyűrű",
+        "reason": "Context-sensitive item/mechanic or development label; verify in game."
+      },
+      {
+        "section": "menu",
+        "resource_hash": "7CD333D3",
+        "entry_id": 2363,
+        "source": "Ring of the Bay",
+        "translation": "Az öböl gyűrűje",
+        "reason": "Context-sensitive item/mechanic or development label; verify in game."
+      },
+      {
+        "section": "menu",
+        "resource_hash": "7CD333D3",
+        "entry_id": 2493,
+        "source": "Augment Ring",
+        "translation": "Fejlesztőgyűrű",
+        "reason": "Context-sensitive item/mechanic or development label; verify in game."
+      }
+    ],
+    "limits": [
+      "All exported text is populated; not a claim of arbitrary embedded-text coverage.",
+      "TIGER v4 remains read-only: this draft is not installable yet.",
+      "Keep product, DLC pack, licensed technology and character outfit brand names when appropriate.",
+      "Review split subtitle sentences, jokes, item-name semantics, line wrapping and native double-acute glyphs in context."
+    ],
+    "package": "hu.json",
+    "package_sha256": "bf8334773bf8dc1ad85160b87d9fd3d05e1cfeceb4de03df4b160f9bde514b9c"
+  },
+  "filename_rescan": {
+    "scope": "Read-only recursive scan of the Steam game directory; ASCII and UTF-16LE; no decompression or integration test",
+    "scanner": "scripts/find_resource_names.py",
+    "extensions": "arg,bin,bnk,dat,drm,ids,json,mul,mus,png,raw,sam,sch,tfb,txt,wem",
+    "candidate_rows": 35,
+    "matched_rows": 0,
+    "distinct_matched_names": 0,
+    "new_resolutions": [
+      {
+        "hash": "4D42D950",
+        "previous": "hash/4D42D950.mul",
+        "name": "pc-w\\audio\\streams\\music\\tr2_vertical_slice\\vh\\tr2_thai_gourd_stinger_2.mul",
+        "source": "references/filelists/lctoo_filelist.txt",
+        "offset": null,
+        "kind": "Reference typo correction: strefams -> streams"
+      }
+    ],
+    "conflicts": [],
+    "unresolved_original_names": 1150,
+    "reference_comparison": "work/runs/lctoo/477027/filename-rescan/reference-comparison.json",
+    "scanner_report": "work/runs/lctoo/477027/filename-rescan/candidates.jsonl",
+    "selected_source_archive_sizes_mtimes_indexes_unchanged": true,
+    "translation_resource_identities_unchanged": true
+  },
+  "copy_installation": {
+    "package_sha256": "59db68d7c9fa02c47224aa68367fb54917f1e239ef5c2835ac98cc336606abbf",
+    "verified_records": 3082,
+    "changed_files": [
+      "bigfile.update1.000_ENGLISH.000.tiger",
+      "bigfile.update1.000.000.tiger",
+      "bigfile.000.tiger",
+      "bigfile_ENGLISH.000.tiger"
+    ],
+    "original_regions_unchanged": true,
+    "journal": "work/transactions/lctoo/477027/copy-hu-20261018",
+    "gameplay_verified": false,
+    "restored_twice": true,
+    "runtime_payload_sha256": "660863cb01aedfc62ab94ddffba74811b1e64658c811ae97d0f113a468e020f3",
+    "equivalent_annotated_package_sha256": "60fd3d05ccd33ad6f9d1abe8ae575fd09853a40f34ac86c5e8f6179db426184c",
+    "annotation_only_update": "Two screenshot-confirmed setup tabs annotated after copy verification; runtime payload unchanged."
+  },
+  "setup_annotations": {
+    "marked_records": 84,
+    "report": "work/runs/lctoo/477027/steam-hu-20261018/setup-annotations.json",
+    "screenshot_confirmed_tabs": [
+      "Display",
+      "Graphics"
+    ],
+    "translations_changed": false,
+    "substitutions_changed": false,
+    "shared_in_game_labels_possible": true
+  },
+  "write_verification": {
+    "date": "2026-10-18",
+    "tests_passed": 280,
+    "integration_tests_deselected": 18,
+    "scoped_ruff": "passed",
+    "scoped_mypy": "passed",
+    "copy_verified_records": 3082,
+    "original_regions_unchanged": true,
+    "restored_twice": true,
+    "steam_installed": true,
+    "gameplay_verified": false,
+    "font_copy_restored_twice": true,
+    "steam_fonts_read_back": 2
+  },
+  "steam_installation": {
+    "package_sha256": "60fd3d05ccd33ad6f9d1abe8ae575fd09853a40f34ac86c5e8f6179db426184c",
+    "verified_records": 3082,
+    "changed_files": [
+      "bigfile.update1.000_ENGLISH.000.tiger",
+      "bigfile.update1.000.000.tiger",
+      "bigfile_ENGLISH.000.tiger",
+      "bigfile.000.tiger"
+    ],
+    "original_regions_unchanged": true,
+    "journal": "work/transactions/lctoo/477027/steam-hu-20261018",
+    "gameplay_verified": false,
+    "installed_sha256": {
+      "bigfile.update1.000_ENGLISH.000.tiger": "30af8fc44fb3eaff15ff5c2bf1ea194d4365720123d55e882459ce6fe5089a25",
+      "bigfile.update1.000.000.tiger": "752ab05a43ad303bb66dd9df0605bb467359599af0338f82e95865f4625f8146",
+      "bigfile_ENGLISH.000.tiger": "7f209504c251dae40535b42ba8a81c024ad1e9feac3ceeab0464d0d57c0dcd30",
+      "bigfile.000.tiger": "1f004d03bd4e33d3c97b2ec8595734bd4c01d8cb8e74828e020190359b071ea3"
+    }
+  },
+  "in_game_observations": {
+    "date": "2026-10-18",
+    "hungarian_text_user_confirmed": true,
+    "short_accents_observed": true,
+    "missing_double_acutes_user_observed": [
+      "ő",
+      "Ő"
+    ],
+    "missing_double_acutes_in_inspected_fonts": [
+      "Ő",
+      "ő",
+      "Ű",
+      "ű"
+    ],
+    "full_gameplay_verified": false,
+    "report": "work/runs/lctoo/477027/glyph-report-20261018/report.json",
+    "membership_notification_english": true,
+    "notification_origin_confirmed": false
+  },
+  "font_supplement": {
+    "date": "2026-10-18",
+    "collection": "pc-w\\fontuniversal.drm",
+    "embedded_ids": [
+      2473,
+      2474
+    ],
+    "strategy": "Add real Unicode ŐőŰű glyph records; preserve existing glyph indices and circumflex glyphs.",
+    "runtime_character_substitutions": {},
+    "fonts_modified": 5,
+    "glyphs_added": 20,
+    "copy_transaction": "work/transactions/lctoo/477027/copy-unicode-font-20261018",
+    "copy_restored_twice": true,
+    "steam_transaction": "work/transactions/lctoo/477027/steam-unicode-font-20261018",
+    "steam_installed": true,
+    "installed_assets_read_back": true,
+    "installed_text_records_unchanged": 3082,
+    "gameplay_verified": true,
+    "setup_verified": true,
+    "user_verification_date": "2026-10-18",
+    "user_verification": "The user confirmed that accented characters display correctly in both the Windows setup dialog and the game.",
+    "source_report": "work/runs/lctoo/477027/glyph-report-20261018/report.json",
+    "superseded_transactions": [
+      "work/transactions/lctoo/477027/steam-font-20261018",
+      "work/transactions/lctoo/477027/steam-text-substitution-20261018"
+    ],
+    "historical_setup_behavior": "TRTR setup=true records bypassed character substitution; PyTRTT supports the equivalent substitution_disabled flag."
+  },
+  "current_steam_state": {
+    "date": "2026-10-19",
+    "language": "en",
+    "hungarian_package_active": false,
+    "restoration_requested_by": "user",
+    "verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
+    "historical_translation_and_game_test_results_preserved": true
+  }
+}

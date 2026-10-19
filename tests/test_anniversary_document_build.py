@@ -227,6 +227,11 @@ def test_document_build_plan_applies_and_restores_exactly_with_font_raw(tmp_path
 
     transaction_dir = tmp_path / "transaction"
     TranslationService().apply(result, transaction_dir)
+    assert TranslationService().is_translation_installed(
+        game_dir,
+        make_document(),
+        package_dir=package_dir,
+    )
     backup = transaction_dir / "backups/restore-data/fonts/625B0E2D-FFFFFFFF.raw"
     assert backup.read_bytes() == b"old-font"
     with (game_dir / "bigfile.000").open("rb") as stream:
@@ -236,6 +241,27 @@ def test_document_build_plan_applies_and_restores_exactly_with_font_raw(tmp_path
     TranslationService().restore(game_dir, transaction_dir)
 
     assert (game_dir / "bigfile.000").read_bytes() == original
+
+
+def test_installed_translation_check_tolerates_unrelated_archive_mod(tmp_path: Path) -> None:
+    game_dir = tmp_path / "game"
+    game_dir.mkdir()
+    make_game_dir(game_dir)
+    package_dir = tmp_path / "package"
+    (package_dir / "fonts").mkdir(parents=True)
+    (package_dir / "fonts/font_hu.raw").write_bytes(b"hu-font!")
+    service = TranslationService()
+    result = service.plan(game_dir, make_document(), package_dir=package_dir)
+    service.apply(result, tmp_path / "transaction")
+
+    with (game_dir / "bigfile.000").open("ab") as stream:
+        stream.write(b"unrelated-mod-data")
+
+    assert service.is_translation_installed(
+        game_dir,
+        make_document(),
+        package_dir=package_dir,
+    )
 
 
 def test_cli_dry_run_apply_and_restore_round_trip(tmp_path: Path) -> None:

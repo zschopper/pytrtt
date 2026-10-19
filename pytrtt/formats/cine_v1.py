@@ -90,7 +90,12 @@ def _find_subtitle(
     return content_size, ()
 
 
-def parse_cine(data: bytes) -> CineResource:
+def parse_cine(
+    data: bytes,
+    *,
+    opaque_block_types: frozenset[int] = frozenset(),
+    max_block_size: int = MAX_BLOCK_SIZE,
+) -> CineResource:
     """Read aligned blocks and their CR-delimited language/text pairs."""
     if len(data) <= CINE_HEADER_SIZE:
         raise CineFormatError("CINE resource is shorter than its header and one block")
@@ -101,15 +106,19 @@ def parse_cine(data: bytes) -> CineResource:
         if len(data) - offset < BLOCK_HEADER_SIZE:
             raise CineFormatError("truncated CINE block header")
         block_type, virtual_payload_size = struct.unpack_from("<II", data, offset)
-        if block_type not in (0, 1):
+        if block_type not in (0, 1) and block_type not in opaque_block_types:
             raise CineFormatError(f"unsupported CINE block type {block_type}")
         block_size = BLOCK_HEADER_SIZE + virtual_payload_size
-        if block_size > MAX_BLOCK_SIZE or block_size % 16:
+        if block_size > max_block_size or block_size % 16:
             raise CineFormatError("CINE block virtual size is invalid")
         end = offset + block_size
         if end > len(data):
             raise CineFormatError("CINE block extends beyond resource")
         block = data[offset:end]
+        if block_type in opaque_block_types:
+            blocks.append(CineBlock(block_type, False, block[16:], (), False, block))
+            offset = end
+            continue
         if block_type == 1:
             if len(block) < 0x14:
                 raise CineFormatError("type 1 CINE block is shorter than its size field")
@@ -137,7 +146,9 @@ def parse_cine(data: bytes) -> CineResource:
     return CineResource(header, tuple(blocks), data)
 
 
-def _serialize_block(block: CineBlock, pairs: tuple[tuple[int, str], ...]) -> bytes:
+def _serialize_block(
+    block: CineBlock, pairs: tuple[tuple[int, str], ...], *, preserve_payload_padding: bool = False
+) -> bytes:
     if pairs == block.subtitle_pairs:
         return block.original_block
     header_size = BLOCK_HEADER_SIZE + (4 if block.block_type == 1 and not block.is_enic else 0)
@@ -145,7 +156,7 @@ def _serialize_block(block: CineBlock, pairs: tuple[tuple[int, str], ...]) -> by
     if pairs:
         # For legacy non-ENIC blocks, retain binary bytes but discard only the
         # zero padding before the subtitle length word; align that word to 4 bytes.
-        if header_size == 0x14:
+        if header_size == 0x14 and not preserve_payload_padding:
             while content and content[-1] == 0:
                 content.pop()
             desired = (-((header_size + len(content)) % 4)) % 4
@@ -173,6 +184,7 @@ def apply_cine_translations(
     omitted_languages: frozenset[int] = frozenset(),
     subtitle_language: int = 0,
     substitutions: Mapping[str, str] | None = None,
+    preserve_payload_padding: bool = False,
 ) -> bytes:
     """Apply selected-language text, retaining, blanking, or omitting other language records."""
     if any(not 0 <= index < len(resource.blocks) for index in translations):
@@ -222,7 +234,9 @@ def apply_cine_translations(
                 else:
                     rebuilt_pairs.append((language, text))
             new_pairs = tuple(rebuilt_pairs)
-            block_data = _serialize_block(block, new_pairs)
+            block_data = _serialize_block(
+                block, new_pairs, preserve_payload_padding=preserve_payload_padding
+            )
             changed |= block_data != block.original_block
         else:
             block_data = block.original_block

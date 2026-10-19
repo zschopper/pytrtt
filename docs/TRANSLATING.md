@@ -10,7 +10,7 @@ Use the exact game and build listed as supported. A translation for a different 
 verified separately because game updates can change strings and identifiers. If the game or build is not
 listed, open an issue before starting; new support may need archive-format research and developer work.
 
-You need Python 3.13 and access to a clean copy of the supported game. Do not use your only installation as a
+You need Python 3.13 or 3.14 and access to a clean copy of the supported game. Do not use your only installation as a
 test copy.
 
 ## 2. Extract a translation template
@@ -40,8 +40,82 @@ directory. Do not edit the profile or runtime settings unless you are working wi
 
 Edit the `translation` values while preserving the source text, resource hashes and paths, entry IDs,
 placeholders, control codes, and meaningful line breaks. Keep the file in UTF-8 and write normal Unicode
-characters for your language. Optional `comment` values are for translator or reviewer notes; they are not
-shown in the game.
+characters for your language. The optional `comment` field is an array of strings, with each translator or
+reviewer note in its own element. Keep existing notes in order and append revision tags with their reasons
+as new elements. These notes are not shown in the game.
+
+Use `[revision: ID]` for a proposed correction and change it to `[revised: ID]` once the reviewer accepts
+that wording. Keep the ID, previous text, and reason unchanged. A revised tag records text review;
+it does not mean the wording has been checked in the game. Use `[rejected: ID]` for wording the reviewer
+declined in favor of an accepted alternative, and `[superseded: ID]` when a previously accepted version
+is replaced by a newer accepted version. Only proposals awaiting a decision remain `revision` notes.
+Preserve each note's ID, previous text, and reason as review history.
+
+```json
+"comment": [
+  "Check this label's width in the menu.",
+  "[revision: R001] Previous: Start. Reason: clarified the action."
+]
+```
+
+Use `[]` for an empty comment array, or omit the field when there are no notes. Legacy string comments
+remain readable and are split at newline characters when loaded; serialization always writes arrays.
+
+Entries normally use the document's `metadata.source_language`. If an individual source string is in another
+language, set that entry's `source_language` property to its language code (for example, `"ru"`). This
+per-entry override requires translation document schema version 3.
+
+Schema version 4 can also retain the exact `archive_locale` on a resource when one hash occurs in
+several archive locales. `archive_family` distinguishes physical layers with the same hash and locale,
+such as a base menu and a partial patch menu. Preserve both values along with the extracted entry IDs.
+The optional runtime archive setting `include_overridden` exposes these layers for explicit addressing;
+the default archive view still resolves the highest-priority resource.
+
+For Bigfile v2, `runtime.archive.index_files` can map a declared family alias to an independently indexed
+file. Guardian of Light uses `{"patch0": "patch.000", "patch1": "patch.001"}` because these files have
+separate indexes, rather than forming a multipart family. Unmapped families retain the usual `.000`, `.001`
+part naming. Keep the declared `families` order and aliases unchanged when editing an extracted document.
+Exact duplicate index rows sharing the same data are preserved and updated together; conflicting duplicates
+are rejected.
+
+Read-only TIGER v4 profiles also use `index_files`, with aliases mapped to complete `.000.tiger` filenames,
+including names with update/language components. The Temple of Osiris profile selects the base, English,
+update and English-update indexes explicitly. Its archive handler supports extraction only; writing and
+restoration are not implemented. The exported `en.json` is an English source template with unset translation fields.
+
+Historical imports marked `"entry_identity": "source_text"` are translation memories. Their IDs are
+memory-local ordinals; `legacy_tuid` and `legacy_context` preserve TMX provenance and do not locate game
+records. These documents cannot be compiled into installation packages directly. A maintainer must first
+extract the exact build and bind the memory to those records, for example:
+
+```bash
+bash scripts/dev.sh run --locked python scripts/bind_translation_memory.py \
+  --memory translations/tomb-raider/hu.json \
+  --extracted work/runs/example/extracted.json \
+  --output work/runs/example/bound.json
+```
+
+The paths above are illustrative. Binding matches source language and source text, normalizes CRLF/LF,
+and rejects conflicting translations. It keeps repeated game occurrences and their actual record IDs.
+Missing matches still require review; binding does not prove archive writing or in-game compatibility.
+
+Binding also preserves the memory's font declarations and copies their verified replacement assets beside
+the output JSON. Existing assets with different contents are rejected. Keep the JSON and its `assets/`
+directory together when moving a translation package.
+
+Schema version 5 supports fonts embedded in DRM v22 collections in TIGER v3 archives. Each font declares
+the collection's `resource_hash` and `resource_path`, an `embedded_type`, `embedded_id`, `archive_locale`,
+replacement file, and SHA-256 digests of the original and replacement decoded resource bodies.
+Optional font-specific `character_substitutions` are applied at installation time; conflicting runtime
+substitutions are rejected. The planner updates all discovered physical references, allocates fresh
+virtual ranges, writes the `NEXT` chain, and preserves original font bodies in the recovery journal.
+This currently supports reference-free resource bodies and uncompressed indexed collections; unsupported
+layouts fail without writes. Prepared font assets belong in the translation package, not in game archives.
+
+Schema version 5 also allows an optional `archive_family` on a whole-resource font asset. This selects one
+physical archive layer when the same resource hash occurs in the base game and patches. Each layer keeps
+its own source digest and recovery asset. Extraction also saves each layer's original font under a distinct
+recovery filename. This selector is not supported on embedded font declarations.
 
 A missing `translation` value leaves the original game text in place and is reported as incomplete. An
 explicit empty string (`"translation": ""`) writes one space, which can intentionally hide a string. Do not
@@ -85,6 +159,11 @@ py -3.13 -m pytrtt ^
   --game-dir "C:\Games\Tomb Raider Anniversary test copy" ^
   --transaction-dir work\transactions\tra\es-test
 ```
+
+Without `--transaction-dir`, new recovery data is written beside the program in
+`transactions/<game-id>/<timestamp>/`; source runs use the project root. The GUI uses the same default and also
+recognizes journals in its previous recovery locations. Multiple game copies are checked separately by folder;
+a journal belonging to one copy cannot restore a different folder, even when their game files are identical.
 
 Keep the transaction data until restoration succeeds. Include the game/build, language code, translator
 credit, remaining review items, and test results in your pull request. Add or update the translation

@@ -13,9 +13,12 @@ from contextlib import contextmanager
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 
+from pytrtt.archives.bigfile_v2 import BigFileV2WritePlan
+from pytrtt.archives.tiger_v3 import TigerV3WritePlan
+from pytrtt.archives.tiger_v4 import TigerV4WritePlan
 from pytrtt.archives.write_plan import BigFileWritePlan, serialize_bigfile_index
 
-FILE_NAME = re.compile(r"bigfile\.[0-9]{3}\Z")
+FILE_NAME = re.compile(r"[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*\.[0-9]{3}(?:\.tiger)?\Z")
 JOURNAL_NAME = "journal.json"
 JOURNAL_VERSION = 2
 
@@ -162,7 +165,7 @@ def _backup_path(transaction_root: Path, name: str) -> Path:
 
 def _apply_write_plan_locked(
     data_dir: Path,
-    plan: BigFileWritePlan,
+    plan: BigFileWritePlan | TigerV3WritePlan | TigerV4WritePlan | BigFileV2WritePlan,
     transaction_dir: Path,
     runtime_settings: dict[str, Any] | None = None,
 ) -> Path:
@@ -170,6 +173,11 @@ def _apply_write_plan_locked(
     data_root, transaction_root = _validate_roots(data_dir, transaction_dir)
     if transaction_root.exists():
         raise TransactionError("transaction directory already exists")
+    if isinstance(plan, (TigerV3WritePlan, TigerV4WritePlan, BigFileV2WritePlan)):
+        try:
+            plan.validate_inputs(data_root)
+        except ValueError as exc:
+            raise TransactionError(str(exc)) from exc
     transaction_root.parent.mkdir(parents=True, exist_ok=True)
     if plan.files.keys() != {write.file_name for write in plan.writes}:
         raise TransactionError("write plan file list does not match its writes")
@@ -182,11 +190,19 @@ def _apply_write_plan_locked(
         file_plan = plan.files[write.file_name]
         if write.offset < 0 or write.offset + len(write.data) > file_plan.final_size:
             raise TransactionError(f"write plan range exceeds {write.file_name}")
-    index_data = serialize_bigfile_index(plan.index)
+    indexes = (
+        {"bigfile.000": serialize_bigfile_index(plan.index)}
+        if isinstance(plan, BigFileWritePlan)
+        else plan.index_data
+    )
     index_writes = [write for write in plan.writes if write.kind == "index"]
-    if len(index_writes) != 1 or index_writes[0].file_name != "bigfile.000":
-        raise TransactionError("write plan must contain one Bigfile index write")
-    if index_writes[0].offset != 0 or index_writes[0].data != index_data:
+    if (
+        not indexes
+        or len(index_writes) != len(indexes)
+        or {write.file_name for write in index_writes} != indexes.keys()
+    ):
+        raise TransactionError("write plan must contain one write per archive index")
+    if any(write.offset != 0 or write.data != indexes[write.file_name] for write in index_writes):
         raise TransactionError("write plan index bytes do not match the planned index")
 
     backup_bytes = plan.backup_bytes
@@ -320,9 +336,10 @@ def _apply_write_plan_locked(
             }
         )
 
-    with (staged_dir / "bigfile.000").open("rb") as stream:
-        if stream.read(len(index_data)) != index_data:
-            raise TransactionError("staged Bigfile index verification failed")
+    for name, index_data in indexes.items():
+        with (staged_dir / name).open("rb") as stream:
+            if stream.read(len(index_data)) != index_data:
+                raise TransactionError("staged archive index verification failed")
 
     journal: dict[str, Any] = {
         "version": JOURNAL_VERSION,
@@ -357,7 +374,7 @@ def _apply_write_plan_locked(
 
 def apply_write_plan(
     data_dir: Path,
-    plan: BigFileWritePlan,
+    plan: BigFileWritePlan | TigerV3WritePlan | TigerV4WritePlan | BigFileV2WritePlan,
     transaction_dir: Path,
     *,
     runtime_settings: dict[str, Any] | None = None,
@@ -378,7 +395,7 @@ def _restore_write_plan_locked(data_dir: Path, transaction_dir: Path) -> None:
         raise TransactionError(f"cannot read transaction journal: {exc}") from exc
     if journal.get("version") != JOURNAL_VERSION:
         raise TransactionError("unsupported transaction journal version")
-    if journal.get("data_dir") != str(data_root):
+    if not journal_data_dir_matches(journal.get("data_dir"), data_root):
         raise TransactionError("transaction journal belongs to a different game directory")
     if journal.get("status") == "restored":
         return
@@ -482,3 +499,20 @@ def restore_write_plan(data_dir: Path, transaction_dir: Path) -> None:
     data_root, _ = _validate_roots(data_dir, transaction_dir)
     with _operation_lock(data_root):
         _restore_write_plan_locked(data_root, transaction_dir)
+
+
+def journal_data_dir_matches(recorded: object, current: Path) -> bool:
+    """Match a Windows path with the same drive mounted below /mnt in WSL."""
+    if not isinstance(recorded, str):
+        return False
+
+    def key(value: str) -> str:
+        normalized = value.replace("\\", "/").rstrip("/")
+        drive = re.fullmatch(r"([A-Za-z]):/(.*)", normalized)
+        if drive is not None:
+            normalized = f"/mnt/{drive.group(1).lower()}/{drive.group(2)}"
+        if normalized.startswith("//") or re.match(r"/mnt/[A-Za-z]/", normalized):
+            return normalized.casefold()
+        return normalized
+
+    return key(recorded) == key(str(current))

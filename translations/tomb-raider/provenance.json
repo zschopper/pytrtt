@@ -1,0 +1,547 @@
+{
+  "game_id": "tomb-raider",
+  "target_language": "hu",
+  "translation_source": "TRTR Tomb Raider (2013) Hungarian v1.0 package supplied in references/saját.",
+  "source_package": "references/saját/Tomb Raider (2013) magyarítás v1.0/TR.hu.trtr",
+  "source_package_sha256": "fb0d128116cfff303b45cca8ac6a7d745b3551f7c9bc022641a7177ab2407cf9",
+  "source_files": {
+    "info.xml_sha256": "eec8f5376e4c4b0aadb30c2935f39aa770368b233df297a468066095bbea5a93",
+    "hu.tmx_sha256": "6cc2ecd12f64b2336affdc23e9fc6c706282925ab371e1dab727687770e18f56",
+    "hu.ru-ext.tmx_sha256": "d31bc5d2bcf8408db729b0bcbfee9b97e710c35f8ca99400ddcfe0071989acb5"
+  },
+  "legacy_metadata": {
+    "package_version": "v1.0",
+    "info_xml_build_id": "1.1.748.0",
+    "readme_build_id": "1.01.748.0",
+    "info_xml_generated": "2013-12-22",
+    "hu_tmx_exporter_version": "2.0.0.36594",
+    "hu_tmx_generated": "2015-06-02 22:12:57",
+    "primary_source_language": "en",
+    "character_replacements": {
+      "Ő": "Ô",
+      "ő": "ô",
+      "Ű": "Û",
+      "ű": "û"
+    }
+  },
+  "import": {
+    "translation_records": 7878,
+    "menu_records": 3096,
+    "subtitle_records": 4782,
+    "menu_resources": 1,
+    "subtitle_resources": 3012,
+    "resource_hash_only_paths": [
+      "A38F9686",
+      "541784ED",
+      "4551BFEF"
+    ],
+    "record_id_mapping": "Resource-local translation-memory ordinals only; not game record IDs. Original TMX tuid retained as legacy_tuid.",
+    "context_preserved": "All original TMX note attributes retained in legacy_context; blockNo and time are not unique identifiers.",
+    "untranslated_entries": 0,
+    "entry_identity": "source_text",
+    "matching": "Source language and exact source text, normalizing CRLF/LF and legacy XML newline literals only; conflicting translations are rejected.",
+    "sch_memory_units": 555
+  },
+  "supplemental_russian_source": {
+    "records": 8,
+    "file": "hu.ru-ext.tmx",
+    "imported": true,
+    "source_language_property": "source_language",
+    "reason": "Imported into the same hu.json with per-entry source_language=ru. The legacy program routed CINE dialogue marked as Russian to the Russian-source TMX provider.",
+    "legacy_tuids": [
+      "000000",
+      "000001",
+      "000002",
+      "000003",
+      "000004",
+      "000005",
+      "000006",
+      "000007"
+    ]
+  },
+  "binary_and_source_comparison": {
+    "decompiled_binary": "references/saját/Tomb Raider (2013) magyarítás v1.0/decompiled",
+    "assembly_version": "2.0.0.25189",
+    "assembly_file_version": "1.0.0.0",
+    "decompiled_game_profile": {
+      "app_id": "203160",
+      "executable": "TombRaider.exe",
+      "bigfile_version": 3
+    },
+    "nearest_git_reference": {
+      "repository": "references/Tomb-Raider-Translator",
+      "commit": "c12c237a7a6e044540b4096a2d9579defb55f99c",
+      "date": "2013-11-11",
+      "basis": "The Tomb Raider KnownGame profile and AppId/BigfileVersion fields agree with the decompiled binary; exact binary-to-commit identity is not established."
+    },
+    "pdb_guid_match": false,
+    "notes": [
+      "The decompiled KnownGames.cs confirms the target game is Tomb Raider (2013), Steam AppID 203160, TIGER v3.",
+      "The EXE PDB path points to the TRTR Git source tree but does not prove an exact source commit.",
+      "The historical package build claim and current Steam build have not been verified against game files.",
+      "Experimental TIGER v3 and text handlers now pass copy-based binary checks; the historical hu.json remains a non-installable source-text memory.",
+      "The package PDB identifier differs from the archived source.zip Debug executable PDB identifier."
+    ],
+    "package_pdb_guid_age": "93b010500307d741b6107f38a358801b:2",
+    "archived_debug_build_pdb_guid_age": "df2e2e51d5bfc54d93d7676e11b5dc40:2"
+  },
+  "verification": {
+    "date": "2026-10-14",
+    "repository_head": "59b76d5be496d97f0531e19561164dc402925b11",
+    "steam_manifest_app_id": "203160",
+    "steam_manifest_build_id": "9573671",
+    "historical_build_equivalence_verified": false,
+    "installed_archives_read_only": false,
+    "archive_format": "TAFS v3",
+    "header_bytes": 52,
+    "record_bytes": 16,
+    "alignment": 2048,
+    "location_fields": "Aligned byte offset; bits 0..3 part; bits 4..10 priority.",
+    "override_resolution": "Highest priority for exact (hash, locale); equal-priority ambiguity rejected.",
+    "local_observed_priorities": [
+      0,
+      64,
+      65,
+      66,
+      67,
+      69
+    ],
+    "historical_part_boundary": 2146435072,
+    "experimental_part_boundary": 2147483648,
+    "boundary_evidence": "bigfile.000.tiger size 2147458360 exceeds the historical 0x7FF00000 limit. The experimental 0x80000000 ceiling fits observed parts; no original file was rewritten.",
+    "language_profile": "English subtitle slot 0 and archive locale bit 1; English/neutral archive families exclude Japanese. Explicit family and exact locale retained; include_overridden exposes menu layers.",
+    "legacy_language_behavior": "TRGameInfo.TransTextLang is English. BigFileList derives TransVoiceLang from localized archives and rejects multiple different localized families; it is not a universal build/language policy.",
+    "handlers": {
+      "archive": "tiger/3",
+      "menu": "locals/2",
+      "subtitles": "cine/2 and sch/1"
+    },
+    "identifiers": {
+      "menu": "Table slot ordinal in the extracted build.",
+      "cine": "block ordinal * 65536 + occurrence within the selected language.",
+      "sch": "Ordered English segment occurrence; timestamps and prefixes are context only.",
+      "resource": "(archive family, hash, exact archive locale) for explicit physical layers; the default view still resolves priorities."
+    },
+    "extraction": {
+      "menu": {
+        "resources": 1,
+        "records": 753,
+        "translated_records": 721,
+        "empty_source_records": 0,
+        "russian_source_records": 0
+      },
+      "subtitles": {
+        "resources": 3748,
+        "records": 5791,
+        "translated_records": 5779,
+        "empty_source_records": 11,
+        "russian_source_records": 8
+      }
+    },
+    "unrecognized_resources": 0,
+    "empty_resources": 6111,
+    "historical_memory_units_used": 5515,
+    "unused_historical_memory_units": {
+      "menu": 2357,
+      "subtitles": 6
+    },
+    "full_archive_copy_cycle": {
+      "build_id": "9573671",
+      "translated_resources": 3731,
+      "archive_files": 8,
+      "backup_bytes": 365612,
+      "missing_translations": 44,
+      "verified_records": 6544,
+      "restored_files": 14,
+      "restored_sha256_match": true,
+      "elapsed_seconds": 462.06
+    },
+    "translation_issue": "Three historical control-placeholder errors are corrected only in the local Steam test package, in 13 positions across five menu layers. The maintained historical import remains unchanged.",
+    "menu_layer_behavior_verified_in_game": true,
+    "windows_appearance_verified": false,
+    "character_substitutions_applied": true,
+    "support_status": "experimental; Hungarian menu confirmed in game; double-acute font supplement installed with verified recovery; font appearance and subtitle gameplay verification pending",
+    "local_report": "work/runs/tr2013/9573671/complete-cycle-report.json",
+    "installed_archives_write_authorization": "User explicitly authorized working in the Steam Tomb Raider directory and supplied Tomb Raider.orig as the recovery copy.",
+    "original_recovery_copy_verified": {
+      "files": 16,
+      "comparison": "Exact sizes and SHA-256 before Steam installation.",
+      "report": "work/runs/tr2013/9573671/steam-original-baseline.json"
+    },
+    "initial_gameplay_observation": "User reported English main-menu text both through Steam and the initial copy launcher; no scene or subtitles were tested and the running executable path was not captured.",
+    "menu_layer_correction": "The initial effective-resource view translated only patch3, which has no New Game, Continue, or Options records. The revised local package explicitly targets all five English menu layers.",
+    "menu_layer_copy_cycle": {
+      "menu_layers": [
+        "jcontent",
+        "patch",
+        "patch2",
+        "patch3",
+        "title"
+      ],
+      "verified_records": 14097,
+      "missing_records": 36,
+      "restored_files": 5,
+      "restored_sha256_match": true,
+      "transaction": "work/transactions/tr2013/9573671/menu-layer-verification"
+    },
+    "steam_installation": {
+      "game_dir": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider",
+      "package": "work/runs/tr2013/9573671/steam-layered-hu.json",
+      "transaction": "work/transactions/tr2013/9573671/steam-layered",
+      "changed_resources": 3735,
+      "changed_files": [
+        "bigfile.003.tiger",
+        "jcontent.000.tiger",
+        "patch_ENGLISH.000.tiger",
+        "bigfile.000.tiger",
+        "patch3.000.tiger",
+        "patch.000.tiger",
+        "title_ENGLISH.000.tiger",
+        "patch2.000.tiger",
+        "bigfile_ENGLISH.000.tiger",
+        "title.000.tiger"
+      ],
+      "missing_records": 48,
+      "backup_bytes": 371108,
+      "original_matches_recovery_copy": true,
+      "user_authorized_steam_installation": true,
+      "status": "restored before glyph-trial installation; first recovery data preserved",
+      "elapsed_seconds": 586.72
+    },
+    "steam_read_back": {
+      "verified_records": 19888,
+      "errors": [],
+      "core_menu_labels": [
+        {
+          "archive_family": "jcontent",
+          "id": 1136,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "jcontent",
+          "id": 1768,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "jcontent",
+          "id": 1769,
+          "source": "New Game",
+          "installed": "Új játék"
+        },
+        {
+          "archive_family": "jcontent",
+          "id": 1936,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "jcontent",
+          "id": 1978,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "jcontent",
+          "id": 2263,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "jcontent",
+          "id": 3349,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "patch",
+          "id": 1134,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "patch",
+          "id": 1766,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "patch",
+          "id": 1767,
+          "source": "New Game",
+          "installed": "Új játék"
+        },
+        {
+          "archive_family": "patch",
+          "id": 1934,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "patch",
+          "id": 1976,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "patch",
+          "id": 2261,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "patch",
+          "id": 3347,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "patch2",
+          "id": 1136,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "patch2",
+          "id": 1768,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "patch2",
+          "id": 1769,
+          "source": "New Game",
+          "installed": "Új játék"
+        },
+        {
+          "archive_family": "patch2",
+          "id": 1936,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "patch2",
+          "id": 1978,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "patch2",
+          "id": 2263,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "patch2",
+          "id": 3349,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "title",
+          "id": 1132,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "title",
+          "id": 1764,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "title",
+          "id": 1765,
+          "source": "New Game",
+          "installed": "Új játék"
+        },
+        {
+          "archive_family": "title",
+          "id": 1932,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "title",
+          "id": 1974,
+          "source": "Options",
+          "installed": "Beállítások"
+        },
+        {
+          "archive_family": "title",
+          "id": 2259,
+          "source": "Continue",
+          "installed": "Folytatás"
+        },
+        {
+          "archive_family": "title",
+          "id": 3345,
+          "source": "Options",
+          "installed": "Beállítások"
+        }
+      ],
+      "game_dir": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider",
+      "gameplay_verified": false
+    },
+    "menu_gameplay_observation": "User reported that the menu works correctly, but lowercase ő/ű display as boxes. Uppercase Ő/Ű and subtitle scenes have not been separately verified.",
+    "glyph_trial_preflight": {
+      "substitutions": {
+        "Ő": "Ô",
+        "ő": "ô",
+        "Ű": "Û",
+        "ű": "û"
+      },
+      "source": "Supplied historical TR.hu.trtr/info.xml; package contains no font asset and decompiled FontFile.Translate is empty.",
+      "menu_copy_cycle": {
+        "verified_records": 14097,
+        "substituted_records": 3923,
+        "errors": [],
+        "restored_files_sha256_match": true
+      },
+      "all_records_rebuild": {
+        "verified_records": 19888,
+        "errors": [],
+        "method": "rebuild in memory from original copy; no game writes"
+      },
+      "glyph_appearance_verified_in_game": false
+    },
+    "steam_glyph_trial": {
+      "verified_records": 19888,
+      "substituted_records": 5143,
+      "errors": [],
+      "package": "work/runs/tr2013/9573671/steam-glyph-trial-hu.json",
+      "transaction": "work/transactions/tr2013/9573671/steam-glyph-trial",
+      "changed_resources": 3744,
+      "missing_records": 48,
+      "gameplay_verified": false,
+      "font_assets_changed": false,
+      "historical_substitutions": {
+        "Ő": "Ô",
+        "ő": "ô",
+        "Ű": "Û",
+        "ű": "û"
+      }
+    },
+    "glyph_trial_gameplay_observation": "User confirmed circumflex glyphs; boxes resolved, correct Hungarian double acute glyphs remain unsupported.",
+    "font_inspection": {
+      "report": "work/runs/tr2013/9573671/font-findings.json",
+      "reference_commit": "a79c48b75f1ffaaf623dc73a625211bf98ff0504",
+      "font_collection": "pc-w\\fontuniversal.drm",
+      "collection_hash": "7231FDEC",
+      "font_payload": "fonts_un.gfx",
+      "resource_type": 7,
+      "resource_id": 121631,
+      "archive_file": "title.000.tiger",
+      "archive_offset": 937603072,
+      "gfx_size": 276480,
+      "installed_compressed_bytes_match_original": true,
+      "font_modified": false
+    },
+    "font_supplement": {
+      "report": "work/runs/tr2013/9573671/steam-font-verification.json",
+      "copy_cycle": "work/runs/tr2013/9573671/font-copy-verification.json",
+      "reference_completeness": "work/runs/tr2013/9573671/font-reference-completeness.json",
+      "inspected_DRM_collections": 13146,
+      "compressed_top_level_resources": 0,
+      "modified_glyphs": 16,
+      "modified_fonts": [
+        "OCRB (universal)",
+        "DIN-Bold",
+        "OCRB (Russian)",
+        "DIN Next CYR"
+      ],
+      "replacement_slots": {
+        "Ô": "Ő",
+        "ô": "ő",
+        "Û": "Ű",
+        "û": "ű"
+      },
+      "method": "Existing O/U base contours and duplicated acute accents; existing circumflex codes and glyph indices retained.",
+      "unrelated_glyphs_and_tags_byte_identical": true,
+      "copy_restored_twice_sha256_match": true,
+      "installed_verified_references": 4,
+      "backup_bytes": 463204,
+      "journal": "work/transactions/tr2013/9573671/steam-font-trial",
+      "restore_order": [
+        "steam-font-stream-repair",
+        "steam-font-trial",
+        "steam-glyph-trial"
+      ],
+      "gameplay_verified": true,
+      "text_preservation": {
+        "verified_records": 19888,
+        "substituted_records": 5143,
+        "errors": []
+      },
+      "stream_repair": "work/runs/tr2013/9573671/steam-font-stream-repair-verification.json"
+    }
+  },
+  "font_assets": {
+    "verified_build_id": "9573671",
+    "format": "DRM v22 reference-free DTP bodies containing GFX DefineFont3 outlines",
+    "files": [
+      {
+        "resource_hash": "7231FDEC",
+        "resource_path": "pc-w\\fontuniversal.drm",
+        "replacement_file": "assets/fonts/fonts_ru-hu.bin",
+        "source_sha256": "2392b0f3d47b0008cef19e1139de7b91b8118aaaaaf1d42eddd0e05556a08a3e",
+        "replacement_sha256": "ae7ca6d9d25097b05fb963c31f1130f5c96aeeda6872b26ab957eba1bcc4fc5b",
+        "embedded_type": 7,
+        "embedded_id": 24842,
+        "archive_locale": 4294967295,
+        "character_substitutions": {
+          "Ő": "Ô",
+          "ő": "ô",
+          "Ű": "Û",
+          "ű": "û"
+        }
+      },
+      {
+        "resource_hash": "7231FDEC",
+        "resource_path": "pc-w\\fontuniversal.drm",
+        "replacement_file": "assets/fonts/fonts_un-hu.bin",
+        "source_sha256": "4d6c8e00446b25bc38a24071aa6c03ae572a8abb110bec0c06827959e6325b2e",
+        "replacement_sha256": "3e5feed8b5e5ba510c689188c059f6fe8456549e9564996bead6690395198f41",
+        "embedded_type": 7,
+        "embedded_id": 121631,
+        "archive_locale": 4294967295,
+        "character_substitutions": {
+          "Ő": "Ô",
+          "ő": "ô",
+          "Ű": "Û",
+          "ű": "û"
+        }
+      }
+    ],
+    "source": "Original game font outlines, amended locally using their own base letters and acute accents; no external font was introduced.",
+    "modified_glyphs": 16,
+    "user_verification": {
+      "date": "2026-10-15",
+      "result": "User confirmed the repaired font is attractive and works everywhere they encountered it; font task closed.",
+      "scope": "Observed locations; not exhaustive coverage of the full game."
+    },
+    "stream_placement": "Rebuilt NEXT chain and fresh nonoverlapping virtual ranges; assets contain no fixed installation offsets.",
+    "source_text_identity": "hu.json remains a source-text translation memory. Bind to fresh records before installation. The binding preserves fonts and the binding script copies their assets. Font-specific character substitutions are applied by the shared service.",
+    "recovery": "Original nested font bodies and changed index ranges are preserved by the shared transaction.",
+    "package_verification": {
+      "report": "work/runs/tr2013/9573671/packaged-font-verification.json",
+      "shared_service_verified": true,
+      "packaged_fonts": 2,
+      "unrelated_index_entries_unchanged": 7397,
+      "all_prior_payloads_unchanged": true,
+      "restored_twice_sha256_match": true,
+      "game_installation_modified": false,
+      "default_tests_passed": 251,
+      "integration_tests_not_run": true
+    }
+  },
+  "current_steam_state": {
+    "date": "2026-10-19",
+    "language": "en",
+    "hungarian_package_active": false,
+    "restoration_requested_by": "user",
+    "verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
+    "historical_translation_and_game_test_results_preserved": true
+  }
+}

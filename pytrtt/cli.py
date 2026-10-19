@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import os
 import platform
 import re
 import sys
@@ -11,6 +10,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import NoReturn
 
+from pytrtt.application_paths import transaction_root
+from pytrtt.application_paths import user_data_directory as _user_data_dir
 from pytrtt.composition import create_translation_service
 from pytrtt.environment import resolve_installation
 from pytrtt.i18n import Translator
@@ -85,12 +86,6 @@ def _parser(translator: Translator) -> argparse.ArgumentParser:
     action.add_argument("--apply", action="store_true", help=translator.text("help_apply"))
     action.add_argument("--restore", action="store_true", help=translator.text("help_restore"))
     return parser
-
-
-def _user_data_dir() -> Path:
-    if os.name == "nt":
-        return Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData/Local")) / "PyTRTT"
-    return Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local/share")) / "pytrtt"
 
 
 def _stamp() -> str:
@@ -197,9 +192,7 @@ def main(argv: list[str] | None = None) -> int:
         result = service.plan(
             game_dir, document, package_dir=package_dir, expected_build_id=args.build_id
         )
-        transaction_dir = args.transaction_dir or (
-            _user_data_dir() / "transactions" / _slug(game_id) / _stamp()
-        )
+        transaction_dir = args.transaction_dir or (transaction_root() / _slug(game_id) / _stamp())
         if result.plan is None:
             print(translator.text("no_changes"))
         else:

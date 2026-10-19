@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from fnmatch import fnmatchcase
 from pathlib import PurePosixPath, PureWindowsPath
@@ -18,6 +19,9 @@ class ArchiveSettings:
     version: int
     boundary: int
     data_subdir: str = "."
+    families: tuple[str, ...] = ()
+    include_overridden: bool = False
+    index_files: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -25,6 +29,7 @@ class LanguageSlot:
     code: str
     archive_locale: int
     subtitle_language: int
+    locale_is_mask: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -97,7 +102,15 @@ def parse_runtime_settings(value: object) -> RuntimeSettings:
     root = _object(value, keys, keys - {"display_name", "character_substitutions"}, "runtime")
     arc = _object(
         root["archive"],
-        {"format", "version", "boundary", "data_subdir"},
+        {
+            "format",
+            "version",
+            "boundary",
+            "data_subdir",
+            "families",
+            "include_overridden",
+            "index_files",
+        },
         {"format", "version", "boundary"},
         "archive",
     )
@@ -109,11 +122,52 @@ def parse_runtime_settings(value: object) -> RuntimeSettings:
         or ".." in PurePosixPath(subdir).parts
     ):
         raise ConfigurationError("archive data_subdir must be a safe relative path")
+    families = arc.get("families", [])
+    if (
+        not isinstance(families, list)
+        or any(
+            not isinstance(name, str)
+            or not name
+            or any(
+                c not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-"
+                for c in name
+            )
+            for name in families
+        )
+        or len(set(families)) != len(families)
+    ):
+        raise ConfigurationError("archive families must be unique safe names")
+    include_overridden = arc.get("include_overridden", False)
+    if type(include_overridden) is not bool:
+        raise ConfigurationError("include_overridden must be boolean")
+    index_files = arc.get("index_files", {})
+    if (
+        not isinstance(index_files, dict)
+        or any(
+            alias not in families
+            or not isinstance(filename, str)
+            or re.fullmatch(
+                r"[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*\.[0-9]{3}\.tiger"
+                if arc.get("format") == "tiger"
+                else r"[A-Za-z0-9_-]+\.[0-9]{3}",
+                filename,
+            )
+            is None
+            for alias, filename in index_files.items()
+        )
+        or len(set(index_files.values())) != len(index_files)
+    ):
+        raise ConfigurationError(
+            "index_files must map declared families to unique safe archive files"
+        )
     archive = ArchiveSettings(
         _text(arc["format"], "format"),
         _integer(arc["version"], "version", 1),
         _integer(arc["boundary"], "boundary", 1),
         subdir,
+        tuple(families),
+        include_overridden,
+        tuple(index_files.items()),
     )
     language_value = root["languages"]
     if not isinstance(language_value, dict) or not language_value:
@@ -123,15 +177,19 @@ def parse_runtime_settings(value: object) -> RuntimeSettings:
         code = _text(code, "language code")
         fields = _object(
             data,
-            {"archive_locale", "subtitle_language"},
+            {"archive_locale", "subtitle_language", "locale_is_mask"},
             {"archive_locale", "subtitle_language"},
             "language slot",
         )
+        mask = fields.get("locale_is_mask", False)
+        if type(mask) is not bool:
+            raise ConfigurationError("locale_is_mask must be boolean")
         languages.append(
             LanguageSlot(
                 code,
                 _integer(fields["archive_locale"], "archive_locale"),
                 _integer(fields["subtitle_language"], "subtitle_language", maximum=255),
+                mask,
             )
         )
     raw_rules = root["resource_types"]
@@ -195,11 +253,19 @@ def runtime_to_dict(settings: RuntimeSettings) -> dict[str, object]:
             "version": settings.archive.version,
             "boundary": settings.archive.boundary,
             "data_subdir": settings.archive.data_subdir,
+            **({"families": list(settings.archive.families)} if settings.archive.families else {}),
+            **({"include_overridden": True} if settings.archive.include_overridden else {}),
+            **(
+                {"index_files": dict(settings.archive.index_files)}
+                if settings.archive.index_files
+                else {}
+            ),
         },
         "languages": {
             slot.code: {
                 "archive_locale": slot.archive_locale,
                 "subtitle_language": slot.subtitle_language,
+                **({"locale_is_mask": True} if slot.locale_is_mask else {}),
             }
             for slot in settings.languages
         },

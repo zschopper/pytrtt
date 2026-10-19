@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "game_id": "lara-croft-and-the-guardian-of-light",
+  "build_id": "11395",
+  "filelist": "../pytrtt/resources/filelists/lcgol_filelist.txt",
+  "asset_root": "../translations/lara-croft-and-the-guardian-of-light",
+  "runtime": {
+    "archive": {
+      "format": "bigfile",
+      "version": 2,
+      "boundary": 2146435072,
+      "data_subdir": ".",
+      "families": [
+        "bigfile",
+        "PACK1",
+        "PACK2",
+        "PACK3",
+        "PACK4",
+        "PACK5",
+        "patch0",
+        "patch1"
+      ],
+      "index_files": {
+        "patch0": "patch.000",
+        "patch1": "patch.001"
+      },
+      "include_overridden": true
+    },
+    "languages": {
+      "en": {
+        "archive_locale": 1,
+        "subtitle_language": 0,
+        "locale_is_mask": true
+      }
+    },
+    "replacement_language": "en",
+    "resource_types": [
+      {
+        "section": "menu",
+        "pattern": "*/locals.bin",
+        "format": "locals",
+        "version": 1
+      },
+      {
+        "section": "subtitles",
+        "pattern": "*.mul",
+        "format": "cine",
+        "version": 3,
+        "skip_unrecognized": true
+      },
+      {
+        "section": "subtitles",
+        "pattern": "*.sch",
+        "format": "sch",
+        "version": 2
+      },
+      {
+        "section": "fonts",
+        "pattern": "*/generalbank.drm",
+        "format": "raw",
+        "version": 1,
+        "locale": 4294967295
+      }
+    ],
+    "character_substitutions": {},
+    "display_name": "Lara Croft and the Guardian of Light"
+  },
+  "translation_defaults": {
+    "hu": {
+      "character_substitutions": {
+        "ő": "ô",
+        "ű": "û",
+        "Ő": "Ô",
+        "Ű": "Û"
+      }
+    }
+  }
+}

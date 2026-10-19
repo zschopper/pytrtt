@@ -8,4 +8,4 @@
   do not run or modify historical reference applications automatically.
 - Preserve original font recovery assets and the first transaction backup. Verify patch loading and DLC handling
   separately for each game/build; follow `binary-safety.md` for installation and restoration.
-- Never version copyrighted game samples; keep local samples and reports under `work/`.
+- Never version copyrighted game samples; keep local samples and reports in Git-ignored directories.

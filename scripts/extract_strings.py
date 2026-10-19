@@ -66,7 +66,7 @@ def main(argv: list[str] | None = None) -> int:
         document = replace(compiled, runtime=runtime)
         restore_records = [
             {
-                "file": f"restore-data/fonts/{a.name_hash:08X}-{a.locale:08X}.raw",
+                "file": a.recovery_path,
                 "resource_hash": f"{a.name_hash:08X}",
                 "resource_path": a.path,
                 "locale": f"{a.locale:08X}",
@@ -106,7 +106,7 @@ def main(argv: list[str] | None = None) -> int:
             "extraction-report.json": json.dumps(report, indent=2) + "\n",
         }
         for asset in result.recovery_assets:
-            files[f"restore-data/fonts/{asset.name_hash:08X}-{asset.locale:08X}.raw"] = asset.data
+            files[asset.recovery_path] = asset.data
         for font in document.fonts:
             relative = Path(font.replacement_file)
             asset_path = (profile.asset_root / relative).resolve(strict=True)

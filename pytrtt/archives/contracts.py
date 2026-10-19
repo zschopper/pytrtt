@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from abc import abstractmethod
+from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol, runtime_checkable
@@ -15,6 +16,7 @@ class ArchiveResource:
     name_hash: int
     locale: int
     size: int
+    archive_family: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -24,6 +26,23 @@ class ResourceReplacement:
     locale: int
     data: bytes
     restore_file: str | None = None
+    archive_family: str | None = None
+    embedded_type: int | None = None
+    embedded_id: int | None = None
+
+
+@runtime_checkable
+class ReadSessionArchive(Protocol):
+    """Optional batch reading with whole-source validation before and after extraction."""
+
+    def read_session(self) -> AbstractContextManager[None]: ...
+
+
+@runtime_checkable
+class EmbeddedResourceArchive(Protocol):
+    """Optional archive support for resources referenced by indexed collections."""
+
+    def read_embedded(self, name_hash: int, locale: int, kind: int, resource_id: int) -> bytes: ...
 
 
 @dataclass(frozen=True, slots=True)

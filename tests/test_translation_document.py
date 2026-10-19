@@ -54,7 +54,7 @@ def test_one_document_round_trips_menu_subtitle_and_font_sections() -> None:
             TranslationResource(
                 resource_hash="7CD333D3",
                 resource_path="pc-w\\local\\locals.bin",
-                entries=(TranslationEntry(0, "Start game", "Játék indítása", "Menu label"),),
+                entries=(TranslationEntry(0, "Start game", "Játék indítása", ("Menu label",)),),
             ),
         ),
         subtitles=(
@@ -188,3 +188,59 @@ def test_document_rejects_windows_drive_font_paths() -> None:
 def test_document_parser_rejects_missing_invalid_and_duplicate_metadata(content: str) -> None:
     with pytest.raises(TranslationPackageError):
         parse_translation_document(content)
+
+
+def test_document_round_trips_entry_source_language_override() -> None:
+    root = json.loads(METADATA_ONLY)
+    root["schema_version"] = 3
+    root["subtitles"] = [
+        {
+            "resource_hash": "EF4C7C2C",
+            "resource_path": "pc-w\\cinstream\\whitmanstest.mul",
+            "entries": [
+                {
+                    "id": 0,
+                    "source": "Дай мне пистолет.",
+                    "translation": "Add ide a pisztolyt!",
+                    "source_language": "ru",
+                }
+            ],
+        }
+    ]
+
+    document = parse_translation_document(json.dumps(root, ensure_ascii=False))
+    serialized = serialize_translation_document(document)
+
+    assert document.subtitles[0].entries[0].source_language == "ru"
+    assert '"schema_version": 3' in serialized
+    assert '"source_language": "ru"' in serialized
+    assert parse_translation_document(serialized) == document
+
+
+def test_entry_source_language_requires_non_empty_string() -> None:
+    root = json.loads(METADATA_ONLY)
+    root["schema_version"] = 3
+    root["menu"] = [
+        {
+            "resource_hash": "7CD333D3",
+            "resource_path": "pc-w\\local\\locals.bin",
+            "entries": [{"id": 0, "source": "A", "translation": "B", "source_language": " "}],
+        }
+    ]
+
+    with pytest.raises(TranslationPackageError, match="source_language"):
+        parse_translation_document(json.dumps(root))
+
+
+def test_entry_source_language_requires_schema_version_three() -> None:
+    root = json.loads(METADATA_ONLY)
+    root["menu"] = [
+        {
+            "resource_hash": "7CD333D3",
+            "resource_path": "pc-w\\local\\locals.bin",
+            "entries": [{"id": 0, "source": "A", "translation": "B", "source_language": "ru"}],
+        }
+    ]
+
+    with pytest.raises(TranslationPackageError, match="schema version 3"):
+        parse_translation_document(json.dumps(root))

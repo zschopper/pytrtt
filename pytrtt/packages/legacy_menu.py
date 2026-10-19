@@ -198,7 +198,7 @@ def import_legacy_menu(
                 entry_id=current.entry_id,
                 source=current.source,
                 translation=translation,
-                comment="\n".join(comments) if comments else current.comment,
+                comment=tuple(comments) if comments else current.comment,
                 substitution_disabled="$SETUP" in directives_by_id[entry_id],
             )
         )

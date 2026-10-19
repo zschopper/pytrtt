@@ -1,8 +1,7 @@
 # Project Planning
 
-- When present, use private `work/docs/project_hu.md` as the sole local project plan; locate relevant headings first.
-  It is excluded from Git. In a fresh clone, use README, maintained artifacts, and the task context;
-  do not require private files or invent missing decisions.
+- Use the project plan selected by optional local guidance, when available; locate relevant headings first.
+  Otherwise use README, maintained artifacts, and the task context; do not require private files or invent missing decisions.
 - Read the current state, related accepted decisions, and next tasks before proposing work; preserve settled decisions.
 - Distinguish user requirements, accepted decisions, proposals, implementation, and verified results.
 - Give each next task a concrete output, dependencies, and a verification criterion. Resolve routine choices autonomously;

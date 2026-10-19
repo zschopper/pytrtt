@@ -12,7 +12,7 @@ pytestmark = pytest.mark.toolchain
 
 
 def test_project_python_version() -> None:
-    assert sys.version_info[:2] == (3, 13)
+    assert sys.version_info[:2] in {(3, 13), (3, 14)}
 
 
 def test_utf8_binary_fixture_io(tmp_path: Path) -> None:

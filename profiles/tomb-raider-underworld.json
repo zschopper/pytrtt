@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "game_id": "tomb-raider-underworld",
+  "build_id": "251883",
+  "filelist": "../pytrtt/resources/filelists/tru_filelist.txt",
+  "asset_root": "../translations/tomb-raider-underworld",
+  "runtime": {
+    "archive": {
+      "format": "bigfile",
+      "version": 2,
+      "boundary": 2146435072,
+      "data_subdir": ".",
+      "families": ["bigfile", "patch"],
+      "include_overridden": true
+    },
+    "languages": {
+      "en": {"archive_locale": 1, "subtitle_language": 0, "locale_is_mask": true}
+    },
+    "replacement_language": "en",
+    "resource_types": [
+      {"section": "menu", "pattern": "*/locals.bin", "format": "locals", "version": 1},
+      {"section": "subtitles", "pattern": "*.mul", "format": "cine", "version": 3, "skip_unrecognized": true},
+      {"section": "subtitles", "pattern": "*.sch", "format": "sch", "version": 2}
+    ],
+    "character_substitutions": {},
+    "display_name": "Tomb Raider: Underworld"
+  },
+  "translation_defaults": {"hu": {}}
+}

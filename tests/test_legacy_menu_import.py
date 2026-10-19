@@ -40,9 +40,9 @@ Delete me
     imported, report = import_legacy_menu(legacy, package)
 
     assert [entry.translation for entry in imported.entries] == ["Helló", "*0000", "?"]
-    assert imported.entries[0].comment == "Alternative wording\nLegacy directive: $SETUP"
-    assert "Legacy alias: *0000" in (imported.entries[1].comment or "")
-    assert "Legacy directive: $DEL" in (imported.entries[2].comment or "")
+    assert imported.entries[0].comment == ("Alternative wording", "Legacy directive: $SETUP")
+    assert "Legacy alias: *0000" in (imported.entries[1].comment or ())
+    assert "Legacy directive: $DEL" in (imported.entries[2].comment or ())
     assert report.exact_source_matches == 3
     assert report.aliases_preserved == 1
     assert report.deleted_entries_replaced == 1
@@ -64,7 +64,7 @@ def test_import_records_historical_source_differences() -> None:
 
     assert imported.entries[0].source == "Current source."
     assert imported.entries[0].translation == "Translated text"
-    assert "Historical source differed: Old source!" in (imported.entries[0].comment or "")
+    assert "Historical source differed: Old source!" in (imported.entries[0].comment or ())
     assert report.content_source_differences == 1
 
 

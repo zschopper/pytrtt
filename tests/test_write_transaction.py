@@ -33,6 +33,13 @@ def make_fixture(tmp_path: Path) -> tuple[Path, Path, bytes]:
     return data_dir, tmp_path / "transaction-001", bytes(original)
 
 
+def test_journal_path_matches_same_windows_drive_mounted_in_wsl() -> None:
+    assert transaction.journal_data_dir_matches(
+        r"L:\SteamLibrary\steamapps\common\Tomb Raider Anniversary",
+        Path("/mnt/l/SteamLibrary/steamapps/common/Tomb Raider Anniversary"),
+    )
+
+
 def test_execute_saves_only_changed_ranges_and_applies_the_staged_plan(tmp_path: Path) -> None:
     data_dir, transaction_dir, original = make_fixture(tmp_path)
     entry = BigFileEntry(0, 0x12345678, 8, 2, 0xFFFFFFE1, 0xABCDEF01)

@@ -13,7 +13,7 @@ do not repeat verified work unless inputs changed. Read `../planning.md` when up
    Keep game-specific behavior in profile data, not Python game branches.
 3. **Read-only extraction.** Use `scripts/extract_strings.py` with an explicit profile, build, languages,
    game directory, and fresh output directory outside the game. Check its `--help` for current options.
-   Store local outputs in `work/runs/<game>/<build>/` and samples in `work/samples/<game>/<build>/`.
+   Store local outputs and samples in separate Git-ignored directories, using optional local guidance for their layout.
    Reconcile counts, empty/skipped resources, source text, and identifiers before translating.
 4. **Translation package.** Load language guidelines, terminology, and QA for prose work.
    Keep maintained data in `translations/<game>/<language>.json`, required assets in `assets/`, and source evidence

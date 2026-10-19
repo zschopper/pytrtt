@@ -1,0 +1,70 @@
+{
+  "game_id": "shadow-of-the-tomb-raider",
+  "steam_app_id": "750920",
+  "steam_build_id": "11668867",
+  "target_language": "hu",
+  "text_scope": "pcx64-w\\local\\locals.bin localized string table (UI, dialogue and other keyed game text)",
+  "source_archive": {
+    "filename": "bigfile.update3.002_english_allvo_allplt.000.tiger",
+    "sha256": "06fca29790ad99e2515b957f9fef9643683f631f5b237ec4de7458b75a2f47ea",
+    "size_bytes": 4654816,
+    "archive_version": 5,
+    "archive_id": 12,
+    "archive_sub_id": 27,
+    "resource_hash": "331F339BC3DB8E80",
+    "resource_size_bytes": 4654720,
+    "resource_sha256": "14d346524e8cb35d2af3d5c90d81f41990dbc2eebcbadaa524cf175d09fca8b5"
+  },
+  "translation_input": {
+    "filename": "bigfile.update3.002_english_allvo_allplt.000.tiger",
+    "sha256": "6b878ca0669c0876b5b0cddb39d4ffa23949439a5ac6a15a09b68d62ee4976d3",
+    "size_bytes": 9496675,
+    "archive_version": 5,
+    "archive_id": 12,
+    "archive_sub_id": 27,
+    "resource_hash": "331F339BC3DB8E80",
+    "resource_size_bytes": 4841859,
+    "resource_sha256": "d196fa5dd13a03f11b6e8795719dcff9143a504746c6990fb62518ba31ecca2c",
+    "resource_offset": 4654816,
+    "english_resource_preserved_byte_for_byte": true,
+    "translation_quality_review": "pending"
+  },
+  "matching": {
+    "method": "stable key and slot id; all populated entries match exactly",
+    "source_slots": 39661,
+    "translated_slots": 39661,
+    "matched_populated_entries": 38234,
+    "missing_translations": 0,
+    "extra_translations": 0,
+    "values_different_from_English": 36983,
+    "values_identical_to_English": 1251,
+    "empty_translations": 0,
+    "menu_ui_candidates": 1432,
+    "menu_ui_selection": "heuristic only; not a complete or reviewed category"
+  },
+  "qa_checks": {
+    "json_and_id_key_alignment": "passed",
+    "timestamp_marker_records_with_differences": 130,
+    "font_markup_records_with_differences": 1,
+    "private_use_glyph_records_with_differences": 6,
+    "interpretation": "Differences were preserved from the translated resource; review them before runtime use."
+  },
+  "limits": [
+    "This is a text extraction/import draft; SOTTR writing, restoration and in-game behavior are not verified."
+  ],
+  "english_source_export": {
+    "file": "en.json",
+    "sha256": "51672621f16214744255f0865f5f37def44738f139c82c2900493bf34f2a142c",
+    "date": "2026-10-19",
+    "source_language": "en",
+    "target_language": "hu",
+    "populated_records": 38234,
+    "placeholder_slots": 1427,
+    "total_slots": 39661,
+    "all_translation_fields_null": true,
+    "source_archive_sha256": "06fca29790ad99e2515b957f9fef9643683f631f5b237ec4de7458b75a2f47ea",
+    "report": "work/runs/sottr/11668867/en-template-20261019/extraction-report.json",
+    "format": "Standalone Shadow keyed-locals JSON; retains native ids and keys; not a generic runtime package.",
+    "coverage": "Entire selected English locals table, including UI and dialogue; not a complete archive/DLC/embedded-text coverage claim."
+  }
+}
