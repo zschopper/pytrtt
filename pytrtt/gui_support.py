@@ -15,7 +15,8 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Protocol, cast
 
 from pytrtt.archives.transaction import journal_data_dir_matches
-from pytrtt.packages.translation import TranslationPackageError
+from pytrtt.packages.translation import TranslationDocument, TranslationPackageError
+from pytrtt.services.translation import TranslationBuild
 
 CATALOG_PATH = Path(__file__).resolve().parent / "resources" / "gui_games.json"
 ProgressCallback = Callable[[int, int, str], None]
@@ -41,6 +42,7 @@ class GameCatalogEntry:
     steam_app_id: str
     install_dir_name: str
     translation_file: Path
+    package_available: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -69,6 +71,15 @@ class InstallationInspection:
     translation_path: Path
     detail: str = ""
     restore_path: Path | None = None
+    prepared: PreparedTranslation | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class PreparedTranslation:
+    """Validated document and write plan retained between GUI check and apply."""
+
+    document: TranslationDocument
+    build: TranslationBuild
 
 
 def installation_choices(
@@ -97,11 +108,15 @@ def load_game_catalog(path: Path = CATALOG_PATH) -> tuple[GameCatalogEntry, ...]
             "steam_app_id",
             "install_dir_name",
             "translation_file",
+            "package_available",
         }:
             raise ValueError("invalid GUI game catalog entry")
         relative = Path(_required_text(item["translation_file"], "translation_file"))
         if relative.is_absolute() or ".." in relative.parts:
             raise ValueError("translation_file must be a safe relative path")
+        package_available = item["package_available"]
+        if type(package_available) is not bool:
+            raise ValueError("package_available must be a boolean")
         games.append(
             GameCatalogEntry(
                 _required_text(item["game_id"], "game_id"),
@@ -109,11 +124,47 @@ def load_game_catalog(path: Path = CATALOG_PATH) -> tuple[GameCatalogEntry, ...]
                 _required_text(item["steam_app_id"], "steam_app_id"),
                 _required_text(item["install_dir_name"], "install_dir_name"),
                 relative,
+                package_available,
             )
         )
     if len({game.game_id for game in games}) != len(games):
         raise ValueError("duplicate game_id in GUI game catalog")
     return tuple(games)
+
+
+def validate_packaged_catalog(
+    games: tuple[GameCatalogEntry, ...], project_root: Path
+) -> tuple[str, ...]:
+    """Validate packages explicitly selected for a distributable release."""
+    from pytrtt.packages.translation import parse_translation_document
+
+    root = project_root.resolve(strict=True)
+    errors = []
+    for game in games:
+        if not game.package_available:
+            continue
+        package = (root / game.translation_file).resolve(strict=False)
+        if root not in package.parents or not package.is_file():
+            errors.append(f"{game.game_id}: translation package is missing")
+            continue
+        try:
+            document = parse_translation_document(package.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, TranslationPackageError) as exc:
+            errors.append(f"{game.game_id}: invalid translation package: {exc}")
+            continue
+        if document.metadata.game_id != game.game_id:
+            errors.append(f"{game.game_id}: package metadata targets {document.metadata.game_id}")
+            continue
+        package_root = package.parent.resolve(strict=True)
+        for font in document.fonts:
+            relative = PurePosixPath(font.replacement_file)
+            asset = package_root.joinpath(*relative.parts).resolve(strict=False)
+            if package_root not in asset.parents or not asset.is_file():
+                errors.append(f"{game.game_id}: font asset is missing: {font.replacement_file}")
+                continue
+            if hashlib.sha256(asset.read_bytes()).hexdigest() != font.replacement_sha256:
+                errors.append(f"{game.game_id}: font asset hash mismatch: {font.replacement_file}")
+    return tuple(errors)
 
 
 def default_steam_roots() -> tuple[Path, ...]:
@@ -430,6 +481,7 @@ def check_translation(
             status,
             inspection.translation_path,
             detail,
+            prepared=PreparedTranslation(document, result),
         )
     except TranslationPackageError as exc:
         return InstallationInspection(
@@ -463,27 +515,17 @@ def apply_translation(
         )
     try:
         from pytrtt.composition import create_translation_service
-        from pytrtt.packages.translation import parse_translation_document
 
-        if progress is not None:
-            progress(0, 4, "gui_progress_package")
-        document = parse_translation_document(
-            inspection.translation_path.read_text(encoding="utf-8")
-        )
-        if progress is not None:
-            progress(1, 4, "gui_progress_plan")
+        prepared = inspection.prepared
+        if prepared is None:
+            return InstallationInspection(
+                inspection.candidate,
+                InstallationStatus.ERROR,
+                inspection.translation_path,
+                "the checked translation plan is unavailable",
+            )
         service = create_translation_service()
-        result = service.plan(
-            inspection.candidate.path,
-            document,
-            package_dir=inspection.translation_path.parent,
-            expected_build_id=inspection.candidate.build_id or None,
-            progress=(
-                (lambda current, total: progress(current, total, "gui_progress_plan_resources"))
-                if progress is not None
-                else None
-            ),
-        )
+        result = prepared.build
         if result.plan is None:
             return check_translation(inspection, transaction_roots=(transaction_root,))
         stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ")
@@ -575,3 +617,48 @@ def restore_translation(
         inspection.translation_path,
         "no safe restore transaction is available",
     )
+
+
+def run_translation_operation(
+    inspection: InstallationInspection,
+    action: str,
+    *,
+    transaction_root: Path,
+    transaction_roots: tuple[Path, ...],
+    safe_exit_requested: bool = False,
+    progress: ProgressCallback | None = None,
+) -> tuple[InstallationInspection, bool]:
+    """Run one GUI operation and complete a requested post-install safe exit."""
+    if action == "restore":
+        result = restore_translation(
+            inspection,
+            transaction_roots=transaction_roots,
+            progress=progress,
+        )
+    elif action == "install":
+        result = apply_translation(
+            inspection,
+            transaction_root=transaction_root,
+            progress=progress,
+        )
+    else:
+        result = check_translation(
+            inspection,
+            transaction_roots=transaction_roots,
+            progress=progress,
+        )
+    if (
+        action == "install"
+        and safe_exit_requested
+        and result.status is InstallationStatus.ALREADY_TRANSLATED
+        and result.restore_path is not None
+    ):
+        return (
+            restore_translation(
+                result,
+                transaction_roots=transaction_roots,
+                progress=progress,
+            ),
+            True,
+        )
+    return result, False

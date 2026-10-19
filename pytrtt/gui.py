@@ -19,7 +19,6 @@ from pytrtt.gui_support import (
     InstallationCandidate,
     InstallationInspection,
     InstallationStatus,
-    apply_translation,
     check_translation,
     discover_steam_installations,
     find_interrupted_transactions,
@@ -27,7 +26,7 @@ from pytrtt.gui_support import (
     installation_choices,
     load_game_catalog,
     recover_interrupted_transaction,
-    restore_translation,
+    run_translation_operation,
 )
 from pytrtt.i18n import Translator
 
@@ -67,7 +66,7 @@ def apply_platform_style(root: tk.Tk) -> None:
 
 
 class TranslationGui:
-    """Four-step wizard that keeps the first implementation read-only."""
+    """Four-step wizard for checking, installing, and restoring translations."""
 
     def __init__(self, root: tk.Tk, translator: Translator) -> None:
         self.root = root
@@ -594,35 +593,15 @@ class TranslationGui:
         ).start()
 
     def _operation_worker(self, inspection: InstallationInspection, action: str) -> None:
-        if action == "restore":
-            result = restore_translation(
-                inspection,
-                transaction_roots=transaction_search_roots(),
-                progress=self._queue_operation_progress,
-            )
-        elif action == "install":
-            result = apply_translation(
-                inspection,
-                transaction_root=transaction_root(),
-                progress=self._queue_operation_progress,
-            )
-        else:
-            result = check_translation(
-                inspection,
-                transaction_roots=transaction_search_roots(),
-                progress=self._queue_operation_progress,
-            )
-        if (
-            action == "install"
-            and self.safe_exit_requested.is_set()
-            and result.status is InstallationStatus.ALREADY_TRANSLATED
-            and result.restore_path is not None
-        ):
-            result = restore_translation(
-                result,
-                transaction_roots=transaction_search_roots(),
-                progress=self._queue_operation_progress,
-            )
+        result, safe_exit_completed = run_translation_operation(
+            inspection,
+            action,
+            transaction_root=transaction_root(),
+            transaction_roots=transaction_search_roots(),
+            safe_exit_requested=self.safe_exit_requested.is_set(),
+            progress=self._queue_operation_progress,
+        )
+        if safe_exit_completed:
             self._schedule(self._safe_exit_finished, result)
             return
         self._schedule(self._operation_finished, result)

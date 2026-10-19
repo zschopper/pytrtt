@@ -50,9 +50,7 @@ def _indexes(archive: TigerV4Handler) -> dict[str, tuple[Path, TigerV4Index]]:
     return result
 
 
-def _collections(
-    archive: TigerV4Handler, hashes: set[tuple[int, int]] | None
-) -> list[Collection]:
+def _collections(archive: TigerV4Handler, hashes: set[tuple[int, int]] | None) -> list[Collection]:
     archive._load()
     result = []
     for (family, name_hash, locale), (name, entry, _) in archive._physical.items():
@@ -186,9 +184,7 @@ def plan_embedded(
         kind = request.embedded_type
         if kind is None or request.embedded_id is None or not request.data:
             raise ValueError("invalid embedded resource replacement")
-        refs = _references(
-            items, request.name_hash, request.locale, kind, request.embedded_id
-        )
+        refs = _references(items, request.name_hash, request.locale, kind, request.embedded_id)
         for ref in refs:
             address = ref.archive_id, ref.part, ref.offset
             name, raw, original = _resolve(archive, ref)
@@ -207,9 +203,7 @@ def plan_embedded(
     affected = [
         collection
         for collection in items
-        if any(
-            (ref.archive_id, ref.part, ref.offset) in payloads for ref in collection.references
-        )
+        if any((ref.archive_id, ref.part, ref.offset) in payloads for ref in collection.references)
     ]
     affected_keys = {(c.family, c.name_hash, c.locale) for c in affected}
     if any((r.archive_family, r.name_hash, r.locale) in affected_keys for r in direct):

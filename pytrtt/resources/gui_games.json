@@ -4,69 +4,79 @@
     "display_name": "Tomb Raider: Anniversary",
     "steam_app_id": "8000",
     "install_dir_name": "Tomb Raider Anniversary",
-    "translation_file": "translations/tomb-raider-anniversary/hu.json"
+    "translation_file": "translations/tomb-raider-anniversary/hu.json",
+    "package_available": true
   },
   {
     "game_id": "tomb-raider-legend",
     "display_name": "Tomb Raider: Legend",
     "steam_app_id": "7000",
     "install_dir_name": "Tomb Raider Legend",
-    "translation_file": "translations/tomb-raider-legend/hu.json"
+    "translation_file": "translations/tomb-raider-legend/hu.json",
+    "package_available": true
   },
   {
     "game_id": "tomb-raider-legend-demo",
     "display_name": "Tomb Raider: Legend Demo",
     "steam_app_id": "7030",
     "install_dir_name": "Tomb Raider Legend Demo",
-    "translation_file": "translations/tomb-raider-legend-demo/hu.json"
+    "translation_file": "translations/tomb-raider-legend-demo/hu.json",
+    "package_available": true
   },
   {
     "game_id": "tomb-raider-underworld",
     "display_name": "Tomb Raider: Underworld",
     "steam_app_id": "8140",
     "install_dir_name": "Tomb Raider Underworld",
-    "translation_file": "translations/tomb-raider-underworld/hu.json"
+    "translation_file": "translations/tomb-raider-underworld/hu.json",
+    "package_available": true
   },
   {
     "game_id": "tomb-raider",
     "display_name": "Tomb Raider (2013)",
     "steam_app_id": "203160",
     "install_dir_name": "Tomb Raider",
-    "translation_file": "translations/tomb-raider/hu.json"
+    "translation_file": "translations/tomb-raider/hu.json",
+    "package_available": true
   },
   {
     "game_id": "lara-croft-and-the-guardian-of-light",
     "display_name": "Lara Croft and the Guardian of Light",
     "steam_app_id": "35130",
     "install_dir_name": "Lara Croft and the Guardian of Light",
-    "translation_file": "translations/lara-croft-and-the-guardian-of-light/hu.json"
+    "translation_file": "translations/lara-croft-and-the-guardian-of-light/hu.json",
+    "package_available": true
   },
   {
     "game_id": "lara-croft-and-the-temple-of-osiris",
     "display_name": "Lara Croft and the Temple of Osiris",
     "steam_app_id": "289690",
     "install_dir_name": "Lara Croft and the Temple of Osiris",
-    "translation_file": "translations/lara-croft-and-the-temple-of-osiris/hu.json"
+    "translation_file": "translations/lara-croft-and-the-temple-of-osiris/hu.json",
+    "package_available": true
   },
   {
     "game_id": "rise-of-the-tomb-raider",
     "display_name": "Rise of the Tomb Raider",
     "steam_app_id": "391220",
     "install_dir_name": "Rise of the Tomb Raider",
-    "translation_file": "translations/rise-of-the-tomb-raider/hu.json"
+    "translation_file": "translations/rise-of-the-tomb-raider/hu.json",
+    "package_available": false
   },
   {
     "game_id": "shadow-of-the-tomb-raider",
     "display_name": "Shadow of the Tomb Raider",
     "steam_app_id": "750920",
     "install_dir_name": "Shadow of the Tomb Raider",
-    "translation_file": "translations/shadow-of-the-tomb-raider/hu.json"
+    "translation_file": "translations/shadow-of-the-tomb-raider/hu.json",
+    "package_available": false
   },
   {
     "game_id": "shadow-of-the-tomb-raider-trial",
     "display_name": "Shadow of the Tomb Raider Trial",
     "steam_app_id": "974630",
     "install_dir_name": "Shadow of the Tomb Raider Trial",
-    "translation_file": "translations/shadow-of-the-tomb-raider-trial/hu.json"
+    "translation_file": "translations/shadow-of-the-tomb-raider-trial/hu.json",
+    "package_available": false
   }
 ]

@@ -6,5 +6,5 @@ bash scripts/dev.sh run --locked ruff check pytrtt scripts tests
 bash scripts/dev.sh run --locked ruff format --check pytrtt scripts tests
 bash scripts/dev.sh run --locked mypy
 bash scripts/dev.sh run --locked pymarkdown --config .pymarkdown.json scan \
-  README.md AGENTS.md AGENTS.md.1 ai-guidance/*.md ai-guidance/*/*.md
+  README.md AGENTS.md ai-guidance/*.md ai-guidance/*/*.md
 bash scripts/dev.sh run --locked pytest

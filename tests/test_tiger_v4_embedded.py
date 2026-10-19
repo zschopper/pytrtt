@@ -21,9 +21,7 @@ def _cdrm(data: bytes) -> bytes:
 
 def _archive(root: Path, family: str, archive_id: int, collection: bytes, font: bytes) -> bytes:
     header = b"TAFS" + struct.pack("<4I", 4, 1, 1, archive_id) + b"pc-w\0" + bytes(27)
-    entry = struct.pack(
-        "<4IhhI", 0x12345678, 0xFFFFFFFF, len(collection), 0, 0, archive_id, 0x800
-    )
+    entry = struct.pack("<4IhhI", 0x12345678, 0xFFFFFFFF, len(collection), 0, 0, archive_id, 0x800)
     data = bytearray(header + entry + bytes(0x3000 - len(header + entry)))
     data[0x800 : 0x800 + len(collection)] = collection
     if archive_id == 1:
@@ -85,8 +83,7 @@ def test_maintained_lctoo_fonts_match_package_hashes() -> None:
     import json
 
     package = (
-        Path(__file__).resolve().parents[1]
-        / "translations/lara-croft-and-the-temple-of-osiris"
+        Path(__file__).resolve().parents[1] / "translations/lara-croft-and-the-temple-of-osiris"
     )
     document = json.loads((package / "hu.json").read_text(encoding="utf-8"))
     assert document["metadata"]["runtime"]["character_substitutions"] == {}

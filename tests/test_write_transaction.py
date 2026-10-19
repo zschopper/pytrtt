@@ -12,7 +12,12 @@ import pytest
 
 from pytrtt.archives import transaction
 from pytrtt.archives.bigfile_v1 import BigFileEntry, BigFileIndex
-from pytrtt.archives.write_plan import BigFileReplacement, plan_replacements
+from pytrtt.archives.write_plan import (
+    BigFileReplacement,
+    BigFileWritePlan,
+    plan_replacements,
+    serialize_bigfile_index,
+)
 
 
 def make_fixture(tmp_path: Path) -> tuple[Path, Path, bytes]:
@@ -33,11 +38,41 @@ def make_fixture(tmp_path: Path) -> tuple[Path, Path, bytes]:
     return data_dir, tmp_path / "transaction-001", bytes(original)
 
 
+class GenericWritePlan:
+    """Protocol-only plan proving transaction execution is not type-dispatched."""
+
+    def __init__(self, plan: BigFileWritePlan) -> None:
+        self.writes = plan.writes
+        self.files = plan.files
+        self.index_data = {"bigfile.000": serialize_bigfile_index(plan.index)}
+        self.backup_bytes = plan.backup_bytes
+        self.sufficient_space = plan.sufficient_space
+
+    def validate_inputs(self, _directory: Path) -> None:
+        raise ValueError("generic source changed")
+
+
 def test_journal_path_matches_same_windows_drive_mounted_in_wsl() -> None:
     assert transaction.journal_data_dir_matches(
         r"L:\SteamLibrary\steamapps\common\Tomb Raider Anniversary",
         Path("/mnt/l/SteamLibrary/steamapps/common/Tomb Raider Anniversary"),
     )
+
+
+def test_transaction_uses_the_write_plan_protocol_for_input_validation(tmp_path: Path) -> None:
+    data_dir, transaction_dir, _ = make_fixture(tmp_path)
+    entry = BigFileEntry(0, 0x12345678, 8, 2, 0xFFFFFFE1, 0xABCDEF01)
+    concrete = plan_replacements(
+        data_dir,
+        BigFileIndex((entry,)),
+        (BigFileReplacement("fixture resource", entry.hash, entry.locale, b"translated"),),
+        0x4000,
+    )
+
+    with pytest.raises(transaction.TransactionError, match="generic source changed"):
+        transaction.apply_write_plan(data_dir, GenericWritePlan(concrete), transaction_dir)
+
+    assert not transaction_dir.exists()
 
 
 def test_execute_saves_only_changed_ranges_and_applies_the_staged_plan(tmp_path: Path) -> None:
