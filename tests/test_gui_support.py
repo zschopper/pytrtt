@@ -126,6 +126,29 @@ def test_safe_exit_restores_a_just_installed_translation(
     assert calls == ["restore"]
 
 
+def test_failed_restore_is_returned_without_safe_exit(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    inspection = InstallationInspection(
+        InstallationCandidate(_entry(), tmp_path / "game", "Manual"),
+        InstallationStatus.ALREADY_TRANSLATED,
+        tmp_path / "hu.json",
+        restore_path=tmp_path / "transaction",
+    )
+    failed = replace(inspection, status=InstallationStatus.ERROR, detail="restore failed")
+    monkeypatch.setattr("pytrtt.gui_support.restore_translation", lambda *_args, **_kwargs: failed)
+
+    result, safe_exit_completed = run_translation_operation(
+        inspection,
+        "restore",
+        transaction_root=tmp_path / "transactions",
+        transaction_roots=(tmp_path / "transactions",),
+    )
+
+    assert result is failed
+    assert not safe_exit_completed
+
+
 def test_steam_discovery_reads_default_and_additional_libraries(tmp_path: Path) -> None:
     steam = tmp_path / "Steam"
     additional = tmp_path / "Games"

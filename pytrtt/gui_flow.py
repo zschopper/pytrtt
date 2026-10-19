@@ -14,6 +14,39 @@ class WizardStep(Enum):
 
 
 @dataclass(slots=True)
+class AsyncOperationState:
+    """Headless ownership state for GUI checks and modifying operations."""
+
+    check_generation: int = 0
+    operation_running: bool = False
+    closed: bool = False
+
+    def begin_check(self) -> int:
+        self.check_generation += 1
+        return self.check_generation
+
+    def accepts_check(self, generation: int) -> bool:
+        return not self.closed and generation == self.check_generation
+
+    def begin_operation(self) -> bool:
+        if self.closed or self.operation_running:
+            return False
+        self.operation_running = True
+        return True
+
+    def finish_operation(self) -> bool:
+        if self.closed or not self.operation_running:
+            return False
+        self.operation_running = False
+        return True
+
+    def close(self) -> None:
+        self.closed = True
+        self.operation_running = False
+        self.check_generation += 1
+
+
+@dataclass(slots=True)
 class WizardFlow:
     step: WizardStep = WizardStep.GAME
 

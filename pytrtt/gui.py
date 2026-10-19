@@ -14,7 +14,7 @@ from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
 from pytrtt.application_paths import transaction_root, transaction_search_roots
-from pytrtt.gui_flow import WizardFlow, WizardStep
+from pytrtt.gui_flow import AsyncOperationState, WizardFlow, WizardStep
 from pytrtt.gui_support import (
     InstallationCandidate,
     InstallationInspection,
@@ -73,6 +73,7 @@ class TranslationGui:
         apply_platform_style(root)
         self.translator = translator
         self.flow = WizardFlow()
+        self.workers = AsyncOperationState()
         self.games = load_game_catalog()
         self.candidates: tuple[InstallationCandidate, ...] = ()
         self.current_candidate: InstallationCandidate | None = None
@@ -461,6 +462,7 @@ class TranslationGui:
                 self._select_candidate(candidate)
 
     def _select_candidate(self, candidate: InstallationCandidate) -> None:
+        generation = self.workers.begin_check()
         self.candidates = tuple(
             item
             for item in self.candidates
@@ -485,20 +487,22 @@ class TranslationGui:
             self._start_live_progress("check", self.check_progress, self.game_status)
             threading.Thread(
                 target=self._inspect_worker,
-                args=(self.current_inspection,),
+                args=(self.current_inspection, generation),
                 daemon=True,
             ).start()
 
-    def _inspect_worker(self, inspection: InstallationInspection) -> None:
+    def _inspect_worker(self, inspection: InstallationInspection, generation: int) -> None:
         result = check_translation(
             inspection,
             transaction_roots=transaction_search_roots(),
-            progress=self._queue_check_progress,
+            progress=lambda current, total, message: self._queue_check_progress(
+                generation, current, total, message
+            ),
         )
-        self._schedule(self._inspection_finished, result)
+        self._schedule(self._inspection_finished, result, generation)
 
-    def _inspection_finished(self, result: InstallationInspection) -> None:
-        if self.current_candidate != result.candidate:
+    def _inspection_finished(self, result: InstallationInspection, generation: int) -> None:
+        if not self.workers.accepts_check(generation) or self.current_candidate != result.candidate:
             return
         self._stop_live_progress("check")
         self.check_progress.grid_remove()
@@ -575,7 +579,7 @@ class TranslationGui:
         self._show_step()
 
     def _start_operation(self) -> None:
-        if self.current_inspection is None:
+        if self.current_inspection is None or not self.workers.begin_operation():
             return
         action = self.selected_action.get()
         keys = {
@@ -608,13 +612,20 @@ class TranslationGui:
 
     def _safe_exit_finished(self, result: InstallationInspection) -> None:
         if result.status is InstallationStatus.RESTORED:
+            if not self.workers.finish_operation():
+                return
+            self.workers.close()
             self.closed = True
             self.root.destroy()
             return
         self.safe_exit_requested.clear()
         self._operation_finished(result)
 
-    def _queue_check_progress(self, current: int, total: int, message: str) -> None:
+    def _queue_check_progress(
+        self, generation: int, current: int, total: int, message: str
+    ) -> None:
+        if not self.workers.accepts_check(generation):
+            return
         self._schedule(
             self._show_progress,
             self.check_progress,
@@ -728,6 +739,8 @@ class TranslationGui:
         bar.configure(mode="determinate", value=0)
 
     def _operation_finished(self, result: InstallationInspection) -> None:
+        if not self.workers.finish_operation():
+            return
         self._stop_live_progress("operation")
         self.active_action = None
         if result.status is InstallationStatus.ALREADY_TRANSLATED:
@@ -756,6 +769,7 @@ class TranslationGui:
     def exit(self) -> None:
         if self.flow.step is WizardStep.PROGRESS:
             if self.active_action == "check":
+                self.workers.close()
                 self.closed = True
                 self.root.destroy()
                 return
@@ -788,9 +802,11 @@ class TranslationGui:
                     icon="warning",
                     parent=self.root,
                 ):
+                    self.workers.close()
                     self.closed = True
                     self.root.destroy()
                 return
+        self.workers.close()
         self.closed = True
         self.root.destroy()
 
