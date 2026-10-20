@@ -5,7 +5,9 @@
     "steam_app_id": "8000",
     "install_dir_name": "Tomb Raider Anniversary",
     "translation_file": "translations/tomb-raider-anniversary/hu.json",
-    "package_available": true
+    "package_available": true,
+    "epic_catalog_namespace": "",
+    "epic_catalog_item_id": ""
   },
   {
     "game_id": "tomb-raider-legend",
@@ -13,7 +15,9 @@
     "steam_app_id": "7000",
     "install_dir_name": "Tomb Raider Legend",
     "translation_file": "translations/tomb-raider-legend/hu.json",
-    "package_available": true
+    "package_available": true,
+    "epic_catalog_namespace": "",
+    "epic_catalog_item_id": ""
   },
   {
     "game_id": "tomb-raider-legend-demo",
@@ -21,7 +25,9 @@
     "steam_app_id": "7030",
     "install_dir_name": "Tomb Raider Legend Demo",
     "translation_file": "translations/tomb-raider-legend-demo/hu.json",
-    "package_available": true
+    "package_available": true,
+    "epic_catalog_namespace": "",
+    "epic_catalog_item_id": ""
   },
   {
     "game_id": "tomb-raider-underworld",
@@ -29,7 +35,9 @@
     "steam_app_id": "8140",
     "install_dir_name": "Tomb Raider Underworld",
     "translation_file": "translations/tomb-raider-underworld/hu.json",
-    "package_available": true
+    "package_available": true,
+    "epic_catalog_namespace": "",
+    "epic_catalog_item_id": ""
   },
   {
     "game_id": "tomb-raider",
@@ -37,7 +45,9 @@
     "steam_app_id": "203160",
     "install_dir_name": "Tomb Raider",
     "translation_file": "translations/tomb-raider/hu.json",
-    "package_available": true
+    "package_available": true,
+    "epic_catalog_namespace": "caca23a0954f4c1aba1fdd7e277b81e2",
+    "epic_catalog_item_id": "ff45e0eabd0c48d6950e369c79c26823"
   },
   {
     "game_id": "lara-croft-and-the-guardian-of-light",
@@ -45,7 +55,9 @@
     "steam_app_id": "35130",
     "install_dir_name": "Lara Croft and the Guardian of Light",
     "translation_file": "translations/lara-croft-and-the-guardian-of-light/hu.json",
-    "package_available": true
+    "package_available": true,
+    "epic_catalog_namespace": "",
+    "epic_catalog_item_id": ""
   },
   {
     "game_id": "lara-croft-and-the-temple-of-osiris",
@@ -53,7 +65,9 @@
     "steam_app_id": "289690",
     "install_dir_name": "Lara Croft and the Temple of Osiris",
     "translation_file": "translations/lara-croft-and-the-temple-of-osiris/hu.json",
-    "package_available": true
+    "package_available": true,
+    "epic_catalog_namespace": "",
+    "epic_catalog_item_id": ""
   },
   {
     "game_id": "rise-of-the-tomb-raider",
@@ -61,7 +75,9 @@
     "steam_app_id": "391220",
     "install_dir_name": "Rise of the Tomb Raider",
     "translation_file": "translations/rise-of-the-tomb-raider/hu.json",
-    "package_available": false
+    "package_available": false,
+    "epic_catalog_namespace": "48ffecf4a89f4fd496817b0451384f39",
+    "epic_catalog_item_id": "460088fc5e5045c0a67876fd10f7310b"
   },
   {
     "game_id": "shadow-of-the-tomb-raider",
@@ -69,7 +85,9 @@
     "steam_app_id": "750920",
     "install_dir_name": "Shadow of the Tomb Raider",
     "translation_file": "translations/shadow-of-the-tomb-raider/hu.json",
-    "package_available": false
+    "package_available": false,
+    "epic_catalog_namespace": "4b5461ca8d1c488787b5200b420de066",
+    "epic_catalog_item_id": "a61625d8a2e04a4aaf033312c649616c"
   },
   {
     "game_id": "shadow-of-the-tomb-raider-trial",
@@ -77,6 +95,8 @@
     "steam_app_id": "974630",
     "install_dir_name": "Shadow of the Tomb Raider Trial",
     "translation_file": "translations/shadow-of-the-tomb-raider-trial/hu.json",
-    "package_available": false
+    "package_available": false,
+    "epic_catalog_namespace": "",
+    "epic_catalog_item_id": ""
   }
 ]

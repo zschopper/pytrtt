@@ -1,4 +1,4 @@
-"""Declarative game catalog and Steam installation discovery."""
+"""Declarative game catalog and store installation discovery."""
 
 from __future__ import annotations
 
@@ -39,6 +39,8 @@ class GameCatalogEntry:
     install_dir_name: str
     translation_file: Path
     package_available: bool = False
+    epic_catalog_namespace: str = ""
+    epic_catalog_item_id: str = ""
 
 
 @dataclass(frozen=True, slots=True)
@@ -67,6 +69,12 @@ def _required_text(value: object, field: str) -> str:
     return value
 
 
+def _optional_text(value: object, field: str) -> str:
+    if not isinstance(value, str):
+        raise ValueError(f"invalid GUI game catalog field: {field}")
+    return value
+
+
 def load_game_catalog(path: Path = CATALOG_PATH) -> tuple[GameCatalogEntry, ...]:
     """Load the declarative list shown by the graphical client."""
     value: object = json.loads(path.read_text(encoding="utf-8"))
@@ -81,6 +89,8 @@ def load_game_catalog(path: Path = CATALOG_PATH) -> tuple[GameCatalogEntry, ...]
             "install_dir_name",
             "translation_file",
             "package_available",
+            "epic_catalog_namespace",
+            "epic_catalog_item_id",
         }:
             raise ValueError("invalid GUI game catalog entry")
         relative = Path(_required_text(item["translation_file"], "translation_file"))
@@ -97,8 +107,12 @@ def load_game_catalog(path: Path = CATALOG_PATH) -> tuple[GameCatalogEntry, ...]
                 _required_text(item["install_dir_name"], "install_dir_name"),
                 relative,
                 package_available,
+                _optional_text(item["epic_catalog_namespace"], "epic_catalog_namespace"),
+                _optional_text(item["epic_catalog_item_id"], "epic_catalog_item_id"),
             )
         )
+        if bool(games[-1].epic_catalog_namespace) != bool(games[-1].epic_catalog_item_id):
+            raise ValueError("Epic catalog namespace and item ID must be configured together")
     if len({game.game_id for game in games}) != len(games):
         raise ValueError("duplicate game_id in GUI game catalog")
     return tuple(games)
@@ -251,6 +265,78 @@ def discover_steam_installations(
     return tuple(candidates)
 
 
+def default_epic_manifest_roots() -> tuple[Path, ...]:
+    """Return Epic manifest roots on Windows and common WSL mounts."""
+    if os.name == "nt":
+        program_data = os.environ.get("PROGRAMDATA")
+        if not program_data:
+            return ()
+        return (Path(program_data) / "Epic/EpicGamesLauncher/Data/Manifests",)
+    root = Path("/mnt/c/ProgramData/Epic/EpicGamesLauncher/Data/Manifests")
+    return (root,) if root.is_dir() else ()
+
+
+def _epic_host_path(value: object) -> Path | None:
+    if not isinstance(value, str) or not value:
+        return None
+    windows_path = PureWindowsPath(value)
+    if os.name == "nt":
+        return Path(windows_path)
+    if windows_path.drive and len(windows_path.drive) == 2:
+        return Path("/mnt") / windows_path.drive[0].lower() / Path(*windows_path.parts[1:])
+    return Path(value)
+
+
+def discover_epic_installations(
+    games: tuple[GameCatalogEntry, ...],
+    manifest_roots: tuple[Path, ...] | None = None,
+) -> tuple[InstallationCandidate, ...]:
+    """Discover complete Epic installations from launcher item manifests."""
+    by_catalog_identity = {
+        (game.epic_catalog_namespace, game.epic_catalog_item_id): game
+        for game in games
+        if game.epic_catalog_namespace and game.epic_catalog_item_id
+    }
+    candidates = []
+    for root in manifest_roots if manifest_roots is not None else default_epic_manifest_roots():
+        try:
+            manifests = tuple(root.glob("*.item"))
+        except OSError:
+            continue
+        for manifest in manifests:
+            try:
+                fields: object = json.loads(manifest.read_text(encoding="utf-8-sig"))
+            except (OSError, UnicodeError, json.JSONDecodeError):
+                continue
+            if not isinstance(fields, dict) or fields.get("bIsIncompleteInstall") is not False:
+                continue
+            namespace = fields.get("CatalogNamespace")
+            item_id = fields.get("CatalogItemId")
+            if not isinstance(namespace, str) or not isinstance(item_id, str):
+                continue
+            game = by_catalog_identity.get((namespace, item_id))
+            installation = _epic_host_path(fields.get("InstallLocation"))
+            executable = fields.get("LaunchExecutable")
+            if game is None or installation is None or not isinstance(executable, str):
+                continue
+            relative_executable = PureWindowsPath(executable)
+            if relative_executable.is_absolute() or ".." in relative_executable.parts:
+                continue
+            launcher = installation.joinpath(*relative_executable.parts)
+            if not installation.is_dir() or not launcher.is_file():
+                continue
+            version = fields.get("AppVersionString", "")
+            candidates.append(
+                InstallationCandidate(
+                    game,
+                    installation,
+                    "Epic Games",
+                    version if isinstance(version, str) else "",
+                )
+            )
+    return tuple(candidates)
+
+
 def local_config_installations(
     games: tuple[GameCatalogEntry, ...], local_config: Path | None = None
 ) -> tuple[InstallationCandidate, ...]:
@@ -269,7 +355,7 @@ def discover_installations(
     detectors: tuple[InstallationDetector, ...] | None = None,
 ) -> tuple[InstallationCandidate, ...]:
     """Combine store adapters behind one boundary, keeping the first result per path."""
-    active_detectors = detectors or (discover_steam_installations,)
+    active_detectors = detectors or (discover_steam_installations, discover_epic_installations)
     candidates = []
     seen: set[tuple[str, Path]] = set()
     for detector in active_detectors:
