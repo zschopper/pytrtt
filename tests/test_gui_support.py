@@ -11,6 +11,7 @@ import pytest
 from pytrtt.gui_discovery import (
     GameCatalogEntry,
     InstallationCandidate,
+    discover_epic_installations,
     discover_installations,
     discover_steam_installations,
     load_game_catalog,
@@ -50,6 +51,16 @@ def test_catalog_is_data_driven_and_contains_anniversary() -> None:
     assert "shadow-of-the-tomb-raider-trial" in ids
     assert anniversary.package_available
 
+    tomb_raider_2013 = next(game for game in games if game.game_id == "tomb-raider")
+    assert tomb_raider_2013.epic_catalog_namespace == "caca23a0954f4c1aba1fdd7e277b81e2"
+    assert tomb_raider_2013.epic_catalog_item_id == "ff45e0eabd0c48d6950e369c79c26823"
+    rise = next(game for game in games if game.game_id == "rise-of-the-tomb-raider")
+    assert rise.epic_catalog_namespace == "48ffecf4a89f4fd496817b0451384f39"
+    assert rise.epic_catalog_item_id == "460088fc5e5045c0a67876fd10f7310b"
+    shadow = next(game for game in games if game.game_id == "shadow-of-the-tomb-raider")
+    assert shadow.epic_catalog_namespace == "4b5461ca8d1c488787b5200b420de066"
+    assert shadow.epic_catalog_item_id == "a61625d8a2e04a4aaf033312c649616c"
+
 
 def test_local_config_discovery_is_an_injectable_fake(tmp_path: Path) -> None:
     installation = tmp_path / "installed-game"
@@ -76,6 +87,72 @@ def test_discovery_pipeline_combines_future_store_adapters_without_duplicates(
         return (replace(candidate, source="Future store"),)
 
     assert discover_installations((_entry(),), (steam, future_store)) == (candidate,)
+
+
+def test_epic_discovery_uses_catalog_identity_and_complete_installation(tmp_path: Path) -> None:
+    installation = tmp_path / "TombRaiderGOTYE"
+    installation.mkdir()
+    (installation / "TombRaider.exe").touch()
+    manifests = tmp_path / "Manifests"
+    manifests.mkdir()
+    game = replace(
+        _entry(),
+        epic_catalog_namespace="fixture-namespace",
+        epic_catalog_item_id="fixture-item",
+    )
+    (manifests / "installed.item").write_text(
+        json.dumps(
+            {
+                "CatalogNamespace": "fixture-namespace",
+                "CatalogItemId": "fixture-item",
+                "InstallLocation": str(installation),
+                "LaunchExecutable": "TombRaider.exe",
+                "AppVersionString": "1.2.3",
+                "bIsIncompleteInstall": False,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert discover_epic_installations((game,), (manifests,)) == (
+        InstallationCandidate(game, installation, "Epic Games", "1.2.3"),
+    )
+
+
+@pytest.mark.parametrize(
+    "changes",
+    [
+        {"bIsIncompleteInstall": True},
+        {"CatalogItemId": "unknown-item"},
+        {"LaunchExecutable": "missing.exe"},
+        {"InstallLocation": ""},
+    ],
+)
+def test_epic_discovery_ignores_incomplete_unknown_or_stale_manifests(
+    tmp_path: Path, changes: dict[str, object]
+) -> None:
+    installation = tmp_path / "game"
+    installation.mkdir()
+    (installation / "game.exe").touch()
+    manifests = tmp_path / "Manifests"
+    manifests.mkdir()
+    game = replace(
+        _entry(),
+        epic_catalog_namespace="fixture-namespace",
+        epic_catalog_item_id="fixture-item",
+    )
+    manifest: dict[str, object] = {
+        "CatalogNamespace": "fixture-namespace",
+        "CatalogItemId": "fixture-item",
+        "InstallLocation": str(installation),
+        "LaunchExecutable": "game.exe",
+        "bIsIncompleteInstall": False,
+    }
+    manifest.update(changes)
+    (manifests / "ignored.item").write_text(json.dumps(manifest), encoding="utf-8")
+    (manifests / "malformed.item").write_text("not json", encoding="utf-8")
+
+    assert discover_epic_installations((game,), (manifests,)) == ()
 
 
 def test_available_catalog_packages_are_self_consistent() -> None:
