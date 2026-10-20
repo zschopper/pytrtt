@@ -1,9 +1,12 @@
 [project]
 name = "pytrtt"
-version = "0.0.0"
+version = "0.2.0"
 description = "Tomb Raider Translation Toolkit"
 requires-python = ">=3.13,<3.15"
-dependencies = []
+dependencies = [
+    "pyside6>=6.10.1,<6.11; sys_platform == 'win32'",
+    "pyside6>=6.8,<6.9; sys_platform != 'win32' and python_version < '3.14'",
+]
 
 [dependency-groups]
 dev = [
@@ -14,7 +17,7 @@ dev = [
     "mypy>=1.15",
     "pymarkdownlnt>=0.9",
 ]
-packaging = ["pyinstaller>=6"]
+packaging = ["pillow>=11", "pyinstaller>=6"]
 
 [tool.uv]
 package = false

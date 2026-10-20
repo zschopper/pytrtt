@@ -8,6 +8,7 @@ import pytest
 
 from pytrtt.packages.translation import (
     FontAsset,
+    TranslationCredit,
     TranslationDocument,
     TranslationEntry,
     TranslationMetadata,
@@ -38,6 +39,48 @@ def test_metadata_is_required_and_other_sections_are_optional() -> None:
     assert document.subtitles == ()
     assert document.fonts == ()
     assert '"menu"' not in serialize_translation_document(document)
+
+
+def test_document_round_trips_structured_translation_credits() -> None:
+    document = parse_translation_document(
+        METADATA_ONLY.replace(
+            '"schema_version": 1',
+            '"schema_version": 6',
+        ).replace(
+            "\n}",
+            ',\n  "credits": {\n'
+            '    "translators": ["Lara", "Zip"],\n'
+            '    "testers": ["Winston"]\n'
+            "  }\n}",
+        )
+    )
+
+    assert document.credits == (
+        TranslationCredit("translators", ("Lara", "Zip")),
+        TranslationCredit("testers", ("Winston",)),
+    )
+    serialized = serialize_translation_document(document)
+    assert '"schema_version": 6' in serialized
+    assert parse_translation_document(serialized) == document
+
+
+@pytest.mark.parametrize(
+    "credits",
+    [
+        [],
+        {"Translators": ["Lara"]},
+        {"translators": []},
+        {"translators": ["Lara", "Lara"]},
+        {"translators": [""]},
+    ],
+)
+def test_document_rejects_invalid_translation_credits(credits: object) -> None:
+    value = json.loads(METADATA_ONLY)
+    value["schema_version"] = 6
+    value["credits"] = credits
+
+    with pytest.raises(TranslationPackageError, match="credit"):
+        parse_translation_document(json.dumps(value))
 
 
 def test_one_document_round_trips_menu_subtitle_and_font_sections() -> None:

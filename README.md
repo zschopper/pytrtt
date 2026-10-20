@@ -377,8 +377,8 @@ The examined text table.
 and private-use glyphs; establish complete game/DLC text coverage and verify writing, restoration and in-game
 behavior. See the [extraction/import provenance](translations/shadow-of-the-tomb-raider/provenance.json).
 
-The current application runs from source through a CLI. A standalone Windows executable and a GUI
-are planned; their build and distribution workflows are not available yet.
+The application provides both a command-line client and a four-step PySide6/Qt WebEngine graphical wizard when run
+from source. A standalone Windows executable, installer and their release-validation workflow remain future work.
 
 ## Features
 
@@ -403,13 +403,12 @@ are planned; their build and distribution workflows are not available yet.
 - Free space for recovery data and temporary archive files. The dry run estimates the required space;
   there is no fixed minimum that fits every game.
 
-The application currently has no third-party runtime dependencies. Running it from source on Windows
-requires native Windows Python 3.13 or 3.14; Bash and WSL are not required. Git is needed for the clone command below;
-you can also download and extract the repository instead.
+The command-line application uses the Python standard library. The graphical client additionally requires PySide6.
+Running from source on Windows requires native Windows Python 3.13 or 3.14; Bash and WSL are not required. Git is
+needed for the clone command below; you can also download and extract the repository instead.
 
-The planned standalone release targets **Windows 10 or later**, with Windows 11 as the initial test target.
-It will use a PyInstaller onefile EXE and will not require a separate Python installation.
-Native Windows builds need their own environment; a WSL virtual environment cannot be reused for them.
+The planned standalone release targets **Windows 10 or later**, with Windows 11 as the initial test target. Native
+Windows builds need their own environment; a WSL virtual environment cannot be reused for them.
 
 ## Quick start
 
@@ -433,6 +432,25 @@ Edit the relevant `install_dir` under `platforms.windows.games` for your install
 The example contains placeholder paths; `pytrtt.local.toml` is ignored by Git. Keep an existing local
 configuration when updating your checkout. An explicit `--game-dir "PATH"` overrides its installation path.
 
+### Start the graphical client
+
+Install the project and its PySide6 runtime dependency, then start the client from Windows Command Prompt or
+PowerShell:
+
+```bat
+py -3.13 -m pip install -e .
+scripts\run-gui.cmd
+```
+
+The graphical client displays the application version from `project.version` in `pyproject.toml`. Its English or
+Hungarian interface preference is stored in `%LOCALAPPDATA%\PyTRTT\settings.ini`.
+
+The graphical client discovers Steam and Epic Games installations, also accepts a custom folder, and uses the same
+translation, validation and recovery services as the CLI. Its four visible steps cover game selection, installation
+selection, operation and language selection, and progress/results. If a previous modifying operation was interrupted,
+startup offers to restore the affected installation from its retained journal before normal use. Translation credits
+embedded in a supported language file are available from the progress/result page.
+
 ### Preview a translation
 
 This example uses the configured Anniversary installation and bundled Hungarian language file:
@@ -447,11 +465,12 @@ available space without modifying the game directory. Use `--ui-language hu` for
 
 ### Install and restore
 
-Close the game before applying a translation, and wait for Steam downloads or updates to finish.
-Both the GUI and CLI default to `<program directory>/transactions/<game-id>/<timestamp>/`.
-When running from source, the program directory is the project root; a bundled executable uses its own directory.
-The GUI also searches the former `work/transactions` and user-data transaction folders for existing recovery journals.
-Existing backups remain in their original locations. CLI reports retain their user-data location.
+Close the game before applying a translation, and wait for Steam downloads or updates to finish. The supplied GUI
+launcher stores recovery journals below `<game directory>/PyTRTT Recovery/`; do not delete that directory while a
+translation may still need restoration. The CLI defaults to
+`<program directory>/transactions/<game-id>/<timestamp>/`. The GUI also searches the portable transaction root, the
+former `work/transactions` location and the user-data transaction folder for existing journals. Existing backups
+remain in their original locations. CLI reports retain their user-data location.
 
 The installation selector keeps separate folder choices for multiple copies of the same game. Status is checked
 from the selected folder's files. A recovery journal must match that exact installation path and the saved file
@@ -536,17 +555,17 @@ New behavior is developed with TDD; binary changes must preserve verified byte-l
 | `work/` | Private planning documents, samples, exports, reports and transactions; ignored by Git |
 | `references/` | Local historical and external references; ignored by Git |
 
-The shared service layer can be reused by a future GUI. Protocol contracts and explicit dependency
-wiring keep archive and resource handling independent of game identities and user interfaces.
+The CLI and Qt GUI reuse the same service layer. Protocol contracts and explicit dependency wiring keep archive and
+resource handling independent of game identities and user interfaces.
 See the [contributor guidelines](AGENTS.md) for task-specific development guidance.
 
 ## Roadmap
 
 - Complete the experimental game projects and verification tasks listed above.
 - Build and test the standalone Windows EXE and manifest-based translation packages.
-- Add package/installation state detection, game discovery and restoration previews.
+- Complete the versioned release support registry and restoration previews.
 - Support more archive versions, games and installed DLCs through tested handlers and profiles.
-- Add a GUI using the existing shared services and message catalogs.
+- Complete Windows scaling, accessibility and clean-machine release checks for the Qt GUI.
 
 ## Translation credits
 

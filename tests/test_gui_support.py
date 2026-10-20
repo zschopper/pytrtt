@@ -23,6 +23,7 @@ from pytrtt.gui_support import (
     InstallationInspection,
     InstallationStatus,
     find_interrupted_transactions,
+    find_interrupted_transactions_in_roots,
     find_restorable_transaction,
     inspect_installation,
     run_translation_operation,
@@ -232,6 +233,44 @@ def test_safe_exit_restores_a_just_installed_translation(
     assert result is restored
     assert safe_exit_completed
     assert calls == ["restore"]
+
+
+def test_safe_exit_request_is_checked_after_install(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    inspection = InstallationInspection(
+        InstallationCandidate(_entry(), tmp_path / "game", "Manual"),
+        InstallationStatus.CHANGES_AVAILABLE,
+        tmp_path / "hu.json",
+    )
+    installed = replace(
+        inspection,
+        status=InstallationStatus.ALREADY_TRANSLATED,
+        restore_path=tmp_path / "transaction",
+    )
+    restored = replace(installed, status=InstallationStatus.RESTORED)
+    safe_exit_requested = False
+
+    def install(*_args: object, **_kwargs: object) -> InstallationInspection:
+        nonlocal safe_exit_requested
+        safe_exit_requested = True
+        return installed
+
+    monkeypatch.setattr("pytrtt.gui_support.apply_translation", install)
+    monkeypatch.setattr(
+        "pytrtt.gui_support.restore_translation", lambda *_args, **_kwargs: restored
+    )
+
+    result, safe_exit_completed = run_translation_operation(
+        inspection,
+        "install",
+        transaction_root=tmp_path / "transactions",
+        transaction_roots=(tmp_path / "transactions",),
+        safe_exit_requested=lambda: safe_exit_requested,
+    )
+
+    assert result is restored
+    assert safe_exit_completed
 
 
 def test_failed_restore_is_returned_without_safe_exit(
@@ -445,6 +484,20 @@ def test_interrupted_transactions_include_only_incomplete_file_writes(tmp_path: 
     )
 
     assert find_interrupted_transactions(root) == ((tmp_path / "game", applying),)
+
+
+def test_interrupted_transaction_roots_are_deduplicated(tmp_path: Path) -> None:
+    root = tmp_path / "transactions"
+    applying = root / "game/applying"
+    applying.mkdir(parents=True)
+    (applying / "journal.json").write_text(
+        json.dumps({"status": "applying", "data_dir": str(tmp_path / "game")}),
+        encoding="utf-8",
+    )
+
+    assert find_interrupted_transactions_in_roots((root, root / "game")) == (
+        (tmp_path / "game", applying),
+    )
 
 
 def test_discovery_retains_the_same_game_in_two_libraries(tmp_path: Path) -> None:

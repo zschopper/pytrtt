@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 6,
   "metadata": {
     "game_id": "tomb-raider-anniversary",
     "build_id": "842717",
@@ -51,6 +51,23 @@
       },
       "display_name": "Tomb Raider: Anniversary"
     }
+  },
+  "credits": {
+    "translators": [
+      "Credo",
+      "Hamster",
+      "Ironman",
+      "Jeges Helga",
+      "Petúnia",
+      "zsolt"
+    ],
+    "beta_testers": [
+      "DC Girlie",
+      "N0rby21"
+    ],
+    "communities": [
+      "TombRaider.hu"
+    ]
   },
   "menu": [
     {

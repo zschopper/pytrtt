@@ -515,19 +515,28 @@ class TranslationService:
                 progress(processed_resources, total_resources)
         return checked
 
-    def apply(self, result: TranslationBuild, transaction_dir: Path) -> Path | None:
+    def apply(
+        self,
+        result: TranslationBuild,
+        transaction_dir: Path,
+        progress: Callable[[int, int, str], None] | None = None,
+    ) -> Path | None:
         return (
-            result.handler.apply(result.plan, transaction_dir, result.runtime)
+            result.handler.apply(result.plan, transaction_dir, result.runtime, progress)
             if result.plan is not None
             else None
         )
 
     def restore(
-        self, directory: Path, transaction_dir: Path, runtime: RuntimeSettings | None = None
+        self,
+        directory: Path,
+        transaction_dir: Path,
+        runtime: RuntimeSettings | None = None,
+        progress: Callable[[int, int, str], None] | None = None,
     ) -> None:
         if runtime is None:
             journal = json.loads((transaction_dir / "journal.json").read_text(encoding="utf-8"))
             if "runtime" not in journal:
                 raise TranslationPackageError("legacy journal requires explicit runtime settings")
             runtime = parse_runtime_settings(journal["runtime"])
-        self.registry.archive(directory, runtime.archive).restore(transaction_dir)
+        self.registry.archive(directory, runtime.archive).restore(transaction_dir, progress)

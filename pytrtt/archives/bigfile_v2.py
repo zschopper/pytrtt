@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import re
 import shutil
+from collections.abc import Callable
 from dataclasses import dataclass, replace
 from pathlib import Path
 
@@ -269,17 +270,29 @@ class BigFileV2Handler:
         )
 
     def apply(
-        self, plan: ArchiveWritePlan, transaction_dir: Path, runtime: RuntimeSettings
+        self,
+        plan: ArchiveWritePlan,
+        transaction_dir: Path,
+        runtime: RuntimeSettings,
+        progress: Callable[[int, int, str], None] | None = None,
     ) -> Path:
         from pytrtt.archives.transaction import apply_write_plan
 
         if not isinstance(plan, BigFileV2WritePlan):
             raise TypeError("write plan belongs to a different archive handler")
         return apply_write_plan(
-            self.directory, plan, transaction_dir, runtime_settings=runtime_to_dict(runtime)
+            self.directory,
+            plan,
+            transaction_dir,
+            runtime_settings=runtime_to_dict(runtime),
+            progress=progress,
         )
 
-    def restore(self, transaction_dir: Path) -> None:
+    def restore(
+        self,
+        transaction_dir: Path,
+        progress: Callable[[int, int, str], None] | None = None,
+    ) -> None:
         from pytrtt.archives.transaction import restore_write_plan
 
-        restore_write_plan(self.directory, transaction_dir)
+        restore_write_plan(self.directory, transaction_dir, progress)

@@ -45,7 +45,7 @@
   "section_fonts": "Font",
   "help_local_config": "Helyi útvonalbeállítások (alapból: pytrtt.local.toml a munkakönyvtárban)",
   "help_game_selector": "Játékazonosító a helyi útvonalhoz, fordításfájl nélküli visszaállításkor",
-  "gui_title": "Tomb Raider Translation Toolkit",
+  "gui_title": "PyTRTT",
   "gui_game": "Játék",
   "gui_installation": "Telepítés",
   "gui_browse": "Tallózás...",
@@ -126,6 +126,8 @@
   "gui_recovery_complete_message": "A játékfájlok ismét biztonságos állapotban vannak.",
   "gui_recovery_error_title": "A helyreállítás nem fejezhető be",
   "gui_recovery_error_message": "A biztonsági mentéseket a program nem törölte. Technikai részlet: {detail}",
+  "gui_confirm_yes": "Igen",
+  "gui_confirm_no": "Nem",
   "gui_complete": "Kész",
   "gui_complete_help": "A művelet befejeződött. Visszaléphetsz, új műveletet indíthatsz vagy kiléphetsz."
 }

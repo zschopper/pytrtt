@@ -182,6 +182,22 @@ def find_interrupted_transactions(root: Path) -> tuple[tuple[Path, Path], ...]:
     return tuple(interrupted)
 
 
+def find_interrupted_transactions_in_roots(
+    roots: tuple[Path, ...],
+) -> tuple[tuple[Path, Path], ...]:
+    """Collect interrupted writes once when recovery roots overlap."""
+    interrupted: list[tuple[Path, Path]] = []
+    seen: set[Path] = set()
+    for root in roots:
+        for game_dir, transaction in find_interrupted_transactions(root):
+            identity = transaction.resolve()
+            if identity in seen:
+                continue
+            seen.add(identity)
+            interrupted.append((game_dir, transaction))
+    return tuple(interrupted)
+
+
 def recover_interrupted_transaction(game_dir: Path, transaction: Path) -> None:
     """Resume the journal's idempotent restoration path."""
     from pytrtt.composition import create_translation_service
@@ -307,7 +323,7 @@ def apply_translation(
         transaction = transaction_root / inspection.candidate.game.game_id / stamp
         if progress is not None:
             progress(2, 4, "gui_progress_install")
-        service.apply(result, transaction)
+        service.apply(result, transaction, progress)
         if progress is not None:
             progress(3, 4, "gui_progress_verify")
         ready = InstallationInspection(
@@ -351,7 +367,12 @@ def restore_translation(
             current = restore_path
             restored: set[Path] = set()
             while True:
-                service.restore(inspection.candidate.path, current, document.runtime)
+                service.restore(
+                    inspection.candidate.path,
+                    current,
+                    document.runtime,
+                    progress,
+                )
                 restored.add(current.resolve())
                 if not service.is_translation_installed(
                     inspection.candidate.path,
@@ -400,7 +421,7 @@ def run_translation_operation(
     *,
     transaction_root: Path,
     transaction_roots: tuple[Path, ...],
-    safe_exit_requested: bool = False,
+    safe_exit_requested: bool | Callable[[], bool] = False,
     progress: ProgressCallback | None = None,
 ) -> tuple[InstallationInspection, bool]:
     """Run one GUI operation and complete a requested post-install safe exit."""
@@ -422,9 +443,12 @@ def run_translation_operation(
             transaction_roots=transaction_roots,
             progress=progress,
         )
+    should_exit_safely = (
+        safe_exit_requested() if callable(safe_exit_requested) else safe_exit_requested
+    )
     if (
         action == "install"
-        and safe_exit_requested
+        and should_exit_safely
         and result.status is InstallationStatus.ALREADY_TRANSLATED
         and result.restore_path is not None
     ):

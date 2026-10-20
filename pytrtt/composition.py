@@ -1,4 +1,4 @@
-"""Explicit application wiring shared by console, developer tools and future GUI clients."""
+"""Explicit application wiring shared by console, developer tools and GUI clients."""
 
 from pytrtt.archives.bigfile import BigFileV1Handler
 from pytrtt.archives.bigfile_v2 import BigFileV2Handler

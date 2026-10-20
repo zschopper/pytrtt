@@ -24,7 +24,14 @@
         "sha256": "9b1f1f640a41928e3517ce6723a6524069b0d1f750f01f6abd20c431ffa64bff"
       }
     ],
-    "individual_translation_authors": "Not identified in the supplied info.xml or TMX; existing translation credits remain with their contributors."
+    "translation_authors": [
+      "Michele",
+      "Matie",
+      "drlecter",
+      "Roli"
+    ],
+    "translation_tool_author": "zsolt",
+    "credit_source": "Supplied by the translation author"
   },
   "records": {
     "menu": 8214,

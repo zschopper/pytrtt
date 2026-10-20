@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self' qrc:; connect-src 'none'; font-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'"
+    >
+    <title>PyTRTT</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="qrc:///qtwebchannel/qwebchannel.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="wizard">
+      <aside class="rail" aria-label="Setup progress">
+        <div class="brand">
+          <img src="app-icon.png" alt="">
+          <img class="brand-wordmark" src="brand-lockup.png" alt="PyTRTT — Forged in Python, Built for Adventure.">
+        </div>
+        <ol class="steps">
+          <li><b>1</b><span>Choose a game<small>Select a supported game</small></span></li>
+          <li><b>2</b><span>Find the install<small>Point us to the right files</small></span></li>
+          <li><b>3</b><span>Choose an operation<small>Check, translate, or restore</small></span></li>
+          <li><b>4</b><span>Progress and result<small>Follow the operation</small></span></li>
+        </ol>
+      </aside>
+      <section class="content">
+        <div class="selection-summary" hidden>
+          <span class="summary-label">Current selection</span>
+          <span id="summary">No game selected</span>
+        </div>
+        <header><p id="step-counter">Welcome</p><h1 id="page-title">Welcome to PyTRTT</h1><span id="page-description">Manage Tomb Raider translations safely in a few clear steps.</span></header>
+        <section id="welcome" class="welcome-page page-panel active">
+          <div class="welcome-card">
+            <h2>Tomb Raider translations, made simple</h2>
+            <small id="app-version">Version</small>
+            <p>PyTRTT finds supported Tomb Raider installations, checks their archives, installs available translations, and keeps the data needed to restore the original files.</p>
+            <p>Choose the game and installation, then review the operation before any game file is changed.</p>
+            <fieldset id="app-language" class="welcome-language">
+              <legend>Application language</legend>
+              <div class="language-buttons">
+                <button type="button" data-language="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span> English</button>
+                <button type="button" data-language="hu" aria-pressed="false"><span aria-hidden="true">🇭🇺</span> Magyar</button>
+              </div>
+            </fieldset>
+            <label class="welcome-skip">
+              <input id="skip-welcome" type="checkbox">
+              Do not show this welcome page again
+            </label>
+          </div>
+        </section>
+        <section id="games" class="cards page-panel" aria-hidden="true" inert aria-live="polite"><p>Loading supported games…</p></section>
+        <section id="installation" class="installation-page page-panel" aria-hidden="true" inert>
+          <div class="installation-toolbar">
+            <p id="installation-status">Searching for installations…</p>
+            <button id="refresh-installations" type="button">Search again</button>
+          </div>
+          <div id="installations" class="installation-cards" aria-live="polite"></div>
+          <button id="browse-installation" class="browse-card" type="button">
+            <strong>Choose another folder</strong>
+            <span>Browse for a custom game installation.</span>
+          </button>
+        </section>
+        <section id="operations" class="operation-page page-panel" aria-hidden="true" inert>
+          <div id="validation-progress" class="validation-progress">
+            <div><strong>Validating installation</strong><span id="operation-status">Preparing…</span></div>
+            <progress id="validation-bar"></progress>
+          </div>
+          <div id="operation-cards" class="operation-cards" aria-live="polite"></div>
+          <div id="language-card" class="language-card" hidden>
+            <label for="target-language">Translation language</label>
+            <select id="target-language"><option value="hu">Hungarian</option></select>
+          </div>
+        </section>
+        <section id="progress" class="progress-page page-panel" aria-hidden="true" inert>
+          <div class="progress-card">
+            <div class="progress-heading">
+              <h2 id="progress-title">Operation in progress</h2>
+              <button id="credits-button" type="button" hidden>Translation credits</button>
+            </div>
+            <dl class="operation-context">
+              <div><dt>Game</dt><dd id="context-game">—</dd></div>
+              <div><dt>Installation</dt><dd id="context-installation">—</dd></div>
+              <div><dt>Path</dt><dd id="context-path">—</dd></div>
+              <div><dt>Operation</dt><dd id="context-operation">—</dd></div>
+              <div id="context-language-row" hidden><dt>Language</dt><dd id="context-language">—</dd></div>
+            </dl>
+            <progress id="progress-bar"></progress>
+            <div class="progress-copy">
+              <strong id="progress-status">Preparing…</strong>
+              <span id="progress-detail">Starting the selected operation safely.</span>
+              <span id="progress-elapsed">Elapsed: 0:00</span>
+            </div>
+            <section id="result-summary" class="result-summary" hidden>
+              <strong id="result-heading">Completed</strong>
+              <p id="result-message"></p>
+              <dl>
+                <div><dt>Result</dt><dd id="result-status">—</dd></div>
+                <div><dt>Total time</dt><dd id="result-duration">—</dd></div>
+                <div id="result-recovery-row" hidden><dt>Recovery data</dt><dd id="result-recovery">—</dd></div>
+              </dl>
+            </section>
+            <details id="result-detail-panel" class="result-detail" hidden>
+              <summary>Technical details</summary>
+              <pre id="result-detail"></pre>
+              <button id="copy-result-detail" type="button">Copy details</button>
+            </details>
+            <div class="result-actions" hidden>
+              <button id="restart" class="restart" type="button">Translate another game</button>
+              <button id="exit-application" class="exit-application" type="button">Exit</button>
+            </div>
+          </div>
+        </section>
+        <footer>
+          <div class="footer-actions">
+            <button id="back" class="secondary" type="button" hidden>Back</button>
+            <button id="continue" type="button">Get started <b>›</b></button>
+          </div>
+        </footer>
+      </section>
+    </main>
+    <dialog id="credits-dialog" aria-labelledby="credits-title">
+      <div class="credits-heading">
+        <div>
+          <span>Translation credits</span>
+          <h2 id="credits-title">Contributors</h2>
+        </div>
+        <button id="credits-close" type="button" aria-label="Close">×</button>
+      </div>
+      <p id="credits-intro"></p>
+      <dl id="credits-list"></dl>
+    </dialog>
+  </body>
+</html>

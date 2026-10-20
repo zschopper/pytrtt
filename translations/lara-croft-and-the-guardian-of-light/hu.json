@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "metadata": {
     "game_id": "lara-croft-and-the-guardian-of-light",
     "build_id": "11395",
@@ -73,6 +73,17 @@
       },
       "display_name": "Lara Croft and the Guardian of Light"
     }
+  },
+  "credits": {
+    "translators": [
+      "Michele",
+      "Matie",
+      "drlecter",
+      "Roli"
+    ],
+    "translation_tools": [
+      "zsolt"
+    ]
   },
   "entry_identity": "record",
   "menu": [

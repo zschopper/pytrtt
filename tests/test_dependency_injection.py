@@ -1,5 +1,6 @@
 """Core workflows accept structural collaborators without archive files or inheritance."""
 
+from collections.abc import Callable
 from dataclasses import dataclass, field, replace
 from pathlib import Path
 
@@ -47,12 +48,22 @@ class MemoryArchive:
         return MemoryPlan()
 
     def apply(
-        self, plan: ArchiveWritePlan, transaction_dir: Path, runtime: RuntimeSettings
+        self,
+        plan: ArchiveWritePlan,
+        transaction_dir: Path,
+        runtime: RuntimeSettings,
+        progress: Callable[[int, int, str], None] | None = None,
     ) -> Path:
+        del progress
         self.applied = (plan, transaction_dir, runtime)
         return transaction_dir / "journal.json"
 
-    def restore(self, transaction_dir: Path) -> None:
+    def restore(
+        self,
+        transaction_dir: Path,
+        progress: Callable[[int, int, str], None] | None = None,
+    ) -> None:
+        del progress
         self.restored = transaction_dir
 
 

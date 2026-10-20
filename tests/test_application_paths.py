@@ -5,7 +5,13 @@ from pathlib import Path
 
 import pytest
 
-from pytrtt.application_paths import program_directory, transaction_root, transaction_search_roots
+from pytrtt.application_paths import (
+    ensure_game_transaction_root,
+    game_transaction_root,
+    program_directory,
+    transaction_root,
+    transaction_search_roots,
+)
 
 
 def test_source_storage_does_not_follow_the_working_directory(
@@ -28,6 +34,20 @@ def test_frozen_program_stores_beside_executable_not_unpack_directory(
     assert program_directory() == executable.parent
     assert transaction_root() == executable.parent / "transactions"
     assert transaction_search_roots()[0] == transaction_root()
+
+
+def test_game_transaction_root_is_discovered_before_legacy_locations(tmp_path: Path) -> None:
+    game = tmp_path / "Tomb Raider Anniversary"
+    expected = game / "PyTRTT Recovery"
+    assert game_transaction_root(game) == expected
+    assert transaction_search_roots(game)[0] == expected
+
+    root = ensure_game_transaction_root(game)
+    readme = (root / "README.txt").read_text(encoding="utf-8")
+    assert "DO NOT DELETE" in readme
+    assert "NE TÖRÖLD" in readme
+    assert "restore" in readme
+    assert "visszaállítás" in readme
 
 
 def test_cli_uses_portable_default_when_transaction_option_is_omitted(

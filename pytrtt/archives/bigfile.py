@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from functools import cached_property
 from pathlib import Path
 
@@ -46,13 +47,25 @@ class BigFileV1Handler(ArchiveHandler):
         return plan_replacements(self.directory, self.index, replacements, self.settings.boundary)
 
     def apply(
-        self, plan: ArchiveWritePlan, transaction_dir: Path, runtime: RuntimeSettings
+        self,
+        plan: ArchiveWritePlan,
+        transaction_dir: Path,
+        runtime: RuntimeSettings,
+        progress: Callable[[int, int, str], None] | None = None,
     ) -> Path:
         if not isinstance(plan, BigFileWritePlan):
             raise TypeError("write plan belongs to a different archive handler")
         return apply_write_plan(
-            self.directory, plan, transaction_dir, runtime_settings=runtime_to_dict(runtime)
+            self.directory,
+            plan,
+            transaction_dir,
+            runtime_settings=runtime_to_dict(runtime),
+            progress=progress,
         )
 
-    def restore(self, transaction_dir: Path) -> None:
-        restore_write_plan(self.directory, transaction_dir)
+    def restore(
+        self,
+        transaction_dir: Path,
+        progress: Callable[[int, int, str], None] | None = None,
+    ) -> None:
+        restore_write_plan(self.directory, transaction_dir, progress)

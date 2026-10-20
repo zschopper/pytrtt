@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 6,
   "metadata": {
     "game_id": "tomb-raider-legend-demo",
     "build_id": "251815",
@@ -51,6 +51,24 @@
       },
       "display_name": "Tomb Raider: Legend Demo"
     }
+  },
+  "credits": {
+    "translators": [
+      "Credo",
+      "Hamster",
+      "Ironman",
+      "Jeges Helga",
+      "$chuty",
+      "zsolt"
+    ],
+    "beta_testers": [
+      "DC Girlie",
+      "M3Ny3'T",
+      "N0rby21"
+    ],
+    "communities": [
+      "TombRaider.hu"
+    ]
   },
   "menu": [
     {

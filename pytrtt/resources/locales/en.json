@@ -45,7 +45,7 @@
   "section_fonts": "Font",
   "help_local_config": "Machine-local path configuration (default: pytrtt.local.toml in working directory)",
   "help_game_selector": "Game identifier for local paths when restoring without a translation document",
-  "gui_title": "Tomb Raider Translation Toolkit",
+  "gui_title": "PyTRTT",
   "gui_game": "Game",
   "gui_installation": "Installation",
   "gui_browse": "Browse...",
@@ -126,6 +126,8 @@
   "gui_recovery_complete_message": "The game files are in a safe state again.",
   "gui_recovery_error_title": "Recovery could not be completed",
   "gui_recovery_error_message": "PyTRTT kept the recovery backups. Technical detail: {detail}",
+  "gui_confirm_yes": "Yes",
+  "gui_confirm_no": "No",
   "gui_complete": "Finished",
   "gui_complete_help": "The operation has finished. You can go back, start over, or exit."
 }

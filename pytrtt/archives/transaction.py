@@ -8,7 +8,7 @@ import os
 import re
 import shutil
 import tempfile
-from collections.abc import Iterator
+from collections.abc import Callable, Iterator
 from contextlib import contextmanager
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
@@ -75,11 +75,22 @@ def _operation_lock(data_root: Path) -> Iterator[None]:
         os.close(descriptor)
 
 
-def _sha256(path: Path) -> str:
+def _sha256(
+    path: Path,
+    progress: Callable[[int, int, str], None] | None = None,
+    message: str = "",
+) -> str:
     digest = hashlib.sha256()
+    total = path.stat().st_size
+    current = 0
+    if progress is not None:
+        progress(0, total, message)
     with path.open("rb") as stream:
         while chunk := stream.read(1024 * 1024):
             digest.update(chunk)
+            current += len(chunk)
+            if progress is not None:
+                progress(current, total, message)
     return digest.hexdigest()
 
 
@@ -131,8 +142,8 @@ def _validate_roots(data_dir: Path, transaction_dir: Path) -> tuple[Path, Path]:
     if not data_root.is_dir():
         raise TransactionError("game data path is not a directory")
     transaction_root = transaction_dir.resolve(strict=False)
-    if transaction_root == data_root or data_root in transaction_root.parents:
-        raise TransactionError("transaction directory must be outside the game data directory")
+    if transaction_root == data_root:
+        raise TransactionError("transaction directory must not be the game data directory")
     return data_root, transaction_root
 
 
@@ -165,6 +176,7 @@ def _apply_write_plan_locked(
     plan: ArchiveWritePlan,
     transaction_dir: Path,
     runtime_settings: dict[str, Any] | None = None,
+    progress: Callable[[int, int, str], None] | None = None,
 ) -> Path:
     """Back up, stage, journal, and apply a plan; return the journal directory."""
     data_root, transaction_root = _validate_roots(data_dir, transaction_dir)
@@ -228,6 +240,10 @@ def _apply_write_plan_locked(
     staged_dir.mkdir()
     file_records: dict[str, dict[str, Any]] = {}
 
+    resource_writes = [write for write in plan.writes if write.kind != "index"]
+    written_resources = 0
+    if progress is not None:
+        progress(0, len(resource_writes), "gui_progress_install_resources")
     for name, file_plan in sorted(plan.files.items()):
         target = _target_path(data_root, name)
         staged = staged_dir / name
@@ -242,6 +258,14 @@ def _apply_write_plan_locked(
                 if write.file_name == name:
                     stream.seek(write.offset)
                     stream.write(write.data)
+                    if write.kind != "index":
+                        written_resources += 1
+                        if progress is not None:
+                            progress(
+                                written_resources,
+                                len(resource_writes),
+                                "gui_progress_install_resources",
+                            )
             stream.truncate(file_plan.final_size)
             stream.flush()
             os.fsync(stream.fileno())
@@ -361,6 +385,7 @@ def _apply_write_plan_locked(
 
     journal["status"] = "applied"
     _write_journal(transaction_root, journal)
+    shutil.rmtree(staged_dir)
     return transaction_root
 
 
@@ -370,14 +395,21 @@ def apply_write_plan(
     transaction_dir: Path,
     *,
     runtime_settings: dict[str, Any] | None = None,
+    progress: Callable[[int, int, str], None] | None = None,
 ) -> Path:
     """Apply a plan while holding the per-installation process lock."""
     data_root, _ = _validate_roots(data_dir, transaction_dir)
     with _operation_lock(data_root):
-        return _apply_write_plan_locked(data_root, plan, transaction_dir, runtime_settings)
+        return _apply_write_plan_locked(
+            data_root, plan, transaction_dir, runtime_settings, progress
+        )
 
 
-def _restore_write_plan_locked(data_dir: Path, transaction_dir: Path) -> None:
+def _restore_write_plan_locked(
+    data_dir: Path,
+    transaction_dir: Path,
+    progress: Callable[[int, int, str], None] | None = None,
+) -> None:
     """Rebuild original archives from backed-up changed ranges and the original sizes."""
     data_root, transaction_root = _validate_roots(data_dir, transaction_dir)
     journal_path = transaction_root / JOURNAL_NAME
@@ -403,9 +435,9 @@ def _restore_write_plan_locked(data_dir: Path, transaction_dir: Path) -> None:
             raise TransactionError("transaction journal contains an invalid range backup")
         backup = _backup_path(transaction_root, item.get("backup_file", ""))
         try:
-            valid = backup.stat().st_size == item.get("length") and _sha256(backup) == item.get(
-                "sha256"
-            )
+            valid = backup.stat().st_size == item.get("length") and _sha256(
+                backup, progress, "gui_progress_restore_bytes"
+            ) == item.get("sha256")
         except OSError:
             valid = False
         if not valid:
@@ -419,20 +451,22 @@ def _restore_write_plan_locked(data_dir: Path, transaction_dir: Path) -> None:
             raise TransactionError("transaction journal contains invalid restore data")
         backup = _backup_path(transaction_root, f"restore-data/{item.get('resource_path', '')}")
         try:
-            valid = backup.stat().st_size == item.get("size") and _sha256(backup) == item.get(
-                "sha256"
-            )
+            valid = backup.stat().st_size == item.get("size") and _sha256(
+                backup, progress, "gui_progress_restore_bytes"
+            ) == item.get("sha256")
         except OSError:
             valid = False
         if not valid:
             raise TransactionError("restore asset verification failed")
 
     restore_staging = transaction_root / "staged" / "restore"
-    restore_staging.mkdir(exist_ok=True)
+    restore_staging.mkdir(parents=True, exist_ok=True)
     restore_targets: dict[str, Path] = {}
     for name, record in records.items():
         target = _target_path(data_root, name)
-        current_hash = _sha256(target) if target.is_file() else None
+        current_hash = (
+            _sha256(target, progress, "gui_progress_restore_bytes") if target.is_file() else None
+        )
         original_hash = record.get("original_sha256")
         staged_hash = record.get("staged_sha256")
         if record.get("existed"):
@@ -456,7 +490,7 @@ def _restore_write_plan_locked(data_dir: Path, transaction_dir: Path) -> None:
                 stream.truncate(record["original_size"])
                 stream.flush()
                 os.fsync(stream.fileno())
-            if _sha256(restored) != original_hash:
+            if _sha256(restored, progress, "gui_progress_restore_bytes") != original_hash:
                 raise TransactionError(f"range backups do not reconstruct original {name}")
             restore_targets[name] = restored
 
@@ -464,7 +498,9 @@ def _restore_write_plan_locked(data_dir: Path, transaction_dir: Path) -> None:
     _write_journal(transaction_root, journal)
     for name, record in sorted(records.items()):
         target = _target_path(data_root, name)
-        current_hash = _sha256(target) if target.is_file() else None
+        current_hash = (
+            _sha256(target, progress, "gui_progress_restore_bytes") if target.is_file() else None
+        )
         original_hash = record.get("original_sha256")
         staged_hash = record.get("staged_sha256")
         if record.get("existed"):
@@ -486,11 +522,15 @@ def _restore_write_plan_locked(data_dir: Path, transaction_dir: Path) -> None:
     _write_journal(transaction_root, journal)
 
 
-def restore_write_plan(data_dir: Path, transaction_dir: Path) -> None:
+def restore_write_plan(
+    data_dir: Path,
+    transaction_dir: Path,
+    progress: Callable[[int, int, str], None] | None = None,
+) -> None:
     """Restore a plan while holding the per-installation process lock."""
     data_root, _ = _validate_roots(data_dir, transaction_dir)
     with _operation_lock(data_root):
-        _restore_write_plan_locked(data_root, transaction_dir)
+        _restore_write_plan_locked(data_root, transaction_dir, progress)
 
 
 def journal_data_dir_matches(recorded: object, current: Path) -> bool:

@@ -106,6 +106,55 @@ def test_execute_saves_only_changed_ranges_and_applies_the_staged_plan(tmp_path:
     assert current[0x100A:0x1800] == bytes(0x1800 - 0x100A)
 
 
+def test_apply_reports_each_staged_translation_write(tmp_path: Path) -> None:
+    data_dir, transaction_dir, _ = make_fixture(tmp_path)
+    entry = BigFileEntry(0, 0x12345678, 8, 2, 0xFFFFFFE1, 0xABCDEF01)
+    plan = plan_replacements(
+        data_dir,
+        BigFileIndex((entry,)),
+        (BigFileReplacement("fixture resource", entry.hash, entry.locale, b"translated"),),
+        0x4000,
+    )
+    updates: list[tuple[int, int, str]] = []
+
+    transaction.apply_write_plan(
+        data_dir,
+        plan,
+        transaction_dir,
+        progress=lambda current, total, message: updates.append((current, total, message)),
+    )
+
+    assert (0, 1, "gui_progress_install_resources") in updates
+    assert (1, 1, "gui_progress_install_resources") in updates
+
+
+def test_transaction_can_be_stored_in_a_dedicated_game_subdirectory(tmp_path: Path) -> None:
+    data_dir, _, original = make_fixture(tmp_path)
+    transaction_dir = data_dir / "PyTRTT Recovery" / "test" / "transaction"
+    entry = BigFileEntry(0, 0x12345678, 8, 2, 0xFFFFFFE1, 0xABCDEF01)
+    plan = plan_replacements(
+        data_dir,
+        BigFileIndex((entry,)),
+        (BigFileReplacement("fixture resource", entry.hash, entry.locale, b"translated"),),
+        0x4000,
+    )
+
+    transaction.apply_write_plan(data_dir, plan, transaction_dir)
+    updates: list[tuple[int, int, str]] = []
+    transaction.restore_write_plan(
+        data_dir,
+        transaction_dir,
+        progress=lambda current, total, message: updates.append((current, total, message)),
+    )
+
+    assert (data_dir / "bigfile.000").read_bytes() == original
+    assert any(message == "gui_progress_restore_bytes" for _, _, message in updates)
+    assert any(
+        current == total and total > 0 and message == "gui_progress_restore_bytes"
+        for current, total, message in updates
+    )
+
+
 def test_font_original_raw_is_saved_with_restore_data_and_restored(tmp_path: Path) -> None:
     data_dir, transaction_dir, original = make_fixture(tmp_path)
     entry = BigFileEntry(0, 0x12345678, 8, 2, 0xFFFFFFE1, 0xABCDEF01)

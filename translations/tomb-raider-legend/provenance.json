@@ -33,7 +33,7 @@
     "The French subtitle slot is omitted, following the historical translation behavior.",
     "18 historical subtitle translations used CRLF line breaks; these are normalized to LF because CINE uses CR as its field delimiter."
   ],
-  "translation_sha256": "fd0098a86df30abcd7f72f46872eaa2b7a53a304f2f0f62b84d861bcae5eaef4",
+  "translation_sha256": "80cf65541a243e1dd06ee631bda297e9866d87ebaf3c777631b4a78a93bbab7f",
   "user_verification": {
     "date": "2026-10-19",
     "language": "hu",

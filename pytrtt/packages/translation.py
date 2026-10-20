@@ -41,6 +41,7 @@ DOCUMENT_KEYS = {
     "clear_subtitle_languages",
     "omit_subtitle_languages",
     "entry_identity",
+    "credits",
 }
 METADATA_KEYS = {
     "game_id",
@@ -104,6 +105,14 @@ class TranslationMetadata:
 
 
 @dataclass(frozen=True, slots=True)
+class TranslationCredit:
+    """One contributor role and its ordered, unique display names."""
+
+    role: str
+    names: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
 class TranslationResource:
     """Text records belonging to one archive resource, grouped under its path and hash."""
 
@@ -142,6 +151,7 @@ class TranslationDocument:
     omit_subtitle_languages: frozenset[int] = frozenset()
     runtime: RuntimeSettings | None = None
     entry_identity: str = "record"
+    credits: tuple[TranslationCredit, ...] = ()
 
 
 def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -384,7 +394,14 @@ def parse_translation_document(content: str) -> TranslationDocument:
     if not isinstance(root, dict):
         raise TranslationPackageError("document root must be a JSON object")
     _require_keys(root, DOCUMENT_KEYS, {"schema_version", "metadata"})
-    if type(root["schema_version"]) is not int or root["schema_version"] not in (1, 2, 3, 4, 5):
+    if type(root["schema_version"]) is not int or root["schema_version"] not in (
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+    ):
         raise TranslationPackageError("unsupported translation document schema version")
     identity = root.get("entry_identity", "record")
     if identity not in ("record", "source_text"):
@@ -563,6 +580,25 @@ def parse_translation_document(content: str) -> TranslationDocument:
     if clear_languages & omitted_languages:
         raise TranslationPackageError("a subtitle language cannot be both cleared and omitted")
 
+    credits_value = root.get("credits", {})
+    if not isinstance(credits_value, dict):
+        raise TranslationPackageError("credits must be a JSON object")
+    if credits_value and root["schema_version"] < 6:
+        raise TranslationPackageError("credits require schema version 6")
+    credits: list[TranslationCredit] = []
+    for role, names_value in credits_value.items():
+        if not isinstance(role, str) or re.fullmatch(r"[a-z][a-z0-9_]*", role) is None:
+            raise TranslationPackageError("credit roles must use lowercase snake_case")
+        if not isinstance(names_value, list) or not names_value:
+            raise TranslationPackageError(f"credits.{role} must be a non-empty JSON array")
+        names = tuple(
+            _nonempty_string(name, f"credits.{role}[{position}]")
+            for position, name in enumerate(names_value)
+        )
+        if len(set(names)) != len(names):
+            raise TranslationPackageError(f"credits.{role} contains duplicate names")
+        credits.append(TranslationCredit(role, names))
+
     return TranslationDocument(
         metadata,
         menu,
@@ -572,6 +608,7 @@ def parse_translation_document(content: str) -> TranslationDocument:
         omitted_languages,
         runtime,
         identity,
+        tuple(credits),
     )
 
 
@@ -632,6 +669,8 @@ def serialize_translation_document(document: TranslationDocument) -> str:
     if document.runtime is not None:
         root["schema_version"] = 2
         root["metadata"]["runtime"] = runtime_to_dict(document.runtime)
+    if document.credits:
+        root["credits"] = {credit.role: list(credit.names) for credit in document.credits}
     if any(
         entry.source_language is not None
         for resource in (*document.menu, *document.subtitles)
@@ -692,4 +731,6 @@ def serialize_translation_document(document: TranslationDocument) -> str:
         root["clear_subtitle_languages"] = sorted(document.clear_subtitle_languages)
     if document.omit_subtitle_languages:
         root["omit_subtitle_languages"] = sorted(document.omit_subtitle_languages)
+    if document.credits:
+        root["schema_version"] = 6
     return json.dumps(root, ensure_ascii=False, indent=2) + "\n"

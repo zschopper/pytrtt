@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "metadata": {
     "game_id": "tomb-raider",
     "build_id": "1.1.748.0",
@@ -7,6 +7,40 @@
     "target_language": "hu",
     "archive_format": "tiger",
     "archive_version": 3
+  },
+  "credits": {
+    "translators": [
+      "sgtGiggsy",
+      "Jeges Helga",
+      "Matie",
+      "Michele",
+      "Roli"
+    ],
+    "editors": [
+      "Thak",
+      "4nita",
+      "Milan",
+      "Marsze21",
+      "Credo",
+      "Bandika",
+      "horvathati",
+      "nfsmw20",
+      "koksi86"
+    ],
+    "testers": [
+      "CrashHungarian98",
+      "Yzaaa",
+      "drlecter",
+      "TBlint",
+      "Ada",
+      "Alex Menrich"
+    ],
+    "translation_tools": [
+      "zsolt"
+    ],
+    "communities": [
+      "TombRaider.hu"
+    ]
   },
   "menu": [
     {

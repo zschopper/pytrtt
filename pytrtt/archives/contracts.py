@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from abc import abstractmethod
+from collections.abc import Callable
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from pathlib import Path
@@ -96,8 +97,16 @@ class ArchiveHandler(Protocol):
 
     @abstractmethod
     def apply(
-        self, plan: ArchiveWritePlan, transaction_dir: Path, runtime: RuntimeSettings
+        self,
+        plan: ArchiveWritePlan,
+        transaction_dir: Path,
+        runtime: RuntimeSettings,
+        progress: Callable[[int, int, str], None] | None = None,
     ) -> Path: ...
 
     @abstractmethod
-    def restore(self, transaction_dir: Path) -> None: ...
+    def restore(
+        self,
+        transaction_dir: Path,
+        progress: Callable[[int, int, str], None] | None = None,
+    ) -> None: ...

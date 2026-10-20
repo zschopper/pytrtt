@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "metadata": {
     "game_id": "lara-croft-and-the-temple-of-osiris",
     "build_id": "477027",
@@ -58,6 +58,11 @@
       "character_substitutions": {},
       "display_name": "Lara Croft and the Temple of Osiris"
     }
+  },
+  "credits": {
+    "translators": [
+      "zsolt"
+    ]
   },
   "entry_identity": "record",
   "menu": [
