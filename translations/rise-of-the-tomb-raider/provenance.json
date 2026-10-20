@@ -4,7 +4,7 @@
   "steam_build_id": "9575745",
   "source_language": "en",
   "target_language": "hu",
-  "status": "Read-only English export; all Hungarian translations null; installation unsupported",
+  "status": "Hungarian v1.06 reference imported for the effective menu and matched CINE records; SCH writing and installation remain unsupported",
   "counts": {
     "menu_resources": 4,
     "menu_entries": 27113,
@@ -14,7 +14,7 @@
     "distinct_source_texts": 15497,
     "nonempty_distinct_source_texts": 15496,
     "empty_source_entries": 631,
-    "translated_entries": 0,
+    "translated_entries": 16232,
     "empty_resources": 8874,
     "skipped_resources": [],
     "unresolved_sch_hashes": 987,
@@ -156,7 +156,16 @@
     "scope": "All 73 installed top-level TIGER indexes; unresolved identity labels do not count as filenames"
   },
   "unresolved_resource_paths": "unresolved-hash:XXXXXXXX labels preserve real archive hash/locale/family identities without inventing filenames; SCH header and English slot verified",
-  "translation_origin": "Untranslated source export; no Hungarian reference import or machine translation",
+  "translation_origin": {
+    "package": "RotTR_20YCB_hun_v106",
+    "release_date": "2022-10-25",
+    "menu_sha256": "cb25af1df30cd31a0262ef0893245fc5cd05f1edc8c94d513ab5734e4e85e93a",
+    "translated_menu_entries": 7415,
+    "matched_subtitle_entries": 8817,
+    "changed_entries": 9451,
+    "unmatched_hungarian_entries": 1,
+    "note": "The supplied package stores Hungarian text in the French language slot. CINE records were bound through their corresponding English records because translated block offsets are not stable identities."
+  },
   "reference_code": {
     "repository": "TrRebootModTools",
     "commit": "a79c48b75f1ffaaf623dc73a625211bf98ff0504",
@@ -1206,5 +1215,20 @@
   ],
   "source_record_languages": {
     "en": 55958
+  },
+  "platform_source_comparison": {
+    "date": "2026-10-20",
+    "canonical_file": "en.json",
+    "canonical_build": "Steam 9575745",
+    "canonical_sha256": "dd24d06ca8704ec2b89cc65165eef52093b794b8580b3ad0a34c684824fcee6a",
+    "epic_build": "TR2_30112021_1027",
+    "epic_sha256": "32606a75812a9dbcca3c82d3eeb624dfb70a77f8591485f17a0e0ced0e26f93d",
+    "canonical_records": 55958,
+    "epic_records": 54079,
+    "matching_epic_records": 54079,
+    "canonical_only_records": 1879,
+    "conflicting_records": 0,
+    "canonical_only_unique_source_values": 684,
+    "result": "The Steam English export is a strict superset of the Epic export. Keeping en.json loses no Epic text; the duplicate Epic export was removed from maintained translation data."
   }
 }

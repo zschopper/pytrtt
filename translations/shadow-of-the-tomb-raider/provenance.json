@@ -66,5 +66,18 @@
     "report": "work/runs/sottr/11668867/en-template-20261019/extraction-report.json",
     "format": "Standalone Shadow keyed-locals JSON; retains native ids and keys; not a generic runtime package.",
     "coverage": "Entire selected English locals table, including UI and dialogue; not a complete archive/DLC/embedded-text coverage claim."
+  },
+  "platform_source_comparison": {
+    "date": "2026-10-20",
+    "canonical_file": "en.json",
+    "canonical_build": "Steam 11668867",
+    "canonical_sha256": "51672621f16214744255f0865f5f37def44738f139c82c2900493bf34f2a142c",
+    "epic_build": "TR11_10072023_492",
+    "epic_sha256": "3307e09e418c1fd8dfdb25da7457c38369863b580d1a66f796befb1028cf2c68",
+    "canonical_records": 39661,
+    "epic_records": 39661,
+    "matching_records": 39661,
+    "conflicting_records": 0,
+    "result": "The Steam and Epic English tables are identical by slot id, key and source text. en.json is the canonical copy; the duplicate Epic export was removed from maintained translation data."
   }
 }

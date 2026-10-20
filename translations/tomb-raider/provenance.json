@@ -543,5 +543,22 @@
     "restoration_requested_by": "user",
     "verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
     "historical_translation_and_game_test_results_preserved": true
+  },
+  "english_source_export": {
+    "file": "en.json",
+    "origin": "Epic Games build TRAS_15112021_838",
+    "sha256": "ff53c71fabe57adf5131e377352a2b04296db47a93906c6f5d93012540fd4f49",
+    "menu_records": 753,
+    "subtitle_records": 6145,
+    "all_translation_fields_null": true,
+    "comparison_with_historical_translation_memory": {
+      "historical_source_records": 7878,
+      "epic_source_records": 6898,
+      "historical_unique_source_values": 7878,
+      "epic_unique_source_values": 5548,
+      "epic_only_source_values": 33,
+      "historical_only_source_values": 2363,
+      "result": "Neither source is a subset of the other. The Epic export is retained as the canonical English archive export; hu.json remains a separate source-text translation memory."
+    }
   }
 }
