@@ -16,11 +16,25 @@ numbers identify the versions investigated. An unknown build means no target bui
 status applies only to the listed game/build. Experimental installations and imported text drafts still have the
 outstanding checks described below; owning a game or having reference files does not establish support.
 
-Status snapshot: **2026-10-19**. The game sections below are ordered by release date.
+Status snapshot: **2026-10-21**. The game sections below are ordered by release date.
 
 **Current local Steam state:** all eleven games use English after the requested restoration on 2026-10-19.
 Hungarian JSON files, font assets and recovery backups are preserved. The results below describe translation
 capabilities and completed tests; the Hungarian packages are currently inactive in the Steam installations.
+
+| Game | Steam build | Project status | Verified result | Current Steam state |
+| --- | --- | --- | --- | --- |
+| Tomb Raider: Legend Demo | `251815` | 🟢 Supported | Proofread HU; game/setup verified | English |
+| Tomb Raider: Legend | `251820` | 🟢 Supported | Complete, proofread HU; game verified | English |
+| Tomb Raider: Anniversary | `842717` | 🟢 Supported | Proofread HU; install, restore and game verified | English |
+| Tomb Raider: Underworld Demo | Unknown | 🔴 Not started | Index inventory only | English |
+| Tomb Raider: Underworld | `251883` | 🟡 Experimental | Selected HU verified; font port pending | English |
+| Lara Croft and the Guardian of Light | `11395` | 🟡 Experimental | HU base/DLC verified; font check pending | English |
+| Tomb Raider (2013) | `9573671` | 🟡 Experimental | Selected HU text and repaired font observed in game | English |
+| Lara Croft and the Temple of Osiris | `477027` | 🟡 Complete draft | 3,082 HU texts; accents game-verified | English |
+| Rise of the Tomb Raider | `9575745` | 🟡 Source export | 55,958 English records; Hungarian fields are empty | English |
+| Shadow of the Tomb Raider Trial | `3668420` | 🟡 Game-tested draft | 38,055 HU texts; game-verified | English |
+| Shadow of the Tomb Raider | `11668867` | 🟡 Import draft | 38,234 HU texts; review/game test pending | English |
 
 Recent verified results: Temple of Osiris was installed with all 3,082 exported texts translated and real Unicode
 `ŐőŰű` font glyphs; the user confirmed the corrected accents in the game and setup dialog. Shadow Trial was installed
@@ -371,14 +385,16 @@ Steam build: `11668867`. **Status:** 🟡 Hungarian import draft.
 | Game-specific guidance | 🔴 No; shared guidance only |
 
 The [Hungarian draft](translations/shadow-of-the-tomb-raider/hu.json) matches all 38,234 populated source records in
-The examined text table.
+the examined text table.
 
 **Remaining:** review translation quality and differences in timing markers, font markup
 and private-use glyphs; establish complete game/DLC text coverage and verify writing, restoration and in-game
 behavior. See the [extraction/import provenance](translations/shadow-of-the-tomb-raider/provenance.json).
 
 The application provides both a command-line client and a four-step PySide6/Qt WebEngine graphical wizard when run
-from source. A standalone Windows executable, installer and their release-validation workflow remain future work.
+from source. The repository also contains a filtered PyInstaller one-file build, an Inno Setup installer definition
+and a release-validation checklist. A clean native Windows build and clean-machine validation are still required
+before publishing a standalone release.
 
 ## Features
 
@@ -407,8 +423,10 @@ The command-line application uses the Python standard library. The graphical cli
 Running from source on Windows requires native Windows Python 3.13 or 3.14; Bash and WSL are not required. Git is
 needed for the clone command below; you can also download and extract the repository instead.
 
-The planned standalone release targets **Windows 10 or later**, with Windows 11 as the initial test target. Native
-Windows builds need their own environment; a WSL virtual environment cannot be reused for them.
+The standalone build targets **Windows 10 or later**, with Windows 11 as the initial test target. Native Windows
+builds need their own environment; a WSL virtual environment cannot be reused for them. The checked-in packaging
+workflow is implemented, but no standalone artifact is considered released until the native and clean-machine checks
+have passed.
 
 ## Quick start
 
@@ -469,8 +487,9 @@ Close the game before applying a translation, and wait for Steam downloads or up
 launcher stores recovery journals below `<game directory>/PyTRTT Recovery/`; do not delete that directory while a
 translation may still need restoration. The CLI defaults to
 `<program directory>/transactions/<game-id>/<timestamp>/`. The GUI also searches the portable transaction root, the
-former `work/transactions` location and the user-data transaction folder for existing journals. Existing backups
-remain in their original locations. CLI reports retain their user-data location.
+`dist/transactions` root created by a standalone executable run from a source checkout, the former
+`work/transactions` location and the user-data transaction folder for existing journals. Existing backups remain in
+their original locations. CLI reports retain their user-data location.
 
 The installation selector keeps separate folder choices for multiple copies of the same game. Status is checked
 from the selected folder's files. A recovery journal must match that exact installation path and the saved file
@@ -546,6 +565,18 @@ New behavior is developed with TDD; binary changes must preserve verified byte-l
 
 ### Standalone release data
 
+Build the executable from native Windows Command Prompt with:
+
+```bat
+scripts\build-windows.cmd --clean
+```
+
+The script generates synchronized Windows version metadata, builds `dist\PyTRTT.exe`, runs its packaged GUI smoke
+test and, when Inno Setup 6 is available, creates `dist\installer\PyTRTT-<version>-setup.exe`. If Inno Setup is
+missing, the standalone executable remains available but the script exits with code 2 after reporting that the
+installer was not created. Complete the [Windows GUI smoke checklist](docs/windows-gui-smoke-checklist.md) before
+publishing either artifact.
+
 The Windows one-file build recursively includes release resources below `pytrtt/resources/`. Project-relative glob
 exclusions are maintained in [`packaging/package-data.ignore`](packaging/package-data.ignore). Blank lines and lines
 beginning with `#` are ignored. Rules are applied in order, and a later rule beginning with `!` includes a path excluded
@@ -588,7 +619,7 @@ See the [contributor guidelines](AGENTS.md) for task-specific development guidan
 ## Roadmap
 
 - Complete the experimental game projects and verification tasks listed above.
-- Build and test the standalone Windows EXE and manifest-based translation packages.
+- Produce and validate a clean native Windows EXE and installer; complete manifest-based translation packages.
 - Complete the versioned release support registry and restoration previews.
 - Support more archive versions, games and installed DLCs through tested handlers and profiles.
 - Complete Windows scaling, accessibility and clean-machine release checks for the Qt GUI.

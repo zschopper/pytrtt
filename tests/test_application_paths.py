@@ -21,6 +21,7 @@ def test_source_storage_does_not_follow_the_working_directory(
     root = Path(__file__).resolve().parents[1]
     assert program_directory() == root
     assert transaction_root() == root / "transactions"
+    assert root / "dist/transactions" in transaction_search_roots()
     assert root / "work/transactions" in transaction_search_roots()
 
 
@@ -34,6 +35,7 @@ def test_frozen_program_stores_beside_executable_not_unpack_directory(
     assert program_directory() == executable.parent
     assert transaction_root() == executable.parent / "transactions"
     assert transaction_search_roots()[0] == transaction_root()
+    assert executable.parent / "dist/transactions" not in transaction_search_roots()
 
 
 def test_game_transaction_root_is_discovered_before_legacy_locations(tmp_path: Path) -> None:

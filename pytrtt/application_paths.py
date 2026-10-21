@@ -58,11 +58,15 @@ def user_data_directory() -> Path:
 def transaction_search_roots(game_directory: Path | None = None) -> tuple[Path, ...]:
     """Discover in-game, portable, and legacy journals without moving recovery data."""
     local_roots = () if game_directory is None else (game_transaction_root(game_directory),)
+    source_build_roots = (
+        () if getattr(sys, "frozen", False) else (program_directory() / "dist/transactions",)
+    )
     return tuple(
         dict.fromkeys(
             (
                 *local_roots,
                 transaction_root(),
+                *source_build_roots,
                 program_directory() / "work/transactions",
                 user_data_directory() / "transactions",
             )
