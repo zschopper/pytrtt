@@ -244,11 +244,18 @@ class CineV2Handler:
         return bytes(result)
 
 
-_SCH_LINE = re.compile(r'^(lang_english [0-9\-: ]+ ")(.*)(" *)(\r?\n|)$')
+_SCH_LANGUAGES = {0: "english", 1: "french"}
 _SCH_SEGMENT = re.compile(r"^(\([ 0-9:.]+\))?(\[.*?\])?(.*)$", re.S)
 
 
 class SchV1Handler:
+    @staticmethod
+    def _line_pattern(language: int) -> re.Pattern[str]:
+        name = _SCH_LANGUAGES.get(language)
+        if name is None:
+            raise ValueError("unsupported SCH language slot")
+        return re.compile(rf'^(lang_{name} [0-9\-: ]+ ")(.*)(" *)(\r?\n|)$')
+
     @staticmethod
     def _segments(text: str) -> list[str]:
         return text.split("\\")
@@ -260,22 +267,23 @@ class SchV1Handler:
 
     @staticmethod
     def _lines(data: bytes, language: int) -> list[str]:
-        if language != 0:
-            raise ValueError("SCH handler currently supports only English language slot 0")
+        pattern = SchV1Handler._line_pattern(language)
+        name = _SCH_LANGUAGES[language]
         lines = data.decode("utf-8").splitlines(keepends=True)
         if [line.rstrip("\r\n") for line in lines[:3]] != ["Version 1", "TextEntry", "line0"]:
             raise ValueError("unsupported SCH header")
         for line in lines[3:]:
-            if line.startswith("lang_english") and _SCH_LINE.fullmatch(line) is None:
-                raise ValueError("malformed SCH English row")
+            if line.startswith(f"lang_{name}") and pattern.fullmatch(line) is None:
+                raise ValueError(f"malformed SCH {name} row")
             if line.strip() and not re.fullmatch(r'lang_\w+ [0-9\-: ]+ ".*" *\r?\n?', line):
                 raise ValueError("malformed SCH row")
         return lines
 
     def extract(self, data: bytes, subtitle_language: int) -> tuple[TranslationEntry, ...]:
         result: list[TranslationEntry] = []
+        pattern = self._line_pattern(subtitle_language)
         for line in self._lines(data, subtitle_language)[3:]:
-            match = _SCH_LINE.fullmatch(line)
+            match = pattern.fullmatch(line)
             if match is None:
                 continue
             for segment in self._segments(match[2]):
@@ -294,13 +302,14 @@ class SchV1Handler:
         if options.cleared_languages or options.omitted_languages:
             raise ValueError("SCH language clearing and omission are unsupported")
         lines = self._lines(data, options.subtitle_language)
+        pattern = self._line_pattern(options.subtitle_language)
         changes = _changes(entries)
         known = {e.entry_id for e in self.extract(data, options.subtitle_language)}
         if changes.keys() - known:
             raise ValueError("SCH translation has no segment")
         number = 0
         for pos, line in enumerate(lines):
-            match = _SCH_LINE.fullmatch(line)
+            match = pattern.fullmatch(line)
             if match is None:
                 continue
             parts = []

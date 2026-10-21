@@ -1,5 +1,4 @@
 {
-  "source_directory": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider Underworld.HU",
   "source_kind": "Official Hungarian edition according to user; Central European language slots independently observed.",
   "build_id": "official-hu-2008",
   "build_id_kind": "local reference label; not a verified Steam build ID",
@@ -5012,8 +5011,6 @@
   "steam_translation_preparation": {
     "build_id": "251883",
     "app_id": "8140",
-    "target_directory": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider Underworld",
-    "backup_directory": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider Underworld.orig",
     "user_authorized_installation": true,
     "baseline": "work/runs/tru/251883/original-baseline.json",
     "package": "translations/tomb-raider-underworld/hu.json",

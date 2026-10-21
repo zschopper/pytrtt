@@ -89,7 +89,6 @@
   "filelist": "pytrtt/resources/filelists/lctoo_filelist.txt",
   "filelist_sha256": "d10c67802f4279903bcd74bba0878cbcf8111bc609e76b69c8f88bd32dee95c1",
   "source_backup": {
-    "directory": "/mnt/l/SteamLibrary/steamapps/common/Lara Croft and the Temple of Osiris.orig",
     "reported_complete_by_user": true,
     "used_for_writing": false,
     "full_content_comparison_performed": false

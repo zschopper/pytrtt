@@ -75,7 +75,7 @@
     "steam_app_id": "391220",
     "install_dir_name": "Rise of the Tomb Raider",
     "translation_file": "translations/rise-of-the-tomb-raider/hu.json",
-    "package_available": false,
+    "package_available": true,
     "epic_catalog_namespace": "48ffecf4a89f4fd496817b0451384f39",
     "epic_catalog_item_id": "460088fc5e5045c0a67876fd10f7310b"
   },

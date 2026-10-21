@@ -38,7 +38,7 @@ def test_game_selection_updates_accessible_state_and_navigation() -> None:
     assert "selected.textContent = selectedIndicatorText()" in script
     assert ".game-card { display: grid;" in styles
     assert ".game-card, .installation-card { position: relative;" in styles
-    assert ".selected-indicator { position: absolute;" in styles
+    assert ".selected-indicator { position: absolute; top: 16px; right: 18px;" in styles
     assert ".selected-indicator[hidden]" in styles
 
 
@@ -198,16 +198,14 @@ def test_completed_operation_can_restart_with_another_game() -> None:
     assert ".result-detail[hidden]" in gui_resource("styles.css").read_text(encoding="utf-8")
 
 
-def test_selection_summary_floats_outside_the_navigation_flow() -> None:
+def test_selection_summary_sits_above_the_navigation_actions() -> None:
     html = gui_resource("index.html").read_text(encoding="utf-8")
     styles = gui_resource("styles.css").read_text(encoding="utf-8")
     assert 'class="selection-summary"' in html
     assert 'class="footer-actions"' in html
-    assert html.index('class="selection-summary"') < html.index("<footer>")
-    assert ".content { position: relative;" in styles
-    assert ".selection-summary { position: absolute;" in styles
-    assert "opacity: .88;" in styles
-    assert ".footer-actions { display: flex; flex-wrap: nowrap;" in styles
+    assert html.index("<footer>") < html.index('class="selection-summary"')
+    assert ".selection-summary { grid-column: 1 / -1;" in styles
+    assert ".footer-actions { grid-column: 2; display: flex; flex-wrap: nowrap;" in styles
 
 
 def test_gui_resource_lookup_is_cwd_independent(monkeypatch: pytest.MonkeyPatch) -> None:

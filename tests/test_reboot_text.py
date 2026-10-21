@@ -91,6 +91,29 @@ def test_sch_occurrences_not_timestamps_are_ids_and_round_trip_preserves_other_l
         handler.extract(original, 9)
 
 
+def test_sch_extracts_and_writes_french_language_slot() -> None:
+    original = (
+        b"Version 1\r\nTextEntry\r\nline0\r\n"
+        b'lang_english 1 "Hello"\r\n'
+        b'lang_french 1 "(1.0)[p]Bonjour\\(2.0)Monde"\r\n'
+    )
+    handler = SchV1Handler()
+
+    entries = handler.extract(original, 1)
+
+    assert [(entry.entry_id, entry.source) for entry in entries] == [
+        (0, "Bonjour"),
+        (1, "Monde"),
+    ]
+    translated = handler.write(
+        original,
+        (TranslationEntry(1, "Monde", "Világ"),),
+        TextOptions(1),
+    )
+    assert b'lang_english 1 "Hello"\r\n' in translated
+    assert b'lang_french 1 "(1.0)[p]Bonjour\\(2.0)Vil\xc3\xa1g"\r\n' in translated
+
+
 def test_menu_preserves_placeholders_aliases_and_unknown_tail() -> None:
     original = struct.pack("<3I4I", 0, 1, 3, 0xFFFFFFFF, 28, 28, 0) + b"Hello\0tail"
     handler = LocalsV2Handler()

@@ -185,7 +185,6 @@
       "transaction": "work/transactions/tr2013/9573671/menu-layer-verification"
     },
     "steam_installation": {
-      "game_dir": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider",
       "package": "work/runs/tr2013/9573671/steam-layered-hu.json",
       "transaction": "work/transactions/tr2013/9573671/steam-layered",
       "changed_resources": 3735,
@@ -381,7 +380,6 @@
           "installed": "Beállítások"
         }
       ],
-      "game_dir": "/mnt/l/SteamLibrary/steamapps/common/Tomb Raider",
       "gameplay_verified": false
     },
     "menu_gameplay_observation": "User reported that the menu works correctly, but lowercase ő/ű display as boxes. Uppercase Ő/Ű and subtitle scenes have not been separately verified.",
