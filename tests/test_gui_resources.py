@@ -37,9 +37,17 @@ def test_game_selection_updates_accessible_state_and_navigation() -> None:
     assert 'selected.className = "selected-indicator"' in script
     assert "selected.textContent = selectedIndicatorText()" in script
     assert ".game-card { display: grid;" in styles
-    assert ".game-card, .installation-card { position: relative;" in styles
-    assert ".selected-indicator { position: absolute; top: 16px; right: 18px;" in styles
+    assert ".game-card, .installation-card, .operation-card { position: relative;" in styles
+    assert 'font-family: "Keania One"' in styles
+    assert 'background: url("selected-stamp.svg")' in styles
+    assert '.selected-indicator::before { content: "✓";' in styles
+    assert "transform: rotate(-4deg)" in styles
+    assert "text-transform: uppercase" in styles
+    assert ".operation-card .selected-indicator { bottom: 14px; }" in styles
     assert ".selected-indicator[hidden]" in styles
+    assert gui_resource("selected-stamp.svg").is_file()
+    assert gui_resource("fonts/KeaniaOne-Regular.ttf").is_file()
+    assert gui_resource("fonts/KeaniaOne-OFL.txt").is_file()
 
 
 def test_installation_step_uses_the_typed_bridge_and_preserves_selection() -> None:
@@ -168,6 +176,15 @@ def test_application_language_switches_immediately_and_uses_flag_labels() -> Non
     assert "if (root === null)" in script
     assert 'document.addEventListener("wheel"' in script
     assert "event.ctrlKey" in script
+
+
+def test_stored_application_language_is_read_before_the_frontend_can_persist_it() -> None:
+    script = gui_resource("app.js").read_text(encoding="utf-8")
+    channel_ready = script.index("bridge = channel.objects.pytrtt;")
+    initial_state = script.index("bridge.initialState(", channel_ready)
+    assert "bridge.setApplicationLanguage(appLanguage);" not in script[
+        channel_ready:initial_state
+    ]
 
 
 def test_application_language_prefers_matching_supported_translation_language() -> None:

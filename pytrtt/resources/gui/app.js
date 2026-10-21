@@ -185,7 +185,7 @@ function applyLanguage(language) {
 }
 
 function selectedIndicatorText() {
-  return `✓ ${translatedText("Selected", appLanguage)}`;
+  return translatedText("Selected", appLanguage);
 }
 
 function preferMatchingTargetLanguage() {
@@ -903,7 +903,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   new QWebChannel(qt.webChannelTransport, (channel) => {
     bridge = channel.objects.pytrtt;
-    bridge.setApplicationLanguage(appLanguage);
     bridge.operationStateReady.connect((payload) => {
       const state = JSON.parse(payload);
       if (state.generation === operationGeneration && currentStep === 3) {
