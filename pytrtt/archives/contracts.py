@@ -43,7 +43,15 @@ class ReadSessionArchive(Protocol):
 class EmbeddedResourceArchive(Protocol):
     """Optional archive support for resources referenced by indexed collections."""
 
-    def read_embedded(self, name_hash: int, locale: int, kind: int, resource_id: int) -> bytes: ...
+    def read_embedded(
+        self,
+        name_hash: int,
+        locale: int,
+        kind: int,
+        resource_id: int,
+        *,
+        archive_family: str | None = None,
+    ) -> bytes: ...
 
 
 @dataclass(frozen=True, slots=True)

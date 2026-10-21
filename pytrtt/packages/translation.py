@@ -522,8 +522,6 @@ def parse_translation_document(content: str) -> TranslationDocument:
         font_locale = value.get("archive_locale", 0xFFFFFFFF)
         substitutions = value.get("character_substitutions", {})
         if EMBEDDED_FONT_KEYS & value.keys():
-            if archive_family is not None:
-                raise TranslationPackageError("embedded fonts do not support archive_family")
             if root["schema_version"] < 5:
                 raise TranslationPackageError("embedded fonts require schema version 5")
             if (

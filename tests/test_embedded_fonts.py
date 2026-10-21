@@ -221,6 +221,7 @@ def test_maintained_fonts_match_verified_assets() -> None:
     }
     assert len(doc.fonts) == 2
     for font in doc.fonts:
+        assert font.archive_family == "patch"
         assert font.embedded_id in expected
         assert font.replacement_sha256 == expected[font.embedded_id]
         assert (
@@ -228,3 +229,99 @@ def test_maintained_fonts_match_verified_assets() -> None:
             == font.replacement_sha256
         )
         assert font.character_substitutions == (("Ő", "Ô"), ("ő", "ô"), ("Ű", "Û"), ("ű", "û"))
+
+
+def distinct_base_font_archives(root: Path) -> dict[str, bytes]:
+    originals = font_archives(root)
+    base = bytearray(originals["title.000.tiger"])
+    struct.pack_into("<I", base, 16, 0)
+    struct.pack_into("<I", base, 64, 0x800)
+    struct.pack_into("<I", base, 80, 0x2000)
+    struct.pack_into("<I", base, 0x800 + 76, 0x1000)
+    struct.pack_into("<I", base, 0x800 + 92, 0x1800)
+    base[0x1020:0x1028] = b"base one"
+    originals["base.000.tiger"] = bytes(base)
+    (root / "base.000.tiger").write_bytes(base)
+    return originals
+
+
+def test_explicit_embedded_family_preserves_distinct_base_and_updates_aliases(
+    tmp_path: Path,
+) -> None:
+    originals = distinct_base_font_archives(tmp_path / "game")
+    root = tmp_path / "game"
+    archive = TigerV3Handler(root, ArchiveSettings("tiger", 3, 0x80000000, include_overridden=True))
+    with pytest.raises(ValueError, match="different source data"):
+        archive.read_embedded(0x12345678, 0xFFFFFFFF, 7, 10)
+    assert (
+        archive.read_embedded(0x12345678, 0xFFFFFFFF, 7, 10, archive_family="base") == b"base one"
+    )
+    assert (
+        archive.read_embedded(0x12345678, 0xFFFFFFFF, 7, 10, archive_family="patch") == b"font one"
+    )
+    with pytest.raises(ValueError, match="not found"):
+        archive.read_embedded(0x12345678, 0xFFFFFFFF, 7, 10, archive_family="absent")
+    request = ResourceReplacement(
+        "selected font",
+        0x12345678,
+        0xFFFFFFFF,
+        b"new font body",
+        archive_family="patch",
+        embedded_type=7,
+        embedded_id=10,
+    )
+    plan = archive.plan((request,))
+    assert set(plan.files) == {"title.000.tiger", "patch.000.tiger"}
+    transaction = tmp_path / "transaction"
+    apply_write_plan(root, plan, transaction)
+    fresh = TigerV3Handler(root, archive.settings)
+    for family in ("patch", "title"):
+        assert (
+            fresh.read_embedded(0x12345678, 0xFFFFFFFF, 7, 10, archive_family=family)
+            == request.data
+        )
+    assert (root / "base.000.tiger").read_bytes() == originals["base.000.tiger"]
+    restore_write_plan(root, transaction)
+    restore_write_plan(root, transaction)
+    assert {name: (root / name).read_bytes() for name in originals} == originals
+
+
+def test_service_honours_embedded_family_during_plan_and_installed_check(tmp_path: Path) -> None:
+    import hashlib
+
+    from pytrtt.composition import create_translation_service
+    from pytrtt.config import LanguageSlot, ResourceRule, RuntimeSettings
+    from pytrtt.packages.translation import FontAsset, TranslationDocument, TranslationMetadata
+
+    root = tmp_path / "game"
+    distinct_base_font_archives(root)
+    replacement = b"Hungarian font"
+    (tmp_path / "font.bin").write_bytes(replacement)
+    font = FontAsset(
+        "12345678",
+        "font.drm",
+        "font.bin",
+        hashlib.sha256(b"font one").hexdigest(),
+        hashlib.sha256(replacement).hexdigest(),
+        embedded_type=7,
+        embedded_id=10,
+        archive_family="patch",
+    )
+    document = TranslationDocument(
+        TranslationMetadata("example", "one", "en", "hu", "tiger", 3),
+        fonts=(font,),
+        runtime=RuntimeSettings(
+            ArchiveSettings("tiger", 3, 0x80000000, include_overridden=True),
+            (LanguageSlot("en", 1, 0),),
+            "en",
+            (ResourceRule("menu", "*.bin", "locals", 2),),
+        ),
+    )
+    assert parse_translation_document(serialize_translation_document(document)) == document
+    service = create_translation_service()
+    assert not service.is_translation_installed(root, document, package_dir=tmp_path)
+    build = service.plan(root, document, package_dir=tmp_path)
+    assert build.plan is not None
+    assert set(build.plan.files) == {"title.000.tiger", "patch.000.tiger"}
+    service.apply(build, tmp_path / "transaction")
+    assert service.is_translation_installed(root, document, package_dir=tmp_path)

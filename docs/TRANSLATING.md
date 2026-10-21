@@ -112,10 +112,15 @@ virtual ranges, writes the `NEXT` chain, and preserves original font bodies in t
 This currently supports reference-free resource bodies and uncompressed indexed collections; unsupported
 layouts fail without writes. Prepared font assets belong in the translation package, not in game archives.
 
-Schema version 5 also allows an optional `archive_family` on a whole-resource font asset. This selects one
-physical archive layer when the same resource hash occurs in the base game and patches. Each layer keeps
+Schema version 5 also allows an optional `archive_family` on a font asset. For a whole-resource font, this selects
+one physical archive layer when the same resource hash occurs in the base game and patches. Each layer keeps
 its own source digest and recovery asset. Extraction also saves each layer's original font under a distinct
-recovery filename. This selector is not supported on embedded font declarations.
+recovery filename.
+
+For an embedded font, `archive_family` selects the DRM collection layer used to identify and verify the source
+body. Other collection layers referencing that same physical body are updated together, while distinct bodies
+in other layers remain unchanged. Planning and installed-state checks use the same selector. Without it,
+different source bodies for the same embedded identity remain an error; no layer is chosen implicitly.
 
 Schema version 6 supports the document-level `credits` object. Each lowercase role maps to an ordered,
 non-empty list of unique contributor names.

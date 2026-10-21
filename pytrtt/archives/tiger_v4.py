@@ -333,10 +333,20 @@ class TigerV4Handler:
 
         restore_write_plan(self.directory, transaction_dir, progress)
 
-    def read_embedded(self, name_hash: int, locale: int, kind: int, resource_id: int) -> bytes:
+    def read_embedded(
+        self,
+        name_hash: int,
+        locale: int,
+        kind: int,
+        resource_id: int,
+        *,
+        archive_family: str | None = None,
+    ) -> bytes:
         from pytrtt.archives.drm_v22_v4 import read_embedded
 
-        return read_embedded(self, name_hash, locale, kind, resource_id)
+        return read_embedded(
+            self, name_hash, locale, kind, resource_id, archive_family=archive_family
+        )
 
 
 def _align(value: int) -> int:

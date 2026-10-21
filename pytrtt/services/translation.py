@@ -378,7 +378,11 @@ class TranslationService:
                 if not isinstance(archive, EmbeddedResourceArchive) or font.embedded_id is None:
                     raise TranslationPackageError("archive does not support embedded fonts")
                 original = archive.read_embedded(
-                    name_hash, locale, font.embedded_type, font.embedded_id
+                    name_hash,
+                    locale,
+                    font.embedded_type,
+                    font.embedded_id,
+                    archive_family=font.archive_family,
                 )
                 if hashlib.sha256(original).hexdigest() != font.source_sha256:
                     raise TranslationPackageError("original embedded font hash mismatch")
@@ -392,6 +396,7 @@ class TranslationService:
                             data,
                             embedded_type=font.embedded_type,
                             embedded_id=font.embedded_id,
+                            archive_family=font.archive_family,
                         )
                     )
                 processed_resources += 1
@@ -495,7 +500,11 @@ class TranslationService:
                 if not isinstance(archive, EmbeddedResourceArchive) or font.embedded_id is None:
                     raise TranslationPackageError("archive does not support embedded fonts")
                 data = archive.read_embedded(
-                    name_hash, font.archive_locale, font.embedded_type, font.embedded_id
+                    name_hash,
+                    font.archive_locale,
+                    font.embedded_type,
+                    font.embedded_id,
+                    archive_family=font.archive_family,
                 )
             else:
                 rule = runtime.rule(font.resource_path, "fonts")

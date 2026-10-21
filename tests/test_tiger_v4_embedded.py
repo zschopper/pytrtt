@@ -3,6 +3,8 @@
 import struct
 from pathlib import Path
 
+import pytest
+
 from pytrtt.archives.contracts import ResourceReplacement
 from pytrtt.archives.tiger_v4 import TigerV4Handler
 from pytrtt.archives.transaction import apply_write_plan, restore_write_plan
@@ -35,7 +37,8 @@ def _archive(root: Path, family: str, archive_id: int, collection: bytes, font: 
     return bytes(data)
 
 
-def test_embedded_v4_font_round_trip_and_restore(tmp_path: Path) -> None:
+@pytest.mark.parametrize("family", [None, "update"])
+def test_embedded_v4_font_round_trip_and_restore(tmp_path: Path, family: str | None) -> None:
     root = tmp_path / "game"
     root.mkdir()
     font = b"old font"
@@ -58,7 +61,9 @@ def test_embedded_v4_font_round_trip_and_restore(tmp_path: Path) -> None:
         ),
     )
     archive = TigerV4Handler(root, settings)
-    assert archive.read_embedded(0x12345678, 0xFFFFFFFF, 7, 2473) == font
+    assert archive.read_embedded(0x12345678, 0xFFFFFFFF, 7, 2473, archive_family=family) == font
+    with pytest.raises(ValueError, match="not found"):
+        archive.read_embedded(0x12345678, 0xFFFFFFFF, 7, 2473, archive_family="absent")
     request = ResourceReplacement(
         "font",
         0x12345678,
@@ -66,6 +71,7 @@ def test_embedded_v4_font_round_trip_and_restore(tmp_path: Path) -> None:
         b"new Hungarian font" * 20,
         embedded_type=7,
         embedded_id=2473,
+        archive_family=family,
     )
     plan = archive.plan((request,))
     transaction = tmp_path / "transaction"

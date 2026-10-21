@@ -483,6 +483,7 @@
         "resource_hash": "7231FDEC",
         "resource_path": "pc-w\\fontuniversal.drm",
         "replacement_file": "assets/fonts/fonts_ru-hu.bin",
+        "archive_family": "patch",
         "source_sha256": "2392b0f3d47b0008cef19e1139de7b91b8118aaaaaf1d42eddd0e05556a08a3e",
         "replacement_sha256": "ae7ca6d9d25097b05fb963c31f1130f5c96aeeda6872b26ab957eba1bcc4fc5b",
         "embedded_type": 7,
@@ -499,6 +500,7 @@
         "resource_hash": "7231FDEC",
         "resource_path": "pc-w\\fontuniversal.drm",
         "replacement_file": "assets/fonts/fonts_un-hu.bin",
+        "archive_family": "patch",
         "source_sha256": "4d6c8e00446b25bc38a24071aa6c03ae572a8abb110bec0c06827959e6325b2e",
         "replacement_sha256": "3e5feed8b5e5ba510c689188c059f6fe8456549e9564996bead6690395198f41",
         "embedded_type": 7,
@@ -580,6 +582,44 @@
       "bound_package_sha256": "f952810f3bf2ddc9d7ccf7b448e2febc27d19a9204d10a79171cbddab71c0506",
       "game_installation_modified": false,
       "in_game_verification": "Pending for supplemental translations and the legal document viewer."
+    }
+  },
+  "embedded_font_layer_selection": {
+    "date": "2026-10-21",
+    "source_collection_family": "patch",
+    "shared_alias_collection_family": "title",
+    "reason": "The base bigfile collection contains older, different decoded bodies for the same embedded IDs; the verified replacement assets target the shared patch/title bodies.",
+    "base_font_sources": {
+      "121631": "44f0462d20d4f6681cdfa34f329b100e52c6cdfd61ef3338da290a3b64f02ca4",
+      "24842": "7bbd310dc1475e6570b346350ec762fa6e3853994e7dba52f405200c11f0e9ae"
+    },
+    "replacement_asset_bytes_changed": false,
+    "unqualified_source_ambiguity_still_rejected": true,
+    "diagnosis": "work/runs/tr2013/9573671/embedded-font-layer-diagnosis.json",
+    "prepared_package": "work/runs/tr2013/9573671/steam-9573671-reviewed-hu.json",
+    "prepared_package_sha256": "7685ecf41b6f7fcae3a2223a06f695087118c776ebe3540ca2f8008aa0100b4f",
+    "regression_verification": {
+      "targeted_tests_passed": 97,
+      "default_tests_passed": 382,
+      "integration_tests_deselected": 18,
+      "mypy_files_checked": 106,
+      "distinct_base_preserved_and_selected_aliases_updated": true,
+      "installed_state_check_honours_selection": true
+    },
+    "complete_package_and_copy_verification": {
+      "report": "work/runs/tr2013/9573671/supplement-copy-verification.json",
+      "preflight_text_records": 19888,
+      "preflight_fonts": 2,
+      "all_planned_files_within_boundary": true,
+      "copy_verified_menu_records": 753,
+      "copy_verified_subtitle_records": 109,
+      "copy_verified_font_assets": 2,
+      "unchanged_index_rows": 7412,
+      "all_original_payload_bytes_unchanged": true,
+      "copy_restored_twice_size_sha256_match": true,
+      "source_archives_unchanged": true,
+      "game_installation_modified": false,
+      "in_game_verification": "pending"
     }
   },
   "current_steam_state": {

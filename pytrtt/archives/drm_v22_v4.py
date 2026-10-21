@@ -121,12 +121,19 @@ def _resolve(archive: TigerV4Handler, ref: Reference) -> tuple[str, bytes, bytes
 
 
 def _references(
-    collections: list[Collection], name_hash: int, locale: int, kind: int, resource_id: int
+    collections: list[Collection],
+    name_hash: int,
+    locale: int,
+    kind: int,
+    resource_id: int,
+    *,
+    archive_family: str | None = None,
 ) -> list[Reference]:
     result = [
         ref
         for collection in collections
         if (collection.name_hash, collection.locale) == (name_hash, locale)
+        and (archive_family is None or collection.family == archive_family)
         for ref in collection.references
         if (ref.kind, ref.resource_id) == (kind, resource_id)
     ]
@@ -138,10 +145,16 @@ def _references(
 
 
 def read_embedded(
-    archive: TigerV4Handler, name_hash: int, locale: int, kind: int, resource_id: int
+    archive: TigerV4Handler,
+    name_hash: int,
+    locale: int,
+    kind: int,
+    resource_id: int,
+    *,
+    archive_family: str | None = None,
 ) -> bytes:
     items = _collections(archive, {(name_hash, locale)})
-    refs = _references(items, name_hash, locale, kind, resource_id)
+    refs = _references(items, name_hash, locale, kind, resource_id, archive_family=archive_family)
     values = {_resolve(archive, ref)[2] for ref in refs}
     if len(values) != 1:
         raise ValueError("embedded font layers contain different source data")
@@ -184,7 +197,14 @@ def plan_embedded(
         kind = request.embedded_type
         if kind is None or request.embedded_id is None or not request.data:
             raise ValueError("invalid embedded resource replacement")
-        refs = _references(items, request.name_hash, request.locale, kind, request.embedded_id)
+        refs = _references(
+            items,
+            request.name_hash,
+            request.locale,
+            kind,
+            request.embedded_id,
+            archive_family=request.archive_family,
+        )
         for ref in refs:
             address = ref.archive_id, ref.part, ref.offset
             name, raw, original = _resolve(archive, ref)

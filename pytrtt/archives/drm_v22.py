@@ -201,12 +201,19 @@ def resolve(archive: TigerV3Handler, ref: Reference) -> tuple[str, bytes, bytes]
 
 
 def find_references(
-    items: list[Collection], name_hash: int, locale: int, kind: int, resource_id: int
+    items: list[Collection],
+    name_hash: int,
+    locale: int,
+    kind: int,
+    resource_id: int,
+    *,
+    archive_family: str | None = None,
 ) -> list[Reference]:
     refs = [
         r
         for c in items
         if (c.name_hash, c.locale) == (name_hash, locale)
+        and (archive_family is None or c.family == archive_family)
         for r in c.references
         if (r.kind, r.resource_id) == (kind, resource_id)
     ]
@@ -218,10 +225,21 @@ def find_references(
 
 
 def read_embedded(
-    archive: TigerV3Handler, name_hash: int, locale: int, kind: int, resource_id: int
+    archive: TigerV3Handler,
+    name_hash: int,
+    locale: int,
+    kind: int,
+    resource_id: int,
+    *,
+    archive_family: str | None = None,
 ) -> bytes:
     refs = find_references(
-        collections(archive, hashes={(name_hash, locale)}), name_hash, locale, kind, resource_id
+        collections(archive, hashes={(name_hash, locale)}),
+        name_hash,
+        locale,
+        kind,
+        resource_id,
+        archive_family=archive_family,
     )
     values = {resolve(archive, r)[2] for r in refs}
     if len(values) != 1:
@@ -254,7 +272,12 @@ def plan_embedded(
         if request.embedded_id is None or not request.data:
             raise ValueError("invalid embedded resource replacement")
         refs = find_references(
-            items, request.name_hash, request.locale, request.embedded_type, request.embedded_id
+            items,
+            request.name_hash,
+            request.locale,
+            request.embedded_type,
+            request.embedded_id,
+            archive_family=request.archive_family,
         )
         for ref in refs:
             name, raw, original = resolve(archive, ref)
