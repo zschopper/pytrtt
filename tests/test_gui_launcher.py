@@ -67,16 +67,24 @@ def test_windows_packaging_builds_an_installed_app_and_preserves_recovery_data()
     specification = (root / "packaging/pytrtt.spec").read_text(encoding="utf-8")
     installer = (root / "packaging/PyTRTT.iss").read_text(encoding="utf-8")
     build = (root / "scripts/build-windows.cmd").read_text(encoding="utf-8")
+    archive = (root / "scripts/archive-windows-exe.ps1").read_text(encoding="utf-8")
     assert 'name="PyTRTT"' in specification
     assert "project_root = Path(SPECPATH).parent" in specification
     assert 'project_root / "pytrtt" / "qt_gui.py"' in specification
+    assert 'project_root / "packaging" / "package-data.ignore"' in specification
+    assert "collect_package_data" in specification
+    assert "collect_catalog_translation_data" in specification
     assert 'version=str(project_root / "packaging" / "version-info.txt")' in specification
     assert "console=False" in specification
-    assert 'project_root / "translations"' in specification
+    assert 'project_root / "pytrtt" / "resources" / "gui_games.json"' in specification
     assert "python -m PyInstaller" in build
     assert 'set "PYTRTT_BUILD_ROOT=%LOCALAPPDATA%\\PyTRTT\\build-cache"' in build
     assert '--workpath "%PYTRTT_BUILD_ROOT%\\work"' in build
     assert '--distpath "%PYTRTT_BUILD_ROOT%\\dist"' in build
+    assert "archive-windows-exe.ps1" in build
+    assert build.index("archive-windows-exe.ps1") < build.index(
+        'copy /Y "%PYTRTT_BUILD_ROOT%\\dist\\PyTRTT.exe"'
+    )
     assert 'copy /Y "%PYTRTT_BUILD_ROOT%\\dist\\PyTRTT.exe"' in build
     assert 'if /I "%~1"=="--clean"' in build
     assert 'python -m pip install "pyinstaller>=6" "pillow>=11"' in build
@@ -85,6 +93,10 @@ def test_windows_packaging_builds_an_installed_app_and_preserves_recovery_data()
     assert "generate_windows_version.py" in build
     assert "/DAppVersion=%PYTRTT_VERSION%" in build
     assert '"dist\\PyTRTT.exe" --smoke-test' in build
+    assert ".VersionInfo.ProductVersion" in archive
+    assert '"${applicationName}-v${version}.exe"' in archive
+    assert '"${applicationName}-v${version}.${suffix}.exe"' in archive
+    assert "Move-Item -LiteralPath $resolvedTarget -Destination $candidate" in archive
     assert "UninstallDisplayName={#AppName}" in installer
     assert "{localappdata}\\PyTRTT" in installer
     assert "Recovery data stored beside games will always be kept." in installer

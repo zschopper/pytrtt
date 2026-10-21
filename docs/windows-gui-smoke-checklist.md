@@ -50,6 +50,8 @@ For every scaling level, verify:
 
 ## Packaged-content boundary
 
+- Review `packaging/package-data.ignore` and the collection roots in `packaging/pytrtt.spec` whenever publishable runtime
+  data was added, moved or removed; confirm required files are present and excluded development files are absent.
 - Confirm the UI works with the network disconnected and does not request remote content.
 - Attempt external navigation from developer tools only in a controlled test and confirm it is rejected.
 - Confirm application images, scripts, styles, catalog and translation packages load outside the repository directory.

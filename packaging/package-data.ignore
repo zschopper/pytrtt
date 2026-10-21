@@ -1,0 +1,8 @@
+# Paths are matched relative to the project root with pathlib glob syntax.
+# Later patterns override earlier ones; prefix a pattern with ! to include it again.
+
+# Local document history is never release content.
+**/.backups/**
+
+# Filename recovery lists are developer inputs; release documents embed runtime paths.
+pytrtt/resources/filelists/**

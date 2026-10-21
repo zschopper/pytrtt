@@ -544,6 +544,32 @@ Integration tests use local samples and original/translated game copies. Configu
 Missing optional samples are skipped. An installation path alone does not enable integration tests.
 New behavior is developed with TDD; binary changes must preserve verified byte-level results.
 
+### Standalone release data
+
+The Windows one-file build recursively includes release resources below `pytrtt/resources/`. Project-relative glob
+exclusions are maintained in [`packaging/package-data.ignore`](packaging/package-data.ignore). Blank lines and lines
+beginning with `#` are ignored. Rules are applied in order, and a later rule beginning with `!` includes a path excluded
+by an earlier rule. For example:
+
+```gitignore
+**/.backups/**
+pytrtt/resources/filelists/**
+!pytrtt/resources/filelists/release-required.txt
+```
+
+Translation data uses an allowlist: every `package_available` document named by `gui_games.json` and every font asset
+referenced by those documents is included automatically. Other translation files, including source exports, memories,
+candidate lists and provenance, stay outside the executable. Whenever a publishable runtime file is added, moved or
+removed, review this selection boundary. Add a new resource collection root to
+[`packaging/pytrtt.spec`](packaging/pytrtt.spec) only when the file belongs outside the existing roots. Update
+[`tests/test_package_data.py`](tests/test_package_data.py) when selection rules change, and verify a clean native Windows
+build before release. Local backups, work products and reference material must remain outside the packaged data.
+
+Before replacing `dist\PyTRTT.exe`, the Windows build archives the existing executable using its embedded product
+version, for example `PyTRTT-v0.2.0.exe`. If that name already exists, it appends the first available numeric component:
+`PyTRTT-v0.2.0.1.exe`, `PyTRTT-v0.2.0.2.exe`, and so on. An unreadable or invalid embedded version stops the build
+instead of overwriting the previous executable.
+
 | Directory | Purpose |
 | --- | --- |
 | `pytrtt/` | Shared services, format contracts, implementations, CLI and message catalogs |
