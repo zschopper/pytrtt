@@ -825,6 +825,7 @@ function restartWizard() {
   selectedAction = null;
   document.querySelector("#language-card").hidden = true;
   for (const card of document.querySelectorAll(".game-card")) {
+    card.querySelector(".selected-indicator").hidden = true;
     card.classList.remove("selected");
     card.setAttribute("aria-pressed", "false");
   }

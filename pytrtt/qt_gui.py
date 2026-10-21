@@ -527,6 +527,7 @@ class TranslationWindow(QMainWindow):
         self.page.setWebChannel(self.channel)
 
         view = FixedZoomWebEngineView(self)
+        view.setContextMenuPolicy(Qt.ContextMenuPolicy.PreventContextMenu)
         view.setPage(self.page)
         view.setZoomFactor(1.0)
         self.setCentralWidget(view)

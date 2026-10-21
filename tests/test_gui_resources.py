@@ -50,6 +50,11 @@ def test_game_selection_updates_accessible_state_and_navigation() -> None:
     assert gui_resource("fonts/KeaniaOne-OFL.txt").is_file()
 
 
+def test_gui_text_cannot_be_selected() -> None:
+    styles = gui_resource("styles.css").read_text(encoding="utf-8")
+    assert "body { -webkit-user-select: none; user-select: none; }" in styles
+
+
 def test_installation_step_uses_the_typed_bridge_and_preserves_selection() -> None:
     script = gui_resource("app.js").read_text(encoding="utf-8")
     assert "bridge.discoverInstallations(selectedGame.id" in script
@@ -202,6 +207,9 @@ def test_completed_operation_can_restart_with_another_game() -> None:
     assert "executionGeneration = null" in script
     assert "selectedGame = null" in script
     assert 'document.querySelector("#summary").textContent = "No game selected"' in script
+    restart = script.split("function restartWizard()", maxsplit=1)[1]
+    restart = restart.split("\ndocument.addEventListener", maxsplit=1)[0]
+    assert 'card.querySelector(".selected-indicator").hidden = true' in restart
     assert 'document.querySelector("#language-card").hidden = true' in script
     assert 'document.querySelector("#restart").addEventListener("click", restartWizard)' in script
     assert 'id="exit-application"' in html

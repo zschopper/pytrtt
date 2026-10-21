@@ -46,6 +46,12 @@ def test_qt_gui_disables_user_zoom_controls() -> None:
     assert "QTimer.singleShot(30_000" in content
 
 
+def test_qt_gui_disables_webview_context_menu() -> None:
+    root = Path(__file__).resolve().parents[1]
+    content = (root / "pytrtt/qt_gui.py").read_text(encoding="utf-8")
+    assert "view.setContextMenuPolicy(Qt.ContextMenuPolicy.PreventContextMenu)" in content
+
+
 def test_qt_gui_protects_active_file_operations_on_close() -> None:
     root = Path(__file__).resolve().parents[1]
     content = (root / "pytrtt/qt_gui.py").read_text(encoding="utf-8")
