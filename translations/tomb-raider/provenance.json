@@ -534,6 +534,54 @@
       "integration_tests_not_run": true
     }
   },
+  "steam_9573671_supplement": {
+    "date": "2026-10-21",
+    "method": "AI-assisted translation and bilingual source review; not an addition to the historical human translator credits.",
+    "source": "Existing read-only Steam 9573671 extraction; exact source bytes retained in hu.json.",
+    "new_memory_units": 32,
+    "short_menu_units": 28,
+    "documentary_subtitle_units": 1,
+    "legal_units": 3,
+    "new_physical_translations": 33,
+    "legal_source_sha256": {
+      "patch3/7CD333D3/845": "3c2eadd73c5a4e2c445f99545260e0dc58aa01251eb65091a196f2a7b9d45400",
+      "patch3/7CD333D3/846": "dc520db73c1266ad5224dc224df3c50f83d7a21a2f5aa8f773d7bb0f904a52f2",
+      "patch3/7CD333D3/848-and-849": "17a6dd336856fc962164ae119fc978503c01f4bbbfb2e4541d69e0f0cd997364"
+    },
+    "historical_records_preserved": 7878,
+    "total_memory_units": 7910,
+    "bound_physical_records": 19888,
+    "missing_nonblank_translations": 0,
+    "missing_blank_or_whitespace_translations": 15,
+    "empty_source_handling": "11 empty subtitle sources and 4 space-only menu sources remain untranslated; original data retained.",
+    "legal_review": {
+      "scope": "Complete paragraph-aligned translations; dates, numbers, legal qualifications, references, URLs, email addresses and subclauses checked. Source-era provisions were not modernised.",
+      "reviewer": "AI assistant; independent legal-professional review not performed.",
+      "duplicate_terms": "A single source-text memory unit supplies identical translations for physical entries 848 and 849.",
+      "translated_form_labels": "Human-readable bracketed insertion instructions in the cancellation form were translated; they are not runtime variables.",
+      "preserved_source_anomalies": [
+        "General Privacy Notice: Press Centre registration cites influencer recruitment as its lawful basis.",
+        "Terms section 16 excludes reasonably foreseeable losses; this unusual affirmative wording was retained.",
+        "Terms section 18(B) defines England as including Scotland and Northern Ireland for that paragraph; retained."
+      ]
+    },
+    "verification": {
+      "targeted_tests_passed": 47,
+      "copy_verified_menu_records": 753,
+      "original_locals_bytes": 178895,
+      "rebuilt_locals_bytes": 391226,
+      "planned_patch3_bytes": 11808768,
+      "boundary_bytes": 2147483648,
+      "new_part_required": false,
+      "copy_restored_twice_sha256_match": true,
+      "copy_scope": "Only patch3 menu; existing packaged fonts retained in the final bound document, not re-tested by the menu-only cycle.",
+      "report": "work/runs/tr2013/9573671/legal-menu-copy-verification.json",
+      "bound_package": "work/runs/tr2013/9573671/legal-reviewed-hu.json",
+      "bound_package_sha256": "f952810f3bf2ddc9d7ccf7b448e2febc27d19a9204d10a79171cbddab71c0506",
+      "game_installation_modified": false,
+      "in_game_verification": "Pending for supplemental translations and the legal document viewer."
+    }
+  },
   "current_steam_state": {
     "date": "2026-10-19",
     "language": "en",

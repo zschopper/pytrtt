@@ -84,14 +84,19 @@ def test_maintained_reboot_import_is_explicitly_a_memory() -> None:
     assert memory.entry_identity == "source_text"
     assert memory.runtime is None
     entries = [e for r in (*memory.menu, *memory.subtitles) for e in r.entries]
-    assert len(entries) == 7878
+    assert len(entries) == 7910
     assert sum(e.source_language == "ru" for e in entries) == 8
     assert sum("time" in dict(e.legacy_context) for e in entries) == 555
-    assert all(e.legacy_tuid is not None for e in entries)
+    assert sum(e.legacy_tuid is not None for e in entries) == 7878
+    assert (
+        sum(e.comment is not None and "reviewed 2026-10-21" in e.comment[0] for e in entries) == 29
+    )
     for resource in (*memory.menu, *memory.subtitles):
         assert [e.entry_id for e in resource.entries] == list(range(len(resource.entries)))
         assert all(
-            dict(e.legacy_context)["hash"] == resource.resource_hash for e in resource.entries
+            dict(e.legacy_context)["hash"] == resource.resource_hash
+            for e in resource.entries
+            if e.legacy_context
         )
 
 
