@@ -117,6 +117,14 @@ physical archive layer when the same resource hash occurs in the base game and p
 its own source digest and recovery asset. Extraction also saves each layer's original font under a distinct
 recovery filename. This selector is not supported on embedded font declarations.
 
+Schema version 6 supports the document-level `credits` object. Each lowercase role maps to an ordered,
+non-empty list of unique contributor names.
+
+Schema version 7 supports 64-bit resource hashes and an optional per-entry `key` for keyed locals tables.
+Preserve keyed record IDs and keys together. The TIGER v5 handler can append replacements for selected,
+uncompressed keyed-locals resources and update their indexes through the common transaction journal. This does not
+claim support for compressed resources, other embedded formats, or uninspected builds.
+
 A missing `translation` value leaves the original game text in place and is reported as incomplete. An
 explicit empty string (`"translation": ""`) writes one space, which can intentionally hide a string. Do not
 leave a value empty by accident.

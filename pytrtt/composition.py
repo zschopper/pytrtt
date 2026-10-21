@@ -4,7 +4,9 @@ from pytrtt.archives.bigfile import BigFileV1Handler
 from pytrtt.archives.bigfile_v2 import BigFileV2Handler
 from pytrtt.archives.tiger_v3 import TigerV3Handler
 from pytrtt.archives.tiger_v4 import TigerV4Handler
+from pytrtt.archives.tiger_v5 import TigerV5Handler
 from pytrtt.formats.handlers import CineV1Handler, CineV3Handler, LocalsV1Handler, RawHandler
+from pytrtt.formats.keyed_locals import KeyedLocalsHandler
 from pytrtt.formats.locals_v3 import LocalsV3Handler
 from pytrtt.formats.reboot_text import (
     CineV2Handler,
@@ -24,10 +26,12 @@ def create_handler_registry() -> HandlerRegistry:
     registry.archives[("bigfile", 2)] = BigFileV2Handler
     registry.archives[("tiger", 3)] = TigerV3Handler
     registry.archives[("tiger", 4)] = TigerV4Handler
+    registry.archives[("tiger", 5)] = TigerV5Handler
     registry.formats[("locals", 1)] = LocalsV1Handler()
     registry.formats[("cine", 1)] = CineV1Handler()
     registry.formats[("locals", 2)] = LocalsV2Handler()
     registry.formats[("locals", 3)] = LocalsV3Handler()
+    registry.formats[("locals", 4)] = KeyedLocalsHandler()
     registry.formats[("cine", 2)] = CineV2Handler()
     registry.formats[("cine", 3)] = CineV3Handler()
     registry.formats[("sch", 1)] = SchV1Handler()

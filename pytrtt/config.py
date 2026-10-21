@@ -187,7 +187,11 @@ def parse_runtime_settings(value: object) -> RuntimeSettings:
         languages.append(
             LanguageSlot(
                 code,
-                _integer(fields["archive_locale"], "archive_locale"),
+                _integer(
+                    fields["archive_locale"],
+                    "archive_locale",
+                    maximum=0xFFFFFFFFFFFFFFFF,
+                ),
                 _integer(fields["subtitle_language"], "subtitle_language", maximum=255),
                 mask,
             )

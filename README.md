@@ -42,8 +42,8 @@ Shadow. These filename measurements were collected on 2026-10-16 and have not be
 Rise's English export targets Steam build `9575745`; Underworld Demo was compared with the full game's name list
 and has no dedicated translation profile. The
 [measurement evidence](docs/game-status-evidence.json) records every selected index, name-list hash and denominator.
-Filename coverage is independent of text extraction coverage. Shadow's keyed locals parser has no assigned handler
-version; its language ID and translation JSON schema are not text-format version numbers.
+Filename coverage is independent of text extraction coverage. Shadow's keyed locals table uses text handler version
+4; its language ID and translation JSON schema are separate version numbers.
 
 “Complete” extraction refers to the selected build's identified menu/subtitle resource types and archive layers. It
 does not establish arbitrary embedded-text or unexamined DLC coverage. Human authorship, machine pretranslation,
@@ -333,7 +333,7 @@ Steam build: `3668420`. **Status:** 🟡 Hungarian game test passed; Steam now E
 
 | Aspect | Status |
 | --- | --- |
-| Archive format / support | 🟡 Native TIGER v5; standalone reader and build-specific locals installer/restorer |
+| Archive format / support | 🟡 TIGER v5; append-only selected-locals write and journaled restore |
 | Text formats | 🟢 Keyed locals; 64-bit offsets |
 | Resolved filenames | 🟡 92.24% |
 | Text extraction | 🟡 Partial: keyed table, 38,055 texts |
@@ -346,12 +346,12 @@ Steam build: `3668420`. **Status:** 🟡 Hungarian game test passed; Steam now E
 The [Hungarian translation](translations/shadow-of-the-tomb-raider-trial/hu.json) imports 38,050 records by stable key
 into the extracted Trial text. The five Trial-only records are now translated, and all shared-key translations
 match the full-game Hungarian package. All 38,055 populated records were verified by readback after Steam
-installation on 2026-10-18. A build-specific installer preserves the original English archive for restoration;
-this does not establish general TIGER v5 writing support. The user reported that the installed translation works
-correctly in the Steam Trial.
+installation on 2026-10-18. The shared writer now reproduces that game-tested translated resource byte for byte and
+uses the common transaction journal. The user reported that the installed translation works correctly in the Steam
+Trial.
 
-**Remaining:** review wording and formatting, establish complete text coverage beyond the selected keyed table,
-broaden gameplay checks, and integrate the build-specific installation workflow into the shared toolkit. See the
+**Remaining:** review wording and formatting, establish complete text coverage beyond the selected keyed table, and
+broaden gameplay checks. See the
 [import report](translations/shadow-of-the-tomb-raider-trial/provenance.json).
 
 ### Shadow of the Tomb Raider
@@ -360,7 +360,7 @@ Steam build: `11668867`. **Status:** 🟡 Hungarian import draft.
 
 | Aspect | Status |
 | --- | --- |
-| Archive format / support | 🟡 Native TIGER v5, standalone read-only reader |
+| Archive format / support | 🟡 TIGER v5; append-only selected-locals write and journaled restore |
 | Text formats | 🟢 Keyed locals; 64-bit offsets |
 | Resolved filenames | 🟡 91.41% |
 | Text extraction | 🟡 Partial: keyed table, 38,234 texts |
@@ -387,7 +387,7 @@ from source. A standalone Windows executable, installer and their release-valida
 - Translate Underworld and Guardian of Light Bigfile v2 archives, including DLC and independent patch indexes.
 - Export Temple of Osiris English text; write Hungarian resources with copy-verified TIGER v4 restoration.
 - Install Temple of Osiris Unicode font supplements with copy-verified restoration and user-verified accents.
-- Install the Shadow Trial Hungarian keyed table through a verified build-specific workflow.
+- Install supported Shadow keyed tables through the shared dry-run, transaction and restoration workflow.
 - Preview changes with a dry run before writing game files.
 - Install through a journaled transaction, with allocation and archive index updates.
 - Restore original bytes, archive sizes and fonts from saved transaction data.

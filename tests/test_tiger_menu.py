@@ -1,12 +1,28 @@
 """Independent byte fixtures for TIGER v5 indexes and keyed UTF-8 menu tables."""
 
 import io
+import struct
 from pathlib import Path
 
 import pytest
 
-from pytrtt.archives.tiger_v5 import TigerFormatError, read_tiger_index, read_tiger_resource
-from pytrtt.formats.keyed_locals import KeyedLocalsError, parse_keyed_locals
+from pytrtt.archives.contracts import ResourceReplacement
+from pytrtt.archives.tiger_v5 import (
+    TigerFormatError,
+    TigerV5Handler,
+    read_tiger_index,
+    read_tiger_resource,
+)
+from pytrtt.composition import create_translation_service
+from pytrtt.config import ArchiveSettings, LanguageSlot, ResourceRule, RuntimeSettings
+from pytrtt.formats.contracts import TextOptions
+from pytrtt.formats.keyed_locals import KeyedLocalsError, KeyedLocalsHandler, parse_keyed_locals
+from pytrtt.packages.translation import (
+    TranslationDocument,
+    TranslationEntry,
+    TranslationMetadata,
+    TranslationResource,
+)
 
 # TAFS, v5, one part/file, archive 1/sub-id 27, pcx64-w platform.
 HEADER = bytes.fromhex(
@@ -74,6 +90,81 @@ def test_compressed_resource_fails_explicitly_until_supported(tmp_path: Path) ->
         read_tiger_resource(path, index, index.entries[0])
 
 
+def test_tiger_v5_appends_replacement_and_restores_exact_bytes(tmp_path: Path) -> None:
+    path = tmp_path / "shadow.000.tiger"
+    original = HEADER + ROW + bytes(8) + MENU
+    path.write_bytes(original)
+    settings = ArchiveSettings(
+        "tiger", 5, 4096, families=("main",), index_files=(("main", path.name),)
+    )
+    runtime = RuntimeSettings(settings, (LanguageSlot("en", 0xFFFFFFFFFFFF0401, 0),), "en", ())
+    handler = TigerV5Handler(tmp_path, settings)
+    replacement = MENU + b"longer"
+
+    plan = handler.plan(
+        (ResourceReplacement("menu", 0x331F339BC3DB8E80, 0xFFFFFFFFFFFF0401, replacement),)
+    )
+    journal = tmp_path.with_name(tmp_path.name + "-journal")
+    handler.apply(plan, journal, runtime)
+
+    reopened = TigerV5Handler(tmp_path, settings)
+    assert reopened.read(reopened.resources()[0]) == replacement
+    reopened.restore(journal)
+    reopened.restore(journal)
+    assert path.read_bytes() == original
+
+
+def test_tiger_v5_rejects_compressed_replacement_source(tmp_path: Path) -> None:
+    path = tmp_path / "shadow.000.tiger"
+    compressed_row = bytearray(ROW)
+    struct.pack_into("<I", compressed_row, 20, len(MENU))
+    path.write_bytes(HEADER + compressed_row + bytes(8) + MENU)
+    settings = ArchiveSettings(
+        "tiger", 5, 4096, families=("main",), index_files=(("main", path.name),)
+    )
+    with pytest.raises(ValueError, match="compressed"):
+        TigerV5Handler(tmp_path, settings).plan(
+            (ResourceReplacement("menu", 0x331F339BC3DB8E80, 0xFFFFFFFFFFFF0401, MENU),)
+        )
+
+
+def test_translation_service_applies_and_restores_keyed_tiger_v5_menu(tmp_path: Path) -> None:
+    path = tmp_path / "shadow.000.tiger"
+    original = HEADER + ROW + bytes(8) + MENU
+    path.write_bytes(original)
+    settings = ArchiveSettings(
+        "tiger", 5, 4096, families=("main",), index_files=(("main", path.name),)
+    )
+    runtime = RuntimeSettings(
+        settings,
+        (LanguageSlot("en", 0xFFFFFFFFFFFF0401, 0),),
+        "en",
+        (ResourceRule("menu", "*/locals.bin", "locals", 4),),
+    )
+    document = TranslationDocument(
+        TranslationMetadata("shadow", "1", "en", "hu", "tiger", 5),
+        menu=(
+            TranslationResource(
+                "331F339BC3DB8E80",
+                "pcx64-w\\local\\locals.bin",
+                (
+                    TranslationEntry(1, "ő", "magyar őű", key="K"),
+                    TranslationEntry(2, "ő", "magyar őű", key="K"),
+                ),
+            ),
+        ),
+        runtime=runtime,
+    )
+    service = create_translation_service()
+
+    build = service.plan(tmp_path, document, package_dir=tmp_path, expected_build_id="1")
+    journal = tmp_path.with_name(tmp_path.name + "-service-journal")
+    service.apply(build, journal)
+    assert service.is_translation_installed(tmp_path, document, package_dir=tmp_path)
+    service.restore(tmp_path, journal, runtime)
+    assert path.read_bytes() == original
+
+
 def test_parses_unicode_keys_placeholders_and_shared_offsets() -> None:
     result = parse_keyed_locals(MENU)
     assert result.language_id == 0
@@ -83,6 +174,40 @@ def test_parses_unicode_keys_placeholders_and_shared_offsets() -> None:
         (2, 32, "K", "ő"),
     ]
     assert result.original_data == MENU
+
+
+def test_keyed_locals_handler_rebuilds_text_and_preserves_aliases() -> None:
+    handler = KeyedLocalsHandler()
+    extracted = handler.extract(MENU, 0)
+    assert extracted == (
+        TranslationEntry(0, "", None),
+        TranslationEntry(1, "ő", None, key="K"),
+        TranslationEntry(2, "ő", None, key="K"),
+    )
+
+    rebuilt = handler.write(
+        MENU,
+        (
+            TranslationEntry(1, "ő", "hosszabb őű", key="K"),
+            TranslationEntry(2, "ő", "hosszabb őű", key="K"),
+        ),
+        TextOptions(0),
+    )
+    parsed = parse_keyed_locals(rebuilt)
+    assert parsed.entries[1].text == "hosszabb őű"
+    assert parsed.entries[1].offset == parsed.entries[2].offset
+
+
+def test_keyed_locals_handler_rejects_changed_keys_and_split_aliases() -> None:
+    handler = KeyedLocalsHandler()
+    with pytest.raises(KeyedLocalsError, match="key"):
+        handler.write(MENU, (TranslationEntry(1, "ő", "x", key="other"),), TextOptions(0))
+    with pytest.raises(KeyedLocalsError, match="alias"):
+        handler.write(
+            MENU,
+            (TranslationEntry(1, "ő", "x", key="K"), TranslationEntry(2, "ő", "y", key="K")),
+            TextOptions(0),
+        )
 
 
 @pytest.mark.parametrize("data", [b"", MENU[:7], MENU[:31]])

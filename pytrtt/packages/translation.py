@@ -31,7 +31,7 @@ ENTRY_KEYS = {
     "comment",
     "substitution_disabled",
 }
-DOCUMENT_ENTRY_KEYS = ENTRY_KEYS | {"source_language", "legacy_tuid", "legacy_context"}
+DOCUMENT_ENTRY_KEYS = ENTRY_KEYS | {"source_language", "legacy_tuid", "legacy_context", "key"}
 DOCUMENT_KEYS = {
     "schema_version",
     "metadata",
@@ -78,6 +78,7 @@ class TranslationEntry:
     source_language: str | None = None
     legacy_tuid: str | None = None
     legacy_context: tuple[tuple[str, str], ...] = ()
+    key: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -309,6 +310,7 @@ def _parse_entries(value: Any, field: str) -> tuple[TranslationEntry, ...]:
                 "source_language",
                 "legacy_tuid",
                 "legacy_context",
+                "key",
             },
         )
         entry_id = item["id"]
@@ -338,6 +340,9 @@ def _parse_entries(value: Any, field: str) -> tuple[TranslationEntry, ...]:
             not isinstance(k, str) or not isinstance(v, str) for k, v in context.items()
         ):
             raise TranslationPackageError(f"{field_name}.legacy_context must map strings")
+        key = item.get("key")
+        if key is not None:
+            key = _nonempty_string(key, f"{field_name}.key")
         entries.append(
             TranslationEntry(
                 entry_id,
@@ -348,6 +353,7 @@ def _parse_entries(value: Any, field: str) -> tuple[TranslationEntry, ...]:
                 source_language,
                 legacy_tuid,
                 tuple(context.items()),
+                key,
             )
         )
     return tuple(entries)
@@ -358,8 +364,10 @@ def _parse_resource(value: Any, field: str) -> TranslationResource:
         raise TranslationPackageError(f"{field} must be a JSON object")
     _require_keys(value, RESOURCE_KEYS, RESOURCE_KEYS - {"archive_locale", "archive_family"})
     resource_hash = _nonempty_string(value["resource_hash"], f"{field}.resource_hash")
-    if re.fullmatch(r"[0-9A-Fa-f]{8}", resource_hash) is None:
-        raise TranslationPackageError(f"{field}.resource_hash must be eight hexadecimal digits")
+    if re.fullmatch(r"(?:[0-9A-Fa-f]{8}|[0-9A-Fa-f]{16})", resource_hash) is None:
+        raise TranslationPackageError(
+            f"{field}.resource_hash must be eight or sixteen hexadecimal digits"
+        )
     resource_path = _nonempty_string(value["resource_path"], f"{field}.resource_path")
     archive_locale = value.get("archive_locale")
     archive_family = value.get("archive_family")
@@ -401,6 +409,7 @@ def parse_translation_document(content: str) -> TranslationDocument:
         4,
         5,
         6,
+        7,
     ):
         raise TranslationPackageError("unsupported translation document schema version")
     identity = root.get("entry_identity", "record")
@@ -463,6 +472,13 @@ def parse_translation_document(content: str) -> TranslationDocument:
         for entry in resource.entries
     ):
         raise TranslationPackageError("entry source_language requires schema version 3")
+    if root["schema_version"] < 7 and (
+        any(len(resource.resource_hash) == 16 for resource in (*menu, *subtitles))
+        or any(
+            entry.key is not None for resource in (*menu, *subtitles) for entry in resource.entries
+        )
+    ):
+        raise TranslationPackageError("64-bit hashes and keyed entries require schema version 7")
     if any(
         entry.legacy_tuid is not None or entry.legacy_context
         for resource in (*menu, *subtitles)
@@ -630,6 +646,8 @@ def _serialize_entries(entries: tuple[TranslationEntry, ...]) -> list[dict[str, 
             value["legacy_tuid"] = entry.legacy_tuid
         if entry.legacy_context:
             value["legacy_context"] = dict(entry.legacy_context)
+        if entry.key is not None:
+            value["key"] = entry.key
         result.append(value)
     return result
 
@@ -733,4 +751,10 @@ def serialize_translation_document(document: TranslationDocument) -> str:
         root["omit_subtitle_languages"] = sorted(document.omit_subtitle_languages)
     if document.credits:
         root["schema_version"] = 6
+    if any(
+        len(resource.resource_hash) == 16
+        or any(entry.key is not None for entry in resource.entries)
+        for resource in (*document.menu, *document.subtitles)
+    ):
+        root["schema_version"] = 7
     return json.dumps(root, ensure_ascii=False, indent=2) + "\n"

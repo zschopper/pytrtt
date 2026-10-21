@@ -85,7 +85,7 @@
     "steam_app_id": "750920",
     "install_dir_name": "Shadow of the Tomb Raider",
     "translation_file": "translations/shadow-of-the-tomb-raider/hu.json",
-    "package_available": false,
+    "package_available": true,
     "epic_catalog_namespace": "4b5461ca8d1c488787b5200b420de066",
     "epic_catalog_item_id": "a61625d8a2e04a4aaf033312c649616c"
   },
@@ -95,7 +95,7 @@
     "steam_app_id": "974630",
     "install_dir_name": "Shadow of the Tomb Raider Trial",
     "translation_file": "translations/shadow-of-the-tomb-raider-trial/hu.json",
-    "package_available": false,
+    "package_available": true,
     "epic_catalog_namespace": "",
     "epic_catalog_item_id": ""
   }

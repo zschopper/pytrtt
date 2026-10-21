@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 import pytest
 
@@ -122,6 +123,60 @@ def test_one_document_round_trips_menu_subtitle_and_font_sections() -> None:
 
     assert serialized.index('"metadata"') < serialized.index('"menu"')
     assert parse_translation_document(serialized) == document
+
+
+def test_document_round_trips_a_tiger_v5_64_bit_resource_hash() -> None:
+    document = TranslationDocument(
+        TranslationMetadata("shadow", "11668867", "en", "hu", "tiger", 5),
+        menu=(
+            TranslationResource(
+                "331F339BC3DB8E80",
+                "pcx64-w\\local\\locals.bin",
+                (TranslationEntry(1, "New game", "Új játék", key="mainmenu_new_game"),),
+            ),
+        ),
+    )
+
+    serialized = serialize_translation_document(document)
+
+    assert '"schema_version": 7' in serialized
+    assert parse_translation_document(serialized) == document
+
+
+def test_64_bit_resource_hash_requires_schema_version_seven() -> None:
+    root = json.loads(METADATA_ONLY)
+    root["schema_version"] = 6
+    root["menu"] = [
+        {
+            "resource_hash": "331F339BC3DB8E80",
+            "resource_path": "pcx64-w\\local\\locals.bin",
+            "entries": [],
+        }
+    ]
+
+    with pytest.raises(TranslationPackageError, match="schema version 7"):
+        parse_translation_document(json.dumps(root))
+
+
+@pytest.mark.parametrize(
+    "relative_path",
+    [
+        "translations/shadow-of-the-tomb-raider/hu.json",
+        "translations/shadow-of-the-tomb-raider-trial/hu.json",
+    ],
+)
+def test_shadow_packages_use_the_common_translation_document_format(
+    relative_path: str,
+) -> None:
+    project_root = Path(__file__).resolve().parents[1]
+
+    document = parse_translation_document(
+        (project_root / relative_path).read_text(encoding="utf-8")
+    )
+
+    assert document.metadata.archive_version == 5
+    assert len(document.menu) == 1
+    assert document.menu[0].resource_hash == "331F339BC3DB8E80"
 
 
 def test_document_round_trips_cleared_and_omitted_subtitle_languages() -> None:
