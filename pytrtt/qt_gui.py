@@ -291,10 +291,13 @@ class GuiBridge(QObject):
     @Slot(str)
     def setApplicationLanguage(self, language: str) -> None:  # noqa: N802 - JavaScript API name
         """Keep native Qt dialogs synchronized with the web UI locale."""
-        if language not in {"en", "hu"} or language == self._translator.language:
+        if language not in {"en", "hu"}:
+            return
+        self._settings.setValue("ui/language", language)
+        self._settings.sync()
+        if language == self._translator.language:
             return
         self._translator = Translator(language)
-        self._settings.setValue("ui/language", language)
         self.applicationLanguageChanged.emit(language)
 
     @Slot(bool)

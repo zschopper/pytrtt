@@ -26,6 +26,8 @@ def test_qt_gui_stores_user_preferences_in_local_app_data_ini() -> None:
     assert 'settings_dir / "settings.ini"' in content
     assert '"ui/show_welcome"' in content
     assert '"ui/language"' in content
+    assert 'self._settings.setValue("ui/language", language)' in content
+    assert "self._settings.sync()" in content
     assert 'settings.value("ui/language", locale, type=str)' in content
     assert "def setWelcomeEnabled" in content
 
