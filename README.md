@@ -251,22 +251,22 @@ Steam build: `9573671`. **Status:** 🟡 Experimental; font appearance verified.
 | Text formats | 🟢 locals/2; CINE/2; SCH/1 |
 | Resolved filenames | 🟡 2 missing |
 | Text extraction | 🟢 Complete selected text |
-| Translation / origin | 🟡 Human legacy; patch text untranslated |
-| Proofreading | 🟡 Current build needs review |
+| Translation / origin | 🟡 Human legacy + 33 build-specific AI additions; 19,888 bound records |
+| Proofreading | 🟡 New batch appearance reviewed in game; linguistic sign-off pending |
 | Binary format / need | 🟢 DRM v22 / GFX fonts; required |
 | Binary localization | 🟢 Packaged and observed glyphs verified; Steam original restored |
 | Game-specific guidance | 🔴 No; shared only |
 
-The [Hungarian text package](translations/tomb-raider/hu.json) was installed and tested.
-The Hungarian menu worked in game, but
-double-acute letters needed a font supplement. Its initial installation caused a startup data-reading error; a local
-archive-stream repair was installed and verified. The user confirmed startup and the corrected Hungarian glyphs in the areas
-observed. The verified font supplement is now included in the maintained translation, and the common installer
-passed copy tests.
+The [build-specific Hungarian package](translations/tomb-raider/steam-9573671-hu.json) contains 19,888 bound records,
+including 33 additions for this build; 15 empty source records remain untranslated. Its font supplement and archive
+changes passed copy-based installation and restoration checks. The user reviewed the new translated batch in game on
+2026-10-22 and reported that it looked good. This confirms the reviewed text's appearance, not a complete linguistic
+proofread or every screen and line-wrapping case.
 
-**Remaining:** translate the outstanding patch menu/legal/multiplayer text and subtitle; review
-current-build differences, and broaden gameplay checks. The 15 empty unmatched source records are tracked separately
-from untranslated text. See the [provenance and verification limits](translations/tomb-raider/provenance.json).
+**Remaining:** correct the Hungarian accents in the separate Windows Setup dialog, complete linguistic proofreading,
+and broaden screen/line-wrapping coverage. The 15 empty unmatched source records are tracked separately from
+untranslated text. See the
+[provenance and verification limits](translations/tomb-raider/provenance.json).
 
 ### Lara Croft and the Temple of Osiris
 

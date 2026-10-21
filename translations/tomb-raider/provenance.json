@@ -619,7 +619,12 @@
       "copy_restored_twice_size_sha256_match": true,
       "source_archives_unchanged": true,
       "game_installation_modified": false,
-      "in_game_verification": "pending"
+      "in_game_verification": {
+        "status": "user_confirmed",
+        "date": "2026-10-22",
+        "scope": "User reviewed the new build-specific translation batch in game and reported it looked good.",
+        "limits": "Confirms reviewed in-game appearance only; the separate Windows Setup dialog still shows circumflexes for Hungarian double-acutes, and linguistic proofreading plus unreviewed screens and line-wrapping cases remain open."
+      }
     }
   },
   "current_steam_state": {
