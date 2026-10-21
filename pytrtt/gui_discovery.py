@@ -11,6 +11,7 @@ from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Protocol, cast
+from urllib.parse import quote
 
 from pytrtt.environment import load_local_environment
 from pytrtt.packages.translation import TranslationPackageError
@@ -49,6 +50,7 @@ class InstallationCandidate:
     path: Path
     source: str
     build_id: str = ""
+    launch_uri: str = ""
 
 
 type InstallationDetector = Callable[
@@ -326,12 +328,18 @@ def discover_epic_installations(
             if not installation.is_dir() or not launcher.is_file():
                 continue
             version = fields.get("AppVersionString", "")
+            app_name = fields.get("AppName")
+            launch_uri = ""
+            if isinstance(app_name, str) and app_name:
+                identity = quote(f"{namespace}:{item_id}:{app_name}", safe="")
+                launch_uri = f"com.epicgames.launcher://apps/{identity}?action=launch&silent=true"
             candidates.append(
                 InstallationCandidate(
                     game,
                     installation,
                     "Epic Games",
                     version if isinstance(version, str) else "",
+                    launch_uri,
                 )
             )
     return tuple(candidates)

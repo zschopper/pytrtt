@@ -54,6 +54,9 @@ def test_qt_gui_protects_active_file_operations_on_close() -> None:
     assert "def setApplicationLanguage" in content
     assert "applicationLanguageChanged" in content
     assert "def copyText" in content
+    assert "def launchGame" in content
+    assert 'launch_uri = f"steam://rungameid/{app_id}"' in content
+    assert "QDesktopServices.openUrl" in content
     assert "def recover_interrupted_operations" in content
     assert "find_interrupted_transactions_in_roots" in content
     assert "recover_interrupted_transaction" in content

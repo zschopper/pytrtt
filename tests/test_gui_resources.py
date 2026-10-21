@@ -188,6 +188,9 @@ def test_completed_operation_can_restart_with_another_game() -> None:
     assert 'document.querySelector("#language-card").hidden = true' in script
     assert 'document.querySelector("#restart").addEventListener("click", restartWizard)' in script
     assert 'id="exit-application"' in html
+    assert 'id="launch-game"' in html
+    assert "selectedInstallation.launchable" in script
+    assert "bridge.launchGame(selectedGame.id, selectedInstallation.path)" in script
     assert "bridge.exitApplication()" in script
     assert "function resultStatusLabel(status)" in script
     assert 'document.querySelector(".progress-copy").hidden = true' in script

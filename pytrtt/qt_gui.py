@@ -20,7 +20,7 @@ from PySide6.QtCore import (
     Signal,
     Slot,
 )
-from PySide6.QtGui import QCloseEvent, QIcon, QKeyEvent, QWheelEvent
+from PySide6.QtGui import QCloseEvent, QDesktopServices, QIcon, QKeyEvent, QWheelEvent
 from PySide6.QtWebChannel import QWebChannel
 from PySide6.QtWebEngineCore import QWebEnginePage, QWebEngineProfile, QWebEngineSettings
 from PySide6.QtWebEngineWidgets import QWebEngineView
@@ -264,6 +264,24 @@ class GuiBridge(QObject):
     def copyText(self, value: str) -> None:  # noqa: N802 - JavaScript API name
         """Copy a result detail without exposing general clipboard access to the page."""
         QApplication.clipboard().setText(value[:100_000])
+
+    @Slot(str, str)
+    def launchGame(self, game_id: str, installation_path: str) -> None:  # noqa: N802
+        """Launch a selected store installation through its trusted client URI."""
+        candidate = self._candidates.get((game_id, installation_path))
+        launch_uri = ""
+        if candidate is not None and candidate.source == "Steam":
+            app_id = candidate.game.steam_app_id
+            if app_id.isascii() and app_id.isdecimal():
+                launch_uri = f"steam://rungameid/{app_id}"
+        elif candidate is not None:
+            launch_uri = candidate.launch_uri
+        if not launch_uri or not QDesktopServices.openUrl(QUrl(launch_uri)):
+            QMessageBox.warning(
+                self._window,
+                self._translator.text("gui_launch_error_title"),
+                self._translator.text("gui_launch_error_message"),
+            )
 
     @Slot()
     def reportFrontendReady(self) -> None:  # noqa: N802 - JavaScript API name

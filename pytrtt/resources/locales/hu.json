@@ -128,6 +128,8 @@
   "gui_recovery_error_message": "A biztonsági mentéseket a program nem törölte. Technikai részlet: {detail}",
   "gui_confirm_yes": "Igen",
   "gui_confirm_no": "Nem",
+  "gui_launch_error_title": "A játék nem indítható",
+  "gui_launch_error_message": "Indítsd el a játékot a klienséből, majd próbáld újra.",
   "gui_complete": "Kész",
   "gui_complete_help": "A művelet befejeződött. Visszaléphetsz, új műveletet indíthatsz vagy kiléphetsz."
 }

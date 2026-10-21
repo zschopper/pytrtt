@@ -128,6 +128,8 @@
   "gui_recovery_error_message": "PyTRTT kept the recovery backups. Technical detail: {detail}",
   "gui_confirm_yes": "Yes",
   "gui_confirm_no": "No",
+  "gui_launch_error_title": "The game could not be started",
+  "gui_launch_error_message": "Open the game from its launcher and try again.",
   "gui_complete": "Finished",
   "gui_complete_help": "The operation has finished. You can go back, start over, or exit."
 }

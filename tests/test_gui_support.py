@@ -108,6 +108,7 @@ def test_epic_discovery_uses_catalog_identity_and_complete_installation(tmp_path
                 "CatalogItemId": "fixture-item",
                 "InstallLocation": str(installation),
                 "LaunchExecutable": "TombRaider.exe",
+                "AppName": "fixture-app",
                 "AppVersionString": "1.2.3",
                 "bIsIncompleteInstall": False,
             }
@@ -116,7 +117,13 @@ def test_epic_discovery_uses_catalog_identity_and_complete_installation(tmp_path
     )
 
     assert discover_epic_installations((game,), (manifests,)) == (
-        InstallationCandidate(game, installation, "Epic Games", "1.2.3"),
+        InstallationCandidate(
+            game,
+            installation,
+            "Epic Games",
+            "1.2.3",
+            "com.epicgames.launcher://apps/fixture-namespace%3Afixture-item%3Afixture-app?action=launch&silent=true",
+        ),
     )
 
 

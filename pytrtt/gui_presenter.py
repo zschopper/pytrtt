@@ -48,6 +48,7 @@ def installation_payload(
                 "build": candidate.build_id,
                 "status": inspection.status.value,
                 "selectable": inspection.status is InstallationStatus.READY,
+                "launchable": candidate.source == "Steam" or bool(candidate.launch_uri),
             }
         )
     return payload

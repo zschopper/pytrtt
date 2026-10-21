@@ -43,6 +43,7 @@ const UI_COPY = [
   ["Completed", "Kész"],
   ["Result", "Eredmény"], ["Total time", "Teljes idő"], ["Recovery data", "Helyreállítási adatok"],
   ["Translate another game", "Másik játék fordítása"],
+  ["Launch game", "Játék indítása"],
   ["Exit", "Kilépés"],
   ["Current selection", "Jelenlegi kiválasztás"], ["No game selected", "Nincs kiválasztott játék"],
   ["Back", "Vissza"], ["Get started", "Kezdés"], ["Continue", "Tovább"],
@@ -807,6 +808,7 @@ function showResult(result) {
   detailPanel.hidden = !hasUsefulDetail;
   detailPanel.open = false;
   document.querySelector(".result-actions").hidden = false;
+  document.querySelector("#launch-game").hidden = !success || !selectedInstallation.launchable;
   const bar = document.querySelector("#progress-bar");
   bar.max = 1;
   bar.value = 1;
@@ -880,6 +882,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#refresh-installations").addEventListener("click", discoverInstallations);
   document.querySelector("#browse-installation").addEventListener("click", browseInstallation);
   document.querySelector("#restart").addEventListener("click", restartWizard);
+  document.querySelector("#launch-game").addEventListener("click", () => {
+    bridge.launchGame(selectedGame.id, selectedInstallation.path);
+  });
   document.querySelector("#exit-application").addEventListener("click", () => {
     bridge.exitApplication();
   });

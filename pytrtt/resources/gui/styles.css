@@ -129,8 +129,9 @@ button:focus-visible, summary:focus-visible { outline: 3px solid rgb(182 111 119
 .result-summary div[hidden] { display: none; }
 .result-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .result-actions[hidden] { display: none; }
-.restart, .exit-application { padding: 12px 18px; border-radius: 12px; font-weight: 700; cursor: pointer; }
-.restart { color: white; border: 0; background: #b66f77; }
+.launch-game, .restart, .exit-application { padding: 12px 18px; border-radius: 12px; font-weight: 700; cursor: pointer; }
+.launch-game, .restart { color: white; border: 0; background: #b66f77; }
+.launch-game[hidden] { display: none; }
 .exit-application { color: #54474b; border: 1px solid #d7c7c2; background: #fffdfb; }
 #credits-dialog { width: min(620px, calc(100% - 40px)); max-height: min(720px, calc(100% - 40px)); padding: 0; overflow: hidden; color: #3d3035; border: 1px solid #d4bfba; border-radius: 20px; background: #fffaf7; box-shadow: 0 24px 80px rgb(48 29 35 / 35%); }
 #credits-dialog::backdrop { background: rgb(36 24 28 / 58%); }

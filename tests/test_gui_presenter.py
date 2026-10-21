@@ -33,6 +33,7 @@ def test_installation_payload_filters_game_and_reports_validation(tmp_path: Path
             "build": "123",
             "status": "ready",
             "selectable": True,
+            "launchable": True,
         }
     ]
 
