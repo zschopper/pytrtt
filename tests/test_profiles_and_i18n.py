@@ -69,6 +69,19 @@ def test_profile_selects_defaults_by_translation_language(tmp_path: Path) -> Non
         profile.compile(document("other-game"))
 
 
+def test_profile_can_supply_ordered_optional_capacity_languages(tmp_path: Path) -> None:
+    path = profile_file(tmp_path)
+    value = json.loads(path.read_text())
+    value["translation_defaults"]["hu"]["clear_subtitle_languages_on_overflow"] = [9, 1]
+    path.write_text(json.dumps(value))
+    profile = load_profile(path)
+    source = document(target="hu")
+    assert profile.compile(source).clear_subtitle_languages_on_overflow == ()
+    compiled = profile.compile(source, apply_defaults=True)
+    assert compiled.clear_subtitle_languages_on_overflow == (9, 1)
+    assert parse_translation_document(serialize_translation_document(compiled)) == compiled
+
+
 def test_legacy_empty_translation_remains_space_when_substitution_is_disabled() -> None:
     from pytrtt.formats.locals_v1 import parse_locals
     from pytrtt.packages.locals import apply_menu_package, export_menu_package

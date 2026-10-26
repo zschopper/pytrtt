@@ -40,6 +40,7 @@ DOCUMENT_KEYS = {
     "fonts",
     "clear_subtitle_languages",
     "omit_subtitle_languages",
+    "clear_subtitle_languages_on_overflow",
     "entry_identity",
     "credits",
 }
@@ -153,6 +154,7 @@ class TranslationDocument:
     runtime: RuntimeSettings | None = None
     entry_identity: str = "record"
     credits: tuple[TranslationCredit, ...] = ()
+    clear_subtitle_languages_on_overflow: tuple[int, ...] = ()
 
 
 def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -410,6 +412,7 @@ def parse_translation_document(content: str) -> TranslationDocument:
         5,
         6,
         7,
+        8,
     ):
         raise TranslationPackageError("unsupported translation document schema version")
     identity = root.get("entry_identity", "record")
@@ -591,6 +594,20 @@ def parse_translation_document(content: str) -> TranslationDocument:
 
     clear_languages = parse_language_set("clear_subtitle_languages")
     omitted_languages = parse_language_set("omit_subtitle_languages")
+    overflow_field = "clear_subtitle_languages_on_overflow"
+    overflow_set = parse_language_set(overflow_field)
+    overflow_languages = tuple(root.get(overflow_field, []))
+    if overflow_field in root and root["schema_version"] < 8:
+        raise TranslationPackageError(f"{overflow_field} requires schema version 8")
+    if overflow_set & (clear_languages | omitted_languages):
+        raise TranslationPackageError(
+            "conditional subtitle languages overlap unconditional actions"
+        )
+    if (
+        runtime is not None
+        and runtime.language(runtime.replacement_language).subtitle_language in overflow_set
+    ):
+        raise TranslationPackageError("cannot conditionally clear the replacement language")
     if clear_languages & omitted_languages:
         raise TranslationPackageError("a subtitle language cannot be both cleared and omitted")
 
@@ -623,6 +640,7 @@ def parse_translation_document(content: str) -> TranslationDocument:
         runtime,
         identity,
         tuple(credits),
+        overflow_languages,
     )
 
 
@@ -755,4 +773,9 @@ def serialize_translation_document(document: TranslationDocument) -> str:
         for resource in (*document.menu, *document.subtitles)
     ):
         root["schema_version"] = 7
+    if document.clear_subtitle_languages_on_overflow:
+        root["schema_version"] = 8
+        root["clear_subtitle_languages_on_overflow"] = list(
+            document.clear_subtitle_languages_on_overflow
+        )
     return json.dumps(root, ensure_ascii=False, indent=2) + "\n"

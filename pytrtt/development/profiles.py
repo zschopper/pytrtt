@@ -77,9 +77,16 @@ class DeveloperProfile:
         value = json.loads(serialize_translation_document(updated))
         if apply_defaults:
             defaults = self.translation_defaults.get(document.metadata.target_language, {})
-            for field in ("fonts", "clear_subtitle_languages", "omit_subtitle_languages"):
+            for field in (
+                "fonts",
+                "clear_subtitle_languages",
+                "omit_subtitle_languages",
+                "clear_subtitle_languages_on_overflow",
+            ):
                 if field in defaults:
                     value[field] = defaults[field]
+                    if field == "clear_subtitle_languages_on_overflow":
+                        value["schema_version"] = 8
         return parse_translation_document(json.dumps(value, ensure_ascii=False))
 
 
@@ -113,6 +120,7 @@ def load_profile(path: Path) -> DeveloperProfile:
             "fonts",
             "clear_subtitle_languages",
             "omit_subtitle_languages",
+            "clear_subtitle_languages_on_overflow",
         }:
             raise TranslationPackageError("unsupported translation default fields")
     settings = parse_runtime_settings(value["runtime"])

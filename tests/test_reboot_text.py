@@ -7,6 +7,142 @@ from pytrtt.formats.reboot_text import CineV2Handler, LocalsV2Handler, SchV1Hand
 from pytrtt.packages.translation import TranslationEntry
 
 
+def test_cine_french_reclamation_preserves_timing_and_other_languages() -> None:
+    handler = CineV2Handler()
+    original = cine(b"0\r[p1]Hello\r1\r[p1]Bonjour\r9\rRussian\r", embedded=True)
+    rebuilt = handler.clear_subtitle_language(original, 1)
+    assert handler.extract(rebuilt, 0) == handler.extract(original, 0)
+    assert handler.extract(rebuilt, 9) == handler.extract(original, 9)
+    assert handler.extract(rebuilt, 1)[0].source == " "
+    assert handler.extract(rebuilt, 1)[0].comment == ("[p1]",)
+    assert handler.clear_subtitle_language(rebuilt, 1) == rebuilt
+
+
+def test_subtitle_exact_capacity_keeps_french_bytes() -> None:
+    from pytrtt.services.translation import _fit_subtitle_resource
+
+    data = cine(b"0\rHello\r1\rBonjour\r", embedded=True)
+    assert (
+        _fit_subtitle_resource(
+            CineV2Handler(),
+            data,
+            boundary=len(data),
+            target_language=0,
+            original_size=len(data),
+            identity="fixture",
+            clear_languages=(1,),
+        )
+        == data
+    )
+
+
+def test_sch_french_reclamation_preserves_segment_structure() -> None:
+    from pytrtt.formats.reboot_text import SchV3Handler
+
+    original = (
+        b"TextEntry\r\nline0\r\n"
+        b'lang_english 1 "(1.0)[p]Hello"\r\n'
+        b'lang_french 1 "(1.0)[p]Bonjour\\(2.0)Monde"  \r\n'
+    )
+    handler = SchV3Handler()
+    rebuilt = handler.clear_subtitle_language(original, 1)
+    assert rebuilt == (
+        b"TextEntry\r\nline0\r\n"
+        b'lang_english 1 "(1.0)[p]Hello"\r\n'
+        b'lang_french 1 "(1.0)[p] \\(2.0) "  \r\n'
+    )
+    assert handler.clear_subtitle_language(rebuilt, 1) == rebuilt
+
+
+@pytest.mark.parametrize("target_language,boundary", [(1, 8300), (0, 8192)])
+def test_subtitle_capacity_rejects_target_clearing_and_insufficient_savings(
+    target_language: int, boundary: int
+) -> None:
+    from pytrtt.packages.translation import TranslationPackageError
+    from pytrtt.services.translation import _fit_subtitle_resource
+
+    data = cine(b"0\r" + b"H" * 200 + b"\r1\r" + b"F" * 200 + b"\r", embedded=True)
+    with pytest.raises(TranslationPackageError, match="boundary|replacement language"):
+        _fit_subtitle_resource(
+            CineV2Handler(),
+            data,
+            boundary=boundary,
+            target_language=target_language,
+            original_size=len(data),
+            identity="fixture",
+            clear_languages=(1,),
+        )
+
+
+@pytest.mark.parametrize("languages,expected", [((1,), (" ", "Russian")), ((9,), ("Bonjour", " "))])
+def test_capacity_clears_only_configured_languages(
+    languages: tuple[int, ...], expected: tuple[str, str]
+) -> None:
+    handler = CineV2Handler()
+    data = cine(b"0\rHello\r1\rBonjour\r9\rRussian\r", embedded=True)
+    rebuilt = handler.clear_subtitle_language(data, languages[0])
+    assert (
+        handler.extract(rebuilt, 1)[0].source,
+        handler.extract(rebuilt, 9)[0].source,
+    ) == expected
+
+
+def test_capacity_can_require_two_languages_and_stops_once_fitting() -> None:
+    from pytrtt.services.translation import _fit_subtitle_resource
+
+    handler = CineV2Handler()
+    data = cine(
+        b"0\rHello\r1\r" + b"F" * 500 + b"\r9\r" + b"R" * 500 + b"\r2\rKeep\r", embedded=True
+    )
+    rebuilt = _fit_subtitle_resource(
+        handler,
+        data,
+        boundary=8500,
+        target_language=0,
+        original_size=len(data),
+        identity="fixture",
+        clear_languages=(1, 9, 2),
+    )
+    assert handler.extract(rebuilt, 0)[0].source == "Hello"
+    assert handler.extract(rebuilt, 1)[0].source == " "
+    assert handler.extract(rebuilt, 9)[0].source == " "
+    assert handler.extract(rebuilt, 2)[0].source == "Keep"
+
+
+def test_capacity_disabled_by_default() -> None:
+    from pytrtt.packages.translation import TranslationPackageError
+    from pytrtt.services.translation import _fit_subtitle_resource
+
+    data = cine(b"0\rHello\r1\r" + b"F" * 500 + b"\r", embedded=True)
+    with pytest.raises(TranslationPackageError, match="without safe reclamation"):
+        _fit_subtitle_resource(
+            CineV2Handler(),
+            data,
+            boundary=8500,
+            target_language=0,
+            original_size=len(data),
+            identity="fixture",
+        )
+
+
+def test_capacity_respects_priority_without_sorting_languages() -> None:
+    from pytrtt.services.translation import _fit_subtitle_resource
+
+    handler = CineV2Handler()
+    data = cine(b"0\rHello\r1\r" + b"F" * 500 + b"\r9\r" + b"R" * 500 + b"\r", embedded=True)
+    rebuilt = _fit_subtitle_resource(
+        handler,
+        data,
+        boundary=9000,
+        target_language=0,
+        original_size=len(data),
+        identity="fixture",
+        clear_languages=(9, 1),
+    )
+    assert handler.extract(rebuilt, 9)[0].source == " "
+    assert handler.extract(rebuilt, 1)[0].source == "F" * 500
+
+
 def cine(text: bytes, *, embedded: bool = False) -> bytes:
     if embedded:
         payload = b"ENIC" + struct.pack("<II", 13, 100) + bytes(96)

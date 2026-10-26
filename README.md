@@ -362,7 +362,7 @@ Steam build: `9575745`. **Status:** 🟡 Partial Hungarian draft; interface fill
 | Resolved filenames | 🟡 85.24%; 6,187 names missing; explicit hash labels do not count as resolved names |
 | Text extraction | 🟡 27,113 interface + 28,845 subtitle records; named + detected SCH; other content unclassified |
 | Translation / origin | 🟡 Legacy import + AI additions; 27,111 interface fields filled; subtitle draft incomplete |
-| Proofreading | 🟡 Incomplete; filled subtitle fields include untranslated English and French imports |
+| Proofreading | 🟡 Incomplete; audited French imports cleared, remaining subtitle imports need review |
 | Binary format / need | 🔴 Font localization need not investigated |
 | Binary localization | 🔴 No maintained localized assets; appearance and font needs still require verification |
 | Game-specific guidance | 🔴 No; shared guidance only |
@@ -380,15 +380,25 @@ Unknown binary content prevents a claim of complete game text coverage.
 
 All nonblank interface fields are filled; two blank source fields remain null. Exact resource/record/source matches
 supplied 19,623 repeated-layer fields, followed by 73 translated fields. All 27,113 interface records passed binary
-readback. The opening ice-climb scene adds 79 distinct Hungarian translations across 239 subtitle records;
-217 affected CINE/SCH resources passed readback with timing, speaker markers and other languages preserved.
-There are 8,995 filled subtitle fields, but 6,628 still equal the English source; 19,219 nonblank subtitle fields
-remain null. Existing French and Hungarian text was not changed by this scene batch. These counts are not a claim
-of Hungarian subtitle completeness.
+readback. The first opening ice-climb scene adds 79 distinct Hungarian translations across 239 subtitle records;
+seven further scenes and the expedition movie add 155 distinct translations across another 470 records.
+Their 217 and 349 affected CINE/SCH resources passed readback with timing, speaker markers and other languages preserved.
+The scene batches preserved existing translations. A subsequent cleanup cleared 730 exact, audited French-slot
+imports from the Hungarian draft to null; French text is not a translation donor. The French language slot may
+host Hungarian output, but its original content is not evidence of Hungarian translation.
+There are now 8,618 filled subtitle fields, but 6,517 still equal the English source; 19,596 nonblank subtitle fields
+remain null. Other existing translations were preserved. These counts are not a claim of Hungarian subtitle completeness.
 
 The locals/3 and SCH/3 writers are implemented. An earlier partial package passed GUI-backend installation,
 byte-exact restoration and a post-restore translation check on a copy. The newly expanded package has targeted
 in-memory resource verification, not a new full installation/restore cycle or in-game appearance check.
+
+Optional schema-8 `clear_subtitle_languages_on_overflow` lists subtitle slots that may be cleared, in priority order,
+only if the translated resource exceeds the archive-part boundary. It is disabled by default; no language is implicit.
+CINE/2 and verified SCH/3 slots support clearing text to spaces while preserving records and timing/speaker markers.
+The replacement slot is protected. Insufficient savings or unsupported formats fail safely.
+See the [translation configuration guide](docs/TRANSLATING.md#3-translate-the-json).
+This capacity fallback has synthetic install/detect/byte-exact restore coverage, not in-game verification.
 
 **Remaining:** continue subtitle translation and import repair, identify intentional foreign-language exceptions,
 recover missing names, inspect unclassified resources, investigate fonts, verify the final package and proofread.

@@ -4,7 +4,7 @@
   "steam_build_id": "9575745",
   "source_language": "en",
   "target_language": "hu",
-  "status": "Text writers and an earlier partial-package copy round trip verified; interface translations propagated across exact matching layers. Subtitle import contains English/French values and is not verified Hungarian content.",
+  "status": "Text writers and an earlier partial-package copy round trip verified; interface fields filled. Audited French imports cleared from the HU draft; remaining subtitle imports still require language/content review.",
   "interface_layer_fill_20261026": {
     "report": "work/runs/rottr/9575745/interface-fill-20261026/report.json",
     "before_sha256": "ef18ba3ed1eafa153cca45b11ed0bff98996f021454fc97af0cd4bed195d36d5",
@@ -65,6 +65,37 @@
       "binary_readback_and_idempotence_passed": true,
       "game_installations_modified": false,
       "in_game_timing_verified": false
+    },
+    {
+      "scenes": [
+        "110_av_010_expedition",
+        "110_av_045_spine_2",
+        "110_av_050_almost_there",
+        "110_av_060_waterfall_climb",
+        "110_av_061_waterfall_climb_2",
+        "110_av_065_view_from_the_top",
+        "110_av_100_gi_demo"
+      ],
+      "linked_movie": "levelload_14expedition.sch",
+      "report": "work/runs/rottr/9575745/subtitles-iceclimb-rest-20261026/report.json",
+      "method": "AI-assisted scene-context translation, including matching expedition movie captions. Only null or source-equal fields changed; existing French and Hungarian translations retained. No independent linguistic or in-game sign-off.",
+      "before_sha256": "61f2502a4d8b62f8daec26f4b39a60e3b4aa45741745c07c3c19c0479e59e139",
+      "after_sha256": "93a93df52b7b2ed61cfc79afcbfaac924e198724b8cb2c19e6403539148b8d2a",
+      "distinct_sources": 155,
+      "changed_records": 470,
+      "targeted_tests_passed": 43,
+      "previously_null": 353,
+      "previously_source_equal": 117,
+      "verified_resources": 349,
+      "subtitle_fields_filled": 9348,
+      "subtitle_null_nonblank": 18866,
+      "subtitle_null_blank": 631,
+      "subtitle_source_equal_nonblank": 6517,
+      "existing_french_and_hungarian_unchanged": true,
+      "source_timing_comments_other_languages_unchanged": true,
+      "binary_readback_and_idempotence_passed": true,
+      "game_installations_modified": false,
+      "in_game_timing_verified": false
     }
   ],
   "steam_source_corrections": {
@@ -72,7 +103,14 @@
     "resource_hash": "D33DA77A",
     "archive_family": "layer11",
     "approved_by_user": true,
-    "entry_ids": [235, 1984, 6739, 7136, 7138, 7144],
+    "entry_ids": [
+      235,
+      1984,
+      6739,
+      7136,
+      7138,
+      7144
+    ],
     "details": "Corrected six imported Hungarian translations against the maintained Steam English source. Preserved the blank line at 235, removed unsupported button placeholders at 1984/6739/7136/7138, restored the pause-menu calibration instruction, and restored the left VR controller and second input alternative at 7144. Source text and metadata are unchanged."
   },
   "counts": {
@@ -84,7 +122,7 @@
     "distinct_source_texts": 15497,
     "nonempty_distinct_source_texts": 15496,
     "empty_source_entries": 631,
-    "translated_entries": 36106,
+    "translated_entries": 35729,
     "empty_resources": 8874,
     "skipped_resources": [],
     "unresolved_sch_hashes": 987,
@@ -1300,5 +1338,17 @@
     "conflicting_records": 0,
     "canonical_only_unique_source_values": 684,
     "result": "The Steam English export is a strict superset of the Epic export. Keeping en.json loses no Epic text; the duplicate Epic export was removed from maintained translation data."
+  },
+  "french_import_cleanup_20261027": {
+    "before_sha256": "93a93df52b7b2ed61cfc79afcbfaac924e198724b8cb2c19e6403539148b8d2a",
+    "after_sha256": "a9c5fb418c074a4dec6c8e74134e8e7362fcdfe93d38a4e885f332e8d3ef3293",
+    "cleared_records": 730,
+    "method": "Exact archive family/hash/locale/record ID, English source and current translation matched to the original French-slot audit; only translation fields set to null. French is not a translation donor.",
+    "subtitle_fields_filled": 8618,
+    "subtitle_nonblank_missing": 19596,
+    "subtitle_source_equal_nonblank": 6517,
+    "other_fields_unchanged": true,
+    "game_installations_modified": false,
+    "report": "work/runs/rottr/9575745/french-import-cleanup-20261027/report.json"
   }
 }

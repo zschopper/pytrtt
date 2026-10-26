@@ -13,10 +13,17 @@
   Surface these phases and diagnostic identities so long operations and genuine validation failures can be distinguished.
 - Rise was blocked by missing text writers, and null/filled counts hid repeated-layer gaps and wrong-language imports.
   Enable safe writes, fill exact matches, and track language/content validation separately from field population.
+- Clear 730 audited original French-slot values from the Rise Hungarian draft rather than treating them as translations.
+  Preserve English sources and other translations; the French slot is an output location, not a translation donor.
 - Trial/full-game source and timing differences required explicit reconciliation rather than blind translation reuse.
   Preserve target-build identities and confirm that restoration leaves the package installable again.
 
 ### Added
+
+- Optional schema-8 `clear_subtitle_languages_on_overflow` enables ordered, per-document, multi-language capacity
+  reclamation for CINE/2 and verified SCH/3 slots. Default off; stop clearing as soon as the translated resource fits.
+  Reject protected target slots, contradictory configuration, unsupported formats and insufficient reclamation.
+  Log resource identities and sizes; preserve timing, speaker markers and the replacement language.
 
 - A setup-style graphical client with Steam discovery, manual folder selection, translation checks, installation,
   restoration, interrupted-transaction recovery, and English/Hungarian interface messages.
@@ -54,6 +61,8 @@
   through GUI-backend installation, byte-exact restoration and renewed translation availability on a copy.
 - Expanded the partial Rise draft: 19,623 exact-match interface fields, 73 remaining interface translations and
   239 subtitle records from the opening ice-climb scene. Existing French text remains unchanged; subtitle work continues.
+- Translated another 470 Rise subtitle records across seven ice-climb scenes and the matching expedition movie;
+  preserved source records, subtitle timings and existing French/Hungarian translations.
 - Updated Anniversary, Legend, and Legend Demo translation data, provenance, and user-reported verification status.
 - Extended development support to Python 3.14 alongside Python 3.13.
 - Expanded translation documentation, contributor credits, binary-safety guidance, and per-game status cards with
@@ -79,6 +88,8 @@
   translation memory, GUI workflows, and independent installation/restoration of identical game copies.
 - The complete development scope, including the completed Anniversary Demo project, passed 450 tests with
   19 optional integration tests deselected.
+- The subsequent seven-scene Rise subtitle batch passed 43 targeted tests and binary readback of 349 resources;
+  no new full game-copy cycle or in-game timing test was run for that batch.
   Ruff lint, formatting, mypy and Markdown checks passed. Maintained-package regression tests guard source identities,
   translation coverage, current package hashes and font metadata.
 - Game-specific installation, restoration, and user-reported appearance checks remain documented in the individual

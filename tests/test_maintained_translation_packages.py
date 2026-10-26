@@ -57,21 +57,27 @@ def test_rise_current_coverage_and_package_hash_match_provenance() -> None:
     raw = (directory / "hu.json").read_bytes()
     document = parse_translation_document(raw.decode("utf-8"))
     provenance = json.loads((directory / "provenance.json").read_text(encoding="utf-8"))
-    latest = provenance["subtitle_scene_batches_20261026"][-1]
+    latest = provenance["french_import_cleanup_20261027"]
     assert hashlib.sha256(raw).hexdigest() == latest["after_sha256"]
     interface = [entry for resource in document.menu for entry in resource.entries]
     subtitles = [entry for resource in document.subtitles for entry in resource.entries]
     assert len(interface) == 27113
     assert sum(entry.translation is not None for entry in interface) == 27111
     assert all(entry.translation is not None for entry in interface if entry.source.strip())
-    assert sum(entry.translation is not None for entry in subtitles) == 8995
+    assert latest["cleared_records"] == 730
+    assert sum(entry.translation is not None for entry in subtitles) == 8618
+    assert (
+        sum(entry.translation is None and bool(entry.source.strip()) for entry in subtitles)
+        == latest["subtitle_nonblank_missing"]
+        == 19596
+    )
     assert (
         sum(entry.translation is not None for entry in interface + subtitles)
         == provenance["counts"]["translated_entries"]
     )
     assert (
         sum(entry.translation == entry.source and bool(entry.source.strip()) for entry in subtitles)
-        == 6628
+        == 6517
     )
 
 

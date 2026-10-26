@@ -656,7 +656,9 @@
     "user_verification": {
       "date": "2026-10-26",
       "result": "User reported correct TR2013 accents after installation, then completed GUI restoration and observed translation available for installation again.",
-      "limits": "User-observed cycle, not an independent byte-exact restoration audit or exhaustive screen/scene review. Updating an older translation package remains a separate open GUI issue."
+      "final_acceptance": "The user rechecked TR2013 on 2026-10-26 and reported that all accents were correct. Issue #7 was closed as completed after this confirmation.",
+      "issue": "https://github.com/zschopper/pytrtt/issues/7",
+      "limits": "User-observed cycle and final accent acceptance, not an independent byte-exact restoration audit, complete linguistic review or exhaustive font-consumer inventory. The separate package-update GUI recovery defect was fixed in commit d6fdd15324847a7a8c942db0c28528df528059cd."
     }
   },
   "unicode_menu_update": {

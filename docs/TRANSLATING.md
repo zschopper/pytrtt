@@ -150,6 +150,30 @@ Preserve keyed record IDs and keys together. The TIGER v5 handler can append rep
 uncompressed keyed-locals resources and update their indexes through the common transaction journal. This does not
 claim support for compressed resources, other embedded formats, or uninspected builds.
 
+Schema version 8 adds optional, document-level capacity fallback configuration:
+
+```json
+"clear_subtitle_languages_on_overflow": [1, 9]
+```
+
+These are numeric subtitle-slot IDs, not archive locale masks or translation-language codes. Use the selected
+format's verified language mapping and `metadata.runtime.languages.*.subtitle_language` values; do not assume
+IDs are universal across formats. For CINE/2, slot `1` is French and slot `9` is Russian.
+The list is ordered: only when the translated resource exceeds the archive-part boundary does planning clear
+the first listed language, then subsequent languages if still necessary, stopping as soon as the resource fits.
+Each cleared segment becomes one space while its record, timing and speaker markers remain intact.
+Omitting the field or using `[]` disables automatic clearing. No language, including French, is implicitly selected.
+The replacement language cannot appear in the list, even if clearing would not be needed. Duplicate IDs and
+overlap with unconditional `clear_subtitle_languages` or `omit_subtitle_languages` are rejected.
+Conditional clearing is separate from those existing unconditional directives and from translation imports.
+
+CINE/2 supports numeric slots in its language table; SCH/3 currently supports the verified English (`0`) and
+French (`1`) rows only. Other formats or unsupported slot mappings fail safely if reclamation is required.
+An ordinary move to another archive part does not trigger clearing. Insufficient savings also fails without applying
+any writes. Diagnostics record resource identities, the boundary, original/translated sizes, and each clearing step.
+Dry run and application use the same planned bytes; journaled restoration retains the original language data.
+The feature has synthetic archive round-trip coverage, not general in-game verification.
+
 A missing `translation` value leaves the original game text in place and is reported as incomplete. An
 explicit empty string (`"translation": ""`) writes one space, which can intentionally hide a string. Do not
 leave a value empty by accident.

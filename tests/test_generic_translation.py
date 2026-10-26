@@ -50,6 +50,72 @@ def runtime_value() -> dict[str, object]:
     }
 
 
+@pytest.mark.parametrize(
+    "french_size,russian_size,translation_size,cleared",
+    [(14000, 0, 14000, True), (100, 0, 14000, False), (6000, 6000, 20000, True)],
+)
+def test_french_capacity_fallback_roundtrip(
+    tmp_path: Path, french_size: int, russian_size: int, translation_size: int, cleared: bool
+) -> None:
+    from pytrtt.formats.reboot_text import CineV2Handler
+    from tests.test_reboot_text import cine
+
+    game = tmp_path / "game"
+    game.mkdir()
+    pairs = b"0\rHello\r1\r" + b"F" * french_size + b"\r"
+    if russian_size:
+        pairs += b"9\r" + b"R" * russian_size + b"\r"
+    content = cine(pairs, embedded=True)
+    raw = bytearray(2048 + len(content))
+    raw[:24] = struct.pack("<6I", 1, 0x87654321, len(content), 1, 0xFFFFFFE1, 99)
+    raw[2048:] = content
+    original = bytes(raw)
+    (game / "bigfile.000").write_bytes(original)
+    settings = runtime_value()
+    settings["archive"] = {"format": "bigfile", "version": 1, "boundary": 32768, "data_subdir": "."}
+    settings["resource_types"] = [
+        {"section": "subtitles", "pattern": "*.mul", "format": "cine", "version": 2}
+    ]
+    doc = replace(
+        document(),
+        menu=(),
+        clear_subtitle_languages_on_overflow=(1, 9),
+        runtime=parse_runtime_settings(settings),
+        subtitles=(
+            TranslationResource(
+                "87654321", "intro.mul", (TranslationEntry(0, "Hello", "H" * translation_size),)
+            ),
+        ),
+    )
+    doc = parse_translation_document(serialize_translation_document(doc))
+    service = TranslationService()
+    build = service.plan(game, doc, package_dir=tmp_path)
+    assert build.plan is not None
+    rewritten = next(w.data for w in build.plan.writes if w.kind == "resource")
+    handler = CineV2Handler()
+    assert handler.extract(rewritten, 0)[0].source == "H" * translation_size
+    assert handler.extract(rewritten, 1)[0].source == (" " if cleared else "F" * french_size)
+    if russian_size:
+        assert handler.extract(rewritten, 9)[0].source == " "
+    transaction = tmp_path / "transaction"
+    service.apply(build, transaction)
+    assert service.is_translation_installed(game, doc, package_dir=tmp_path)
+    service.restore(game, transaction, doc.runtime)
+    service.restore(game, transaction, doc.runtime)
+    assert (game / "bigfile.000").read_bytes() == original
+    assert service.plan(game, doc, package_dir=tmp_path).plan is not None
+
+
+def test_conditional_clearing_rejects_replacement_language_before_opening_archive(
+    tmp_path: Path,
+) -> None:
+    doc = replace(document(), clear_subtitle_languages_on_overflow=(1, 0))
+    with pytest.raises(TranslationPackageError, match="replacement language"):
+        TranslationService().plan(tmp_path / "missing", doc, package_dir=tmp_path)
+    with pytest.raises(TranslationPackageError, match="replacement language"):
+        parse_translation_document(serialize_translation_document(doc))
+
+
 def make_archive(directory: Path) -> bytes:
     menu = bytes.fromhex("000000000200000000000000100000004100")
     raw = b"0\rHello\r1\rBonjour\r"

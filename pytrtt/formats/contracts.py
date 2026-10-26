@@ -28,6 +28,13 @@ class TextOptions:
 
 
 @runtime_checkable
+class SubtitleLanguageReclaimer(Protocol):
+    """Optional verified language-text removal, retaining subtitle structure."""
+
+    def clear_subtitle_language(self, data: bytes, language: int) -> bytes: ...
+
+
+@runtime_checkable
 class TextFormatHandler(Protocol):
     """File-format logic has no knowledge of games, archive offsets, or user interfaces."""
 

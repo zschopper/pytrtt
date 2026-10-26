@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import re
 import struct
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 from pytrtt.formats.contracts import TextOptions
 from pytrtt.packages.translation import TranslationEntry
@@ -178,6 +178,10 @@ def _cine_source(pairs: tuple[tuple[int, str], ...], text: str) -> tuple[str, st
 
 
 class CineV2Handler:
+    def clear_subtitle_language(self, data: bytes, language: int) -> bytes:
+        entries = tuple(replace(entry, translation=" ") for entry in self.extract(data, language))
+        return self.write(data, entries, TextOptions(language))
+
     def extract(self, data: bytes, subtitle_language: int) -> tuple[TranslationEntry, ...]:
         result = []
         for number, block in enumerate(_cine_blocks(data)):
@@ -343,6 +347,10 @@ class SchV2Handler(SchV1Handler):
 
 class SchV3Handler:
     """SCH timed segments, preserving an optional Version 1 header line."""
+
+    def clear_subtitle_language(self, data: bytes, language: int) -> bytes:
+        entries = tuple(replace(entry, translation=" ") for entry in self.extract(data, language))
+        return self.write(data, entries, TextOptions(language))
 
     def extract(self, data: bytes, subtitle_language: int) -> tuple[TranslationEntry, ...]:
         lines = data.splitlines()

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 from collections.abc import Callable, Mapping
 from contextlib import nullcontext
 from dataclasses import dataclass, replace
@@ -18,7 +19,7 @@ from pytrtt.archives.contracts import (
     ResourceReplacement,
 )
 from pytrtt.config import RuntimeSettings, parse_runtime_settings
-from pytrtt.formats.contracts import TextOptions
+from pytrtt.formats.contracts import SubtitleLanguageReclaimer, TextFormatHandler, TextOptions
 from pytrtt.packages.translation import (
     FontAsset,
     TranslationDocument,
@@ -27,6 +28,58 @@ from pytrtt.packages.translation import (
     TranslationResource,
 )
 from pytrtt.registry import HandlerResolver, default_registry
+
+_LOGGER = logging.getLogger(__name__)
+
+
+def _fit_subtitle_resource(
+    handler: TextFormatHandler,
+    data: bytes,
+    *,
+    boundary: int,
+    target_language: int,
+    original_size: int,
+    identity: str,
+    clear_languages: tuple[int, ...] = (),
+) -> bytes:
+    """Reclaim only opted-in language slots, in priority order, until the resource fits."""
+    if target_language in clear_languages:
+        raise TranslationPackageError("cannot conditionally clear the replacement language")
+    if len(data) <= boundary:
+        _LOGGER.debug(
+            "Subtitle capacity: %s boundary=%d original_bytes=%d translated_bytes=%d "
+            "cleared_languages=[] fits=true",
+            identity,
+            boundary,
+            original_size,
+            len(data),
+        )
+        return data
+    if not clear_languages or not isinstance(handler, SubtitleLanguageReclaimer):
+        raise TranslationPackageError(
+            f"subtitle exceeds boundary without safe reclamation: {identity}"
+        )
+    reclaimed = data
+    for language in clear_languages:
+        previous_size = len(reclaimed)
+        reclaimed = handler.clear_subtitle_language(reclaimed, language)
+        _LOGGER.info(
+            "Subtitle capacity fallback: %s boundary=%d original_bytes=%d translated_bytes=%d "
+            "language=%d before_clear_bytes=%d after_clear_bytes=%d fits=%s",
+            identity,
+            boundary,
+            original_size,
+            len(data),
+            language,
+            previous_size,
+            len(reclaimed),
+            len(reclaimed) <= boundary,
+        )
+        if len(reclaimed) <= boundary:
+            return reclaimed
+    raise TranslationPackageError(
+        f"subtitle still exceeds boundary after configured language clearing: {identity}"
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -264,7 +317,9 @@ class TranslationService:
         source = runtime.language(document.metadata.source_language)
         target = runtime.language(runtime.replacement_language)
         if target.subtitle_language in (
-            document.clear_subtitle_languages | document.omit_subtitle_languages
+            document.clear_subtitle_languages
+            | document.omit_subtitle_languages
+            | frozenset(document.clear_subtitle_languages_on_overflow)
         ):
             raise TranslationPackageError("cannot clear or omit the replacement language")
         archive = self._open(directory, runtime)
@@ -405,6 +460,19 @@ class TranslationService:
                         f"entry_ids={missing_target_ids}"
                     )
                 data = handler.write(original, resource.entries, options)
+                if section == "subtitles":
+                    data = _fit_subtitle_resource(
+                        handler,
+                        data,
+                        boundary=runtime.archive.boundary,
+                        target_language=target.subtitle_language,
+                        clear_languages=document.clear_subtitle_languages_on_overflow,
+                        original_size=len(original),
+                        identity=(
+                            f"hash={resource.resource_hash} family={target_ref.archive_family} "
+                            f"locale={target_ref.locale:08X} path={resource.resource_path!r}"
+                        ),
+                    )
                 if data != original:
                     label = (
                         ("Menu" if section == "menu" else "Subtitle") + " " + resource.resource_hash

@@ -193,6 +193,46 @@ def test_document_round_trips_cleared_and_omitted_subtitle_languages() -> None:
     assert '"omit_subtitle_languages": [\n    1\n  ]' in serialized
 
 
+def test_document_round_trips_ordered_optional_capacity_languages() -> None:
+    document = TranslationDocument(
+        TranslationMetadata("fixture", "1", "en", "hu", "tiger", 4),
+        clear_subtitle_languages_on_overflow=(9, 1),
+    )
+    serialized = serialize_translation_document(document)
+    assert json.loads(serialized)["schema_version"] == 8
+    assert json.loads(serialized)["clear_subtitle_languages_on_overflow"] == [9, 1]
+    assert parse_translation_document(serialized) == document
+    disabled = parse_translation_document(METADATA_ONLY)
+    assert disabled.clear_subtitle_languages_on_overflow == ()
+    assert "clear_subtitle_languages_on_overflow" not in serialize_translation_document(disabled)
+
+
+@pytest.mark.parametrize("value", [[True], [-1], [256], [1, 1], "fr", None])
+def test_document_rejects_invalid_capacity_languages(value: object) -> None:
+    root = json.loads(METADATA_ONLY)
+    root["schema_version"] = 8
+    root["clear_subtitle_languages_on_overflow"] = value
+    with pytest.raises(TranslationPackageError):
+        parse_translation_document(json.dumps(root))
+
+
+def test_document_capacity_languages_require_schema_8() -> None:
+    root = json.loads(METADATA_ONLY)
+    root["clear_subtitle_languages_on_overflow"] = [1]
+    with pytest.raises(TranslationPackageError, match="schema version 8"):
+        parse_translation_document(json.dumps(root))
+
+
+@pytest.mark.parametrize("field", ["clear_subtitle_languages", "omit_subtitle_languages"])
+def test_document_rejects_overlapping_conditional_and_unconditional_actions(field: str) -> None:
+    root = json.loads(METADATA_ONLY)
+    root["schema_version"] = 8
+    root["clear_subtitle_languages_on_overflow"] = [1, 9]
+    root[field] = [9]
+    with pytest.raises(TranslationPackageError, match="overlap"):
+        parse_translation_document(json.dumps(root))
+
+
 @pytest.mark.parametrize(
     "field,value",
     [
