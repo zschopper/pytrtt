@@ -3353,7 +3353,8 @@
         {
           "id": 536,
           "source": "DLC OUTFIT 08",
-          "key": "dlc_outfit_08_name"
+          "key": "dlc_outfit_08_name",
+          "translation": "DLC-ÖLTÖZET 08"
         },
         {
           "id": 537,
@@ -8824,7 +8825,8 @@
         {
           "id": 1429,
           "source": "Jump towards a zip line to attach. USE <font color=\"#FFFFFF\"></font> to stop sliding down the line. PRESS <font color=\"#BE1E14\"></font> to detatch.",
-          "key": "sg_desc_traversal_zip_lines"
+          "key": "sg_desc_traversal_zip_lines",
+          "translation": "Ugorj a kötélpálya felé, hogy elkapd. HASZNÁLD a(z) <font color=\"#FFFFFF\"></font> gombot, hogy megállítsd a lefelé csúszást. NYOMJ <font color=\"#BE1E14\"></font> gombot, hogy elengedd a kötelet."
         },
         {
           "id": 1430,
@@ -9210,7 +9212,8 @@
         {
           "id": 1493,
           "source": "Incendiary shotgun shells that ignite flammable items and unarmored enemies.",
-          "key": "craft_dragonfireshells_desc"
+          "key": "craft_dragonfireshells_desc",
+          "translation": "Gyújtólőszer vadászpuskához, amely lángra lobbantja az éghető tárgyakat és a páncélozatlan ellenségeket."
         },
         {
           "id": 1494,
@@ -13804,7 +13807,8 @@
         {
           "id": 2247,
           "source": "DLC Outfit 10 description flavour.",
-          "key": "dlc_outfit_10_desc_flavour"
+          "key": "dlc_outfit_10_desc_flavour",
+          "translation": "DLC-öltözet 10 hangulati leírása."
         },
         {
           "id": 2248,
@@ -18787,7 +18791,8 @@
         {
           "id": 3067,
           "source": "BLOOD AND BONE",
-          "key": "dlc_outfit_07_name"
+          "key": "dlc_outfit_07_name",
+          "translation": "VÉR ÉS CSONT"
         },
         {
           "id": 3068,
@@ -18846,7 +18851,8 @@
         {
           "id": 3077,
           "source": "DLC Outfit 08 description.",
-          "key": "dlc_outfit_08_desc"
+          "key": "dlc_outfit_08_desc",
+          "translation": "DLC-öltözet 08 leírása."
         },
         {
           "id": 3078,
@@ -18881,12 +18887,14 @@
         {
           "id": 3083,
           "source": "DLC Outfit 08 description flavour.",
-          "key": "dlc_outfit_08_desc_flavour"
+          "key": "dlc_outfit_08_desc_flavour",
+          "translation": "DLC-öltözet 08 hangulati leírása."
         },
         {
           "id": 3084,
           "source": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Developed by Eidos Interactive Corporation. All rights reserved.\nSHADOW OF THE TOMB RAIDER, TOMB RAIDER, CRYSTAL DYNAMICS, the CRYSTAL DYNAMICS logo, EIDOS-MONTRÉAL, the EIDOS-MONTRÉAL logo, and LARA CROFT are registered trademarks or trademarks of Square Enix Limited. SQUARE ENIX and the SQUARE ENIX logo are registered trademarks or trademarks of Square Enix Holdings Co., Ltd.  Powered by Wwise © 2006–2018 Audiokinetic Inc. All rights reserved. Portions of this software Copyright © 2018 Jenkins Software, LLC. All rights reserved. Used under license. Uses Scaleform GFx © 2008 Scaleform Corporation. All rights reserved. Uses Bink Video. Copyright © 1997-2018 by RAD Game Tools, Inc. Powered by VMem by PureDev Software. Speech Graphics Logo and Speech Graphics Ltd © All rights reserved. Autodesk ® software. © 2018 Autodesk, Inc. Uses Megascans ®, Copyright © -2018 Quixel AB. Dolby and the double-D symbol are trademarks of Dolby Laboratories. [ESRB] The ratings icon is a registered trademark of the Entertainment Software Association. ©2018 Valve Corporation. Steamworks and the Steamworks logo are trademarks and/or registered trademarks of Valve Corporation. Nixxes and the Nixxes logo are trademarks of Nixxes Software BV. All other trademarks are the property of their respective owners. ",
           "key": "legalmenu_legaltext_pc_end_row",
+          "translation": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Fejlesztő: Eidos Interactive Corporation. Minden jog fenntartva.\nA SHADOW OF THE TOMB RAIDER, a TOMB RAIDER, a CRYSTAL DYNAMICS, a CRYSTAL DYNAMICS logó, az EIDOS-MONTRÉAL, az EIDOS-MONTRÉAL logó és LARA CROFT a Square Enix Limited bejegyzett védjegyei vagy védjegyei. A SQUARE ENIX és a SQUARE ENIX logó a Square Enix Holdings Co., Ltd. bejegyzett védjegyei vagy védjegyei. Wwise technológiával © 2006–2018 Audiokinetic Inc. Minden jog fenntartva. A szoftver egyes részei: Copyright © 2018 Jenkins Software, LLC. Minden jog fenntartva. Licenc alapján felhasználva. A szoftver Scaleform GFx technológiát használ © 2008 Scaleform Corporation. Minden jog fenntartva. A szoftver Bink Video technológiát használ. Copyright © 1997-2018 RAD Game Tools, Inc. A PureDev Software VMem technológiájával. Speech Graphics logó és Speech Graphics Ltd © Minden jog fenntartva. Autodesk ® szoftver. © 2018 Autodesk, Inc. A szoftver Megascans ® technológiát használ, Copyright © -2018 Quixel AB. A Dolby és a dupla D szimbólum a Dolby Laboratories védjegyei. [ESRB] A korhatár-besorolási ikon az Entertainment Software Association bejegyzett védjegye. ©2018 Valve Corporation. A Steamworks és a Steamworks logó a Valve Corporation védjegyei és/vagy bejegyzett védjegyei. A Nixxes és a Nixxes logó a Nixxes Software BV védjegyei. Minden más védjegy a saját tulajdonosának tulajdona. ",
           "comment": [
             "Import candidate reason: key_contains_menu"
           ]
@@ -19041,7 +19049,8 @@
         {
           "id": 3109,
           "source": "You have stolen Q'orianka's clothing. I hope you are satisfied. Now she is cold, naked, and ashamed.",
-          "key": "dlc_outfit_10_desc"
+          "key": "dlc_outfit_10_desc",
+          "translation": "Elloptad Q'orianka ruháját. Remélem, elégedett vagy. Most fázik, meztelen, és szégyelli magát."
         },
         {
           "id": 3110,
@@ -32749,7 +32758,8 @@
         {
           "id": 5345,
           "source": "That's Isa's viewpoint, too.//[2.696]// Anyway, there's an old blind man who lives here, named Manu, who's full of these kinds of stories.//[8.324]// He convinced her there's a secret crypt hidden around here, and last night she asked me to come with her and find it. //[11.830]//I refused, and we got into the old fight.//[17.340]// It ended with her calling me a hidebound coward, and me calling her a... a foolish child.",
-          "key": "150_mi_mission_09_m09_010_guillermo_con_new_spanish_male_02_6ecdc637_5864_4f96_8389_7720d75cf242"
+          "key": "150_mi_mission_09_m09_010_guillermo_con_new_spanish_male_02_6ecdc637_5864_4f96_8389_7720d75cf242",
+          "translation": "Isa is így gondolja. //[2.696]// Egyébként él itt egy Manu nevű öreg, vak ember, aki rengeteg ilyen történetet ismer. //[8.324]// Meggyőzte Isát, hogy a közelben rejtőzik egy titkos kripta. A lány tegnap este megkért, hogy menjek vele megkeresni. //[11.830]// Visszautasítottam, és megint a szokásos veszekedés lett belőle. //[17.340]// Azzal végződött, hogy gyáva vaskalaposnak nevezett, én pedig őt... ostoba gyereknek."
         },
         {
           "id": 5346,
@@ -54367,7 +54377,8 @@
         {
           "id": 8880,
           "source": "Happy birthday Lara.",
-          "key": "dated_happy_birthday"
+          "key": "dated_happy_birthday",
+          "translation": "Boldog Születésnapot Lara!"
         },
         {
           "id": 8881,
@@ -54756,7 +54767,8 @@
         {
           "id": 8945,
           "source": "Wait for streaming",
-          "key": "waitforstreaming"
+          "key": "waitforstreaming",
+          "translation": "Várakozás az adatok betöltésére"
         },
         {
           "id": 8946,
@@ -79847,7 +79859,8 @@
         {
           "id": 13033,
           "source": " HOLD <font color=\"#FFFFFF\"></font> to sprint. Does not affect leap distance",
-          "key": "sprint_action_desc"
+          "key": "sprint_action_desc",
+          "translation": "TARTSD NYOMVA a(z) <font color=\"#FFFFFF\"></font> gombot a sprinteléshez. Nem befolyásolja az ugrás távolságát."
         },
         {
           "id": 13034,
@@ -84224,7 +84237,8 @@
         {
           "id": 13748,
           "source": "Craft incendiary shotgun shells that wreak havoc by lighting enemies on fire and igniting other flammable objects.",
-          "key": "skill_desc_dragonfire_crafter"
+          "key": "skill_desc_dragonfire_crafter",
+          "translation": "Készíts gyújtólőszert vadászpuskához, amellyel pusztítást végezhetsz: lángra lobbanthatod az ellenségeket és más éghető tárgyakat."
         },
         {
           "id": 13749,
@@ -87764,6 +87778,7 @@
           "id": 14332,
           "source": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Developed by Eidos Interactive Corporation. All rights reserved.\nSHADOW OF THE TOMB RAIDER, TOMB RAIDER, CRYSTAL DYNAMICS, the CRYSTAL DYNAMICS logo, EIDOS-MONTRÉAL, the EIDOS-MONTRÉAL logo, and LARA CROFT are registered trademarks or trademarks of Square Enix Limited. SQUARE ENIX and the SQUARE ENIX logo are registered trademarks or trademarks of Square Enix Holdings Co., Ltd.  Powered by Wwise © 2006–2018 Audiokinetic Inc. All rights reserved. Portions of this software Copyright © 2018 Jenkins Software, LLC. All rights reserved. Used under license. Uses Scaleform GFx © 2008 Scaleform Corporation. All rights reserved. Uses Bink Video. Copyright © 1997-2018 by RAD Game Tools, Inc. Powered by VMem by PureDev Software. Speech Graphics Logo and Speech Graphics Ltd © All rights reserved. Autodesk ® software. © 2018 Autodesk, Inc. Uses Megascans ®, Copyright © -2018 Quixel AB. Dolby and the double-D symbol are trademarks of Dolby Laboratories. Nixxes and the Nixxes logo are trademarks of Nixxes Software BV. All other trademarks are the property of their respective owners. ",
           "key": "legalmenu_legaltext",
+          "translation": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Fejlesztő: Eidos Interactive Corporation. Minden jog fenntartva.\nA SHADOW OF THE TOMB RAIDER, a TOMB RAIDER, a CRYSTAL DYNAMICS, a CRYSTAL DYNAMICS logó, az EIDOS-MONTRÉAL, az EIDOS-MONTRÉAL logó és LARA CROFT a Square Enix Limited bejegyzett védjegyei vagy védjegyei. A SQUARE ENIX és a SQUARE ENIX logó a Square Enix Holdings Co., Ltd. bejegyzett védjegyei vagy védjegyei. Wwise technológiával © 2006–2018 Audiokinetic Inc. Minden jog fenntartva. A szoftver egyes részei: Copyright © 2018 Jenkins Software, LLC. Minden jog fenntartva. Licenc alapján felhasználva. A szoftver Scaleform GFx technológiát használ © 2008 Scaleform Corporation. Minden jog fenntartva. A szoftver Bink Video technológiát használ. Copyright © 1997-2018 RAD Game Tools, Inc. A PureDev Software VMem technológiájával. Speech Graphics logó és Speech Graphics Ltd © Minden jog fenntartva. Autodesk ® szoftver. © 2018 Autodesk, Inc. A szoftver Megascans ® technológiát használ, Copyright © -2018 Quixel AB. A Dolby és a dupla D szimbólum a Dolby Laboratories védjegyei. A Nixxes és a Nixxes logó a Nixxes Software BV védjegyei. Minden más védjegy a saját tulajdonosának tulajdona. ",
           "comment": [
             "Import candidate reason: key_contains_menu"
           ]
@@ -87790,6 +87805,7 @@
           "id": 14336,
           "source": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Developed by Eidos Interactive Corporation. All rights reserved.\nSHADOW OF THE TOMB RAIDER, TOMB RAIDER, CRYSTAL DYNAMICS, the CRYSTAL DYNAMICS logo, EIDOS-MONTRÉAL, the EIDOS-MONTRÉAL logo, and LARA CROFT are registered trademarks or trademarks of Square Enix Limited. SQUARE ENIX and the SQUARE ENIX logo are registered trademarks or trademarks of Square Enix Holdings Co., Ltd.  Powered by Wwise © 2006–2018 Audiokinetic Inc. All rights reserved. Portions of this software Copyright © 2018 Jenkins Software, LLC. All rights reserved. Used under license. Uses Scaleform GFx © 2008 Scaleform Corporation. All rights reserved. Uses Bink Video. Copyright © 1997-2018 by RAD Game Tools, Inc. Powered by VMem by PureDev Software. Speech Graphics Logo and Speech Graphics Ltd © All rights reserved. Autodesk ® software. © 2018 Autodesk, Inc. Uses Megascans ®, Copyright © 2018 Quixel AB. Dolby, Dolby Atmos, and the double-D symbol are trademarks of Dolby Laboratories. [ESRB] The ratings icon is a registered trademark of the Entertainment Software Association. XBOX, XBOX ONE, the Games for Windows logo and Xbox logos are registered trademarks or trademarks of the Microsoft group of companies and are used under license. All other trademarks are the property of their respective owners. ",
           "key": "legalmenu_legaltext_end_www",
+          "translation": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Fejlesztő: Eidos Interactive Corporation. Minden jog fenntartva.\nA SHADOW OF THE TOMB RAIDER, a TOMB RAIDER, a CRYSTAL DYNAMICS, a CRYSTAL DYNAMICS logó, az EIDOS-MONTRÉAL, az EIDOS-MONTRÉAL logó és LARA CROFT a Square Enix Limited bejegyzett védjegyei vagy védjegyei. A SQUARE ENIX és a SQUARE ENIX logó a Square Enix Holdings Co., Ltd. bejegyzett védjegyei vagy védjegyei. Wwise technológiával © 2006–2018 Audiokinetic Inc. Minden jog fenntartva. A szoftver egyes részei: Copyright © 2018 Jenkins Software, LLC. Minden jog fenntartva. Licenc alapján felhasználva. A szoftver Scaleform GFx technológiát használ © 2008 Scaleform Corporation. Minden jog fenntartva. A szoftver Bink Video technológiát használ. Copyright © 1997-2018 RAD Game Tools, Inc. A PureDev Software VMem technológiájával. Speech Graphics logó és Speech Graphics Ltd © Minden jog fenntartva. Autodesk ® szoftver. © 2018 Autodesk, Inc. A szoftver Megascans ® technológiát használ, Copyright © 2018 Quixel AB. A Dolby, a Dolby Atmos és a dupla D szimbólum a Dolby Laboratories védjegyei. [ESRB] A korhatár-besorolási ikon az Entertainment Software Association bejegyzett védjegye. Az XBOX, az XBOX ONE, a Games for Windows logó és az Xbox logók a Microsoft cégcsoport bejegyzett védjegyei vagy védjegyei, és licenc alapján kerülnek felhasználásra. Minden más védjegy a saját tulajdonosának tulajdona. ",
           "comment": [
             "Import candidate reason: key_contains_menu"
           ]
@@ -87822,6 +87838,7 @@
           "id": 14341,
           "source": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Developed by Eidos Interactive Corporation. All rights reserved.\nSHADOW OF THE TOMB RAIDER, TOMB RAIDER, CRYSTAL DYNAMICS, the CRYSTAL DYNAMICS logo, EIDOS-MONTRÉAL, the EIDOS-MONTRÉAL logo, and LARA CROFT are registered trademarks or trademarks of Square Enix Limited. SQUARE ENIX and the SQUARE ENIX logo are registered trademarks or trademarks of Square Enix Holdings Co., Ltd.  Powered by Wwise © 2006–2018 Audiokinetic Inc. All rights reserved. Portions of this software Copyright © 2018 Jenkins Software, LLC. All rights reserved. Used under license. Uses Scaleform GFx © 2008 Scaleform Corporation. All rights reserved. Uses Bink Video. Copyright © 1997-2018 by RAD Game Tools, Inc. Powered by VMem by PureDev Software. Speech Graphics Logo and Speech Graphics Ltd © All rights reserved. Autodesk ® software. © 2018 Autodesk, Inc. Uses Megascans ®, Copyright © 2018 Quixel AB. Dolby, Dolby Atmos, and the double-D symbol are trademarks of Dolby Laboratories. XBOX, XBOX ONE, the Games for Windows logo and Xbox logos are registered trademarks or trademarks of the Microsoft group of companies and are used under license. All other trademarks are the property of their respective owners. ",
           "key": "legalmenu_legaltext_end_aj",
+          "translation": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Fejlesztő: Eidos Interactive Corporation. Minden jog fenntartva.\nA SHADOW OF THE TOMB RAIDER, a TOMB RAIDER, a CRYSTAL DYNAMICS, a CRYSTAL DYNAMICS logó, az EIDOS-MONTRÉAL, az EIDOS-MONTRÉAL logó és LARA CROFT a Square Enix Limited bejegyzett védjegyei vagy védjegyei. A SQUARE ENIX és a SQUARE ENIX logó a Square Enix Holdings Co., Ltd. bejegyzett védjegyei vagy védjegyei. Wwise technológiával © 2006–2018 Audiokinetic Inc. Minden jog fenntartva. A szoftver egyes részei: Copyright © 2018 Jenkins Software, LLC. Minden jog fenntartva. Licenc alapján felhasználva. A szoftver Scaleform GFx technológiát használ © 2008 Scaleform Corporation. Minden jog fenntartva. A szoftver Bink Video technológiát használ. Copyright © 1997-2018 RAD Game Tools, Inc. A PureDev Software VMem technológiájával. Speech Graphics logó és Speech Graphics Ltd © Minden jog fenntartva. Autodesk ® szoftver. © 2018 Autodesk, Inc. A szoftver Megascans ® technológiát használ, Copyright © 2018 Quixel AB. A Dolby, a Dolby Atmos és a dupla D szimbólum a Dolby Laboratories védjegyei. Az XBOX, az XBOX ONE, a Games for Windows logó és az Xbox logók a Microsoft cégcsoport bejegyzett védjegyei vagy védjegyei, és licenc alapján kerülnek felhasználásra. Minden más védjegy a saját tulajdonosának tulajdona. ",
           "comment": [
             "Import candidate reason: key_contains_menu"
           ]
@@ -94850,7 +94867,8 @@
         {
           "id": 15403,
           "source": "Wait for streaming",
-          "key": "loading_waitforstreaming"
+          "key": "loading_waitforstreaming",
+          "translation": "Várakozás az adatok betöltésére"
         },
         {
           "id": 15404,
@@ -95897,6 +95915,7 @@
           "id": 15557,
           "source": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Developed by Eidos Interactive Corporation. All rights reserved.\nSHADOW OF THE TOMB RAIDER, TOMB RAIDER, CRYSTAL DYNAMICS, the CRYSTAL DYNAMICS logo, EIDOS-MONTRÉAL, the EIDOS-MONTRÉAL logo, and LARA CROFT are registered trademarks or trademarks of Square Enix Limited. SQUARE ENIX and the SQUARE ENIX logo are registered trademarks or trademarks of Square Enix Holdings Co., Ltd.  Powered by Wwise © 2006–2018 Audiokinetic Inc. All rights reserved. Portions of this software Copyright © 2018 Jenkins Software, LLC. All rights reserved. Used under license. Uses Scaleform GFx © 2008 Scaleform Corporation. All rights reserved. Uses Bink Video. Copyright © 1997-2018 by RAD Game Tools, Inc. Powered by VMem by PureDev Software. Speech Graphics Logo and Speech Graphics Ltd © All rights reserved. Autodesk ® software. © 2018 Autodesk, Inc. Uses Megascans ®, Copyright © -2018 Quixel AB. Dolby and the double-D symbol are trademarks of Dolby Laboratories. Nixxes and the Nixxes logo are trademarks of Nixxes Software BV. All other trademarks are the property of their respective owners. ",
           "key": "legalmenu_legaltext_pc_splash",
+          "translation": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Fejlesztő: Eidos Interactive Corporation. Minden jog fenntartva.\nA SHADOW OF THE TOMB RAIDER, a TOMB RAIDER, a CRYSTAL DYNAMICS, a CRYSTAL DYNAMICS logó, az EIDOS-MONTRÉAL, az EIDOS-MONTRÉAL logó és LARA CROFT a Square Enix Limited bejegyzett védjegyei vagy védjegyei. A SQUARE ENIX és a SQUARE ENIX logó a Square Enix Holdings Co., Ltd. bejegyzett védjegyei vagy védjegyei. Wwise technológiával © 2006–2018 Audiokinetic Inc. Minden jog fenntartva. A szoftver egyes részei: Copyright © 2018 Jenkins Software, LLC. Minden jog fenntartva. Licenc alapján felhasználva. A szoftver Scaleform GFx technológiát használ © 2008 Scaleform Corporation. Minden jog fenntartva. A szoftver Bink Video technológiát használ. Copyright © 1997-2018 RAD Game Tools, Inc. A PureDev Software VMem technológiájával. Speech Graphics logó és Speech Graphics Ltd © Minden jog fenntartva. Autodesk ® szoftver. © 2018 Autodesk, Inc. A szoftver Megascans ® technológiát használ, Copyright © -2018 Quixel AB. A Dolby és a dupla D szimbólum a Dolby Laboratories védjegyei. A Nixxes és a Nixxes logó a Nixxes Software BV védjegyei. Minden más védjegy a saját tulajdonosának tulajdona. ",
           "comment": [
             "Import candidate reason: key_contains_menu"
           ]
@@ -96736,6 +96755,7 @@
           "id": 15676,
           "source": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Developed by Eidos Interactive Corporation. All rights reserved.\nSHADOW OF THE TOMB RAIDER, TOMB RAIDER, CRYSTAL DYNAMICS, the CRYSTAL DYNAMICS logo, EIDOS-MONTRÉAL, the EIDOS-MONTRÉAL logo, and LARA CROFT are registered trademarks or trademarks of Square Enix Limited. SQUARE ENIX and the SQUARE ENIX logo are registered trademarks or trademarks of Square Enix Holdings Co., Ltd.  Powered by Wwise © 2006–2018 Audiokinetic Inc. All rights reserved. Portions of this software Copyright © 2018 Jenkins Software, LLC. All rights reserved. Used under license. Uses Scaleform GFx © 2008 Scaleform Corporation. All rights reserved. Uses Bink Video. Copyright © 1997-2018 by RAD Game Tools, Inc. Powered by VMem by PureDev Software. Speech Graphics Logo and Speech Graphics Ltd © All rights reserved. Autodesk ® software. © 2018 Autodesk, Inc. Uses Megascans ®, Copyright © -2018 Quixel AB. Dolby and the double-D symbol are trademarks of Dolby Laboratories. [ESRB] The ratings icon is a registered trademark of the Entertainment Software Association. ©2018 Valve Corporation. Steamworks and the Steamworks logo are trademarks and/or registered trademarks of Valve Corporation. Nixxes and the Nixxes logo are trademarks of Nixxes Software BV. All other trademarks are the property of their respective owners. ",
           "key": "legalmenu_legaltext_pc_end_aj",
+          "translation": "SHADOW OF THE TOMB RAIDER © 2018 Square Enix Limited. Fejlesztő: Eidos Interactive Corporation. Minden jog fenntartva.\nA SHADOW OF THE TOMB RAIDER, a TOMB RAIDER, a CRYSTAL DYNAMICS, a CRYSTAL DYNAMICS logó, az EIDOS-MONTRÉAL, az EIDOS-MONTRÉAL logó és LARA CROFT a Square Enix Limited bejegyzett védjegyei vagy védjegyei. A SQUARE ENIX és a SQUARE ENIX logó a Square Enix Holdings Co., Ltd. bejegyzett védjegyei vagy védjegyei. Wwise technológiával © 2006–2018 Audiokinetic Inc. Minden jog fenntartva. A szoftver egyes részei: Copyright © 2018 Jenkins Software, LLC. Minden jog fenntartva. Licenc alapján felhasználva. A szoftver Scaleform GFx technológiát használ © 2008 Scaleform Corporation. Minden jog fenntartva. A szoftver Bink Video technológiát használ. Copyright © 1997-2018 RAD Game Tools, Inc. A PureDev Software VMem technológiájával. Speech Graphics logó és Speech Graphics Ltd © Minden jog fenntartva. Autodesk ® szoftver. © 2018 Autodesk, Inc. A szoftver Megascans ® technológiát használ, Copyright © -2018 Quixel AB. A Dolby és a dupla D szimbólum a Dolby Laboratories védjegyei. [ESRB] A korhatár-besorolási ikon az Entertainment Software Association bejegyzett védjegye. ©2018 Valve Corporation. A Steamworks és a Steamworks logó a Valve Corporation védjegyei és/vagy bejegyzett védjegyei. A Nixxes és a Nixxes logó a Nixxes Software BV védjegyei. Minden más védjegy a saját tulajdonosának tulajdona. ",
           "comment": [
             "Import candidate reason: key_contains_menu"
           ]
@@ -145885,7 +145905,8 @@
         {
           "id": 23784,
           "source": "That's Isa's viewpoint, too. //[1.900]//Anyway, there's an old blind man who lives here, named Manu, who's full of these kinds of stories. //[6.738]//He convinced her there's a secret crypt hidden around here, and last night she asked me to come with her and find it.//[12.239]// I refused, and we got into the old fight. //[14.632]//It ended with her calling me a hidebound coward, and me calling her a... a foolish child.",
-          "key": "150_mi_mission_09_m09_010_guillermo_con_new_spanish_male_02_loc_7b0ed57b_5944_4de9_b8f1_6c83a6833df3"
+          "key": "150_mi_mission_09_m09_010_guillermo_con_new_spanish_male_02_loc_7b0ed57b_5944_4de9_b8f1_6c83a6833df3",
+          "translation": "Isa is így gondolja. //[1.900]// Egyébként él itt egy Manu nevű öreg, vak ember, aki rengeteg ilyen történetet ismer. //[6.738]// Meggyőzte Isát, hogy a közelben rejtőzik egy titkos kripta. A lány tegnap este megkért, hogy menjek vele megkeresni. //[12.239]// Visszautasítottam, és megint a szokásos veszekedés lett belőle. //[14.632]// Azzal végződött, hogy gyáva vaskalaposnak nevezett, én pedig őt... ostoba gyereknek."
         },
         {
           "id": 23785,
@@ -182064,7 +182085,8 @@
         {
           "id": 29824,
           "source": "Queen Unuratu's ancestors carved it from the first Ceiba tree to grow in the wilderness outside the city.//[5.460]// It has been handed down through generations. She bestowed it upon Sayri, Etzli's father, on their wedding day. //[11.080]//It joins the two families together. But it was lost many years ago. Taken by the Nahual.",
-          "key": "150_mi_mission_03_m03c_180_020_quest_c_offer_nahuatl_male_02_45df9d2e_fb30_4fbe_80ae_4083b2c35da4"
+          "key": "150_mi_mission_03_m03c_180_020_quest_c_offer_nahuatl_male_02_45df9d2e_fb30_4fbe_80ae_4083b2c35da4",
+          "translation": "Unuratu királynő ősei faragták a városon kívüli vadonban nőtt első gyapotfából. //[5.460]// Generációról generációra öröklődött. A királynő az esküvőjük napján Sayrinak, Etzli apjának ajándékozta. //[11.080]// Ez köti össze a két családot. De sok évvel ezelőtt elveszett. A Naguál vitte el."
         },
         {
           "id": 29825,
@@ -182075,7 +182097,8 @@
         {
           "id": 29826,
           "source": "Queen Unuratu's ancestors carved it from the first Ceiba tree to grow in the wilderness outside the city. //[5.370]//It has been handed down through generations. She bestowed it upon Sayri, Etzli's father, on their wedding day. //[10.920]//It joins the two families together. But it was lost many years ago. Taken by the Nahual.",
-          "key": "150_mi_mission_03_m03c_180_020_quest_c_offer_nahuatl_male_02_loc_fbd18225_ace6_4329_b1a8_1bbe819535db"
+          "key": "150_mi_mission_03_m03c_180_020_quest_c_offer_nahuatl_male_02_loc_fbd18225_ace6_4329_b1a8_1bbe819535db",
+          "translation": "Unuratu királynő ősei faragták a városon kívüli vadonban nőtt első gyapotfából. //[5.370]// Generációról generációra öröklődött. A királynő az esküvőjük napján Sayrinak, Etzli apjának ajándékozta. //[10.920]// Ez köti össze a két családot. De sok évvel ezelőtt elveszett. A Naguál vitte el."
         },
         {
           "id": 29827,
@@ -184892,7 +184915,8 @@
         {
           "id": 30296,
           "source": "I was only a matter of time.",
-          "key": "150_mi_mission_06_m06b_150_rumor_ent_nahuatl_female_04_c2718130_27a1_41f6_a02c_24555be8a6d6"
+          "key": "150_mi_mission_06_m06b_150_rumor_ent_nahuatl_female_04_c2718130_27a1_41f6_a02c_24555be8a6d6",
+          "translation": "Csak idő kérdése volt."
         },
         {
           "id": 30297,
@@ -222399,7 +222423,8 @@
         {
           "id": 36816,
           "source": "This is for the save game compatibility issue. I hate everyone except Xin. We'll see about these two guys.",
-          "key": "600_dlc_dlc_07_000_torn_and_fred_not_for_localisation_569b07dd_9e1c_4a6f_a07f_611ba11abc55"
+          "key": "600_dlc_dlc_07_000_torn_and_fred_not_for_localisation_569b07dd_9e1c_4a6f_a07f_611ba11abc55",
+          "translation": "Ez a mentett játék kompatibilitási hibájához kell. Xinen kívül mindenkit utálok. Majd meglátjuk, mi lesz ezzel a két fickóval."
         },
         {
           "id": 36817,
@@ -224793,7 +224818,8 @@
         {
           "id": 37210,
           "source": "Complete the Dragon and the Prince Side Mission",
-          "key": "dlc4mission_desc"
+          "key": "dlc4mission_desc",
+          "translation": "Teljesítsd a Sárkány és a herceg mellékküldetést"
         },
         {
           "id": 37211,
@@ -230707,7 +230733,8 @@
         {
           "id": 38181,
           "source": "Congratulations! You have successfully installed and unlocked the 'Blood and Bone' downloadable content.",
-          "key": "dlc_notification_dlcoutfit7_real"
+          "key": "dlc_notification_dlcoutfit7_real",
+          "translation": "Gratulálunk! Sikeresen telepítetted és feloldottad a „Vér és csont” letölthető tartalmat."
         },
         {
           "id": 38182,
@@ -230766,7 +230793,8 @@
         {
           "id": 38191,
           "source": "That's what it's called. When the goddess Xquic created the Silver Box and the Key, she also created the Yaaxil, to be their guardians on this plane. Now that their duties have been carried out, they've gone back to their home.",
-          "key": "600_dlc_dlc_07_dlc07_070_fresco_p_coltrane_igc_lara_c8b3beef_152c_4d74_8732_8c5672325412"
+          "key": "600_dlc_dlc_07_dlc07_070_fresco_p_coltrane_igc_lara_c8b3beef_152c_4d74_8732_8c5672325412",
+          "translation": "Így hívják. Amikor Xquic istennő megteremtette az Ezüst szelencét és a Kulcsot, a yaaxilokat is megteremtette, hogy ezen a síkon őrizzék őket. Most, hogy teljesítették a feladatukat, visszatértek az otthonukba."
         },
         {
           "id": 38192,
@@ -230825,7 +230853,8 @@
         {
           "id": 38201,
           "source": "DLC07_MURAL_02",
-          "key": "dlc07_mural_02_gateway_to_heavens_title_351edc10_faac_49db_bef2_c49c3f92a4c4"
+          "key": "dlc07_mural_02_gateway_to_heavens_title_351edc10_faac_49db_bef2_c49c3f92a4c4",
+          "translation": "DLC07_MURAL_02"
         },
         {
           "id": 38202,
@@ -230926,7 +230955,8 @@
         {
           "id": 38218,
           "source": "With the Cult defeated in Paititi, my work as her protector is done. Uchu will be Etzli's military counsel, and that frees me to explore the world Outside, serving these adopted lands as my celestial sisters did for centuries.",
-          "key": "600_dlc_dlc_07_dlc07_080_quest_complete_igc_qorianka_7a6ba480_e907_46cf_b90e_e244118a7037"
+          "key": "600_dlc_dlc_07_dlc07_080_quest_complete_igc_qorianka_7a6ba480_e907_46cf_b90e_e244118a7037",
+          "translation": "Most, hogy a Szekta vereséget szenvedett Paititiben, véget ért a feladatom a város védelmezőjeként. Uchu lesz Etzli katonai tanácsadója, így szabadon felfedezhetem a külvilágot, és szolgálhatom fogadott hazámat, ahogyan égi nővéreim évszázadokon át tették."
         },
         {
           "id": 38219,
@@ -231084,7 +231114,8 @@
         {
           "id": 38244,
           "source": "BLOOD AND BONE - CARNAL",
-          "key": "dlc_outfit_07_elite_name"
+          "key": "dlc_outfit_07_elite_name",
+          "translation": "VÉR ÉS CSONT - HÚSVÉR"
         },
         {
           "id": 38245,
@@ -231107,7 +231138,8 @@
         {
           "id": 38248,
           "source": "DLC07_MURAL_01",
-          "key": "dlc07_mural_01_tomb_of_xquic_title_792ed403_9657_43a5_ae03_2a047b76a933"
+          "key": "dlc07_mural_01_tomb_of_xquic_title_792ed403_9657_43a5_ae03_2a047b76a933",
+          "translation": "DLC07_MURAL_01"
         },
         {
           "id": 38249,
@@ -231340,12 +231372,14 @@
         {
           "id": 38286,
           "source": "We're not here because of the document. We're here because Dominguez trusted the instructions on that document.",
-          "key": "600_dlc_dlc_07_dlc07_pc_010_lopez_dispenser_trinity_soldier_01_5056e832_69fc_4e74_8503_fca184b0b7ab"
+          "key": "600_dlc_dlc_07_dlc07_pc_010_lopez_dispenser_trinity_soldier_01_5056e832_69fc_4e74_8503_fca184b0b7ab",
+          "translation": "Nem a dokumentum miatt vagyunk itt. Azért vagyunk itt, mert Dominguez megbízott a benne szereplő utasításokban."
         },
         {
           "id": 38287,
           "source": "The Yaaxil did come through here, via a different tunnel. Then they blocked it off, so nobody else could follow it back to Paititi.",
-          "key": "600_dlc_dlc_07_dlc07_040_tunnel_vision_lara_2a74d376_53f2_49ea_b010_a09c84cc3cd9"
+          "key": "600_dlc_dlc_07_dlc07_040_tunnel_vision_lara_2a74d376_53f2_49ea_b010_a09c84cc3cd9",
+          "translation": "A yaaxilok valóban erre jöttek, egy másik alagúton át. Aztán eltorlaszolták, hogy senki más ne juthasson vissza rajta Paititibe."
         },
         {
           "id": 38288,
@@ -231530,7 +231564,8 @@
         {
           "id": 38318,
           "source": "DLC06_MURAL_01",
-          "key": "dlc06_mural_01_zipacna_lore_title_0284c2d0_7d82_46d8_bd83_74e48c8e3649"
+          "key": "dlc06_mural_01_zipacna_lore_title_0284c2d0_7d82_46d8_bd83_74e48c8e3649",
+          "translation": "DLC06_MURAL_01"
         },
         {
           "id": 38319,
@@ -231652,12 +231687,14 @@
         {
           "id": 38338,
           "source": "Use <font color=\"#FFFFFF\"></font> to select the Shotgun. HOLD <font color=\"#FFFFFF\"></font> to craft INCENDIARY SHELLS.\n\nRequires BLACK POWDER, SALVAGE, and FAT. Deal extra damage and set targets on fire.",
-          "key": "sg_moreinfo_crafting_ammunition_incendiary_shells"
+          "key": "sg_moreinfo_crafting_ammunition_incendiary_shells",
+          "translation": "Használd a(z) <font color=\"#FFFFFF\"></font> gombot a vadászpuska kiválasztásához. TARTSD NYOMVA a(z) <font color=\"#FFFFFF\"></font> gombot GYÚJTÓLŐSZER készítéséhez.\n\nPUSKAPOR, ZSÁKMÁNY és ZSÍR szükséges hozzá. Nagyobb sebzést okoz, és lángra lobbantja a célpontokat."
         },
         {
           "id": 38339,
           "source": "Zipcana's eating a crab.",
-          "key": "600_dlc_dlc_06_ct_dlc06_ct_360_that_tangy_zipacna_lara_2461b0ae_fc5c_40a7_92b4_329339f6e1e2"
+          "key": "600_dlc_dlc_06_ct_dlc06_ct_360_that_tangy_zipacna_lara_2461b0ae_fc5c_40a7_92b4_329339f6e1e2",
+          "translation": "Zipacna egy rákot eszik."
         },
         {
           "id": 38340,
@@ -231668,7 +231705,8 @@
         {
           "id": 38341,
           "source": "Craft incendiary shotgun shells that ignite flammable items and most enemies.",
-          "key": "sg_desc_skills_dlc_volcano"
+          "key": "sg_desc_skills_dlc_volcano",
+          "translation": "Készíts gyújtólőszert vadászpuskához, amely lángra lobbantja az éghető tárgyakat és a legtöbb ellenséget."
         },
         {
           "id": 38342,
@@ -231751,7 +231789,8 @@
         {
           "id": 38355,
           "source": "Use fewer resources to craft when on the run.",
-          "key": "sg_desc_skills_dlc_magic_touch"
+          "key": "sg_desc_skills_dlc_magic_touch",
+          "translation": "Menet közben kevesebb nyersanyagból készíthetsz tárgyakat."
         },
         {
           "id": 38356,
@@ -231954,7 +231993,8 @@
         {
           "id": 38389,
           "source": "Complete the Wrathful God Side Mission",
-          "key": "dlc6mission_desc"
+          "key": "dlc6mission_desc",
+          "translation": "Teljesítsd a Haragos Isten mellékküldetést"
         },
         {
           "id": 38390,
@@ -231995,7 +232035,8 @@
         {
           "id": 38396,
           "source": "Obtain the Magic Touch Skill, equip Silver Strike Moonbeam weapon and Blood and Bone Carnal outfit",
-          "key": "dlc7equip_desc"
+          "key": "dlc7equip_desc",
+          "translation": "Szerezd meg a Mágikus Érintés képességet, szereld fel az Ezüstcsapás - Holdsugár fegyvert és a Vér és csont - Húsvér öltözetet"
         },
         {
           "id": 38397,
@@ -232057,7 +232098,8 @@
         {
           "id": 38406,
           "source": "I don't know. That's where you come in. According to Grandma, you and the Yaaxil have some kind of... special connection?",
-          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_abby_0c02ec99_54a3_45e8_803e_63fe6f639053"
+          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_abby_0c02ec99_54a3_45e8_803e_63fe6f639053",
+          "translation": "Nem tudom. Itt jössz te a képbe. Nagyi szerint közted és a yaaxilok között valamiféle... különleges kapcsolat van?"
         },
         {
           "id": 38407,
@@ -232104,7 +232146,8 @@
         {
           "id": 38414,
           "source": "Zipcana's eating a crab.",
-          "key": "600_dlc_dlc_06_ct_dlc06_ct_360_that_tangy_zipacna_lara_2bf3e325_22d7_4b0b_9fdc_8d03bca4c39e"
+          "key": "600_dlc_dlc_06_ct_dlc06_ct_360_that_tangy_zipacna_lara_2bf3e325_22d7_4b0b_9fdc_8d03bca4c39e",
+          "translation": "Zipacna egy rákot eszik."
         },
         {
           "id": 38415,
@@ -232325,7 +232368,8 @@
         {
           "id": 38451,
           "source": "Of course, it's too exposed. //[1.309]//Our archers will pick him off - and he must have known that when he stayed behind. //[8.849]//He has more valor than I would have expected.",
-          "key": "600_dlc_dlc_05_dlc05_pc_080_our_rebels_now_are_ended_aztec_soldier_01_d8c0cf05_c12a_41c7_98bc_942eefc328b0"
+          "key": "600_dlc_dlc_05_dlc05_pc_080_our_rebels_now_are_ended_aztec_soldier_01_d8c0cf05_c12a_41c7_98bc_942eefc328b0",
+          "translation": "Persze, túlságosan védtelen. //[1.309]// Az íjászaink könnyen leszedik – és ezt biztosan tudta, amikor hátramaradt. //[8.849]// Bátrabb, mint gondoltam."
         },
         {
           "id": 38452,
@@ -232969,7 +233013,8 @@
         {
           "id": 38552,
           "source": "I'd say I wish I was going with you, but the Yaaxil creep me out.",
-          "key": "600_dlc_dlc_07_dlc07_031_jonah_accept_monologues_jonah_7c84e796_f2f7_475b_a211_ba8ef7052f0c"
+          "key": "600_dlc_dlc_07_dlc07_031_jonah_accept_monologues_jonah_7c84e796_f2f7_475b_a211_ba8ef7052f0c",
+          "translation": "Mondanám, hogy bárcsak veled mehetnék, de a yaaxiloktól kiráz a hideg."
         },
         {
           "id": 38553,
@@ -233226,7 +233271,8 @@
         {
           "id": 38594,
           "source": "No, not really \"wrong\"... After you left me and Pilar alone, she gave me Grandma's secret journals. So I've been reading those, and there's a lot to absorb.",
-          "key": "600_dlc_dlc_07_dlc07_020_quest_offer_mission_revisit_igc_abby_d02bf82d_b9d6_4255_bed9_1cdb65505cdb"
+          "key": "600_dlc_dlc_07_dlc07_020_quest_offer_mission_revisit_igc_abby_d02bf82d_b9d6_4255_bed9_1cdb65505cdb",
+          "translation": "Nem, igazából nincs „baj”... Miután magunkra hagytál Pilarral, odaadta Nagyi titkos naplóit. Azokat olvasgatom, és rengeteg mindent kell még feldolgoznom."
         },
         {
           "id": 38595,
@@ -233321,7 +233367,8 @@
         {
           "id": 38610,
           "source": "These mechanisms are linked to different sides of the statue. I can use them to manipulate the different pieces into place.",
-          "key": "600_dlc_dlc_07_ct_dlc07_ct_150_xquic_peek_lara_4830a06c_78a0_445f_8f50_daf64c5f4e91"
+          "key": "600_dlc_dlc_07_ct_dlc07_ct_150_xquic_peek_lara_4830a06c_78a0_445f_8f50_daf64c5f4e91",
+          "translation": "Ezek a szerkezetek a szobor különböző oldalaihoz kapcsolódnak. Segítségükkel a helyükre illeszthetem a különböző részeket."
         },
         {
           "id": 38611,
@@ -233338,7 +233385,8 @@
         {
           "id": 38613,
           "source": "Thank you so much, Lara! Now that the crab is back in its rightful place, the ash is gone and the tremors have stopped.",
-          "key": "600_dlc_dlc_06_dlc06_090_quest_complete_igc_abby_9f1f7f15_71a1_4efb_b859_6c3c7ef5b296"
+          "key": "600_dlc_dlc_06_dlc06_090_quest_complete_igc_abby_9f1f7f15_71a1_4efb_b859_6c3c7ef5b296",
+          "translation": "Nagyon köszönöm, Lara! //[1.980]// Most, hogy a rák visszakerült az őt megillető helyre, eltűnt a hamu, és megszűntek a rengések."
         },
         {
           "id": 38614,
@@ -233361,7 +233409,8 @@
         {
           "id": 38617,
           "source": "If we're not back within the hour, bring whoever you can. Can you manage that?",
-          "key": "600_dlc_dlc_05_dlc05_020_quest_offer_igc_hakan_7acaca0f_0963_427d_8f8b_0f65e54d3ae6"
+          "key": "600_dlc_dlc_05_dlc05_020_quest_offer_igc_hakan_7acaca0f_0963_427d_8f8b_0f65e54d3ae6",
+          "translation": "Ha nem érünk vissza egy órán belül, hozz ide mindenkit, akit csak tudsz. Meg tudod oldani?"
         },
         {
           "id": 38618,
@@ -233432,7 +233481,8 @@
         {
           "id": 38629,
           "source": "Yeah? I'd be a lot happier if those guns had made more of a difference back in Paititi.",
-          "key": "600_dlc_dlc_07_dlc07_pc_050_gun_for_good_trinity_soldier_01_3c6382e2_fae7_45c4_9e5f_d74a5ccf888a"
+          "key": "600_dlc_dlc_07_dlc07_pc_050_gun_for_good_trinity_soldier_01_3c6382e2_fae7_45c4_9e5f_d74a5ccf888a",
+          "translation": "Igen? Én sokkal jobban örülnék, ha azok a fegyverek többet segítettek volna Paititiben."
         },
         {
           "id": 38630,
@@ -233581,7 +233631,8 @@
         {
           "id": 38654,
           "source": "The plan is solid. It's just going to take some time to play out.",
-          "key": "600_dlc_dlc_06_dlc06_pc_010_crabbage_bored_trinity_soldier_01_eb0a6534_89de_426a_80aa_dfe93cf51f0f"
+          "key": "600_dlc_dlc_06_dlc06_pc_010_crabbage_bored_trinity_soldier_01_eb0a6534_89de_426a_80aa_dfe93cf51f0f",
+          "translation": "A terv jó. Csak idő kell hozzá."
         },
         {
           "id": 38655,
@@ -233802,7 +233853,8 @@
         {
           "id": 38691,
           "source": "I know. It's just... all this damn waiting and uncertainty.",
-          "key": "600_dlc_dlc_06_dlc06_pc_010_crabbage_bored_trinity_soldier_02_80111b05_c560_4a01_936c_65fcfb11a18b"
+          "key": "600_dlc_dlc_06_dlc06_pc_010_crabbage_bored_trinity_soldier_02_80111b05_c560_4a01_936c_65fcfb11a18b",
+          "translation": "Tudom. Csak... ez az átkozott várakozás és bizonytalanság."
         },
         {
           "id": 38692,
@@ -233813,7 +233865,8 @@
         {
           "id": 38693,
           "source": "DLC07_DOCUMENT_01",
-          "key": "dlc07_document_01_lopez_tunnels_title_be062609_f6c4_4867_97c4_b79c25312d0e"
+          "key": "dlc07_document_01_lopez_tunnels_title_be062609_f6c4_4867_97c4_b79c25312d0e",
+          "translation": "DLC07_DOCUMENT_01"
         },
         {
           "id": 38694,
@@ -234022,7 +234075,8 @@
         {
           "id": 38728,
           "source": "After your conflict with Amaru is over, when the fate of the Silver Box of Ix Chel has been decided, can you meet me back here?",
-          "key": "600_dlc_dlc_07_dlc07_020_quest_offer_mission_revisit_igc_abby_31625ec3_3803_4a6a_bea6_3ba6df92ee5a"
+          "key": "600_dlc_dlc_07_dlc07_020_quest_offer_mission_revisit_igc_abby_31625ec3_3803_4a6a_bea6_3ba6df92ee5a",
+          "translation": "Ha véget ért a konfliktusod Amaruval, és eldőlt Ix Chel Ezüst szelencéjének sorsa, találkozhatnánk újra itt?"
         },
         {
           "id": 38729,
@@ -234177,7 +234231,8 @@
         {
           "id": 38754,
           "source": "Ziplines, now! Get her!",
-          "key": "600_dlc_dlc_06_ct_dlc06_ctcom_020_doing_lines_trinity_soldier_01_bbab7857_9acf_478e_88df_1347f082b8c9"
+          "key": "600_dlc_dlc_06_ct_dlc06_ctcom_020_doing_lines_trinity_soldier_01_bbab7857_9acf_478e_88df_1347f082b8c9",
+          "translation": "A kötélpályákra, most! Kapjátok el!"
         },
         {
           "id": 38755,
@@ -234260,7 +234315,8 @@
         {
           "id": 38768,
           "source": "Everyone, listen! The Yaaxil are fine. They've completed the Return to the Heavens!",
-          "key": "600_dlc_dlc_07_dlc07_070_fresco_p_coltrane_igc_lara_1cbf621d_2e08_4aca_8561_e89e104cc426"
+          "key": "600_dlc_dlc_07_dlc07_070_fresco_p_coltrane_igc_lara_1cbf621d_2e08_4aca_8561_e89e104cc426",
+          "translation": "Mindenki figyeljen! A yaaxiloknak semmi bajuk. Végrehajtották a „Visszatérést a Mennyekbe”!"
         },
         {
           "id": 38769,
@@ -234301,7 +234357,8 @@
         {
           "id": 38775,
           "source": "Blow it!",
-          "key": "600_dlc_dlc_06_ct_dlc06_ctcom_010_block_party_trinity_soldier_01_f2f05d6f_38e4_4213_8583_ba1f07975fe3"
+          "key": "600_dlc_dlc_06_ct_dlc06_ctcom_010_block_party_trinity_soldier_01_f2f05d6f_38e4_4213_8583_ba1f07975fe3",
+          "translation": "Robbantsd fel!"
         },
         {
           "id": 38776,
@@ -234324,7 +234381,8 @@
         {
           "id": 38779,
           "source": "DLC06_RELIC_01",
-          "key": "dlc06_relic_01_crab_title_866ea0e9_d136_41b2_8e20_12b2227f98b5"
+          "key": "dlc06_relic_01_crab_title_866ea0e9_d136_41b2_8e20_12b2227f98b5",
+          "translation": "DLC06_RELIC_01"
         },
         {
           "id": 38780,
@@ -234335,7 +234393,8 @@
         {
           "id": 38781,
           "source": "I think I can see the temple site. There's an village in front of it.",
-          "key": "600_dlc_dlc_06_ct_dlc06_ct_200_site_see_lara_054787d9_3312_464e_bce5_07bf87370a87"
+          "key": "600_dlc_dlc_06_ct_dlc06_ct_200_site_see_lara_054787d9_3312_464e_bce5_07bf87370a87",
+          "translation": "Azt hiszem, látom a templomot. Van előtte egy falu."
         },
         {
           "id": 38782,
@@ -234496,7 +234555,8 @@
         {
           "id": 38808,
           "source": "Yes. According to a fresco, that's the door to the other plane. And now it's closed, forever.",
-          "key": "600_dlc_dlc_07_dlc07_070_fresco_p_coltrane_igc_lara_e30a5b5f_4237_4fb0_bfc4_efc3928bc0d1"
+          "key": "600_dlc_dlc_07_dlc07_070_fresco_p_coltrane_igc_lara_e30a5b5f_4237_4fb0_bfc4_efc3928bc0d1",
+          "translation": "Igen. Egy freskó szerint az az ajtó vezet a másik síkra. Most pedig örökre bezárult."
         },
         {
           "id": 38809,
@@ -235215,7 +235275,8 @@
         {
           "id": 38928,
           "source": "Of course there are blades. Why would it be as easy as just opening a gate?",
-          "key": "600_dlc_dlc_05_ct_dlc05_ct_130_blades_lara_4ee1ed5d_6a91_4531_a539_99c9c157c5d0"
+          "key": "600_dlc_dlc_05_ct_dlc05_ct_130_blades_lara_4ee1ed5d_6a91_4531_a539_99c9c157c5d0",
+          "translation": "Naná, hogy itt pengék vannak. Miért is lehetne csak egyszerűen kinyitni a kaput?"
         },
         {
           "id": 38929,
@@ -235994,12 +236055,14 @@
         {
           "id": 39058,
           "source": "Oh, no! That must be the central offering from the Temple. No wonder the earth is still shaking: That crab was stolen directly from Zipacna himself!",
-          "key": "600_dlc_dlc_06_dlc06_060_relic_and_a_promise_igc_abby_e1cb90de_f51f_42dc_811b_5bd7c87c0ece"
+          "key": "600_dlc_dlc_06_dlc06_060_relic_and_a_promise_igc_abby_e1cb90de_f51f_42dc_811b_5bd7c87c0ece",
+          "translation": "Jaj, ne! Ez biztosan a templom központi áldozati ajándéka. Nem csoda, hogy még mindig reng a föld: azt a rákot egyenesen magától Zipacnától lopták el!"
         },
         {
           "id": 39059,
           "source": "You have to bring it back to the Temple, where it belongs.",
-          "key": "600_dlc_dlc_06_dlc06_060_relic_and_a_promise_igc_abby_1fab9721_c093_4f49_b192_2e44c402a430"
+          "key": "600_dlc_dlc_06_dlc06_060_relic_and_a_promise_igc_abby_1fab9721_c093_4f49_b192_2e44c402a430",
+          "translation": "Vissza kell vinned a templomba, ahová tartozik."
         },
         {
           "id": 39060,
@@ -236556,7 +236619,8 @@
         {
           "id": 39152,
           "source": "Zipacna eating a crab, his favorite food.",
-          "key": "600_dlc_dlc_06_ct_dlc06_ct_360_that_tangy_zipacna_lara_d8884ff5_8612_46ab_9112_b7d047b3efe3"
+          "key": "600_dlc_dlc_06_ct_dlc06_ct_360_that_tangy_zipacna_lara_d8884ff5_8612_46ab_9112_b7d047b3efe3",
+          "translation": "Zipacna a kedvenc eledeléből, a rákból lakmározik."
         },
         {
           "id": 39153,
@@ -236765,12 +236829,14 @@
         {
           "id": 39187,
           "source": "Hah! She's trapped!",
-          "key": "600_dlc_dlc_06_ct_dlc06_ctcom_010_block_party_trinity_soldier_01_d064f5d6_2b2c_403a_9fd4_72a965fbad25"
+          "key": "600_dlc_dlc_06_ct_dlc06_ctcom_010_block_party_trinity_soldier_01_d064f5d6_2b2c_403a_9fd4_72a965fbad25",
+          "translation": "Ha! Csapdába esett!"
         },
         {
           "id": 39188,
           "source": "Let's go! Leave her to die in here!",
-          "key": "600_dlc_dlc_06_ct_dlc06_ctcom_050_dead_left_trinity_soldier_01_cb0372c2_dc05_4c0e_8723_ee9783a57415"
+          "key": "600_dlc_dlc_06_ct_dlc06_ctcom_050_dead_left_trinity_soldier_01_cb0372c2_dc05_4c0e_8723_ee9783a57415",
+          "translation": "Menjünk! Hadd pusztuljon itt!"
         },
         {
           "id": 39189,
@@ -236871,7 +236937,8 @@
         {
           "id": 39205,
           "source": "Our allies in battle, the Yaaxil, have vanished from Paititi. But they left a trail I was able to follow. It led me here.",
-          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_qorianka_6992933e_4987_4091_8778_d1307c3e5857"
+          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_qorianka_6992933e_4987_4091_8778_d1307c3e5857",
+          "translation": "Harci szövetségeseink, a yaaxilok eltűntek Paititiből. De hagytak maguk után egy nyomot, amelyet követni tudtam. Ide vezetett."
         },
         {
           "id": 39206,
@@ -236894,17 +236961,20 @@
         {
           "id": 39209,
           "source": "I told them you'd say that.",
-          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_jonah_de770d42_f686_4119_bfdf_e756c892eede"
+          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_jonah_de770d42_f686_4119_bfdf_e756c892eede",
+          "translation": "Mondtam nekik, hogy ezt fogod mondani."
         },
         {
           "id": 39210,
           "source": "The recent volcanic activity opened up a fissure in the ground. On the other side is some kind of tunnel.",
-          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_abby_97b82db4_50f7_4370_acfe_0c5c5ef7e064"
+          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_abby_97b82db4_50f7_4370_acfe_0c5c5ef7e064",
+          "translation": "A legutóbbi vulkáni tevékenység hasadékot nyitott a földben. A másik oldalán valamiféle alagút van."
         },
         {
           "id": 39211,
           "source": "Linked to the Yaaxil somehow? Maybe Andres Lopez wasn't as crazy as we thought.",
-          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_jonah_32824bbc_dad3_4c85_ae04_debfc4e824d3"
+          "key": "600_dlc_dlc_07_dlc07_025_quest_offer_burnt_church_igc_jonah_32824bbc_dad3_4c85_ae04_debfc4e824d3",
+          "translation": "Valahogy a yaaxilokhoz kapcsolódik? Talán Andres Lopez mégsem volt olyan őrült, mint hittük."
         },
         {
           "id": 39212,
@@ -236927,7 +236997,8 @@
         {
           "id": 39215,
           "source": "I expect the entrance nearby is for a minor tunnel, connecting to a major one that runs all the way here from Paititi.",
-          "key": "600_dlc_dlc_07_dlc07_032_qorianka_accept_monologues_qorianka_e13dd935_9d91_44c5_8fdc_726dac6a7b6e"
+          "key": "600_dlc_dlc_07_dlc07_032_qorianka_accept_monologues_qorianka_e13dd935_9d91_44c5_8fdc_726dac6a7b6e",
+          "translation": "Gondolom, a közeli bejárat egy kisebb alagútba vezet, amely egy nagyobbhoz csatlakozik. Az Paitititől egészen idáig húzódik."
         },
         {
           "id": 39216,
@@ -237004,7 +237075,8 @@
         {
           "id": 39228,
           "source": "This is... ancient. Far older than evrything else in the area.",
-          "key": "600_dlc_dlc_07_ct_dlc07_ct_020_xquic_shooting_lara_8ec2b81e_9fff_4231_b753_6e3cb0fa4951"
+          "key": "600_dlc_dlc_07_ct_dlc07_ct_020_xquic_shooting_lara_8ec2b81e_9fff_4231_b753_6e3cb0fa4951",
+          "translation": "Ez... ősi. Sokkal régebbi, mint bármi ezen a területen."
         },
         {
           "id": 39229,
@@ -237177,12 +237249,14 @@
         {
           "id": 39257,
           "source": "There must be additional mechanisms around somewhere.",
-          "key": "600_dlc_dlc_07_ct_dlc07_ct_160_turn_the_other_xquic_qorianka_860e0b87_8478_45b5_bc54_6796630e1471"
+          "key": "600_dlc_dlc_07_ct_dlc07_ct_160_turn_the_other_xquic_qorianka_860e0b87_8478_45b5_bc54_6796630e1471",
+          "translation": "Valahol a közelben további szerkezeteknek kell lenniük."
         },
         {
           "id": 39258,
           "source": "There must be additional mechanisms around somewhere.",
-          "key": "600_dlc_dlc_07_ct_dlc07_ct_160_turn_the_other_xquic_qorianka_74a1f11b_0be6_4a36_913d_96f76a07f527"
+          "key": "600_dlc_dlc_07_ct_dlc07_ct_160_turn_the_other_xquic_qorianka_74a1f11b_0be6_4a36_913d_96f76a07f527",
+          "translation": "Valahol a közelben további szerkezeteknek kell lenniük."
         },
         {
           "id": 39259,
@@ -237415,7 +237489,8 @@
         {
           "id": 39297,
           "source": "I thought they were being paranoid, bringing that heavy stupid thing with us. But now, with those creatures still around, I'm glad we have it.",
-          "key": "600_dlc_dlc_07_dlc07_pc_050_gun_for_good_trinity_soldier_02_53a06d9c_5a10_4cc9_90bd_cd4a6682a628"
+          "key": "600_dlc_dlc_07_dlc07_pc_050_gun_for_good_trinity_soldier_02_53a06d9c_5a10_4cc9_90bd_cd4a6682a628",
+          "translation": "Azt hittem, csak paranoiásak, hogy magunkkal hoztuk azt a nehéz, hülye izét. De most, hogy azok a lények még mindig itt vannak, örülök, hogy nálunk van."
         },
         {
           "id": 39298,
@@ -237678,12 +237753,14 @@
         {
           "id": 39341,
           "source": "DLC06_DOCUMENT_01",
-          "key": "dlc06_document_01_trinity_communications_title_9327fa4e_7a19_49c4_acf9_f20e6529cd4c"
+          "key": "dlc06_document_01_trinity_communications_title_9327fa4e_7a19_49c4_acf9_f20e6529cd4c",
+          "translation": "DLC06_DOCUMENT_01"
         },
         {
           "id": 39342,
           "source": "DLC06_DOCUMENT_02",
-          "key": "dlc06_document_02_prayer_to_zipacna_title_1c69498f_a2a1_48db_ba47_a1d1a03696fa"
+          "key": "dlc06_document_02_prayer_to_zipacna_title_1c69498f_a2a1_48db_ba47_a1d1a03696fa",
+          "translation": "DLC06_DOCUMENT_02"
         },
         {
           "id": 39343,

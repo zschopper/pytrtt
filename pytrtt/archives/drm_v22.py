@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import struct
 import zlib
+from collections.abc import Callable
 from dataclasses import dataclass, replace
 from typing import TYPE_CHECKING
 
@@ -113,13 +114,22 @@ def collections(
     hashes: set[tuple[int, int]] | None = None,
     addresses: set[tuple[int, int, int]] | None = None,
     virtuals: dict[tuple[int, int], int] | None = None,
+    progress: Callable[[int, int], None] | None = None,
 ) -> list[Collection]:
     result = []
     indexes = archive._indexes()
+    total = sum(len(index.entries) for index in indexes.values())
+    processed = 0
+    interval = max(total // 100, 1)
+    if progress is not None:
+        progress(0, total)
     for family, index in indexes.items():
         streams = {}
         try:
             for entry in index.entries:
+                processed += 1
+                if progress is not None and (processed % interval == 0 or processed == total):
+                    progress(processed, total)
                 if hashes is not None and (entry.name_hash, entry.locale) not in hashes:
                     continue
                 if entry.size < 32:
@@ -259,7 +269,10 @@ class Payload:
 
 
 def plan_embedded(
-    archive: TigerV3Handler, requests: tuple[ResourceReplacement, ...]
+    archive: TigerV3Handler,
+    requests: tuple[ResourceReplacement, ...],
+    *,
+    progress: Callable[[int, int, str], None] | None = None,
 ) -> TigerV3WritePlan:
     items = collections(
         archive, hashes={(r.name_hash, r.locale) for r in requests if r.embedded_type is not None}
@@ -289,7 +302,18 @@ def plan_embedded(
                 name, ref.address, original, request.data, encode_cdrm(request.data, raw)
             )
     virtuals: dict[tuple[int, int], int] = {}
-    affected = collections(archive, addresses=set(payloads), virtuals=virtuals)
+    affected = collections(
+        archive,
+        addresses=set(payloads),
+        virtuals=virtuals,
+        progress=(
+            (lambda current, total: progress(current, total, "embedded_collection_scan"))
+            if progress is not None
+            else None
+        ),
+    )
+    if progress is not None:
+        progress(0, 0, "archive_layout")
     keys = {(c.family, c.name_hash, c.locale) for c in affected}
     if any((r.archive_family, r.name_hash, r.locale) in keys for r in direct):
         raise ValueError("collection and embedded resource replacements conflict")

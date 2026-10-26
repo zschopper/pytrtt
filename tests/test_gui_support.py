@@ -2,6 +2,8 @@
 
 import hashlib
 import json
+import logging
+import struct
 from contextlib import AbstractContextManager
 from dataclasses import replace
 from pathlib import Path
@@ -19,14 +21,22 @@ from pytrtt.gui_discovery import (
     registry_steam_roots,
     validate_packaged_catalog,
 )
+from pytrtt.gui_presenter import operation_payload
 from pytrtt.gui_support import (
     InstallationInspection,
     InstallationStatus,
+    check_translation,
     find_interrupted_transactions,
     find_interrupted_transactions_in_roots,
     find_restorable_transaction,
     inspect_installation,
+    restore_translation,
     run_translation_operation,
+)
+from pytrtt.packages.translation import (
+    TranslationDocument,
+    TranslationMetadata,
+    serialize_translation_document,
 )
 
 
@@ -53,6 +63,9 @@ def test_catalog_is_data_driven_and_contains_anniversary() -> None:
     assert anniversary.package_available
 
     tomb_raider_2013 = next(game for game in games if game.game_id == "tomb-raider")
+    assert tomb_raider_2013.translation_file == Path(
+        "translations/tomb-raider/steam-9573671-hu.json"
+    )
     assert tomb_raider_2013.epic_catalog_namespace == "caca23a0954f4c1aba1fdd7e277b81e2"
     assert tomb_raider_2013.epic_catalog_item_id == "ff45e0eabd0c48d6950e369c79c26823"
     rise = next(game for game in games if game.game_id == "rise-of-the-tomb-raider")
@@ -167,6 +180,16 @@ def test_available_catalog_packages_are_self_consistent() -> None:
     project_root = Path(__file__).resolve().parents[1]
     assert validate_packaged_catalog(load_game_catalog(), project_root) == ()
 
+    from pytrtt.packages.translation import parse_translation_document
+
+    game = next(game for game in load_game_catalog() if game.game_id == "tomb-raider")
+    package = parse_translation_document(
+        (project_root / game.translation_file).read_text(encoding="utf-8")
+    )
+    assert package.metadata.build_id == "9573671"
+    assert package.entry_identity == "record"
+    assert package.runtime is not None
+
 
 def test_packaged_catalog_reports_missing_and_mismatched_packages(tmp_path: Path) -> None:
     missing = GameCatalogEntry(
@@ -202,6 +225,25 @@ def test_packaged_catalog_reports_missing_and_mismatched_packages(tmp_path: Path
     assert validate_packaged_catalog((missing, mismatched), tmp_path) == (
         "missing-game: translation package is missing",
         "expected-game: package metadata targets different-game",
+    )
+
+
+def test_packaged_catalog_rejects_unbound_translation_memories(tmp_path: Path) -> None:
+    entry = replace(_entry(), package_available=True)
+    package = tmp_path / entry.translation_file
+    package.parent.mkdir(parents=True)
+    package.write_text(
+        serialize_translation_document(
+            TranslationDocument(
+                TranslationMetadata("fixture-game", "42", "en", "hu", "bigfile", 1),
+                entry_identity="source_text",
+            )
+        ),
+        encoding="utf-8",
+    )
+
+    assert validate_packaged_catalog((entry,), tmp_path) == (
+        "fixture-game: translation memory must be bound to extracted records first",
     )
 
 
@@ -354,6 +396,238 @@ def test_manual_folder_must_exist_and_translation_package_must_be_available(
     result = inspect_installation(candidate, project_root=tmp_path)
     assert result.status is InstallationStatus.PACKAGE_UNAVAILABLE
     assert result.translation_path == tmp_path / _entry().translation_file
+
+
+def test_unbound_translation_memory_is_not_reported_as_unknown_game_modifications(
+    tmp_path: Path,
+) -> None:
+    game_dir = tmp_path / "game"
+    game_dir.mkdir()
+    package_path = tmp_path / _entry().translation_file
+    package_path.parent.mkdir(parents=True)
+    document = TranslationDocument(
+        TranslationMetadata("fixture-game", "42", "en", "hu", "bigfile", 1),
+        entry_identity="source_text",
+    )
+    package_path.write_text(serialize_translation_document(document), encoding="utf-8")
+    candidate = InstallationCandidate(_entry(), game_dir, "Manual", "42")
+    initial = inspect_installation(candidate, project_root=tmp_path)
+
+    result = check_translation(initial)
+
+    assert result.status is InstallationStatus.TRANSLATION_UNBOUND
+    assert "bound to extracted records" in result.detail
+    payload = operation_payload(result)
+    assert not next(item for item in payload["operations"] if item["id"] == "install")["available"]
+
+
+def test_unknown_translation_state_logs_the_validation_error(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    game_dir = tmp_path / "game"
+    game_dir.mkdir()
+    package_path = tmp_path / _entry().translation_file
+    package_path.parent.mkdir(parents=True)
+    package_path.write_text("{ malformed", encoding="utf-8")
+    candidate = InstallationCandidate(_entry(), game_dir, "Steam", "42")
+    inspection = inspect_installation(candidate, project_root=tmp_path)
+
+    with caplog.at_level(logging.ERROR, logger="pytrtt.gui"):
+        result = check_translation(inspection)
+
+    assert result.status is InstallationStatus.UNKNOWN_MODIFIED
+    assert "Translation validation failed" in caplog.text
+    assert "JSONDecodeError" in caplog.text
+    assert "Applied recovery journals at validation failure" in caplog.text
+    assert "game=fixture-game" in caplog.text
+    assert "build=42" in caplog.text
+    assert "package=" in caplog.text
+    assert "elapsed_seconds=" in caplog.text
+
+
+@pytest.mark.parametrize("installed", [False, True])
+@pytest.mark.parametrize("build_id", ["build-1", "wrong-build", ""])
+def test_gui_checks_build_before_accepting_original_or_translated_state(
+    tmp_path: Path, installed: bool, build_id: str
+) -> None:
+    from pytrtt.services.translation import TranslationService
+    from tests.test_generic_translation import document, make_archive
+
+    game_dir = tmp_path / "game"
+    make_archive(game_dir)
+    doc = document("fixture-game")
+    package_path = tmp_path / _entry().translation_file
+    package_path.parent.mkdir(parents=True)
+    package_path.write_text(serialize_translation_document(doc), encoding="utf-8")
+    service = TranslationService()
+    if installed:
+        build = service.plan(game_dir, doc, package_dir=package_path.parent)
+        service.apply(build, tmp_path / "transaction")
+    before = (game_dir / "bigfile.000").read_bytes()
+    candidate = InstallationCandidate(_entry(), game_dir, "Steam", build_id)
+
+    result = check_translation(inspect_installation(candidate, project_root=tmp_path))
+
+    if build_id == "wrong-build":
+        assert result.status is InstallationStatus.UNKNOWN_MODIFIED
+        assert "different game build" in result.detail
+        assert result.prepared is None
+        payload = operation_payload(result)
+        assert not next(op for op in payload["operations"] if op["id"] == "install")["available"]
+    else:
+        assert result.status is (
+            InstallationStatus.ALREADY_TRANSLATED
+            if installed
+            else InstallationStatus.CHANGES_AVAILABLE
+        )
+    assert (game_dir / "bigfile.000").read_bytes() == before
+
+
+@pytest.mark.parametrize("recovery", ["valid", "missing", "corrupt", "foreign", "modified"])
+@pytest.mark.parametrize("locals_version", [1, 3])
+def test_package_revision_only_offers_verified_recovery(
+    tmp_path: Path, recovery: str, locals_version: int
+) -> None:
+    from pytrtt.config import parse_runtime_settings
+    from pytrtt.services.translation import TranslationService
+    from tests.test_generic_translation import document, make_archive, runtime_value
+
+    game_dir = tmp_path / "game"
+    original = make_archive(game_dir)
+    old = document("fixture-game")
+    if locals_version == 3:
+        menu = struct.pack("<3IQ", 7, 0, 1, 20) + b"A\0"
+        with (game_dir / "bigfile.000").open("r+b") as stream:
+            stream.seek(12)
+            stream.write(struct.pack("<I", len(menu)))
+            stream.seek(0x800)
+            stream.write(menu)
+        original = (game_dir / "bigfile.000").read_bytes()
+        settings = runtime_value()
+        rules = settings["resource_types"]
+        assert isinstance(rules, list)
+        rules[0]["version"] = 3
+        old = replace(old, runtime=parse_runtime_settings(settings))
+    transaction = tmp_path / "transactions/install"
+    service = TranslationService()
+    service.apply(service.plan(game_dir, old, package_dir=tmp_path), transaction)
+    revised = replace(
+        old,
+        menu=(
+            replace(old.menu[0], entries=(replace(old.menu[0].entries[0], translation="New UI"),)),
+        ),
+    )
+    package_path = tmp_path / _entry().translation_file
+    package_path.parent.mkdir(parents=True)
+    package_path.write_text(serialize_translation_document(revised), encoding="utf-8")
+    journal = json.loads((transaction / "journal.json").read_text(encoding="utf-8"))
+    backup = transaction / "backups" / journal["write_backups"][0]["backup_file"]
+    if recovery == "missing":
+        backup.unlink()
+    elif recovery == "corrupt":
+        data = backup.read_bytes()
+        backup.write_bytes(bytes([data[0] ^ 1]) + data[1:])
+    elif recovery == "foreign":
+        journal["data_dir"] = str(tmp_path / "another-game")
+        (transaction / "journal.json").write_text(json.dumps(journal), encoding="utf-8")
+    elif recovery == "modified":
+        with (game_dir / "bigfile.000").open("ab") as stream:
+            stream.write(b"unrelated change")
+    before = (game_dir / "bigfile.000").read_bytes()
+    initial = inspect_installation(
+        InstallationCandidate(_entry(), game_dir, "Steam", "build-1"), project_root=tmp_path
+    )
+    checked = check_translation(initial, transaction_roots=(transaction.parent,))
+    operations = {op["id"]: op["available"] for op in operation_payload(checked)["operations"]}
+    assert (game_dir / "bigfile.000").read_bytes() == before
+    assert not operations["install"]
+    if recovery != "valid":
+        assert not operations["restore"]
+        assert checked.restore_path is None
+        return
+    assert operations["restore"]
+    assert checked.status.value == "recovery_available"
+    assert checked.restore_path == transaction
+    # Restoration must use the journal, not depend on the new package remaining readable.
+    package_path.write_text("unreadable replacement package", encoding="utf-8")
+    restored = restore_translation(checked, transaction_roots=(transaction.parent,))
+    assert restored.status is InstallationStatus.RESTORED
+    assert (game_dir / "bigfile.000").read_bytes() == original
+    package_path.write_text(serialize_translation_document(revised), encoding="utf-8")
+    assert check_translation(initial).status is InstallationStatus.CHANGES_AVAILABLE
+
+
+def test_recovery_of_revised_package_unwinds_targeted_patch_chain(tmp_path: Path) -> None:
+    from pytrtt.services.translation import TranslationService
+    from tests.test_generic_translation import document, make_archive
+
+    game_dir = tmp_path / "game"
+    original = make_archive(game_dir)
+    old = document("fixture-game")
+    root = tmp_path / "transactions"
+    first = root / "first"
+    second = root / "second"
+    service = TranslationService()
+    service.apply(service.plan(game_dir, old, package_dir=tmp_path), first)
+    patched_entry = replace(old.menu[0].entries[0], source="Ação ő", translation="Patched UI")
+    delta = replace(old, menu=(replace(old.menu[0], entries=(patched_entry,)),), subtitles=())
+    service.apply(service.plan(game_dir, delta, package_dir=tmp_path), second)
+    revised = replace(
+        old,
+        menu=(
+            replace(
+                old.menu[0], entries=(replace(patched_entry, source="A", translation="New UI"),)
+            ),
+        ),
+    )
+    package_path = tmp_path / _entry().translation_file
+    package_path.parent.mkdir(parents=True)
+    package_path.write_text(serialize_translation_document(revised), encoding="utf-8")
+    initial = inspect_installation(
+        InstallationCandidate(_entry(), game_dir, "Steam", "build-1"), project_root=tmp_path
+    )
+    checked = check_translation(initial, transaction_roots=(root,))
+    assert checked.restore_path == second
+    restored = restore_translation(checked, transaction_roots=(root,))
+    assert restored.status is InstallationStatus.RESTORED
+    assert (game_dir / "bigfile.000").read_bytes() == original
+    for transaction in (first, second):
+        journal = json.loads((transaction / "journal.json").read_text(encoding="utf-8"))
+        assert journal["status"] == "restored"
+    assert check_translation(initial).status is InstallationStatus.CHANGES_AVAILABLE
+
+
+@pytest.mark.parametrize("changed", ["archive", "backup"])
+def test_restore_revalidates_content_changed_after_gui_check(tmp_path: Path, changed: str) -> None:
+    from pytrtt.services.translation import TranslationService
+    from tests.test_generic_translation import document, make_archive
+
+    game_dir = tmp_path / "game"
+    make_archive(game_dir)
+    doc = document("fixture-game")
+    transaction = tmp_path / "transactions/install"
+    service = TranslationService()
+    service.apply(service.plan(game_dir, doc, package_dir=tmp_path), transaction)
+    package_path = tmp_path / _entry().translation_file
+    package_path.parent.mkdir(parents=True)
+    package_path.write_text(serialize_translation_document(doc), encoding="utf-8")
+    initial = inspect_installation(
+        InstallationCandidate(_entry(), game_dir, "Steam", "build-1"), project_root=tmp_path
+    )
+    checked = check_translation(initial, transaction_roots=(transaction.parent,))
+    assert checked.restore_path == transaction
+    journal = json.loads((transaction / "journal.json").read_text(encoding="utf-8"))
+    target = (
+        game_dir / "bigfile.000"
+        if changed == "archive"
+        else transaction / "backups" / journal["write_backups"][0]["backup_file"]
+    )
+    with target.open("ab") as stream:
+        stream.write(b"unexpected change")
+    before = (game_dir / "bigfile.000").read_bytes()
+    result = restore_translation(checked, transaction_roots=(transaction.parent,))
+    assert result.status is InstallationStatus.ERROR
+    assert (game_dir / "bigfile.000").read_bytes() == before
 
 
 class FakeRegistryKey:

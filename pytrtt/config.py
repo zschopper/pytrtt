@@ -203,7 +203,14 @@ def parse_runtime_settings(value: object) -> RuntimeSettings:
     for raw in raw_rules:
         rule = _object(
             raw,
-            {"section", "pattern", "format", "version", "locale", "skip_unrecognized"},
+            {
+                "section",
+                "pattern",
+                "format",
+                "version",
+                "locale",
+                "skip_unrecognized",
+            },
             {"section", "pattern", "format", "version"},
             "resource rule",
         )

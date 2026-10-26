@@ -7,7 +7,7 @@ def test_windows_launcher_uses_python_and_preserves_arguments() -> None:
     root = Path(__file__).resolve().parents[1]
     content = (root / "scripts/run-gui.cmd").read_text(encoding="utf-8")
     assert 'cd /d "%~dp0.."' in content
-    assert "python -m pytrtt.qt_gui --recovery-in-game %*" in content
+    assert "python -m pytrtt.qt_gui --recovery-in-game --debug-log %*" in content
     assert not (root / "pytrtt/gui.py").exists()
 
 
@@ -44,6 +44,14 @@ def test_qt_gui_disables_user_zoom_controls() -> None:
     assert 'smoke_test = "--smoke-test" in parser_arguments' in content
     assert "frontendReady.connect" in content
     assert "QTimer.singleShot(30_000" in content
+    assert 'debug_logging = "--debug-log" in parser_arguments' in content
+    assert "configure_debug_logging()" in content
+    assert 'log_path = log_dir / "pytrtt-debug.log"' in content
+    assert "Installation check complete" in content
+    assert "RotatingFileHandler" in content
+    assert "Operation accepted" in content
+    assert "Operation worker complete" in content
+    assert "Interrupted-transaction scan complete" in content
 
 
 def test_qt_gui_disables_webview_context_menu() -> None:
@@ -97,7 +105,9 @@ def test_windows_packaging_builds_an_installed_app_and_preserves_recovery_data()
         'copy /Y "%PYTRTT_BUILD_ROOT%\\dist\\PyTRTT.exe"'
     )
     assert 'copy /Y "%PYTRTT_BUILD_ROOT%\\dist\\PyTRTT.exe"' in build
-    assert 'if /I "%~1"=="--clean"' in build
+    assert 'if /I "%%~A"=="--clean"' in build
+    assert 'if /I "%%~A"=="--installer"' in build
+    assert "if not defined PYTRTT_BUILD_INSTALLER exit /b 0" in build
     assert 'python -m pip install "pyinstaller>=6" "pillow>=11"' in build
     assert 'python -m pip install "pyside6>=6.10.1,<6.11"' in build
     assert "ISCC.exe" in build

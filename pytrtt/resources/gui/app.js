@@ -36,6 +36,8 @@ const UI_COPY = [
   ["Translators", "Fordítók"], ["Editors", "Szerkesztők"],
   ["Testers", "Tesztelők"], ["Beta testers", "Bétatesztelők"],
   ["Translation tools", "Fordítási eszközök"], ["Communities", "Közösségek"],
+  ["Translation tool authors", "Fordítóprogramot írta"],
+  ["Additional editors", "További szerkesztők"],
   ["Game", "Játék"], ["Installation", "Telepítés"], ["Path", "Elérési út"],
   ["Game status", "Játék állapota"],
   ["Operation", "Művelet"], ["Language", "Nyelv"],
@@ -56,6 +58,15 @@ const UI_COPY = [
   ["Ready", "Kész"], ["Translation package unavailable", "Nem érhető el fordítási csomag"],
   ["Selected", "Kiválasztva"],
   ["Installation could not be validated", "A telepítés nem ellenőrizhető"],
+  ["Translation memory needs binding", "A fordítási memóriát előbb rekordokhoz kell kötni"],
+  ["Validating archive indexes and recovery requirements before any game file is changed.", "Az archívumindexek és a helyreállítási követelmények ellenőrzése a játékfájlok módosítása előtt."],
+  ["Scanning archive entries and shared font aliases. This may take a while on large installations; no game files have been changed.", "Archívumbejegyzések és közös fontaliasok vizsgálata. Nagy telepítésnél ez eltarthat egy ideig; játékfájl nem változott."],
+  ["Calculating archive indexes, file sizes, and recovery requirements. No game files have been changed.", "Archívumindexek, fájlméretek és helyreállítási igények számítása. Játékfájl nem változott."],
+  ["Verifying that the original game archives have not changed since the plan was created.", "Annak ellenőrzése, hogy az eredeti játékarchívumok nem változtak-e a terv elkészítése óta."],
+  ["Creating staged copies before applying any translation changes. The original game files remain untouched.", "Előkészített másolatok készítése a fordítás alkalmazása előtt. Az eredeti játékfájlok érintetlenek maradnak."],
+  ["Checking the prepared archive copies before they are installed.", "Az előkészített archívummásolatok ellenőrzése telepítés előtt."],
+  ["Copying verified archives into place. Recovery data is preserved for restoration.", "Az ellenőrzött archívumok helyükre másolása. A helyreállítási adatok megmaradnak."],
+  ["Completing archive checks, recovery records, and the transaction journal.", "Az archívumellenőrzés, a helyreállítási rekordok és a tranzakciós napló befejezése."],
   ["No installation was found automatically.", "Nem található automatikusan telepítés."],
   ["Check / dry run", "Ellenőrzés / próbaüzem"],
   ["Install or update translation", "Fordítás telepítése vagy frissítése"],
@@ -70,6 +81,13 @@ const UI_COPY = [
   ["Planning required changes", "A szükséges módosítások tervezése"],
   ["Checking current translation resources", "A jelenlegi fordítási erőforrások ellenőrzése"],
   ["Planning resource changes", "Erőforrás-módosítások tervezése"],
+  ["Checking embedded-font collections", "Beágyazott fontgyűjtemények ellenőrzése"],
+  ["Final archive checks", "Végső archívumellenőrzések"],
+  ["Checking source archives", "Forrásarchívumok ellenőrzése"],
+  ["Copying game archives", "Játékarchívumok másolása"],
+  ["Verifying staged archives", "Előkészített archívumok ellenőrzése"],
+  ["Replacing game archives", "Játékarchívumok cseréje"],
+  ["Finishing installation records", "Telepítési napló véglegesítése"],
   ["Validation complete", "Az ellenőrzés kész"],
   ["Checking translation package", "A fordítási csomag ellenőrzése"],
   ["Inspecting game files", "Játékfájlok vizsgálata"], ["Planning changes", "Módosítások tervezése"],
@@ -93,7 +111,9 @@ const UI_COPY = [
   ["The translation is installed. The game is ready to start.", "A fordítás telepítve van. A játék indítható."],
   ["The check completed successfully. The translation is ready to install.", "Az ellenőrzés sikeresen befejeződött. A fordítás telepíthető."],
   ["The original game files have been restored.", "Az eredeti játékfájlok visszaálltak."],
+  ["A verified backup matches these game files. Restore it before installing the selected translation package.", "Ellenőrzött mentés tartozik ezekhez a játékfájlokhoz. A kiválasztott fordításcsomag telepítése előtt állítsd vissza."],
   ["These game files aren’t in a state PyTRTT recognizes, so we left them untouched.", "A játékfájlok állapota nem ismerős a PyTRTT-nek, ezért nem nyúltunk hozzájuk."],
+  ["This translation memory is not ready to install. Bind it to extracted records first. No game files were changed.", "A fordítási memória még nem telepíthető. Előbb kösd a kinyert rekordokhoz. A játékfájlok nem változtak."],
   ["The operation could not be completed safely. Review the details, then try again.", "A művelet nem fejezhető be biztonságosan. Nézd meg a részleteket, majd próbáld újra."],
   ["The operation is complete.", "A művelet befejeződött."], ["No additional details.", "Nincs további részlet."],
   ["Technical details", "Technikai részletek"], ["Copy details", "Részletek másolása"],
@@ -262,10 +282,13 @@ function renderGames(state) {
 }
 
 function switchPage(from, to, direction) {
+  if (from.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
   from.classList.remove("active");
   from.classList.toggle("past", direction === "forward");
-  from.setAttribute("aria-hidden", "true");
   from.inert = true;
+  from.setAttribute("aria-hidden", "true");
   to.classList.toggle("past", direction === "back");
   // Commit the starting position before activating the destination panel.
   void to.offsetWidth;
@@ -487,6 +510,8 @@ function installationStateLabel(status) {
       ready: "Ready to check",
       changes_available: "Translation ready to install",
       already_translated: "Translation already installed",
+      recovery_available: "Verified restoration available",
+      translation_unbound: "Translation memory needs binding",
       unknown_modified: "Unknown file modifications found",
       restored: "Original files restored",
       error: "Could not verify the game",
@@ -495,6 +520,8 @@ function installationStateLabel(status) {
       ready: "Ellenőrzésre kész",
       changes_available: "A fordítás telepíthető",
       already_translated: "A fordítás már telepítve van",
+      recovery_available: "Ellenőrzött visszaállítás elérhető",
+      translation_unbound: "A fordítási memóriát előbb rekordokhoz kell kötni",
       unknown_modified: "Ismeretlen fájlmódosításokat találtunk",
       restored: "Az eredeti fájlok helyreállítva",
       error: "A játék nem ellenőrizhető",
@@ -510,6 +537,9 @@ function progressLabel(message, current, total) {
     gui_progress_plan: "Planning required changes",
     gui_progress_detect_resources: "Checking current translation resources",
     gui_progress_plan_resources: "Planning resource changes",
+    gui_progress_plan_finalize: "Final archive checks",
+    embedded_collection_scan: "Checking embedded-font collections",
+    archive_layout: "Final archive checks",
     gui_progress_complete: "Validation complete",
   };
   const label = translatedText(
@@ -652,6 +682,8 @@ function creditRoleLabel(role) {
     testers: "Testers",
     beta_testers: "Beta testers",
     translation_tools: "Translation tools",
+    translation_tool_authors: "Translation tool authors",
+    additional_editors: "Additional editors",
     communities: "Communities",
   };
   const fallback = role.replaceAll("_", " ").replace(/^./, (letter) => letter.toUpperCase());
@@ -712,8 +744,16 @@ function operationProgressCopy(message) {
     gui_progress_detect_resources: ["Checking translation resources", "Comparing installed resources with the expected original and translated states."],
     gui_progress_plan: ["Planning changes", "Preparing a safe dry-run plan before any file is modified."],
     gui_progress_plan_resources: ["Planning resource changes", "Building the replacement data and validating archive constraints."],
+    gui_progress_plan_finalize: ["Final archive checks", "Validating archive indexes and recovery requirements before any game file is changed."],
+    embedded_collection_scan: ["Checking embedded-font collections", "Scanning archive entries and shared font aliases. This may take a while on large installations; no game files have been changed."],
+    archive_layout: ["Final archive checks", "Calculating archive indexes, file sizes, and recovery requirements. No game files have been changed."],
     gui_progress_install: ["Installing translation", "Creating recovery data, writing translated resources, and replacing files safely. This can take several minutes."],
     gui_progress_install_resources: ["Writing translation resources", "Writing the prepared translations into safely staged copies of the game archives."],
+    gui_progress_install_preflight_bytes: ["Checking source archives", "Verifying that the original game archives have not changed since the plan was created."],
+    gui_progress_install_stage_bytes: ["Copying game archives", "Creating staged copies before applying any translation changes. The original game files remain untouched."],
+    gui_progress_install_verify_bytes: ["Verifying staged archives", "Checking the prepared archive copies before they are installed."],
+    gui_progress_install_commit_bytes: ["Replacing game archives", "Copying verified archives into place. Recovery data is preserved for restoration."],
+    gui_progress_install_finalize: ["Finishing installation records", "Completing archive checks, recovery records, and the transaction journal."],
     gui_progress_restore: ["Restoring original files", "Putting the original game files back where they belong."],
     gui_progress_restore_bytes: ["Checking recovery data", "Reading and verifying the game archives needed for a safe restore."],
     gui_progress_verify: ["Verifying result", "Checking the files written by the operation."],
@@ -727,6 +767,8 @@ function resultStatusLabel(status) {
   const labels = {
     en: {
       already_translated: "Translation installed",
+      recovery_available: "Verified restoration available",
+      translation_unbound: "Translation memory needs binding",
       changes_available: "Translation available",
       restored: "Original files restored",
       unknown_modified: "Unknown modified files",
@@ -734,6 +776,8 @@ function resultStatusLabel(status) {
     },
     hu: {
       already_translated: "Fordítás telepítve",
+      recovery_available: "Ellenőrzött visszaállítás elérhető",
+      translation_unbound: "A fordítási memória nincs rekordokhoz kötve",
       changes_available: "Fordítás telepíthető",
       restored: "Eredeti fájlok helyreállítva",
       unknown_modified: "Ismeretlen módosított fájlok",
@@ -748,7 +792,9 @@ function showProgress(progress) {
     return;
   }
   const bar = document.querySelector("#progress-bar");
-  const countable = ["gui_progress_detect_resources", "gui_progress_plan_resources", "gui_progress_install_resources", "gui_progress_restore_bytes"]
+  const countable = ["gui_progress_detect_resources", "gui_progress_plan_resources", "embedded_collection_scan", "gui_progress_install_resources", "gui_progress_install_preflight_bytes", "gui_progress_install_stage_bytes", "gui_progress_install_verify_bytes", "gui_progress_install_commit_bytes", "gui_progress_restore_bytes"]
+    .includes(progress.message);
+  const byteCounted = ["gui_progress_restore_bytes", "gui_progress_install_preflight_bytes", "gui_progress_install_stage_bytes", "gui_progress_install_verify_bytes", "gui_progress_install_commit_bytes"]
     .includes(progress.message);
   if (countable && progress.total > 0) {
     bar.max = progress.total;
@@ -757,7 +803,7 @@ function showProgress(progress) {
     bar.removeAttribute("value");
   }
   const copy = operationProgressCopy(progress.message);
-  const position = progress.message === "gui_progress_restore_bytes"
+  const position = byteCounted
     ? `${formatBytes(progress.current)} / ${formatBytes(progress.total)}`
     : `${progress.current}/${progress.total}`;
   document.querySelector("#progress-status").textContent = countable && progress.total > 0
@@ -773,15 +819,17 @@ function showResult(result) {
   clearInterval(elapsedTimer);
   elapsedTimer = null;
   updateElapsedTime();
-  const success = ["already_translated", "changes_available", "restored"].includes(result.status);
+  const success = ["already_translated", "changes_available", "restored", "recovery_available"].includes(result.status);
   document.querySelector("#progress-title").textContent = success
     ? "Completed"
     : "Could not complete the operation";
   document.querySelector(".progress-copy").hidden = true;
   const resultMessages = {
     already_translated: "The translation is installed. The game is ready to start.",
+    translation_unbound: "This translation memory is not ready to install. Bind it to extracted records first. No game files were changed.",
     changes_available: "The check completed successfully. The translation is ready to install.",
     restored: "The original game files have been restored.",
+    recovery_available: "A verified backup matches these game files. Restore it before installing the selected translation package.",
     unknown_modified: "These game files aren’t in a state PyTRTT recognizes, so we left them untouched.",
     error: "The operation could not be completed safely. Review the details, then try again.",
   };
@@ -825,9 +873,9 @@ function restartWizard() {
   selectedAction = null;
   document.querySelector("#language-card").hidden = true;
   for (const card of document.querySelectorAll(".game-card")) {
-    card.querySelector(".selected-indicator").hidden = true;
     card.classList.remove("selected");
     card.setAttribute("aria-pressed", "false");
+    card.querySelector(".selected-indicator").hidden = true;
   }
   switchPage(
     document.querySelector("#progress"),

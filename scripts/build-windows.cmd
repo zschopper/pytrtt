@@ -3,7 +3,11 @@ setlocal
 cd /d "%~dp0.."
 set "PYTRTT_BUILD_ROOT=%LOCALAPPDATA%\PyTRTT\build-cache"
 set "PYTRTT_BUILD_CLEAN="
-if /I "%~1"=="--clean" set "PYTRTT_BUILD_CLEAN=--clean"
+set "PYTRTT_BUILD_INSTALLER="
+for %%A in (%*) do (
+  if /I "%%~A"=="--clean" set "PYTRTT_BUILD_CLEAN=--clean"
+  if /I "%%~A"=="--installer" set "PYTRTT_BUILD_INSTALLER=1"
+)
 
 python -c "import PyInstaller, PIL" >nul 2>nul
 if errorlevel 1 (
@@ -45,6 +49,8 @@ echo Standalone executable: %CD%\dist\PyTRTT.exe
 echo Running packaged GUI smoke test...
 "dist\PyTRTT.exe" --smoke-test
 if errorlevel 1 exit /b 1
+
+if not defined PYTRTT_BUILD_INSTALLER exit /b 0
 
 where ISCC.exe >nul 2>nul
 if not errorlevel 1 (

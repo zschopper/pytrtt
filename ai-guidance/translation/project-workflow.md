@@ -25,7 +25,7 @@ do not repeat verified work unless inputs changed. Read `../planning.md` when up
    Exercise a representative small copy, then a full copy: apply with a transaction journal, restore, and compare
    original file sizes and SHA-256 values. Preserve the first recovery data; use explicit transaction/output paths.
    Test long/accented text, placeholders, empty/missing translations, language slots, and any font substitutions.
-6. **Game test and handoff.** Check menus, subtitles, line wrapping, glyphs, and language/DLC behavior in the actual game.
+6. **Game test and handoff.** Check interface text, subtitles, line wrapping, glyphs, and language/DLC behavior in the game.
    Record extraction, writing, restoration, and appearance results separately for the exact build and language.
    Update the existing project plan and provenance with checks, remaining gaps, and the next action.
    Prepare releases only when requested, using accepted release decisions and verified assets; commit/publish when instructed.

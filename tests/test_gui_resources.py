@@ -88,6 +88,17 @@ def test_wizard_pages_crossfade_and_respect_reduced_motion() -> None:
     assert "prefers-reduced-motion: reduce" in styles
 
 
+def test_page_transition_blurs_focus_before_hiding_the_current_panel() -> None:
+    script = gui_resource("app.js").read_text(encoding="utf-8")
+    transition = script.split("function switchPage(", maxsplit=1)[1].split(
+        "\nfunction showInstallationStep", maxsplit=1
+    )[0]
+    assert "from.contains(document.activeElement)" in transition
+    assert transition.index("document.activeElement.blur()") < transition.index(
+        'from.setAttribute("aria-hidden", "true")'
+    )
+
+
 def test_sidebar_shows_completed_route_between_steps() -> None:
     script = gui_resource("app.js").read_text(encoding="utf-8")
     styles = gui_resource("styles.css").read_text(encoding="utf-8")
@@ -113,6 +124,8 @@ def test_operation_step_waits_for_current_background_validation() -> None:
     assert "function installationStateLabel(status)" in script
     assert "installationStateLabel(state.status)" in script
     assert 'already_translated: "Translation already installed"' in script
+    assert 'recovery_available: "Verified restoration available"' in script
+    assert 'recovery_available: "Ellenőrzött visszaállítás elérhető"' in script
     assert "const label = translatedText(" in script
 
 
@@ -134,6 +147,11 @@ def test_progress_step_uses_generation_guard_and_operation_context() -> None:
     assert 'const recovery = document.querySelector("#result-recovery")' in script
     assert 'return "< 1 second"' in script
     assert '"gui_progress_install_resources"' in script
+    assert "gui_progress_install_finalize:" in script
+    assert "gui_progress_install_stage_bytes:" in script
+    assert "gui_progress_install_verify_bytes:" in script
+    assert "gui_progress_install_commit_bytes:" in script
+    assert '"embedded_collection_scan"' in script
     assert '"gui_progress_restore_bytes"' in script
     assert "progress.current * 100 / progress.total" in script
     assert 'document.querySelector(".selection-summary").hidden = true' in script
@@ -187,9 +205,7 @@ def test_stored_application_language_is_read_before_the_frontend_can_persist_it(
     script = gui_resource("app.js").read_text(encoding="utf-8")
     channel_ready = script.index("bridge = channel.objects.pytrtt;")
     initial_state = script.index("bridge.initialState(", channel_ready)
-    assert "bridge.setApplicationLanguage(appLanguage);" not in script[
-        channel_ready:initial_state
-    ]
+    assert "bridge.setApplicationLanguage(appLanguage);" not in script[channel_ready:initial_state]
 
 
 def test_application_language_prefers_matching_supported_translation_language() -> None:

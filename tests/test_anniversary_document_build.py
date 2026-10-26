@@ -200,13 +200,22 @@ def test_document_builder_rejects_source_text_mismatch_before_planning(tmp_path:
     (package_dir / "fonts").mkdir(parents=True)
     (package_dir / "fonts/font_hu.raw").write_bytes(b"hu-font!")
 
-    with pytest.raises(TranslationPackageError, match="source text changed"):
+    with pytest.raises(TranslationPackageError, match="source text changed") as error:
         TranslationService().plan(
             game_dir,
             make_document("Different source"),
             package_dir=package_dir,
             expected_build_id="842717",
         )
+    detail = str(error.value)
+    assert "section=menu" in detail
+    assert f"resource_hash={MENU_HASH:08X}" in detail
+    assert "resource_path='pc-w\\\\local\\\\locals.bin'" in detail
+    assert "entry_id=0" in detail
+    assert "expected_preview='Different source'" in detail
+    assert "actual_preview='Start'" in detail
+    assert "expected_sha256=" in detail
+    assert "actual_sha256=" in detail
 
 
 def test_document_build_plan_applies_and_restores_exactly_with_font_raw(tmp_path: Path) -> None:

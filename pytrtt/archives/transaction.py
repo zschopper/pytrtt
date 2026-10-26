@@ -98,6 +98,28 @@ def _replace_target(source: Path, target: Path) -> None:
     os.replace(source, target)
 
 
+def _copy_file(
+    source: Path,
+    target: Path,
+    *,
+    progress: Callable[[int, int, str], None] | None = None,
+    message: str = "",
+    preserve_metadata: bool = False,
+) -> None:
+    total = source.stat().st_size
+    current = 0
+    if progress is not None:
+        progress(0, total, message)
+    with source.open("rb") as source_stream, target.open("wb") as target_stream:
+        while chunk := source_stream.read(1024 * 1024):
+            target_stream.write(chunk)
+            current += len(chunk)
+            if progress is not None:
+                progress(current, total, message)
+    if preserve_metadata:
+        shutil.copystat(source, target)
+
+
 def _write_journal(transaction_dir: Path, journal: dict[str, Any]) -> None:
     temporary = transaction_dir / f"{JOURNAL_NAME}.tmp"
     payload = json.dumps(journal, sort_keys=True, indent=2).encode("utf-8") + b"\n"
@@ -119,12 +141,18 @@ def _fsync_directory(path: Path) -> None:
         os.close(descriptor)
 
 
-def _copy_to_target(source: Path, target: Path) -> None:
+def _copy_to_target(
+    source: Path,
+    target: Path,
+    *,
+    progress: Callable[[int, int, str], None] | None = None,
+    message: str = "",
+) -> None:
     descriptor, temporary_name = tempfile.mkstemp(prefix=".pytrtt-restore-", dir=target.parent)
     os.close(descriptor)
     temporary = Path(temporary_name)
     try:
-        shutil.copyfile(source, temporary)
+        _copy_file(source, temporary, progress=progress, message=message)
         shutil.copymode(source, temporary)
         with temporary.open("r+b") as stream:
             os.fsync(stream.fileno())
@@ -230,7 +258,10 @@ def _apply_write_plan_locked(
                 raise TransactionError(f"{name} appeared after planning")
         elif not target.is_file() or target.stat().st_size != file_plan.original_size:
             raise TransactionError(f"{name} changed after planning")
-        elif _sha256(target) != file_plan.original_sha256:
+        elif (
+            _sha256(target, progress, "gui_progress_install_preflight_bytes")
+            != file_plan.original_sha256
+        ):
             raise TransactionError(f"{name} changed after planning")
 
     transaction_root.mkdir(parents=True)
@@ -244,12 +275,19 @@ def _apply_write_plan_locked(
     written_resources = 0
     if progress is not None:
         progress(0, len(resource_writes), "gui_progress_install_resources")
+    finalization_reported = False
     for name, file_plan in sorted(plan.files.items()):
         target = _target_path(data_root, name)
         staged = staged_dir / name
         existed = file_plan.original_sha256 is not None
         if existed:
-            shutil.copy2(target, staged)
+            _copy_file(
+                target,
+                staged,
+                progress=progress,
+                message="gui_progress_install_stage_bytes",
+                preserve_metadata=True,
+            )
         else:
             staged.touch()
 
@@ -266,6 +304,18 @@ def _apply_write_plan_locked(
                                 len(resource_writes),
                                 "gui_progress_install_resources",
                             )
+                    if (
+                        progress is not None
+                        and not finalization_reported
+                        and written_resources == len(resource_writes)
+                        and len(resource_writes) > 0
+                    ):
+                        progress(
+                            written_resources,
+                            len(resource_writes),
+                            "gui_progress_install_finalize",
+                        )
+                        finalization_reported = True
             stream.truncate(file_plan.final_size)
             stream.flush()
             os.fsync(stream.fileno())
@@ -277,7 +327,7 @@ def _apply_write_plan_locked(
             "original_sha256": file_plan.original_sha256,
             "original_mode": (target.stat().st_mode & 0o777) if existed else None,
             "staged_size": file_plan.final_size,
-            "staged_sha256": _sha256(staged),
+            "staged_sha256": _sha256(staged, progress, "gui_progress_install_verify_bytes"),
         }
 
     range_records: list[dict[str, Any]] = []
@@ -373,15 +423,27 @@ def _apply_write_plan_locked(
 
     for name, record in sorted(file_records.items()):
         target = _target_path(data_root, name)
-        current_hash = _sha256(target) if target.is_file() else None
+        current_hash = (
+            _sha256(target, progress, "gui_progress_install_preflight_bytes")
+            if target.is_file()
+            else None
+        )
         if current_hash == record["staged_sha256"]:
             continue
         if current_hash != record["original_sha256"]:
             raise TransactionError(f"{name} changed during installation")
         staged = staged_dir / name
-        if _sha256(staged) != record["staged_sha256"]:
+        if (
+            _sha256(staged, progress, "gui_progress_install_verify_bytes")
+            != record["staged_sha256"]
+        ):
             raise TransactionError(f"staged file verification failed for {name}")
-        _copy_to_target(staged, target)
+        _copy_to_target(
+            staged,
+            target,
+            progress=progress,
+            message="gui_progress_install_commit_bytes",
+        )
 
     journal["status"] = "applied"
     _write_journal(transaction_root, journal)

@@ -1,0 +1,42 @@
+{
+  "game": {
+    "name": "Tomb Raider: Anniversary Demo",
+    "platform": "PC Steam",
+    "app_id": "8030",
+    "build_id": "251873",
+    "depot_id": "8031",
+    "depot_manifest": "8303136682602620422",
+    "executable_sha256": "a61cac5cc7252c96904c9132fe1a1a378881258d1504f0444e615df4c7418c8a",
+    "archives": {
+      "bigfile.000": "3179a0a20e52a33eec5f683d95043f548162c692b3c7606256dabd2fb1777030",
+      "bigfile.001": "556126d398b3142e494564e64099ddf041f0f9a1ff286ff8062aa159f9a12d0f",
+      "bigfile.002": "424efdd5444ca19c91b7575e43a7e4262ebfb75cdaf64420a9b48317767076da"
+    }
+  },
+  "historical_reference": {
+    "package": "references/saját/080423-01.trtr2",
+    "demo_filelist": "bin/trad.v1.0.files.txt",
+    "demo_filelist_sha256": "c650de2674328be74d288cb92ed1a8ea9883a32696853cb7465e5bf96ffe2b83",
+    "translation": "bin/tra.v1.0.tra.xml",
+    "translation_sha256": "52d97ef1d0a45f9a38cc49dbd9ca2c27eaa4db87f67d247a082c89ecf5576433",
+    "note": "The archive contains the trad demo filelist but no separate trad.v1.0.tra.xml."
+  },
+  "maintained_source": {
+    "translation": "translations/tomb-raider-anniversary/hu.json",
+    "translation_sha256": "539ce1c19d377a27883c148c02d78857be734648bc5ccccc131150e11beefe3f",
+    "mapping": "980 menu records align in ordered source blocks; 21 relocated tutorial records were matched by source, order and alias structure; all 73 subtitle records match by resource hash, record ID and source text."
+  },
+  "package": {
+    "translation_sha256": "59c53068812f1e166853e9061ee2b8613a235abb27471dd95bdf8c1f7df6a6cc",
+    "filelist_sha256": "08a74538a825c5850ef74f8430a61f0a0d906e7d8752667509750df6000b8fcd",
+    "menu_records": 1001,
+    "subtitle_resources": 62,
+    "subtitle_records": 73,
+    "font_source_sha256": "d8c70c3de7a60e203ff59a44ca4944bcd01b124338c41c17fb8716632e330fc1",
+    "font_replacement_sha256": "523d93b4b9ea77cdde19a49283ce9a4d7a7b393206a91b282d7409f8721823cb"
+  },
+  "gameplay_verification": {
+    "date": "2026-10-26",
+    "result": "The user confirmed correct accents in the game and ordinary setup screens. CP1250 overrides made the setup reject strings as invalid UTF-8, so that approach was removed. The user then verified the original English ASCII text in both the Direct3D initialization error and the already-running process error without encoding corruption."
+  }
+}

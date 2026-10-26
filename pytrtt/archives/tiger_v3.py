@@ -273,11 +273,16 @@ class TigerV3Handler:
             raise ValueError("compressed TIGER resources are unsupported")
         return data
 
-    def plan(self, replacements: tuple[ResourceReplacement, ...]) -> TigerV3WritePlan:
+    def plan(
+        self,
+        replacements: tuple[ResourceReplacement, ...],
+        *,
+        progress: Callable[[int, int, str], None] | None = None,
+    ) -> TigerV3WritePlan:
         if any(r.embedded_type is not None for r in replacements):
             from pytrtt.archives.drm_v22 import plan_embedded
 
-            return plan_embedded(self, replacements)
+            return plan_embedded(self, replacements, progress=progress)
         boundary = self.settings.boundary
         if not 0 < boundary <= 0x100000000 or boundary % ALIGNMENT:
             raise ValueError("invalid TIGER part boundary")

@@ -44,6 +44,11 @@ For every scaling level, verify:
 - Refresh installation discovery and confirm an unchanged selection is preserved.
 - Change the game or installation and confirm dependent operation state is cleared.
 - Exercise dry run, install/update, already-installed/no-change, restore and validation-error results on approved copies.
+- With original and translated copies, reject installation for a mismatched build; do not label it already installed.
+- Select a revised package over an existing translation and confirm verified restoration remains available while
+  installation is disabled. Restore through a targeted-patch chain, then check again for installation availability.
+- Missing, corrupt or foreign recovery payloads must not enable restoration; changes after inspection must be rejected
+  again at execution. Confirm recovery uses the journal's runtime rather than the revised package's configuration.
 - During installation, request safe exit and confirm the original state is restored before the application closes.
 - Force-close an approved fixture operation, restart PyTRTT, accept recovery and confirm recovery completes before use.
 - Confirm the final page offers both another game and Exit.

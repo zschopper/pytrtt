@@ -485,16 +485,11 @@
         "replacement_file": "assets/fonts/fonts_ru-hu.bin",
         "archive_family": "patch",
         "source_sha256": "2392b0f3d47b0008cef19e1139de7b91b8118aaaaaf1d42eddd0e05556a08a3e",
-        "replacement_sha256": "ae7ca6d9d25097b05fb963c31f1130f5c96aeeda6872b26ab957eba1bcc4fc5b",
+        "replacement_sha256": "50331522f0278658ff3a3938dbfd9d7eb9784091bb42a1305a69828ddbd51582",
         "embedded_type": 7,
         "embedded_id": 24842,
         "archive_locale": 4294967295,
-        "character_substitutions": {
-          "Ő": "Ô",
-          "ő": "ô",
-          "Ű": "Û",
-          "ű": "û"
-        }
+        "character_substitutions": {}
       },
       {
         "resource_hash": "7231FDEC",
@@ -502,16 +497,11 @@
         "replacement_file": "assets/fonts/fonts_un-hu.bin",
         "archive_family": "patch",
         "source_sha256": "4d6c8e00446b25bc38a24071aa6c03ae572a8abb110bec0c06827959e6325b2e",
-        "replacement_sha256": "3e5feed8b5e5ba510c689188c059f6fe8456549e9564996bead6690395198f41",
+        "replacement_sha256": "65f66a9bc1d839efe8f7a43fb5ef2893a15bff1a02c6a080d882410fe943db1b",
         "embedded_type": 7,
         "embedded_id": 121631,
         "archive_locale": 4294967295,
-        "character_substitutions": {
-          "Ő": "Ô",
-          "ő": "ô",
-          "Ű": "Û",
-          "ű": "û"
-        }
+        "character_substitutions": {}
       }
     ],
     "source": "Original game font outlines, amended locally using their own base letters and acute accents; no external font was introduced.",
@@ -522,7 +512,7 @@
       "scope": "Observed locations; not exhaustive coverage of the full game."
     },
     "stream_placement": "Rebuilt NEXT chain and fresh nonoverlapping virtual ranges; assets contain no fixed installation offsets.",
-    "source_text_identity": "hu.json remains a source-text translation memory. Bind to fresh records before installation. The binding preserves fonts and the binding script copies their assets. Font-specific character substitutions are applied by the shared service.",
+    "source_text_identity": "hu.json remains a source-text translation memory. Bind to fresh records before installation. The binding preserves fonts and the binding script copies their assets. Current Unicode font assets have no font-specific character substitutions; older verification reports describe historical circumflex assets.",
     "recovery": "Original nested font bodies and changed index ranges are preserved by the shared transaction.",
     "package_verification": {
       "report": "work/runs/tr2013/9573671/packaged-font-verification.json",
@@ -598,6 +588,9 @@
     "diagnosis": "work/runs/tr2013/9573671/embedded-font-layer-diagnosis.json",
     "prepared_package": "work/runs/tr2013/9573671/steam-9573671-reviewed-hu.json",
     "prepared_package_sha256": "7685ecf41b6f7fcae3a2223a06f695087118c776ebe3540ca2f8008aa0100b4f",
+    "gui_package": "translations/tomb-raider/steam-9573671-hu.json",
+    "gui_package_sha256": "7685ecf41b6f7fcae3a2223a06f695087118c776ebe3540ca2f8008aa0100b4f",
+    "gui_catalog_build_scope": "Steam build 9573671; historical source-text hu.json retained separately",
     "regression_verification": {
       "targeted_tests_passed": 97,
       "default_tests_passed": 382,
@@ -628,11 +621,12 @@
     }
   },
   "current_steam_state": {
-    "date": "2026-10-19",
+    "date": "2026-10-26",
     "language": "en",
     "hungarian_package_active": false,
     "restoration_requested_by": "user",
-    "verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
+    "verification_method": "User reported completed GUI restoration followed by translation available for installation; not a fresh independent whole-installation hash audit.",
+    "historical_verification_report": "work/runs/restore-english-20261019/all-english-verification.json",
     "historical_translation_and_game_test_results_preserved": true
   },
   "english_source_export": {
@@ -651,5 +645,40 @@
       "historical_only_source_values": 2363,
       "result": "Neither source is a subset of the other. The Epic export is retained as the canonical English archive export; hu.json remains a separate source-text translation memory."
     }
+  },
+  "unicode_text_policy": {
+    "date": "2026-10-26",
+    "status": "All active Hungarian circumflex substitutions removed; user reported successful installation, accent appearance, restoration and renewed install availability.",
+    "documents": ["hu.json", "steam-9573671-hu.json"],
+    "scope": "Interface and subtitles both retain real Unicode double-acutes at runtime. Global and font-specific substitution maps are empty. Existing per-entry substitution-disabled directives remain valid.",
+    "preserved": "Source text, translations, metadata, control tokens, font payloads and recovery backups are unchanged. Historical substitution records below describe previous stages, not current policy. Legacy glyphs remain in fonts for compatibility, but are no longer generated by text substitution.",
+    "verification": "49 targeted font, document and translation-memory tests passed.",
+    "user_verification": {
+      "date": "2026-10-26",
+      "result": "User reported correct TR2013 accents after installation, then completed GUI restoration and observed translation available for installation again.",
+      "limits": "User-observed cycle, not an independent byte-exact restoration audit or exhaustive screen/scene review. Updating an older translation package remains a separate open GUI issue."
+    }
+  },
+  "unicode_menu_update": {
+    "date": "2026-10-26",
+    "status": "menu-only Unicode update installed; targeted binary readback passed; wider appearance review pending",
+    "menu_delta_installation": "work/runs/tr2013/9573671/unicode-setup-20261026/remaining-menu-installation.json",
+    "menu_delta_transaction": "work/transactions/tr2013/9573671/unicode-remaining-menu-20261026/",
+    "menu_delta_records_installed": 3935,
+    "subtitle_records_rewritten": 0,
+    "targeted_tests_passed": 49,
+    "font_candidate_report": "work/runs/tr2013/9573671/unicode-setup-20261026/report.json",
+    "successful_trial": "work/runs/tr2013/9573671/unicode-setup-20261026/installation.json",
+    "user_feedback": "User accepted the targeted Setup/in-game experiment as perfect on 2026-10-26",
+    "added_unicode_glyphs": 16,
+    "extended_fonts": 4,
+    "legacy_font_replacement_hashes": {
+      "assets/fonts/fonts_ru-hu.bin": "ae7ca6d9d25097b05fb963c31f1130f5c96aeeda6872b26ab957eba1bcc4fc5b",
+      "assets/fonts/fonts_un-hu.bin": "3e5feed8b5e5ba510c689188c059f6fe8456549e9564996bead6690395198f41"
+    },
+    "memory_menu_directives_changed": 866,
+    "bound_menu_directives_changed": 3936,
+    "scope": "Only menu entries containing Hungarian double-acutes disable substitution. All translation text, source text, metadata and subtitle policy are unchanged. Legacy circumflex glyphs remain usable by subtitles.",
+    "verification_scope": "Existing font/package verification reports describe historical circumflex assets. Unicode aliases are covered by the new candidate report and targeted user trial; no exhaustive game-wide appearance claim."
   }
 }

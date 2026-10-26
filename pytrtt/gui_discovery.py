@@ -143,6 +143,11 @@ def validate_packaged_catalog(
         if document.metadata.game_id != game.game_id:
             errors.append(f"{game.game_id}: package metadata targets {document.metadata.game_id}")
             continue
+        if document.entry_identity != "record" or document.runtime is None:
+            errors.append(
+                f"{game.game_id}: translation memory must be bound to extracted records first"
+            )
+            continue
         package_root = package.parent.resolve(strict=True)
         for font in document.fonts:
             relative = PurePosixPath(font.replacement_file)

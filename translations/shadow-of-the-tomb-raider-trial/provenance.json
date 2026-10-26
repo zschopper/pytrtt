@@ -127,5 +127,97 @@
     "report": "work/runs/sottr-trial/3668420/en-template-20261019/extraction-report.json",
     "format": "Standalone Shadow keyed-locals JSON; retains native ids and keys; not a generic runtime package.",
     "coverage": "Entire selected English locals table, including UI and dialogue; not a complete archive/DLC/embedded-text coverage claim."
+  },
+  "trial_source_completion_20261026": {
+    "date": "2026-10-26",
+    "before_sha256": "27ee521367c08e860bef84f185d642aeacdce5b5464a85ced335bcd2dc1c0b12",
+    "after_sha256": "2e562252b768a1ddfaa9f316461390e4fead488be4b27de3a2c5af9313968887",
+    "completed_records": 59,
+    "transferred_from_full_game": 12,
+    "translated_from_trial_source": 40,
+    "internal_identifiers_preserved": 7,
+    "remaining_nonblank_missing": 18,
+    "remaining_reason": "Same dialogue words but different timing/segmentation; pending separate adaptation",
+    "source_and_identity_unchanged": true,
+    "scope": "Package only; no installation or game test",
+    "terminology": {
+      "Blood and Bone": "Vér és csont",
+      "Blood and Bone - Carnal": "Vér és csont - Húsvér",
+      "incendiary shotgun shells": "gyújtólőszer vadászpuskához"
+    },
+    "verification": "Parser, translation-only structural comparison, markup/controls/time markers/newlines and legal numerals checked; CLI dry run on restored copy",
+    "evidence_report": "work/runs/shadow-of-the-tomb-raider-trial/3668420/source-key-comparison-20261026/report.json"
+  },
+  "trial_timing_adaptation_20261026": {
+    "date": "2026-10-26",
+    "before_sha256": "2e562252b768a1ddfaa9f316461390e4fead488be4b27de3a2c5af9313968887",
+    "after_sha256": "f8122e00f5e2150f61868e35ed32d82948f785109abeb120d80067ced56185bb",
+    "completed_records": 5,
+    "completed_ids": [
+      5345,
+      23784,
+      29824,
+      29826,
+      38451
+    ],
+    "remaining_nonblank_missing": 13,
+    "remaining_reason": "Trial source has no timing markers; await user permission to reuse full-game timings. Record 38613 additionally has conflicting English 1.980 / Hungarian 2.161 markers.",
+    "trial_time_markers_preserved_exactly": true,
+    "source_and_identity_unchanged": true,
+    "evidence_report": "work/runs/shadow-of-the-tomb-raider-trial/3668420/source-key-comparison-20261026/timing-verification.json",
+    "in_game_timing_verified": false
+  },
+  "updated_batch_gui_roundtrip_20261026": {
+    "date": "2026-10-26",
+    "package_sha256": "e4d25da9996ea28ef4681dd08b8b4d31ec8c3c58a087394cda623db4b0a31f5d",
+    "report": "work/runs/shadow-of-the-tomb-raider-trial/3668420/gui-compatibility-20261026-updated-batch/report.json",
+    "round_trip_passed": true,
+    "scope": "GUI backend on an independent copy of the complete selected English text archive; not all game archives or an in-game appearance/timing test.",
+    "installed_state_recognized": true,
+    "gui_restore_size_sha256_match": true,
+    "repeated_restore_size_sha256_match": true,
+    "post_restore_state": "changes_available",
+    "post_restore_installation_enabled": true,
+    "wrong_build_installation_rejected": true,
+    "package_revision_recovery_available": true,
+    "corrupt_recovery_rejected": true,
+    "changed_after_plan_rejected": true,
+    "blank_source_missing_records": 1290,
+    "source_backup_and_maintained_package_unchanged": true,
+    "issues": [],
+    "elapsed_seconds": 17.935
+  },
+  "trial_timing_decisions_20261026": {
+    "date": "2026-10-26",
+    "before_sha256": "f8122e00f5e2150f61868e35ed32d82948f785109abeb120d80067ced56185bb",
+    "after_sha256": "e4d25da9996ea28ef4681dd08b8b4d31ec8c3c58a087394cda623db4b0a31f5d",
+    "completed_records": 13,
+    "remaining_nonblank_missing": 0,
+    "populated_translation_fields": 38055,
+    "user_decision": "Keep the Trial records without timing markers; specific exception for record 38613 uses the full-game English 1.980 marker, not the Hungarian 2.161 marker.",
+    "without_time_markers": [
+      38191,
+      38218,
+      38286,
+      38287,
+      38406,
+      38594,
+      38610,
+      38728,
+      39058,
+      39205,
+      39210,
+      39215
+    ],
+    "time_exception": {
+      "entry_id": 38613,
+      "chosen": "1.980",
+      "rejected": "2.161",
+      "source": "Full-game English source",
+      "user_approved": true
+    },
+    "source_and_identity_unchanged": true,
+    "evidence_report": "work/runs/shadow-of-the-tomb-raider-trial/3668420/source-key-comparison-20261026/final-verification.json",
+    "in_game_timing_verified": false
   }
 }

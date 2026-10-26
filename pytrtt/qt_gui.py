@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 import sys
 import threading
+import time
 from collections.abc import Sequence
+from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 from PySide6.QtCore import (
@@ -56,6 +59,7 @@ from pytrtt.gui_presenter import (
 from pytrtt.gui_resources import application_resource_root, gui_resource, is_packaged_file
 from pytrtt.gui_support import (
     InstallationInspection,
+    InstallationStatus,
     check_translation,
     find_interrupted_transactions_in_roots,
     inspect_installation,
@@ -66,6 +70,7 @@ from pytrtt.i18n import Translator
 from pytrtt.version import VERSION
 
 PROJECT_ROOT = application_resource_root()
+LOGGER = logging.getLogger("pytrtt.gui")
 
 
 def user_settings() -> QSettings:
@@ -363,11 +368,35 @@ class GuiBridge(QObject):
 
     def _inspect_worker(self, candidate: InstallationCandidate, generation: int) -> None:
         try:
+            LOGGER.info(
+                "Checking installation: game=%s build=%s source=%s path=%s package=%s "
+                "generation=%d",
+                candidate.game.game_id,
+                candidate.build_id or "unknown",
+                candidate.source,
+                candidate.path,
+                PROJECT_ROOT / candidate.game.translation_file,
+                generation,
+            )
             inspection = inspect_installation(candidate, project_root=PROJECT_ROOT)
-            result = check_translation(
-                inspection,
-                transaction_roots=transaction_search_roots(candidate.path),
-                progress=lambda current, total, message: self.validationProgress.emit(
+
+            last_progress: tuple[str, int] | None = None
+
+            def report_progress(current: int, total: int, message: str) -> None:
+                nonlocal last_progress
+                fraction = current * 4 // total if total else current
+                checkpoint = (message, fraction)
+                if checkpoint != last_progress:
+                    LOGGER.debug(
+                        "Validation progress: generation=%d game=%s stage=%s current=%d total=%d",
+                        generation,
+                        candidate.game.game_id,
+                        message,
+                        current,
+                        total,
+                    )
+                    last_progress = checkpoint
+                self.validationProgress.emit(
                     json.dumps(
                         {
                             "generation": generation,
@@ -376,14 +405,31 @@ class GuiBridge(QObject):
                             "message": message,
                         }
                     )
-                ),
+                )
+
+            result = check_translation(
+                inspection,
+                transaction_roots=transaction_search_roots(candidate.path),
+                progress=report_progress,
             )
             if generation == self._inspection_generation:
                 self._inspections[(candidate.game.game_id, str(candidate.path))] = result
             payload: dict[str, object] = dict(operation_payload(result))
         except Exception as exc:  # Boundary converts backend failures into UI state.
+            LOGGER.exception(
+                "Installation check crashed: game=%s path=%s",
+                candidate.game.game_id,
+                candidate.path,
+            )
             payload = {"error": str(exc)}
         payload["generation"] = generation
+        LOGGER.info(
+            "Installation check complete: game=%s path=%s status=%s detail=%s",
+            candidate.game.game_id,
+            candidate.path,
+            payload.get("status", "error"),
+            payload.get("detail", payload.get("error", "")),
+        )
         self.operationStateReady.emit(json.dumps(payload, ensure_ascii=False))
 
     @Slot(str, str, str, result=int)
@@ -407,6 +453,16 @@ class GuiBridge(QObject):
             )
         )
         if self._operation_running or not allowed or inspection is None:
+            LOGGER.warning(
+                "Operation rejected: game=%s installation=%s action=%s "
+                "already_running=%s inspection_status=%s allowed=%s",
+                game_id,
+                installation_path,
+                action,
+                self._operation_running,
+                inspection.status.value if inspection is not None else None,
+                allowed,
+            )
             self.operationFinished.emit(
                 json.dumps(
                     {
@@ -417,6 +473,19 @@ class GuiBridge(QObject):
                 )
             )
             return generation
+        LOGGER.info(
+            "Operation accepted: generation=%d game=%s build=%s source=%s action=%s "
+            "game_dir=%s recovery_mode=%s current_status=%s detail=%s",
+            generation,
+            game_id,
+            inspection.candidate.build_id or "unknown",
+            inspection.candidate.source,
+            action,
+            inspection.candidate.path,
+            self._recovery_in_game,
+            inspection.status.value,
+            inspection.detail,
+        )
         self._operation_running = True
         self._active_action = action
         self._safe_exit_requested.clear()
@@ -430,18 +499,42 @@ class GuiBridge(QObject):
     def _operation_worker(
         self, inspection: InstallationInspection, action: str, generation: int
     ) -> None:
+        operation_started = time.monotonic()
         recovery_root = (
             game_transaction_root(inspection.candidate.path)
             if self._recovery_in_game and action == "install"
             else transaction_root()
         )
-        result, safe_exit_completed = run_translation_operation(
-            inspection,
+        recovery_roots = transaction_search_roots(inspection.candidate.path)
+        LOGGER.info(
+            "Operation worker started: generation=%d action=%s game=%s game_dir=%s "
+            "transaction_root=%s transaction_roots=%s",
+            generation,
             action,
-            transaction_root=recovery_root,
-            transaction_roots=transaction_search_roots(inspection.candidate.path),
-            safe_exit_requested=self._safe_exit_requested.is_set,
-            progress=lambda current, total, message: self.operationProgress.emit(
+            inspection.candidate.game.game_id,
+            inspection.candidate.path,
+            recovery_root,
+            recovery_roots,
+        )
+        last_progress: tuple[str, int] | None = None
+
+        def report_progress(current: int, total: int, message: str) -> None:
+            nonlocal last_progress
+            fraction = current * 4 // total if total else current
+            checkpoint = (message, fraction)
+            if checkpoint != last_progress:
+                LOGGER.debug(
+                    "Operation progress: generation=%d action=%s game=%s stage=%s "
+                    "current=%d total=%d",
+                    generation,
+                    action,
+                    inspection.candidate.game.game_id,
+                    message,
+                    current,
+                    total,
+                )
+                last_progress = checkpoint
+            self.operationProgress.emit(
                 json.dumps(
                     {
                         "generation": generation,
@@ -450,10 +543,48 @@ class GuiBridge(QObject):
                         "message": message,
                     }
                 )
-            ),
+            )
+
+        safe_exit_completed = False
+        try:
+            result, safe_exit_completed = run_translation_operation(
+                inspection,
+                action,
+                transaction_root=recovery_root,
+                transaction_roots=recovery_roots,
+                safe_exit_requested=self._safe_exit_requested.is_set,
+                progress=report_progress,
+            )
+            if self._recovery_in_game and action == "install" and result.restore_path is not None:
+                ensure_game_transaction_root(inspection.candidate.path)
+        except Exception as exc:  # Boundary converts unexpected worker failures into UI state.
+            LOGGER.exception(
+                "Operation worker failed: generation=%d action=%s game=%s game_dir=%s "
+                "transaction_root=%s",
+                generation,
+                action,
+                inspection.candidate.game.game_id,
+                inspection.candidate.path,
+                recovery_root,
+            )
+            result = InstallationInspection(
+                inspection.candidate,
+                InstallationStatus.ERROR,
+                inspection.translation_path,
+                f"{type(exc).__name__}: {exc}",
+            )
+        LOGGER.info(
+            "Operation worker complete: generation=%d action=%s game=%s status=%s "
+            "detail=%s recovery_path=%s safe_exit_completed=%s elapsed_seconds=%.3f",
+            generation,
+            action,
+            result.candidate.game.game_id,
+            result.status.value,
+            result.detail,
+            result.restore_path,
+            safe_exit_completed,
+            time.monotonic() - operation_started,
         )
-        if self._recovery_in_game and action == "install" and result.restore_path is not None:
-            ensure_game_transaction_root(inspection.candidate.path)
         self._operation_running = False
         self._active_action = None
         self._safe_exit_requested.clear()
@@ -544,6 +675,11 @@ class TranslationWindow(QMainWindow):
             )
         )
         interrupted = find_interrupted_transactions_in_roots(roots)
+        LOGGER.info(
+            "Interrupted-transaction scan complete: roots=%s count=%d",
+            roots,
+            len(interrupted),
+        )
         if not interrupted:
             return
         prompt = ConfirmationDialog(
@@ -572,11 +708,24 @@ class TranslationWindow(QMainWindow):
         progress.show()
         try:
             for position, (game_dir, transaction) in enumerate(interrupted, 1):
+                LOGGER.info(
+                    "Recovering interrupted transaction: position=%d total=%d "
+                    "game_dir=%s transaction=%s",
+                    position,
+                    len(interrupted),
+                    game_dir,
+                    transaction,
+                )
                 progress.setLabelText(
                     f"{self._translator.text('gui_recovery_running')}\n{game_dir}"
                 )
                 QApplication.processEvents()
                 recover_interrupted_transaction(game_dir, transaction)
+                LOGGER.info(
+                    "Interrupted transaction recovered: game_dir=%s transaction=%s",
+                    game_dir,
+                    transaction,
+                )
                 progress.setValue(position)
             QMessageBox.information(
                 self,
@@ -584,6 +733,7 @@ class TranslationWindow(QMainWindow):
                 self._translator.text("gui_recovery_complete_message"),
             )
         except Exception as exc:  # Native recovery boundary keeps journals for retry.
+            LOGGER.exception("Interrupted-transaction recovery failed")
             QMessageBox.critical(
                 self,
                 self._translator.text("gui_recovery_error_title"),
@@ -654,6 +804,22 @@ class TranslationWindow(QMainWindow):
 def main(arguments: Sequence[str] | None = None) -> int:
     """Run the Qt graphical client."""
     parser_arguments = list(sys.argv[1:] if arguments is None else arguments)
+    debug_logging = "--debug-log" in parser_arguments
+    parser_arguments = [item for item in parser_arguments if item != "--debug-log"]
+    if debug_logging:
+        log_path = configure_debug_logging()
+        LOGGER.info(
+            "GUI started: version=%s python=%s platform=%s pid=%d executable=%s "
+            "working_directory=%s project_root=%s log_path=%s",
+            VERSION,
+            sys.version.split()[0],
+            sys.platform,
+            os.getpid(),
+            sys.executable,
+            Path.cwd(),
+            PROJECT_ROOT,
+            log_path,
+        )
     locale = "hu" if "--hu" in parser_arguments else "en"
     recovery_in_game = "--recovery-in-game" in parser_arguments
     smoke_test = "--smoke-test" in parser_arguments
@@ -685,6 +851,31 @@ def main(arguments: Sequence[str] | None = None) -> int:
     if not smoke_test:
         QTimer.singleShot(0, window.recover_interrupted_operations)
     return application.exec()
+
+
+def configure_debug_logging() -> Path:
+    """Write diagnostic output to the console and the per-user PyTRTT log."""
+    if os.name == "nt":
+        log_dir = Path(os.environ.get("LOCALAPPDATA", Path.home())) / "PyTRTT" / "logs"
+    else:
+        state_root = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state"))
+        log_dir = state_root / "pytrtt" / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / "pytrtt-debug.log"
+    file_handler = RotatingFileHandler(
+        log_path,
+        maxBytes=5 * 1024 * 1024,
+        backupCount=3,
+        encoding="utf-8",
+    )
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s %(levelname)s %(name)s [%(threadName)s]: %(message)s",
+        handlers=[logging.StreamHandler(), file_handler],
+        force=True,
+    )
+    LOGGER.info("Debug logging enabled; log file: %s", log_path)
+    return log_path
 
 
 if __name__ == "__main__":

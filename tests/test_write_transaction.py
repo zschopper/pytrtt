@@ -126,6 +126,13 @@ def test_apply_reports_each_staged_translation_write(tmp_path: Path) -> None:
 
     assert (0, 1, "gui_progress_install_resources") in updates
     assert (1, 1, "gui_progress_install_resources") in updates
+    assert any(message == "gui_progress_install_finalize" for _, _, message in updates)
+    for phase in (
+        "gui_progress_install_stage_bytes",
+        "gui_progress_install_verify_bytes",
+        "gui_progress_install_commit_bytes",
+    ):
+        assert any(message == phase and total > 0 for _, total, message in updates)
 
 
 def test_transaction_can_be_stored_in_a_dedicated_game_subdirectory(tmp_path: Path) -> None:

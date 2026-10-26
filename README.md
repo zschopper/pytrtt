@@ -11,28 +11,29 @@ files carry the configuration needed to apply the translation.
 
 ## Game status and remaining work
 
-The following covers all eleven games currently in scope. Translation status refers to Hungarian on PC; Steam build
+The following covers the games currently in scope. Translation status refers to Hungarian on PC; Steam build
 numbers identify the versions investigated. An unknown build means no target build is established here. Supported
 status applies only to the listed game/build. Experimental installations and imported text drafts still have the
 outstanding checks described below; owning a game or having reference files does not establish support.
 
-Status snapshot: **2026-10-21**. The game sections below are ordered by release date.
+Status snapshot: **2026-10-26**. The game sections below are ordered by release date.
 
-**Current local Steam state:** all eleven games use English after the requested restoration on 2026-10-19.
-Hungarian JSON files, font assets and recovery backups are preserved. The results below describe translation
-capabilities and completed tests; the Hungarian packages are currently inactive in the Steam installations.
+**Current local Steam state:** the Anniversary Demo uses the Hungarian UTF-8 package with English error dialogs;
+the other games remain in their previously recorded states. Hungarian JSON files, font assets and recovery backups
+are preserved. The results below describe translation capabilities and completed tests.
 
 | Game | Steam build | Project status | Verified result | Current Steam state |
 | --- | --- | --- | --- | --- |
 | Tomb Raider: Legend Demo | `251815` | 🟢 Supported | Proofread HU; game/setup verified | English |
 | Tomb Raider: Legend | `251820` | 🟢 Supported | Complete, proofread HU; game verified | English |
 | Tomb Raider: Anniversary | `842717` | 🟢 Supported | Proofread HU; install, restore and game verified | English |
+| Tomb Raider: Anniversary Demo | `251873` | 🟢 Supported | HU UI; English error dialogs verified | Hungarian |
 | Tomb Raider: Underworld Demo | Unknown | 🔴 Not started | Index inventory only | English |
 | Tomb Raider: Underworld | `251883` | 🟡 Experimental | Selected HU verified; font port pending | English |
 | Lara Croft and the Guardian of Light | `11395` | 🟡 Experimental | HU base/DLC verified; font check pending | English |
 | Tomb Raider (2013) | `9573671` | 🟡 Experimental | Selected HU text and repaired font observed in game | English |
 | Lara Croft and the Temple of Osiris | `477027` | 🟡 Complete draft | 3,082 HU texts; accents game-verified | English |
-| Rise of the Tomb Raider | `9575745` | 🟡 Source export | 55,958 English records; Hungarian fields are empty | English |
+| Rise of the Tomb Raider | `9575745` | 🟡 Partial draft | Interface filled; subtitles incomplete | English |
 | Shadow of the Tomb Raider Trial | `3668420` | 🟡 Game-tested draft | 38,055 HU texts; game-verified | English |
 | Shadow of the Tomb Raider | `11668867` | 🟡 Import draft | 38,234 HU texts; review/game test pending | English |
 
@@ -59,7 +60,11 @@ and has no dedicated translation profile. The
 Filename coverage is independent of text extraction coverage. Shadow's keyed locals table uses text handler version
 4; its language ID and translation JSON schema are separate version numbers.
 
-“Complete” extraction refers to the selected build's identified menu/subtitle resource types and archive layers. It
+Translation content categories are **Interface** (Hungarian: **Felhasználói felület**) and **Subtitles**
+(Hungarian: **Feliratok**). Interface includes menus, settings, HUD, and prompts; subtitles include cinematic and
+in-game dialogue captions. Existing JSON keys `menu` and `subtitles` remain unchanged for compatibility.
+
+“Complete” extraction refers to the selected build's identified interface/subtitle resource types and archive layers. It
 does not establish arbitrary embedded-text or unexamined DLC coverage. Human authorship, machine pretranslation,
 structural QA, linguistic proofreading and gameplay checks are separate results. “Needs review” means the current
 assembled package has no documented complete linguistic sign-off.
@@ -69,7 +74,7 @@ Guardian of Light package does not identify its contributors or production metho
 by this AI assistant. AI-authored additions are not counted as human translation because they were entered manually
 or passed structural QA. The same distinction applies to Underworld's gap fills and the Temple of Osiris draft.
 Historical releases and official reference text are not evidence that every current import or new addition was
-proofread. Tomb Raider (2013)'s 48 unmatched records comprise 32 nonempty menu texts, one nonempty subtitle and 15
+proofread. Tomb Raider (2013)'s 48 unmatched records comprise 32 nonempty interface texts, one nonempty subtitle and 15
 empty source records; the outstanding text includes privacy notices, terms of service and Epic/Steam multiplayer
 messages.
 
@@ -94,14 +99,14 @@ Steam build: `251815`. **Status:** 🟢 Supported; game appearance user-verified
 | Archive format / support | 🟢 Bigfile/1, R/W |
 | Text formats | 🟢 locals/1; CINE/1 |
 | Resolved filenames | 🟢 0 missing |
-| Text extraction | 🟢 Complete menus/subtitles |
+| Text extraction | 🟢 Complete interface/subtitles |
 | Translation / origin | 🟢 Human translation; legacy release |
 | Proofreading | 🟢 Original translation manually proofread; user-confirmed |
 | Binary format / need | 🟢 RAW/1 font; required |
 | Binary localization | 🟢 Replacement ready; setup accents user-verified |
 | Game-specific guidance | 🔴 No; shared guidance only |
 
-The [Hungarian package](translations/tomb-raider-legend-demo/hu.json) covers menus, subtitles and font replacement.
+The [Hungarian package](translations/tomb-raider-legend-demo/hu.json) covers interface text, subtitles and font replacement.
 The user confirmed the corrected setup accents with Hungarian selected as the Windows language for non-Unicode
 programs.
 
@@ -120,15 +125,15 @@ Steam build: `251820`. **Status:** 🟢 Supported; game appearance user-verified
 | Archive format / support | 🟢 Bigfile/1, R/W |
 | Text formats | 🟢 locals/1; CINE/1 |
 | Resolved filenames | 🟢 0 missing |
-| Text extraction | 🟢 Complete menus/subtitles |
+| Text extraction | 🟢 Complete interface/subtitles |
 | Translation / origin | 🟢 Human translation; legacy release and user completions |
 | Proofreading | 🟢 Original translation manually proofread; user-confirmed |
 | Binary format / need | 🟢 RAW/1 font; required |
 | Binary localization | 🟢 Replacement ready in supported package |
 | Game-specific guidance | 🔴 No; shared guidance only |
 
-The [Hungarian package](translations/tomb-raider-legend/hu.json) covers menus, subtitles and a replacement font for
-the supported build.
+The [Hungarian package](translations/tomb-raider-legend/hu.json) covers interface text, subtitles and a replacement
+font for the supported build.
 
 The user confirmed on 2026-10-19 that the Hungarian version works correctly and that the original translation
 was manually proofread. This confirmation applies to the Hungarian package.
@@ -145,14 +150,14 @@ Steam build: `842717`. **Status:** 🟢 Supported; Hungarian installation user-v
 | Archive format / support | 🟢 Bigfile/1, R/W |
 | Text formats | 🟢 locals/1; CINE/1 |
 | Resolved filenames | 🟢 0 missing |
-| Text extraction | 🟢 Complete menus/subtitles |
+| Text extraction | 🟢 Complete interface/subtitles |
 | Translation / origin | 🟢 Human translation; legacy/public reference |
 | Proofreading | 🟢 Original translation manually proofread; user-confirmed |
 | Binary format / need | 🟢 RAW/1 font; required |
 | Binary localization | 🟢 Replacement verified; Steam original restored |
 | Game-specific guidance | 🔴 No; shared guidance only |
 
-The [Hungarian package](translations/tomb-raider-anniversary/hu.json) covers menus, subtitles and font replacement.
+The [Hungarian package](translations/tomb-raider-anniversary/hu.json) covers interface text, subtitles and font replacement.
 Full copy installation/restoration and a native Windows transaction smoke test passed; the installed Hungarian
 package was user-verified before restoration to English.
 
@@ -162,6 +167,33 @@ was manually proofread. This confirmation applies to the Hungarian package.
 **Remaining:** validate release packaging. The separate
 [Brazilian Portuguese draft](translations/tomb-raider-anniversary/pt-BR.json) still needs language review and
 in-game testing.
+
+### Tomb Raider: Anniversary Demo
+
+Steam build: `251873`. **Status:** 🟢 Supported; installation/restoration and setup error dialogs verified.
+
+| Aspect | Status |
+| --- | --- |
+| Archive format / support | 🟢 Bigfile/1, R/W |
+| Text formats | 🟢 locals/1; CINE/1 |
+| Resolved filenames | 🟢 0 missing for translated resources |
+| Text extraction | 🟢 Complete interface/subtitles |
+| Translation / origin | 🟢 Human translation; Anniversary legacy release |
+| Proofreading | 🟢 Inherited from the manually proofread Anniversary translation |
+| Binary format / need | 🟢 RAW/1 font; required |
+| Binary localization | 🟢 Game/font and English ASCII error dialogs user-verified |
+| Game-specific guidance | 🔴 No; shared guidance only |
+
+The [Hungarian package](translations/tomb-raider-anniversary-demo/hu.json) covers 1001 interface records,
+73 subtitle records in 62 resources, and the replacement font. The historical `trad.v1.0` filelist was verified
+against this build; the maintained full Anniversary translation supplies the matching Hungarian text.
+The user verified accented Hungarian characters in the game and ordinary setup screens on 2026-10-22, then found
+UTF-8 mojibake in a Direct3D error dialog. A CP1250 experiment made the setup reject its labels as invalid UTF-8 and
+was removed completely. The normal setup remains Hungarian UTF-8; its 18 legacy system/error-dialog strings retain
+their original English ASCII text. The user verified both the Direct3D initialization error and the already-running
+process error without encoding corruption on 2026-10-26.
+
+**Remaining:** validate the packaged Windows release.
 
 ### Tomb Raider: Underworld Demo
 
@@ -194,7 +226,7 @@ Steam build: `251883`. **Status:** 🟡 Experimental; Steam restored to English.
 | Archive format / support | 🟢 Bigfile/2, R/W |
 | Text formats | 🟢 locals/1; CINE/3; SCH/2 |
 | Resolved filenames | 🟢 0 missing |
-| Text extraction | 🟢 Complete selected menus/subtitles |
+| Text extraction | 🟢 Complete selected interface/subtitles |
 | Translation / origin | 🟡 Official HU reference plus AI gap fills |
 | Proofreading | 🟡 Needs review of additions |
 | Binary format / need | 🟢 DRM v19 / PCD9 font; required |
@@ -202,13 +234,13 @@ Steam build: `251883`. **Status:** 🟡 Experimental; Steam restored to English.
 | Game-specific guidance | 🔴 No; shared only |
 
 The [Hungarian package](translations/tomb-raider-underworld/hu.json) uses the official Hungarian edition as its
-reference. All 2,895 menu records and 863 subtitle records were read back after Steam installation; installation and
+reference. All 2,895 interface records and 863 subtitle records were read back after Steam installation; installation and
 repeated restoration were verified on a copy. The user reported boxes instead of Hungarian double-acute letters. The
 installed font matches the original Steam font: its 205-entry character table lacks all four `ŐőŰű` glyphs. The
 official Hungarian font has 501 entries and includes them; its character table and larger glyph atlas differ from
 Steam's.
 
-**Remaining:** implement and verify compatible replacement of both font resources, then test menus,
+**Remaining:** implement and verify compatible replacement of both font resources, then test interface text,
 subtitles and accents. No font replacement has been applied. See the
 [provenance](translations/tomb-raider-underworld/provenance.json).
 
@@ -223,22 +255,23 @@ Steam build: `11395`. **Status:** 🟡 Experimental; Steam restored to English.
 | Resolved filenames | 🟡 84.54% |
 | Text extraction | 🟢 Complete selected base/DLC text |
 | Translation / origin | 🟡 Legacy + AI additions |
-| Proofreading | 🟡 Needs review; menu approved |
+| Proofreading | 🟡 Needs review; interface approved |
 | Binary format / need | 🟢 DRM v19 / PCD9 DXT5 Latin font; required |
 | Binary localization | 🟡 Double-acute font verified by readback; original restored; game check pending |
 | Game-specific guidance | 🔴 No; shared only |
 
-The [Hungarian package](translations/lara-croft-and-the-guardian-of-light/hu.json) covers 8,214 menu records across
+The [Hungarian package](translations/lara-croft-and-the-guardian-of-light/hu.json) covers 8,214 interface records across
 eight physical layers and 283 subtitle records, including the five installed DLC packs. It imports the historical
 Hungarian translation and adds 115 previously unmatched unique strings. Full copy installation/readback and repeated
 byte-exact restoration passed; Steam installation/readback also passed. The package retains the historical `ő/ű/Ő/Ű
-→ ô/û/Ô/Û` runtime fallback; editable text keeps correct Unicode. The user confirmed the menu translation before
+→ ô/û/Ô/Û` runtime fallback; editable text keeps correct Unicode. The user confirmed the interface translation before
 the font update. On 2026-10-18 a font supplement was installed: those four fallback slots now contain Hungarian
 double-acute glyph images, preserving the native outlines and metrics. Only the patch font atlas changed; text
 resources remained byte-identical. Copy installation and repeated byte-exact restoration, plus Steam font readback,
 passed; in-game appearance of this new font still needs a Windows check.
 
-**Remaining:** verify the new double-acute glyphs in menus and subtitles, DLC-specific text and line wrapping. See the
+**Remaining:** verify the new double-acute glyphs in interface text and subtitles, DLC-specific text and line wrapping.
+See the
 [provenance](translations/lara-croft-and-the-guardian-of-light/provenance.json).
 
 ### Tomb Raider (2013)
@@ -263,8 +296,13 @@ changes passed copy-based installation and restoration checks. The user reviewed
 2026-10-22 and reported that it looked good. This confirms the reviewed text's appearance, not a complete linguistic
 proofread or every screen and line-wrapping case.
 
-**Remaining:** correct the Hungarian accents in the separate Windows Setup dialog, complete linguistic proofreading,
-and broaden screen/line-wrapping coverage. The 15 empty unmatched source records are tracked separately from
+The maintained fonts now include actual Unicode `ŐőŰű` glyphs, and both Hungarian documents disable all former
+double-acute-to-circumflex substitutions for interface text and subtitles. The user confirmed correct accents after
+installation on 2026-10-26, then successful GUI restoration and renewed translation availability. This confirms the
+observed screens, not every font consumer or subtitle scene.
+
+**Remaining:** complete linguistic proofreading and broaden screen/line-wrapping coverage.
+The 15 empty unmatched source records are tracked separately from
 untranslated text. See the
 [provenance and verification limits](translations/tomb-raider/provenance.json).
 
@@ -284,7 +322,7 @@ Steam build: `477027`. **Status:** 🟡 Hungarian text and accents verified; Ste
 | Binary localization | 🟢 Unicode `ŐőŰű` font and accents user-verified; Steam original restored |
 | Game-specific guidance | 🟡 Terminology only |
 
-The [English source export](translations/lara-croft-and-the-temple-of-osiris/en.json) contains 1,744 menu/UI records
+The [English source export](translations/lara-croft-and-the-temple-of-osiris/en.json) contains 1,744 interface records
 and 1,338 subtitles from the selected base and update archives. The
 [first Hungarian draft](translations/lara-croft-and-the-temple-of-osiris/hu.json) covers all 3,082 records, using
 the existing Hungarian translations as references. Source identities, placeholders, markup and line breaks pass QA.
@@ -304,27 +342,29 @@ is used. Copy installation and two byte-exact restorations passed.
 Both installed Steam font assets matched their packaged hashes,
 all 3,082 text records remained unchanged, and readback retains the real Unicode characters. In-game and setup
 accents after this final update were verified by the user on 2026-10-18.
-A Square Enix Membership notice remains English; its source is not yet confirmed.
+An English Square Enix Membership notice still appears in the menu. It was not found in the exported text,
+executable strings, or flat resources. The executable contains the `https://notification.os.eidos.com/game/`
+endpoint, so we treat the notice as server-delivered rather than part of the local translation package. The current
+endpoint response and its direct link to this exact notice have not been verified.
 
-**Remaining:** locate the membership notice, proofread the installed draft, and broaden gameplay and line-wrapping
-checks. See the
+**Remaining:** proofread the installed draft and broaden gameplay and line-wrapping checks. See the
 [extraction and filename provenance](translations/lara-croft-and-the-temple-of-osiris/provenance.json). This result
 does not establish support for Rise's related archive version.
 
 ### Rise of the Tomb Raider
 
-Steam build: `9575745`. **Status:** 🟡 English source exported; Hungarian translation blank.
+Steam build: `9575745`. **Status:** 🟡 Partial Hungarian draft; interface filled, subtitle import repair in progress.
 
 | Aspect | Status |
 | --- | --- |
-| Archive format / support | 🟡 TIGER v4, `pcx64-w`; read-only; 13 selected indexes; physical layers retained |
+| Archive format / support | 🟡 TIGER v4, `pcx64-w`; earlier partial-package copy install/restore passed; 13 indexes |
 | Text formats | 🟢 locals/3: 64-bit unkeyed UTF-8 pointers; CINE/2; SCH/3: optional Version 1 header |
 | Resolved filenames | 🟡 85.24%; 6,187 names missing; explicit hash labels do not count as resolved names |
-| Text extraction | 🟡 27,113 menu + 28,845 subtitle records; named + detected SCH; other binary content unclassified |
-| Translation / origin | 🔴 English source only; all 55,958 HU fields null; Hungarian reference not imported |
-| Proofreading | 🔴 No Hungarian text yet; source/identity validation passed |
+| Text extraction | 🟡 27,113 interface + 28,845 subtitle records; named + detected SCH; other content unclassified |
+| Translation / origin | 🟡 Legacy import + AI additions; 27,111 interface fields filled; subtitle draft incomplete |
+| Proofreading | 🟡 Incomplete; filled subtitle fields include untranslated English and French imports |
 | Binary format / need | 🔴 Font localization need not investigated |
-| Binary localization | 🔴 No maintained localized assets; writing and restoration unsupported |
+| Binary localization | 🔴 No maintained localized assets; appearance and font needs still require verification |
 | Game-specific guidance | 🔴 No; shared guidance only |
 
 [Translation JSON](translations/rise-of-the-tomb-raider/hu.json),
@@ -336,10 +376,22 @@ An additional 1,879 subtitle records in 1,657 physical resources use `unresolved
 their real filenames remain unknown. The default profile filelist contains verified names only; provenance
 records the supplemental identity-map export and merge. There were 0 skipped resources.
 Physical patch layers retain separate identities, so the record count includes repeated source text.
-This is read-only extraction evidence; unknown binary content prevents a claim of complete game text coverage.
+Unknown binary content prevents a claim of complete game text coverage.
 
-**Remaining:** recover missing names, inspect unclassified resources, compare/import the Hungarian reference,
-translate and proofread, investigate fonts if required, and implement and verify writing, restoration and gameplay.
+All nonblank interface fields are filled; two blank source fields remain null. Exact resource/record/source matches
+supplied 19,623 repeated-layer fields, followed by 73 translated fields. All 27,113 interface records passed binary
+readback. The opening ice-climb scene adds 79 distinct Hungarian translations across 239 subtitle records;
+217 affected CINE/SCH resources passed readback with timing, speaker markers and other languages preserved.
+There are 8,995 filled subtitle fields, but 6,628 still equal the English source; 19,219 nonblank subtitle fields
+remain null. Existing French and Hungarian text was not changed by this scene batch. These counts are not a claim
+of Hungarian subtitle completeness.
+
+The locals/3 and SCH/3 writers are implemented. An earlier partial package passed GUI-backend installation,
+byte-exact restoration and a post-restore translation check on a copy. The newly expanded package has targeted
+in-memory resource verification, not a new full installation/restore cycle or in-game appearance check.
+
+**Remaining:** continue subtitle translation and import repair, identify intentional foreign-language exceptions,
+recover missing names, inspect unclassified resources, investigate fonts, verify the final package and proofread.
 
 ### Shadow of the Tomb Raider Trial
 
@@ -351,18 +403,20 @@ Steam build: `3668420`. **Status:** 🟡 Hungarian game test passed; Steam now E
 | Text formats | 🟢 Keyed locals; 64-bit offsets |
 | Resolved filenames | 🟡 92.24% |
 | Text extraction | 🟡 Partial: keyed table, 38,055 texts |
-| Translation / origin | 🟡 Imported HU + 5 completed Trial-only records; 38,055/38,055 filled |
+| Translation / origin | 🟡 Imported HU + 77 completed/reconciled records; 38,055 nonblank fields filled |
 | Proofreading | 🟡 Needs review |
 | Binary format / need | 🟡 No font replacement required for observed text; full binary inventory incomplete |
 | Binary localization | 🟡 Existing assets retained; installed Hungarian appearance user-verified |
 | Game-specific guidance | 🔴 No; shared only |
 
-The [Hungarian translation](translations/shadow-of-the-tomb-raider-trial/hu.json) imports 38,050 records by stable key
-into the extracted Trial text. The five Trial-only records are now translated, and all shared-key translations
-match the full-game Hungarian package. All 38,055 populated records were verified by readback after Steam
-installation on 2026-10-18. The shared writer now reproduces that game-tested translated resource byte for byte and
-uses the common transaction journal. The user reported that the installed translation works correctly in the Steam
-Trial.
+The [Hungarian translation](translations/shadow-of-the-tomb-raider-trial/hu.json) reuses the full-game translation
+through stable keys and source comparisons, with Trial-specific differences translated or explicitly accepted.
+The earlier package passed a Steam game test on 2026-10-18. The subsequent 77-record completion/reconciliation
+retains the Trial's timing markers; records without Trial markers remain unmarked, except the user-approved
+1.980-second marker in record 38613. All 38,055 nonblank fields are filled; 1,290 blank source fields remain null.
+The updated package passed a complete selected-text-archive GUI-backend copy cycle on 2026-10-26: installation,
+installed-state detection, byte-exact and repeated restoration, then renewed translation availability. The original
+backup and maintained package remained unchanged. This does not verify the new wording or timing in game.
 
 **Remaining:** review wording and formatting, establish complete text coverage beyond the selected keyed table, and
 broaden gameplay checks. See the
@@ -398,7 +452,7 @@ before publishing a standalone release.
 
 ## Features
 
-- Extract menu and subtitle text into one language file, with optional font assets.
+- Extract interface text and subtitles into one language file, with optional font assets.
 - Rebuild Bigfile v1 resources using locals v1, CINE v1 and RAW font handlers.
 - Translate Underworld and Guardian of Light Bigfile v2 archives, including DLC and independent patch indexes.
 - Export Temple of Osiris English text; write Hungarian resources with copy-verified TIGER v4 restoration.
@@ -468,6 +522,30 @@ translation, validation and recovery services as the CLI. Its four visible steps
 selection, operation and language selection, and progress/results. If a previous modifying operation was interrupted,
 startup offers to restore the affected installation from its retained journal before normal use. Translation credits
 embedded in a supported language file are available from the progress/result page.
+
+Installed-state checks also validate a known build ID. If a revised translation package no longer matches the
+installed text, an intact journal matching the current archive hashes enables **Verified restoration available**;
+restore first, then check and install the new package. Recovery uses the journal's saved runtime and follows
+applicable earlier patch journals. A different package must not bypass source-text or recovery-integrity checks.
+
+### Why update checks and progress are separate
+
+These checks address failures encountered while updating real translations, not just first-time installation:
+
+- A source-text translation memory is not an installable, build-bound package. The GUI distinguishes missing record
+  binding from unknown game modifications instead of treating the memory as a valid installation package.
+- A previously translated string can differ from both the original English and a revised package's expected output.
+  This does not alone prove file damage. Verified journals allow restoration before updating, while source validation
+  and complete-file/payload integrity checks remain mandatory.
+- A resource counter reaching 100% does not mean file copying, hashing, index planning or journal finalization has
+  finished. Separate phase and byte progress explain this remaining work; debug logs record the package, build,
+  resource identity and expected/actual text details when validation fails.
+
+The Windows source launcher enables debug logging. The default log is
+`%LOCALAPPDATA%\PyTRTT\logs\pytrtt-debug.log`; include the relevant failure details when reporting a problem.
+TR2013's Setup and in-game interface share some strings but use different rendering contexts. Its maintained fonts
+now support actual Hungarian double-acutes, avoiding the former need to choose between circumflexes in Setup and
+missing glyphs in game. See the [game-specific verification limits](#tomb-raider-2013).
 
 ### Preview a translation
 
@@ -571,11 +649,17 @@ Build the executable from native Windows Command Prompt with:
 scripts\build-windows.cmd --clean
 ```
 
-The script generates synchronized Windows version metadata, builds `dist\PyTRTT.exe`, runs its packaged GUI smoke
-test and, when Inno Setup 6 is available, creates `dist\installer\PyTRTT-<version>-setup.exe`. If Inno Setup is
-missing, the standalone executable remains available but the script exits with code 2 after reporting that the
-installer was not created. Complete the [Windows GUI smoke checklist](docs/windows-gui-smoke-checklist.md) before
-publishing either artifact.
+The script generates synchronized Windows version metadata, builds `dist\PyTRTT.exe`, and runs its packaged GUI smoke
+test. To also create `dist\installer\PyTRTT-<version>-setup.exe`, pass `--installer` (optionally together with
+`--clean`):
+
+```bat
+scripts\build-windows.cmd --clean --installer
+```
+
+Installer builds require Inno Setup 6. If it is missing, the standalone executable remains available but the script
+exits with code 2 after reporting that the installer was not created. Complete the
+[Windows GUI smoke checklist](docs/windows-gui-smoke-checklist.md) before publishing either artifact.
 
 The Windows one-file build recursively includes release resources below `pytrtt/resources/`. Project-relative glob
 exclusions are maintained in [`packaging/package-data.ignore`](packaging/package-data.ignore). Blank lines and lines

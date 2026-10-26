@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "game_id": "tomb-raider-anniversary-demo",
+  "build_id": "251873",
+  "filelist": "../pytrtt/resources/filelists/trad_filelist.txt",
+  "asset_root": "../translations/tomb-raider-anniversary-demo",
+  "runtime": {
+    "archive": {
+      "format": "bigfile",
+      "version": 1,
+      "boundary": 157286400,
+      "data_subdir": "."
+    },
+    "languages": {
+      "en": {
+        "archive_locale": 4294967265,
+        "subtitle_language": 0
+      }
+    },
+    "replacement_language": "en",
+    "resource_types": [
+      {
+        "section": "menu",
+        "pattern": "*/locals.bin",
+        "format": "locals",
+          "version": 1
+      },
+      {
+        "section": "subtitles",
+        "pattern": "*.mul",
+        "format": "cine",
+        "version": 1,
+        "skip_unrecognized": true
+      },
+      {
+        "section": "fonts",
+        "pattern": "*/conduitmed_pc.raw",
+        "format": "raw",
+        "version": 1,
+        "locale": 4294967295
+      }
+    ],
+    "character_substitutions": {},
+    "display_name": "Tomb Raider: Anniversary Demo"
+  },
+  "translation_defaults": {
+    "hu": {
+      "character_substitutions": {
+        "Ő": "Ô",
+        "ő": "ô",
+        "Ű": "Û",
+        "ű": "û"
+      },
+      "fonts": [
+        {
+          "resource_hash": "625B0E2D",
+          "resource_path": "pc-w\\conduitmed_pc.raw",
+          "replacement_file": "assets/fonts/625B0E2D-523d93b4b9ea.raw",
+          "source_sha256": "d8c70c3de7a60e203ff59a44ca4944bcd01b124338c41c17fb8716632e330fc1",
+          "replacement_sha256": "523d93b4b9ea77cdde19a49283ce9a4d7a7b393206a91b282d7409f8721823cb"
+        }
+      ],
+      "omit_subtitle_languages": [
+        1
+      ]
+    }
+  }
+}

@@ -38,6 +38,25 @@ directory. Do not edit the profile or runtime settings unless you are working wi
 
 ## 3. Translate the JSON
 
+The content categories are **Interface** (Hungarian: **Felhasználói felület**) and **Subtitles**
+(Hungarian: **Feliratok**). Interface covers menus, settings, HUD, prompts, and other UI text; subtitles cover
+both cinematic and in-game dialogue captions. For compatibility, their JSON keys remain `menu` and `subtitles`;
+do not rename these keys or related runtime identifiers.
+
+Translation completeness means more than a non-null field. An imported value can still be unchanged English or text
+from another language slot. Preserve intentional foreign-language dialogue, but do not assume every non-English
+import is an intentional exception or a valid translation into the target language.
+
+The Rise audit found repeated physical layers with missing translations and a mixture of English, French and
+Hungarian subtitle imports. Exact resource/record/source matches can safely identify reusable candidates across
+layers; source-only matching can conflate different contexts. Review source differences rather than replacing
+controls or platform names with those from another build. The current draft and its remaining gaps are described
+in the [Rise status](../README.md#rise-of-the-tomb-raider).
+
+Likewise, a full game's subtitle timings are not automatically valid for a Trial. Preserve the target build's own
+markers and leave unmarked text unmarked unless a specific exception is approved. Keep source records and timing
+metadata unchanged while translating the text; binary readback does not establish synchronization with the audio.
+
 Edit the `translation` values while preserving the source text, resource hashes and paths, entry IDs,
 placeholders, control codes, and meaningful line breaks. Keep the file in UTF-8 and write normal Unicode
 characters for your language. The optional `comment` field is an array of strings, with each translator or
@@ -67,7 +86,8 @@ per-entry override requires translation document schema version 3.
 
 Schema version 4 can also retain the exact `archive_locale` on a resource when one hash occurs in
 several archive locales. `archive_family` distinguishes physical layers with the same hash and locale,
-such as a base menu and a partial patch menu. Preserve both values along with the extracted entry IDs.
+such as a base interface resource and a partial patch interface resource. Preserve both values along with the
+extracted entry IDs.
 The optional runtime archive setting `include_overridden` exposes these layers for explicit addressing;
 the default archive view still resolves the highest-priority resource.
 
@@ -141,6 +161,13 @@ assets; do not submit them or any game archives.
 
 ## 4. Review and test
 
+When replacing an installed translation with a revised package in the GUI, restore the previous installation first.
+If an intact recovery journal matches the current game files, the GUI offers **Verified restoration available**
+even when the selected package no longer matches the installed text. Installation remains disabled until restoration
+and a fresh check. Restoration uses the journal's saved runtime configuration and follows applicable earlier patch
+journals; missing, corrupt, foreign, or externally modified recovery states are not offered as safe restoration.
+Legacy journals without saved runtime configuration still require the compatible translation document.
+
 First run the default dry run against a separate game copy. It does not write to the game:
 
 ```bat
@@ -163,7 +190,7 @@ py -3.13 -m pytrtt ^
   --transaction-dir work\transactions\tra\es-test
 ```
 
-Launch the test copy and check menus, subtitles, accents, placeholders, and line wrapping. Then restore it
+Launch the test copy and check the interface, subtitles, accents, placeholders, and line wrapping. Then restore it
 using the same transaction directory:
 
 ```bat

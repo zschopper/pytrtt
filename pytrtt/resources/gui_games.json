@@ -10,6 +10,16 @@
     "epic_catalog_item_id": ""
   },
   {
+    "game_id": "tomb-raider-anniversary-demo",
+    "display_name": "Tomb Raider: Anniversary Demo",
+    "steam_app_id": "8030",
+    "install_dir_name": "Tomb Raider Anniversary Demo",
+    "translation_file": "translations/tomb-raider-anniversary-demo/hu.json",
+    "package_available": true,
+    "epic_catalog_namespace": "",
+    "epic_catalog_item_id": ""
+  },
+  {
     "game_id": "tomb-raider-legend",
     "display_name": "Tomb Raider: Legend",
     "steam_app_id": "7000",
@@ -44,7 +54,7 @@
     "display_name": "Tomb Raider (2013)",
     "steam_app_id": "203160",
     "install_dir_name": "Tomb Raider",
-    "translation_file": "translations/tomb-raider/hu.json",
+    "translation_file": "translations/tomb-raider/steam-9573671-hu.json",
     "package_available": true,
     "epic_catalog_namespace": "caca23a0954f4c1aba1fdd7e277b81e2",
     "epic_catalog_item_id": "ff45e0eabd0c48d6950e369c79c26823"

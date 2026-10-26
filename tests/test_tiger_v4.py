@@ -13,6 +13,88 @@ def fixture(path: Path, archive_id: int, text: bytes) -> None:
     path.write_bytes(header + row + bytes(2048 - len(header) - len(row)) + text)
 
 
+@pytest.mark.parametrize(
+    "section,format_name,path,content,source,translated",
+    [
+        (
+            "menu",
+            "locals",
+            "data/locals.bin",
+            struct.pack("<3IQ", 0, 0, 1, 20) + b"Hello\0",
+            "Hello",
+            "Hosszabb őű szöveg",
+        ),
+        (
+            "subtitles",
+            "sch",
+            "intro.sch",
+            b'TextEntry\r\nline0\r\nlang_english 1 "(0.1)[Lara]Hello"\r\n',
+            "Hello",
+            "Hosszabb őű szöveg",
+        ),
+    ],
+)
+def test_v3_text_service_install_restore_and_translate_again(
+    tmp_path: Path,
+    section: str,
+    format_name: str,
+    path: str,
+    content: bytes,
+    source: str,
+    translated: str,
+) -> None:
+    from pytrtt.composition import create_translation_service
+    from pytrtt.config import LanguageSlot, ResourceRule, RuntimeSettings
+    from pytrtt.packages.translation import (
+        TranslationDocument,
+        TranslationEntry,
+        TranslationMetadata,
+        TranslationResource,
+    )
+
+    archive = tmp_path / "bigfile.000.tiger"
+    fixture(archive, 1, content)
+    original = archive.read_bytes()
+    settings = ArchiveSettings(
+        "tiger",
+        4,
+        0x7FF00000,
+        families=("base",),
+        index_files=(("base", archive.name),),
+    )
+    runtime = RuntimeSettings(
+        settings,
+        (LanguageSlot("en", 1, 0),),
+        "en",
+        (ResourceRule(section, path, format_name, 3),),
+    )
+    resource = TranslationResource(
+        "7CD333D3",
+        path,
+        (TranslationEntry(0, source, translated),),
+    )
+    document = TranslationDocument(
+        TranslationMetadata("fixture", "1", "en", "hu", "tiger", 4),
+        menu=(resource,) if section == "menu" else (),
+        subtitles=(resource,) if section == "subtitles" else (),
+        runtime=runtime,
+    )
+    service = create_translation_service()
+    build = service.plan(tmp_path, document, package_dir=tmp_path)
+    assert build.plan is not None
+    transaction = tmp_path / "journal"
+    service.apply(build, transaction)
+    assert translated.encode() in archive.read_bytes()
+    assert service.is_translation_installed(tmp_path, document, package_dir=tmp_path)
+    for _ in range(2):
+        service.restore(tmp_path, transaction)
+        assert archive.read_bytes() == original
+    restored = service.plan(tmp_path, document, package_dir=tmp_path)
+    assert restored.plan is not None
+    assert restored.plan.files == build.plan.files
+    assert restored.plan.writes == build.plan.writes
+
+
 def test_priority_with_independent_index_names(tmp_path: Path) -> None:
     fixture(tmp_path / "bigfile.000.tiger", 1, b"base")
     fixture(tmp_path / "bigfile.update1.000_ENGLISH.000.tiger", 10, b"updated")

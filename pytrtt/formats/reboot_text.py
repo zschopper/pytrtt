@@ -342,7 +342,7 @@ class SchV2Handler(SchV1Handler):
 
 
 class SchV3Handler:
-    """Read-only SCH timed segments, with an optional Version 1 header line."""
+    """SCH timed segments, preserving an optional Version 1 header line."""
 
     def extract(self, data: bytes, subtitle_language: int) -> tuple[TranslationEntry, ...]:
         lines = data.splitlines()
@@ -353,4 +353,31 @@ class SchV3Handler:
     def write(
         self, data: bytes, entries: tuple[TranslationEntry, ...], options: TextOptions
     ) -> bytes:
-        raise ValueError("optional-header SCH handler is read-only")
+        if options.cleared_languages or options.omitted_languages:
+            raise ValueError("SCH language clearing and omission are unsupported")
+        original = {
+            entry.entry_id: entry for entry in self.extract(data, options.subtitle_language)
+        }
+        changes = _changes(entries)
+        if {entry.entry_id for entry in entries} - original.keys():
+            raise ValueError("SCH translation has no segment")
+        for index, entry in changes.items():
+            if (
+                entry.source != original[index].source
+                and options.text(entry) != original[index].source
+            ):
+                raise ValueError("SCH source text changed")
+        prefix = b"Version 1\n" if data.splitlines()[:2] == [b"TextEntry", b"line0"] else b""
+        rebuilt = SchV2Handler().write(prefix + data, entries, options)
+        assert rebuilt.startswith(prefix)
+        rebuilt = rebuilt[len(prefix) :]
+        result = self.extract(rebuilt, options.subtitle_language)
+        if len(result) != len(original):
+            raise ValueError("SCH translation changes segment structure")
+        for actual in result:
+            prior = original[actual.entry_id]
+            replacement = changes.get(actual.entry_id)
+            expected = options.text(replacement) if replacement is not None else prior.source
+            if actual.source != expected or actual.comment != prior.comment:
+                raise ValueError("SCH translation changes segment structure")
+        return rebuilt

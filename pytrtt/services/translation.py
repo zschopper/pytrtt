@@ -256,6 +256,7 @@ class TranslationService:
         package_dir: Path,
         expected_build_id: str | None = None,
         progress: Callable[[int, int], None] | None = None,
+        planning_progress: Callable[[int, int, str], None] | None = None,
     ) -> TranslationBuild:
         runtime = _runtime(document)
         if expected_build_id is not None and document.metadata.build_id != expected_build_id:
@@ -322,21 +323,60 @@ class TranslationService:
                 source_entries = handler.extract(source_data, source.subtitle_language)
                 records = {e.entry_id: e for e in resource.entries}
                 if len(records) != len(resource.entries):
-                    raise TranslationPackageError("duplicate translation entry id")
+                    raise TranslationPackageError(
+                        "duplicate translation entry id: "
+                        f"section={section} resource_hash={resource.resource_hash} "
+                        f"resource_path={resource.resource_path!r} "
+                        f"archive_family={resource.archive_family!r} "
+                        f"locale={source_ref.locale:08X}"
+                    )
                 known = {e.entry_id for e in source_entries}
                 if records.keys() - known:
-                    raise TranslationPackageError("translation entry has no source record")
+                    raise TranslationPackageError(
+                        "translation entry has no source record: "
+                        f"section={section} resource_hash={resource.resource_hash} "
+                        f"resource_path={resource.resource_path!r} "
+                        f"archive_family={resource.archive_family!r} "
+                        f"locale={source_ref.locale:08X} "
+                        f"entry_ids={sorted(records.keys() - known)}"
+                    )
                 for entry in source_entries:
                     translated = records.get(entry.entry_id)
                     if translated is not None and translated.source != entry.source:
+                        expected_source = translated.source
+                        actual_source = entry.source
+                        expected_sha256 = hashlib.sha256(expected_source.encode()).hexdigest()
+                        actual_sha256 = hashlib.sha256(actual_source.encode()).hexdigest()
                         raise TranslationPackageError(
-                            f"source text changed for entry id {entry.entry_id}"
+                            "source text changed: "
+                            f"section={section} resource_hash={resource.resource_hash} "
+                            f"resource_path={resource.resource_path!r} "
+                            f"archive_family={resource.archive_family!r} "
+                            f"locale={source_ref.locale:08X} entry_id={entry.entry_id} "
+                            f"expected_length={len(expected_source)} "
+                            f"actual_length={len(actual_source)} "
+                            f"expected_sha256={expected_sha256} "
+                            f"actual_sha256={actual_sha256} "
+                            f"expected_preview={expected_source[:160]!r} "
+                            f"actual_preview={actual_source[:160]!r}"
                         )
                     if translated is not None and (
                         translated.source_language or document.metadata.source_language
                     ) != (entry.source_language or document.metadata.source_language):
+                        package_language = (
+                            translated.source_language or document.metadata.source_language
+                        )
+                        archive_language = (
+                            entry.source_language or document.metadata.source_language
+                        )
                         raise TranslationPackageError(
-                            f"source language changed for entry id {entry.entry_id}"
+                            "source language changed: "
+                            f"section={section} resource_hash={resource.resource_hash} "
+                            f"resource_path={resource.resource_path!r} "
+                            f"archive_family={resource.archive_family!r} "
+                            f"locale={source_ref.locale:08X} entry_id={entry.entry_id} "
+                            f"package_language={package_language!r} "
+                            f"archive_language={archive_language!r}"
                         )
                     if translated is None or translated.translation is None:
                         missing.append(
@@ -351,8 +391,18 @@ class TranslationService:
                     e.translation is not None and e.entry_id not in target_ids
                     for e in resource.entries
                 ):
+                    missing_target_ids = sorted(
+                        e.entry_id
+                        for e in resource.entries
+                        if e.translation is not None and e.entry_id not in target_ids
+                    )
                     raise TranslationPackageError(
-                        "translation entry has no replacement-slot record"
+                        "translation entry has no replacement-slot record: "
+                        f"section={section} resource_hash={resource.resource_hash} "
+                        f"resource_path={resource.resource_path!r} "
+                        f"archive_family={resource.archive_family!r} "
+                        f"locale={target_ref.locale:08X} "
+                        f"entry_ids={missing_target_ids}"
                     )
                 data = handler.write(original, resource.entries, options)
                 if data != original:
@@ -432,7 +482,21 @@ class TranslationService:
             processed_resources += 1
             if progress is not None:
                 progress(processed_resources, total_resources)
-        plan = archive.plan(tuple(replacements)) if replacements else None
+        plan: ArchiveWritePlan | None
+        if replacements:
+            if planning_progress is not None:
+                planning_progress(0, 0, "archive_layout")
+            if any(replacement.embedded_type is not None for replacement in replacements):
+                from pytrtt.archives.tiger_v3 import TigerV3Handler
+
+                if isinstance(archive, TigerV3Handler):
+                    plan = archive.plan(tuple(replacements), progress=planning_progress)
+                else:
+                    plan = archive.plan(tuple(replacements))
+            else:
+                plan = archive.plan(tuple(replacements))
+        else:
+            plan = None
         return TranslationBuild(archive, runtime, plan, tuple(missing))
 
     def is_translation_installed(
@@ -441,10 +505,13 @@ class TranslationService:
         document: TranslationDocument,
         *,
         package_dir: Path,
+        expected_build_id: str | None = None,
         progress: Callable[[int, int], None] | None = None,
     ) -> bool:
         """Check only resources owned by a translation, tolerating unrelated archive mods."""
         runtime = _runtime(document)
+        if expected_build_id is not None and document.metadata.build_id != expected_build_id:
+            raise TranslationPackageError("translation document targets a different game build")
         target = runtime.language(runtime.replacement_language)
         archive = self._open(directory, runtime)
         indexed = archive.resources()

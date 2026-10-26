@@ -13,6 +13,10 @@ samples_dir = "work/samples/tra/842717"
 original_dir = ""
 translated_dir = ""
 
+[games.tomb-raider-anniversary-demo]
+aliases = ["trad"]
+samples_dir = "work/samples/trad/251873"
+
 [games.tomb-raider-legend]
 aliases = ["trl"]
 
@@ -37,6 +41,9 @@ aliases = ["lctoo"]
 [platforms.windows.games.tomb-raider-anniversary]
 install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider Anniversary'
 
+[platforms.windows.games.tomb-raider-anniversary-demo]
+install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider Anniversary Demo'
+
 [platforms.windows.games.tomb-raider-legend]
 install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Tomb Raider Legend'
 
@@ -60,6 +67,9 @@ install_dir = 'C:\Program Files (x86)\Steam\steamapps\common\Lara Croft and the 
 
 [platforms.linux.games.tomb-raider-anniversary]
 install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Tomb Raider Anniversary'
+
+[platforms.linux.games.tomb-raider-anniversary-demo]
+install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Tomb Raider Anniversary Demo'
 
 [platforms.linux.games.tomb-raider-legend]
 install_dir = '/mnt/c/Program Files (x86)/Steam/steamapps/common/Tomb Raider Legend'

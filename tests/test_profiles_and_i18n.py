@@ -89,6 +89,16 @@ def test_catalogs_keep_identical_keys_and_parameters() -> None:
     assert Translator("pt-BR").text("no_changes") == english.text("no_changes")
 
 
+@pytest.mark.parametrize(
+    ("language", "interface", "subtitles"),
+    [("en", "Interface", "Subtitles"), ("hu", "Felhasználói felület", "Feliratok")],
+)
+def test_content_category_names(language: str, interface: str, subtitles: str) -> None:
+    translator = Translator(language)
+    assert translator.text("section_menu") == interface
+    assert translator.text("section_subtitles") == subtitles
+
+
 def test_invalid_catalog_parameters_are_rejected(tmp_path: Path) -> None:
     (tmp_path / "en.json").write_text('{"message": "Count: {count}"}', encoding="utf-8")
     (tmp_path / "hu.json").write_text('{"message": "Darab: {different}"}', encoding="utf-8")

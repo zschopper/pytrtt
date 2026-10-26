@@ -215,9 +215,11 @@ def test_maintained_fonts_match_verified_assets() -> None:
 
     package = Path(__file__).resolve().parents[1] / "translations/tomb-raider"
     doc = parse_translation_document((package / "hu.json").read_text(encoding="utf-8"))
+    provenance = json.loads((package / "provenance.json").read_text(encoding="utf-8"))
+    descriptions = {font["embedded_id"]: font for font in provenance["font_assets"]["files"]}
     expected = {
-        24842: "ae7ca6d9d25097b05fb963c31f1130f5c96aeeda6872b26ab957eba1bcc4fc5b",
-        121631: "3e5feed8b5e5ba510c689188c059f6fe8456549e9564996bead6690395198f41",
+        24842: "50331522f0278658ff3a3938dbfd9d7eb9784091bb42a1305a69828ddbd51582",
+        121631: "65f66a9bc1d839efe8f7a43fb5ef2893a15bff1a02c6a080d882410fe943db1b",
     }
     assert len(doc.fonts) == 2
     for font in doc.fonts:
@@ -228,7 +230,72 @@ def test_maintained_fonts_match_verified_assets() -> None:
             hashlib.sha256((package / font.replacement_file).read_bytes()).hexdigest()
             == font.replacement_sha256
         )
-        assert font.character_substitutions == (("Ő", "Ô"), ("ő", "ô"), ("Ű", "Û"), ("ű", "û"))
+        assert font.character_substitutions == ()
+        assert descriptions[font.embedded_id]["character_substitutions"] == {}
+        assert descriptions[font.embedded_id]["replacement_sha256"] == font.replacement_sha256
+
+
+def test_maintained_hungarian_interface_and_subtitles_use_unicode() -> None:
+    package = Path(__file__).resolve().parents[1] / "translations/tomb-raider"
+    for name in ("hu.json", "steam-9573671-hu.json"):
+        doc = parse_translation_document((package / name).read_text(encoding="utf-8"))
+        affected = [
+            entry
+            for resource in doc.menu
+            for entry in resource.entries
+            if entry.translation and set(entry.translation) & set("ŐőŰű")
+        ]
+        assert affected and all(entry.substitution_disabled for entry in affected)
+        assert all(not font.character_substitutions for font in doc.fonts)
+        if doc.runtime is not None:
+            assert doc.runtime.character_substitutions == ()
+        subtitles = [
+            entry.translation
+            for resource in doc.subtitles
+            for entry in resource.entries
+            if entry.translation and set(entry.translation) & set("ŐőŰű")
+        ]
+        assert subtitles
+
+
+def test_maintained_unicode_glyphs_reuse_the_verified_hungarian_shapes() -> None:
+    package = Path(__file__).resolve().parents[1] / "translations/tomb-raider"
+    aliases = {ord(a): ord(b) for a, b in zip("ŐőŰű", "ÔôÛû", strict=True)}
+    extended = 0
+    for path in (package / "assets/fonts").glob("*.bin"):
+        raw = path.read_bytes()
+        size = struct.unpack_from("<I", raw)[0]
+        gfx = raw[4 : 4 + size]
+        assert gfx[:3] == b"GFX" and struct.unpack_from("<I", gfx, 4)[0] == size
+        at = 8 + (5 + 4 * (gfx[8] >> 3) + 7) // 8 + 4
+        while at < len(gfx):
+            header = struct.unpack_from("<H", gfx, at)[0]
+            kind, length = header >> 6, header & 63
+            at += 2
+            if length == 63:
+                length = struct.unpack_from("<I", gfx, at)[0]
+                at += 4
+            body = gfx[at : at + length]
+            at += length
+            if kind != 75:
+                continue
+            count = struct.unpack_from("<H", body, 5 + body[4])[0]
+            base = 7 + body[4]
+            width = 4 if body[2] & 8 else 2
+            offsets = [
+                int.from_bytes(body[base + i * width : base + (i + 1) * width], "little")
+                for i in range(count + 1)
+            ]
+            assert body[2] & 4
+            codes = struct.unpack_from(f"<{count}H", body, base + offsets[-1])
+            assert list(codes) == sorted(set(codes))
+            shapes = {
+                c: body[base + offsets[i] : base + offsets[i + 1]] for i, c in enumerate(codes)
+            }
+            if all(c in shapes for c in aliases.values()):
+                assert all(shapes[target] == shapes[source] for target, source in aliases.items())
+                extended += 1
+    assert extended == 4
 
 
 def distinct_base_font_archives(root: Path) -> dict[str, bytes]:
@@ -320,8 +387,20 @@ def test_service_honours_embedded_family_during_plan_and_installed_check(tmp_pat
     assert parse_translation_document(serialize_translation_document(document)) == document
     service = create_translation_service()
     assert not service.is_translation_installed(root, document, package_dir=tmp_path)
-    build = service.plan(root, document, package_dir=tmp_path)
+    progress = []
+    build = service.plan(
+        root,
+        document,
+        package_dir=tmp_path,
+        planning_progress=lambda current, total, phase: progress.append((current, total, phase)),
+    )
     assert build.plan is not None
+    scan = [item for item in progress if item[2] == "embedded_collection_scan"]
+    assert scan
+    assert scan[0][0] == 0
+    assert scan[-1] == (scan[-1][1], scan[-1][1], "embedded_collection_scan")
+    assert all(left[0] <= right[0] for left, right in zip(scan, scan[1:], strict=False))
+    assert progress[-1] == (0, 0, "archive_layout")
     assert set(build.plan.files) == {"title.000.tiger", "patch.000.tiger"}
     service.apply(build, tmp_path / "transaction")
     assert service.is_translation_installed(root, document, package_dir=tmp_path)

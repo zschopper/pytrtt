@@ -58,7 +58,8 @@ def operation_payload(inspection: InstallationInspection) -> OperationPayload:
     """Build operation availability from a completed backend inspection."""
     installable = inspection.status is InstallationStatus.CHANGES_AVAILABLE
     restorable = (
-        inspection.status is InstallationStatus.ALREADY_TRANSLATED
+        inspection.status
+        in {InstallationStatus.ALREADY_TRANSLATED, InstallationStatus.RECOVERY_AVAILABLE}
         and inspection.restore_path is not None
     )
     return {
