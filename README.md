@@ -731,7 +731,8 @@ For translation problems, send the generated diagnostic report to
 [tombraidertranslations@gmail.com](mailto:tombraidertranslations@gmail.com).
 Reports are stored in the user data directory; the CLI prints their location and does not send email automatically.
 
-Want to translate a supported game into another language? Start with the [translation guide](docs/TRANSLATING.md).
+Want to translate a supported game into another language? Start with the [translation guide](docs/TRANSLATING.md),
+then read the [game-specific guidance](docs/GAME_TRANSLATION_GUIDE.md) for the selected title.
 Contributions to code, translations and testing are welcome. Include relevant checks with code changes;
 new game support needs a profile and evidence from extraction, translation and restoration tests.
 

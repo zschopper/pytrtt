@@ -67,6 +67,8 @@
 - Extended development support to Python 3.14 alongside Python 3.13.
 - Expanded translation documentation, contributor credits, binary-safety guidance, and per-game status cards with
   archive/text variants, filename coverage, proofreading, fonts, remaining work, and verification limits.
+- Added contributor guidance for requesting a new language, submitting JSON or story-transcript translations,
+  reusing translation memory safely, localizing the application, and handling each game's special requirements.
 
 ### Fixed
 
