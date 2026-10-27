@@ -82,8 +82,9 @@ Binary localization covers fonts, glyph maps and other language-dependent non-te
 means necessity is unknown, not that replacement is unnecessary. Shared
 [translation guidelines](ai-guidance/translation/guidelines.md),
 [terminology rules](ai-guidance/translation/terminology.md) and
-[QA rules](ai-guidance/translation/quality-assurance.md) apply to every game. Game-specific guidance means
-additional language/style guidance, not technical profiles.
+[QA rules](ai-guidance/translation/quality-assurance.md) apply to every game. The
+[game-specific guidance](docs/GAME_TRANSLATION_GUIDE.md) records the translation workflow differences and known
+technical or contextual caveats for each title; it does not replace the executable technical profiles.
 
 Temple of Osiris terminology is recorded in its
 [translation provenance](translations/lara-croft-and-the-temple-of-osiris/provenance.json). Other binary assets,
@@ -104,7 +105,7 @@ Steam build: `251815`. **Status:** 🟢 Supported; game appearance user-verified
 | Proofreading | 🟢 Original translation manually proofread; user-confirmed |
 | Binary format / need | 🟢 RAW/1 font; required |
 | Binary localization | 🟢 Replacement ready; setup accents user-verified |
-| Game-specific guidance | 🔴 No; shared guidance only |
+| Game-specific guidance | 🟢 [Legend Demo guidance](docs/GAME_TRANSLATION_GUIDE.md#tomb-raider-legend-demo) |
 
 The [Hungarian package](translations/tomb-raider-legend-demo/hu.json) covers interface text, subtitles and font replacement.
 The user confirmed the corrected setup accents with Hungarian selected as the Windows language for non-Unicode
@@ -130,7 +131,7 @@ Steam build: `251820`. **Status:** 🟢 Supported; game appearance user-verified
 | Proofreading | 🟢 Original translation manually proofread; user-confirmed |
 | Binary format / need | 🟢 RAW/1 font; required |
 | Binary localization | 🟢 Replacement ready in supported package |
-| Game-specific guidance | 🔴 No; shared guidance only |
+| Game-specific guidance | 🟢 [Legend guidance](docs/GAME_TRANSLATION_GUIDE.md#tomb-raider-legend) |
 
 The [Hungarian package](translations/tomb-raider-legend/hu.json) covers interface text, subtitles and a replacement
 font for the supported build.
@@ -155,7 +156,7 @@ Steam build: `842717`. **Status:** 🟢 Supported; Hungarian installation user-v
 | Proofreading | 🟢 Original translation manually proofread; user-confirmed |
 | Binary format / need | 🟢 RAW/1 font; required |
 | Binary localization | 🟢 Replacement verified; Steam original restored |
-| Game-specific guidance | 🔴 No; shared guidance only |
+| Game-specific guidance | 🟢 [Anniversary guidance](docs/GAME_TRANSLATION_GUIDE.md#tomb-raider-anniversary) |
 
 The [Hungarian package](translations/tomb-raider-anniversary/hu.json) covers interface text, subtitles and font replacement.
 Full copy installation/restoration and a native Windows transaction smoke test passed; the installed Hungarian
@@ -182,7 +183,7 @@ Steam build: `251873`. **Status:** 🟢 Supported; installation/restoration and 
 | Proofreading | 🟢 Inherited from the manually proofread Anniversary translation |
 | Binary format / need | 🟢 RAW/1 font; required |
 | Binary localization | 🟢 Game/font and English ASCII error dialogs user-verified |
-| Game-specific guidance | 🔴 No; shared guidance only |
+| Game-specific guidance | 🟢 [Anniversary Demo guidance](docs/GAME_TRANSLATION_GUIDE.md#tomb-raider-anniversary-demo) |
 
 The [Hungarian package](translations/tomb-raider-anniversary-demo/hu.json) covers 1001 interface records,
 73 subtitle records in 62 resources, and the replacement font. The historical `trad.v1.0` filelist was verified
@@ -209,7 +210,7 @@ Steam build: not established. **Status:** 🔴 Not started.
 | Proofreading | 🔴 Not started |
 | Binary format / need | 🔴 Not investigated |
 | Binary localization | 🔴 Need unknown; no localized assets prepared |
-| Game-specific guidance | 🔴 No; shared guidance only |
+| Game-specific guidance | 🟢 [Underworld Demo guidance](docs/GAME_TRANSLATION_GUIDE.md#tomb-raider-underworld-demo) |
 
 no dedicated profile, extraction or translation package exists.
 
@@ -231,7 +232,7 @@ Steam build: `251883`. **Status:** 🟡 Experimental; Steam restored to English.
 | Proofreading | 🟡 Needs review of additions |
 | Binary format / need | 🟢 DRM v19 / PCD9 font; required |
 | Binary localization | 🟡 Identified; Steam port pending |
-| Game-specific guidance | 🔴 No; shared only |
+| Game-specific guidance | 🟢 [Underworld guidance](docs/GAME_TRANSLATION_GUIDE.md#tomb-raider-underworld) |
 
 The [Hungarian package](translations/tomb-raider-underworld/hu.json) uses the official Hungarian edition as its
 reference. All 2,895 interface records and 863 subtitle records were read back after Steam installation; installation and
@@ -258,7 +259,7 @@ Steam build: `11395`. **Status:** 🟡 Experimental; Steam restored to English.
 | Proofreading | 🟡 Needs review; interface approved |
 | Binary format / need | 🟢 DRM v19 / PCD9 DXT5 Latin font; required |
 | Binary localization | 🟡 Double-acute font verified by readback; original restored; game check pending |
-| Game-specific guidance | 🔴 No; shared only |
+| Game-specific guidance | 🟢 [Guardian guide](docs/GAME_TRANSLATION_GUIDE.md#lara-croft-and-the-guardian-of-light) |
 
 The [Hungarian package](translations/lara-croft-and-the-guardian-of-light/hu.json) covers 8,214 interface records across
 eight physical layers and 283 subtitle records, including the five installed DLC packs. It imports the historical
@@ -288,7 +289,7 @@ Steam build: `9573671`. **Status:** 🟡 Experimental; font appearance verified.
 | Proofreading | 🟡 New batch appearance reviewed in game; linguistic sign-off pending |
 | Binary format / need | 🟢 DRM v22 / GFX fonts; required |
 | Binary localization | 🟢 Packaged and observed glyphs verified; Steam original restored |
-| Game-specific guidance | 🔴 No; shared only |
+| Game-specific guidance | 🟢 [Tomb Raider (2013) guidance](docs/GAME_TRANSLATION_GUIDE.md#tomb-raider-2013) |
 
 The [build-specific Hungarian package](translations/tomb-raider/steam-9573671-hu.json) contains 19,888 bound records,
 including 33 additions for this build; 15 empty source records remain untranslated. Its font supplement and archive
@@ -320,7 +321,7 @@ Steam build: `477027`. **Status:** 🟡 Hungarian text and accents verified; Ste
 | Proofreading | 🟡 Needs proofreading |
 | Binary format / need | 🟢 DRM v22 / GFx DefineFont3; Unicode glyph supplement required |
 | Binary localization | 🟢 Unicode `ŐőŰű` font and accents user-verified; Steam original restored |
-| Game-specific guidance | 🟡 Terminology only |
+| Game-specific guidance | 🟢 [Osiris guide](docs/GAME_TRANSLATION_GUIDE.md#lara-croft-and-the-temple-of-osiris) |
 
 The [English source export](translations/lara-croft-and-the-temple-of-osiris/en.json) contains 1,744 interface records
 and 1,338 subtitles from the selected base and update archives. The
@@ -365,7 +366,7 @@ Steam build: `9575745`. **Status:** 🟡 Partial Hungarian draft; interface fill
 | Proofreading | 🟡 Incomplete; audited French imports cleared, remaining subtitle imports need review |
 | Binary format / need | 🔴 Font localization need not investigated |
 | Binary localization | 🔴 No maintained localized assets; appearance and font needs still require verification |
-| Game-specific guidance | 🔴 No; shared guidance only |
+| Game-specific guidance | 🟢 [Rise guidance](docs/GAME_TRANSLATION_GUIDE.md#rise-of-the-tomb-raider) |
 
 [Translation JSON](translations/rise-of-the-tomb-raider/hu.json),
 [English source snapshot](translations/rise-of-the-tomb-raider/en.json),
@@ -417,7 +418,7 @@ Steam build: `3668420`. **Status:** 🟡 Hungarian game test passed; Steam now E
 | Proofreading | 🟡 Needs review |
 | Binary format / need | 🟡 No font replacement required for observed text; full binary inventory incomplete |
 | Binary localization | 🟡 Existing assets retained; installed Hungarian appearance user-verified |
-| Game-specific guidance | 🔴 No; shared only |
+| Game-specific guidance | 🟢 [Shadow Trial guidance](docs/GAME_TRANSLATION_GUIDE.md#shadow-of-the-tomb-raider-trial) |
 
 The [Hungarian translation](translations/shadow-of-the-tomb-raider-trial/hu.json) reuses the full-game translation
 through stable keys and source comparisons, with Trial-specific differences translated or explicitly accepted.
@@ -446,7 +447,7 @@ Steam build: `11668867`. **Status:** 🟡 Hungarian import draft.
 | Proofreading | 🟡 Needs review |
 | Binary format / need | 🔴 Font format/need not assessed |
 | Binary localization | 🔴 No replacement; glyph/markup review pending |
-| Game-specific guidance | 🔴 No; shared guidance only |
+| Game-specific guidance | 🟢 [Shadow guidance](docs/GAME_TRANSLATION_GUIDE.md#shadow-of-the-tomb-raider) |
 
 The [Hungarian draft](translations/shadow-of-the-tomb-raider/hu.json) matches all 38,234 populated source records in
 the examined text table.
