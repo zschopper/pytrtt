@@ -4,6 +4,22 @@ This guide explains how to contribute a language for a game and build listed in 
 table](../README.md#current-support). PyTRTT currently runs from Python source; a standalone Windows release
 is not available yet.
 
+Read the [game translation guidance](GAME_TRANSLATION_GUIDE.md) before starting. It explains how to request support for
+a new language and links the shared workflow to the special requirements of each game:
+
+- [Tomb Raider: Legend Demo](GAME_TRANSLATION_GUIDE.md#tomb-raider-legend-demo)
+- [Tomb Raider: Legend](GAME_TRANSLATION_GUIDE.md#tomb-raider-legend)
+- [Tomb Raider: Anniversary](GAME_TRANSLATION_GUIDE.md#tomb-raider-anniversary)
+- [Tomb Raider: Anniversary Demo](GAME_TRANSLATION_GUIDE.md#tomb-raider-anniversary-demo)
+- [Tomb Raider: Underworld](GAME_TRANSLATION_GUIDE.md#tomb-raider-underworld)
+- [Tomb Raider: Underworld Demo](GAME_TRANSLATION_GUIDE.md#tomb-raider-underworld-demo)
+- [Lara Croft and the Guardian of Light](GAME_TRANSLATION_GUIDE.md#lara-croft-and-the-guardian-of-light)
+- [Tomb Raider (2013)](GAME_TRANSLATION_GUIDE.md#tomb-raider-2013)
+- [Lara Croft and the Temple of Osiris](GAME_TRANSLATION_GUIDE.md#lara-croft-and-the-temple-of-osiris)
+- [Rise of the Tomb Raider](GAME_TRANSLATION_GUIDE.md#rise-of-the-tomb-raider)
+- [Shadow of the Tomb Raider Trial](GAME_TRANSLATION_GUIDE.md#shadow-of-the-tomb-raider-trial)
+- [Shadow of the Tomb Raider](GAME_TRANSLATION_GUIDE.md#shadow-of-the-tomb-raider)
+
 ## 1. Check the game and build
 
 Use the exact game and build listed as supported. A translation for a different build must be extracted and
