@@ -109,7 +109,11 @@ excludes repeated combat alerts and unrelated ambient dialogue; translate repeat
 represent distinct heard variants, and do not silently expand its editorial scope. Preserve each resource identity,
 timing and speaker metadata when the maintainer transfers the transcript into JSON, and flag intentional
 foreign-language dialogue. Subtitle capacity fallback and language-slot clearing are maintainer-controlled technical
-settings, while font coverage and the remaining unclassified content still require investigation.
+settings. Keep Hungarian `ŐőŰű` as real Unicode in the translation JSON: the maintained DIN-Bold font candidate adds
+these missing glyphs, while DIN Next CYR already includes them. Do not reintroduce circumflex substitutions or alter
+the multilingual `FONT VALIDATION` developer samples. Font appearance still requires an in-game check; see the
+[package provenance](../translations/rise-of-the-tomb-raider/provenance.json) for current verification scope.
+Unclassified content remains outside the extracted-text coverage claim.
 
 ## Shadow of the Tomb Raider Trial
 

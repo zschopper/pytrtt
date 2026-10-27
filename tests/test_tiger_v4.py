@@ -1,3 +1,5 @@
+import cProfile
+import pstats
 import struct
 from pathlib import Path
 
@@ -11,6 +13,61 @@ def fixture(path: Path, archive_id: int, text: bytes) -> None:
     header = struct.pack("<4s4I32s", b"TAFS", 4, 1, 1, archive_id, b"pc-w")
     row = struct.pack("<4IhhI", 0x7CD333D3, 1, len(text), 0, 0, archive_id, 2048)
     path.write_bytes(header + row + bytes(2048 - len(header) - len(row)) + text)
+
+
+def test_batch_plan_does_not_rescan_every_index_row_for_each_replacement(tmp_path: Path) -> None:
+    from pytrtt.archives.contracts import ResourceReplacement
+    from pytrtt.config import LanguageSlot, RuntimeSettings
+
+    count = 128
+    path = tmp_path / "bigfile.000.tiger"
+    header = struct.pack("<4s4I32s", b"TAFS", 4, 1, count, 1, b"pcx64-w")
+    rows = b"".join(struct.pack("<4IhhI", index + 1, 1, 4, 0, 0, 1, 4096) for index in range(count))
+    original = header + rows + bytes(4096 - len(header) - len(rows)) + b"base"
+    path.write_bytes(original)
+    settings = ArchiveSettings(
+        "tiger",
+        4,
+        1024 * 1024,
+        families=("base",),
+        index_files=(("base", path.name),),
+    )
+    replacements = tuple(
+        ResourceReplacement("text", index + 1, 1, f"translation {index}".encode())
+        for index in reversed(range(count))
+    )
+    # Count operations, not elapsed time: this is deterministic on slow CI and
+    # catches quadratic table scans without mocking the handler or struct.
+    profiler = cProfile.Profile()
+    handler = TigerV4Handler(tmp_path, settings)
+    plan = profiler.runcall(handler.plan, replacements)
+    unpack_calls = sum(
+        stats[1]
+        for (_, _, name), stats in pstats.Stats(profiler).stats.items()
+        if "unpack_from" in name
+    )
+    assert unpack_calls < count * 8
+    assert path.read_bytes() == original
+    table = plan.index_data[path.name]
+    for index in range(count):
+        row = struct.unpack_from("<4IhhI", table, 52 + index * 24)
+        assert row == (
+            index + 1,
+            1,
+            len(f"translation {index}"),
+            0,
+            0,
+            1,
+            6144 + (count - 1 - index) * 2048,
+        )
+    runtime = RuntimeSettings(settings, (LanguageSlot("en", 1, 0),), "en", ())
+    transaction = tmp_path / "transaction"
+    handler.apply(plan, transaction, runtime)
+    reopened = TigerV4Handler(tmp_path, settings)
+    for reference in reopened.resources():
+        assert reopened.read(reference) == f"translation {reference.name_hash - 1}".encode()
+    handler.restore(transaction)
+    assert path.read_bytes() == original
 
 
 @pytest.mark.parametrize(

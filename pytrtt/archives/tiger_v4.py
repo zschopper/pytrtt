@@ -207,12 +207,17 @@ class TigerV4Handler:
         mapping = dict(self.settings.index_files)
         tables: dict[str, bytearray] = {}
         counts: dict[str, int] = {}
+        rows_by_family: dict[str, dict[tuple[int, int], list[int]]] = {}
         for family, name in mapping.items():
             with (self.directory / name).open("rb") as stream:
                 index = read_tiger_v4_index(stream)
                 stream.seek(0)
                 tables[family] = bytearray(stream.read(52 + 24 * len(index.entries)))
                 counts[family] = index.num_parts
+                rows_by_key: dict[tuple[int, int], list[int]] = {}
+                for row, entry in enumerate(index.entries):
+                    rows_by_key.setdefault((entry.name_hash, entry.locale), []).append(row)
+                rows_by_family[family] = rows_by_key
         original_tables = {family: bytes(data) for family, data in tables.items()}
         sizes = {name: stamp[0] for name, stamp in self._stamps.items()}
         if any(size > boundary for size in sizes.values()):
@@ -258,11 +263,7 @@ class TigerV4Handler:
             writes.append(PlannedWrite(name, "resource", replacement.label, offset, data, b""))
             cursors[family] = part, offset + len(data)
             table = tables[family]
-            rows = [
-                row
-                for row in range((len(table) - 52) // 24)
-                if struct.unpack_from("<II", table, 52 + row * 24) == key[1:]
-            ]
+            rows = rows_by_family[family].get(key[1:], [])
             if len(rows) != 1:
                 raise ValueError("ambiguous TIGER v4 index row")
             row_offset = 52 + rows[0] * 24

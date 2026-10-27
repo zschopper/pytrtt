@@ -13,12 +13,19 @@
   Surface these phases and diagnostic identities so long operations and genuine validation failures can be distinguished.
 - Rise was blocked by missing text writers, and null/filled counts hid repeated-layer gaps and wrong-language imports.
   Enable safe writes, fill exact matches, and track language/content validation separately from field population.
+- Complete Rise's extracted text coverage and individually review legacy subtitle imports against English and scene
+  context, correcting meaning errors rather than accepting translations solely because identifiers or timing match.
 - Clear 730 audited original French-slot values from the Rise Hungarian draft rather than treating them as translations.
   Preserve English sources and other translations; the French slot is an output location, not a translation donor.
 - Trial/full-game source and timing differences required explicit reconciliation rather than blind translation reuse.
   Preserve target-build identities and confirm that restoration leaves the package installable again.
 
 ### Added
+
+- Complete Rise Hungarian text draft: 27,111 interface and 28,214 subtitle fields filled, no nonblank-source gaps;
+  9,552 legacy import groups individually reviewed. Preserve deliberate names, prayers and fictional-language lines.
+- Rise DIN-Bold font candidate with native-style `ŐőŰű` glyphs; remove historical circumflex spelling from Hungarian
+  prose while preserving developer font-validation samples. In-game appearance remains unverified.
 
 - Optional schema-8 `clear_subtitle_languages_on_overflow` enables ordered, per-document, multi-language capacity
   reclamation for CINE/2 and verified SCH/3 slots. Default off; stop clearing as soon as the translated resource fits.
@@ -63,6 +70,10 @@
   239 subtitle records from the opening ice-climb scene. Existing French text remains unchanged; subtitle work continues.
 - Translated another 470 Rise subtitle records across seven ice-climb scenes and the matching expedition movie;
   preserved source records, subtitle timings and existing French/Hungarian translations.
+- Filled or replaced 373 Rise subtitle fields in ten Syria gameplay scene groups and corrected six existing
+  Hungarian import errors. Verified all 320 affected CINE/SCH resources in memory; no new game installation cycle.
+- Filled 320 caption fields in seven remaining named Syria scene groups, preserving existing translations.
+  Verified all 14 affected SCH resources; classified 12 unchanged name-only fields separately from untranslated dialogue.
 - Updated Anniversary, Legend, and Legend Demo translation data, provenance, and user-reported verification status.
 - Extended development support to Python 3.14 alongside Python 3.13.
 - Expanded translation documentation, contributor credits, binary-safety guidance, and per-game status cards with
@@ -72,6 +83,8 @@
 
 ### Fixed
 
+- Avoid rescanning every TIGER v4 index row for each replacement when planning a complete translation. Build a
+  family/hash/locale lookup once, preserving duplicate-row rejection, placement bytes and source-integrity checks.
 - Prevented the graphical installation list from discarding additional copies of the same game.
 - Preserved case-sensitive POSIX installation identities while retaining Windows/WSL path matching and
   case-insensitive Windows network paths.
@@ -96,5 +109,10 @@
   translation coverage, current package hashes and font metadata.
 - Game-specific installation, restoration, and user-reported appearance checks remain documented in the individual
   package provenance files. Complete text extraction or installation does not imply complete linguistic review.
-- Rise remains a partial translation draft: filled subtitle fields include unchanged English and French imports.
-  Binary readback, copy restoration and observed game appearance are separate results, not linguistic sign-off.
+- Rise's extracted nonblank texts are now translated and historical subtitle imports individually reviewed against
+  English. All 55,958 text records passed binary readback and idempotence; deliberate source-equal subtitles retain
+  names, sounds, prayers or fictional language, not unreviewed French imports. Independent proofreading
+  and in-game appearance remain separate verification results. The complete package passed GUI-backend installation,
+  installed-state detection, byte-exact restoration of all 21 archive parts and renewed translation availability on a copy.
+- The complete suite passed 479 tests, with 19 optional integration tests deselected. A deterministic operation-count
+  regression test guards batch index lookup complexity and checks the resulting batch installation and restoration.

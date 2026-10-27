@@ -33,7 +33,7 @@ are preserved. The results below describe translation capabilities and completed
 | Lara Croft and the Guardian of Light | `11395` | 🟡 Experimental | HU base/DLC verified; font check pending | English |
 | Tomb Raider (2013) | `9573671` | 🟡 Experimental | Selected HU text and repaired font observed in game | English |
 | Lara Croft and the Temple of Osiris | `477027` | 🟡 Complete draft | 3,082 HU texts; accents game-verified | English |
-| Rise of the Tomb Raider | `9575745` | 🟡 Partial draft | Interface filled; subtitles incomplete | English |
+| Rise of the Tomb Raider | `9575745` | 🟡 Text complete | Independent / in-game checks pending | English |
 | Shadow of the Tomb Raider Trial | `3668420` | 🟡 Game-tested draft | 38,055 HU texts; game-verified | English |
 | Shadow of the Tomb Raider | `11668867` | 🟡 Import draft | 38,234 HU texts; review/game test pending | English |
 
@@ -354,24 +354,32 @@ does not establish support for Rise's related archive version.
 
 ### Rise of the Tomb Raider
 
-Steam build: `9575745`. **Status:** 🟡 Partial Hungarian draft; interface filled, subtitle import repair in progress.
+Steam build: `9575745`. **Status:** 🟡 Complete Hungarian text draft; independent and in-game checks pending.
 
 | Aspect | Status |
 | --- | --- |
-| Archive format / support | 🟡 TIGER v4, `pcx64-w`; earlier partial-package copy install/restore passed; 13 indexes |
+| Archive format / support | 🟢 TIGER v4, `pcx64-w`; complete-package copy install/restore passed; 13 indexes |
 | Text formats | 🟢 locals/3: 64-bit unkeyed UTF-8 pointers; CINE/2; SCH/3: optional Version 1 header |
 | Resolved filenames | 🟡 85.24%; 6,187 names missing; explicit hash labels do not count as resolved names |
 | Text extraction | 🟡 27,113 interface + 28,845 subtitle records; named + detected SCH; other content unclassified |
-| Translation / origin | 🟡 Legacy import + AI additions; 27,111 interface fields filled; subtitle draft incomplete |
-| Proofreading | 🟡 Incomplete; audited French imports cleared, remaining subtitle imports need review |
-| Binary format / need | 🔴 Font localization need not investigated |
-| Binary localization | 🔴 No maintained localized assets; appearance and font needs still require verification |
+| Translation / origin | 🟡 Reviewed legacy import + AI additions; 27,111 interface + 28,214 subtitle fields filled |
+| Proofreading | 🟡 All 9,552 historical import groups individually reviewed; independent proofreading pending |
+| Binary format / need | 🟢 DIN-Bold lacks real Hungarian double accents; DIN Next CYR already includes them |
+| Binary localization | 🟡 Native-style `ŐőŰű` font candidate included; in-game appearance not yet verified |
 | Game-specific guidance | 🟢 [Rise guidance](docs/GAME_TRANSLATION_GUIDE.md#rise-of-the-tomb-raider) |
 
 [Translation JSON](translations/rise-of-the-tomb-raider/hu.json),
 [English source snapshot](translations/rise-of-the-tomb-raider/en.json),
 [profile](profiles/rise-of-the-tomb-raider.json),
 [provenance](translations/rise-of-the-tomb-raider/provenance.json).
+
+All extracted nonblank records have translations. The 633 remaining null fields have blank sources;
+205 source-equal subtitle fields intentionally retain names, nonverbal sounds, Greek prayers or fictional language.
+Historical subtitle imports were checked individually against English and scene context, including repeated lines
+in distinct scenes. French was not used as a translation donor. Timing, speaker metadata and other language slots
+passed full in-memory binary readback and idempotence checks. The complete package also passed a GUI-backend copy
+install/restore round trip: all 21 original archive parts matched their original sizes and SHA-256 hashes after
+restoration, and translation was available again. Independent proofreading and in-game rendering remain unverified.
 The export includes installed Endurance, Baba Yaga, Cold Darkness and Blood Ties resources.
 An additional 1,879 subtitle records in 1,657 physical resources use `unresolved-hash:XXXXXXXX` identity labels;
 their real filenames remain unknown. The default profile filelist contains verified names only; provenance
@@ -387,12 +395,20 @@ Their 217 and 349 affected CINE/SCH resources passed readback with timing, speak
 The scene batches preserved existing translations. A subsequent cleanup cleared 730 exact, audited French-slot
 imports from the Hungarian draft to null; French text is not a translation donor. The French language slot may
 host Hungarian output, but its original content is not evidence of Hungarian translation.
-There are now 8,618 filled subtitle fields, but 6,517 still equal the English source; 19,596 nonblank subtitle fields
-remain null. Other existing translations were preserved. These counts are not a claim of Hungarian subtitle completeness.
+Before finalization, ten Syria gameplay scene groups added or replaced 373 subtitle fields (151 distinct English sources),
+plus six targeted corrections to existing Hungarian imports. All 320 affected CINE/SCH resources passed readback and idempotence
+checks, preserving timing, speaker markers and other languages. The corrections distinguish burial from burning,
+one thousand days from several hundred, Rus from Rusyn, murals from inscriptions, and repair two related sentences.
+Seven further Syria scene-caption groups fill 320 fields from 160 distinct source texts. The 14 affected SCH resources
+passed readback and idempotence checks. Named Syria resources have no nonblank gaps; their only 12 source-equal fields
+are speaker names or name-only utterances, not untranslated dialogue. Existing translations were preserved.
+At that intermediate stage, 9,244 subtitle fields were filled, including 6,462 English-source-equal fields, and
+18,970 nonblank subtitle fields remained null. Finalization has since filled all nonblank-source gaps and reviewed
+the legacy imports individually; the current coverage is summarized above.
 
-The locals/3 and SCH/3 writers are implemented. An earlier partial package passed GUI-backend installation,
-byte-exact restoration and a post-restore translation check on a copy. The newly expanded package has targeted
-in-memory resource verification, not a new full installation/restore cycle or in-game appearance check.
+The locals/3 and SCH/3 writers are implemented. The complete package passed binary readback and idempotence,
+GUI-backend installation and installed-state detection on a copy, byte-exact restoration of all 21 archive parts,
+and a post-restore translation-availability check. In-game appearance remains unverified.
 
 Optional schema-8 `clear_subtitle_languages_on_overflow` lists subtitle slots that may be cleared, in priority order,
 only if the translated resource exceeds the archive-part boundary. It is disabled by default; no language is implicit.
@@ -401,8 +417,8 @@ The replacement slot is protected. Insufficient savings or unsupported formats f
 See the [translation configuration guide](docs/TRANSLATING.md#3-translate-the-json).
 This capacity fallback has synthetic install/detect/byte-exact restore coverage, not in-game verification.
 
-**Remaining:** continue subtitle translation and import repair, identify intentional foreign-language exceptions,
-recover missing names, inspect unclassified resources, investigate fonts, verify the final package and proofread.
+**Remaining:** verify native-accent font rendering in game, recover missing names, inspect unclassified resources,
+and independently proofread and check the text in game.
 
 ### Shadow of the Tomb Raider Trial
 
