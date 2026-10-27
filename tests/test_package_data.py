@@ -134,6 +134,7 @@ def test_current_release_data_excludes_developer_translation_material() -> None:
     assert not any(path.endswith("provenance.json") for path in selected)
     translation_paths = {path for path in selected if path.startswith("translations/")}
     assert not any(path.endswith("/en.json") for path in translation_paths)
+    assert not any(path.endswith("/story-transcript.en.md") for path in translation_paths)
     assert not any(
         "memory" in path or "candidates" in path or "source" in path for path in translation_paths
     )
