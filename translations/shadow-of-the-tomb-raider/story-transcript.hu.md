@@ -81,11 +81,11 @@
 
 **Jonah:** Mi ez az egész?
 
-**Lara:** Együttállások. Ez a felirat-- Valamiféle feladvány. Rózsaszín hal...
+**Lara:** Együttállások. Ez a felirat… Valamiféle feladvány. Rózsaszín hal...
 
 **Lara:** Ezüstkoronás hegy...
 
-**Lara:** Van itt egy dátum, de valami nem stimmel-- úgy tűnik, megsérült. Talán szándékosan rongálták meg.
+**Lara:** Van itt egy dátum, de valami nem stimmel… úgy tűnik, megsérült. Talán szándékosan rongálták meg.
 
 **Jonah:** Miért szabotálná a Szentháromság? Általában csak elpusztítanak mindent.
 
@@ -101,7 +101,7 @@
 
 **Jonah:** Hé, szeretnél felfrissülni? Találkozzunk a kávézónál! Dr. Dominguez ma ott lesz.
 
-**Lara:** Jól hangzik. Megpróbálom megfejteni a rejtvényt-- hátha a dátumnak is köze van hozzá.
+**Lara:** Jól hangzik. Megpróbálom megfejteni a rejtvényt… hátha a dátumnak is köze van hozzá.
 
 **Jonah:** Igen. Rózsaszín hal, ezüstkoronás hegyek... Ránézek. Amúgy elvileg ennek a kávézónak jóféle ételei vannak...
 
@@ -125,29 +125,29 @@
 
 **Lara:** Jonah, nézd! A rejtvény. Iránymutatás!
 
-**Lara:** "Hogy megleld a rejtett várost, indulj a part mentén délnek, míg meg nem találod a rózsaszín halat--"
+**Lara:** "Hogy megleld a rejtett várost, indulj a part mentén délnek, míg meg nem találod a rózsaszín halat…"
 
 **Jonah:** Találtam ahhoz valamit! Rózsaszín delfinek. Csak az Amazonasban élnek.
 
-**Lara:** Folytatódik-- öö, "aztán üldözd a kígyó szívét az ezüstkoronás hegyekbe--" Nézd ezt!
+**Lara:** Folytatódik… öö, "aztán üldözd a kígyó szívét az ezüstkoronás hegyekbe…" Nézd ezt!
 
 **Lara:** Ez a Hydra csillagkép, a vízikígyó.
 
 **Lara:** Ez a csillag a szív. Délnyugat felé mutat.
 
-**Jonah:** Akkor, délnyugatra az Amazonas folyótól-- Brazília?
+**Jonah:** Akkor, délnyugatra az Amazonas folyótól… Brazília?
 
-**Lara:** Ez a dátum a romokból-- látod? Ha jobban megnézed, látszik, hogy sérült. Ez a szám a maja tizenháromnak néz
-ki, de mi van, ha valójában nyolcas? A precesszióval--
+**Lara:** Ez a dátum a romokból… látod? Ha jobban megnézed, látszik, hogy sérült. Ez a szám a maja tizenháromnak néz
+ki, de mi van, ha valójában nyolcas? A precesszióval…
 
-**Lara:** Öhm, precesszió. A földtengely elmozdul, így időről időre a csillagok máshol látszódnak a horizonton-- fontos,
+**Lara:** Öhm, precesszió. A földtengely elmozdul, így időről időre a csillagok máshol látszódnak a horizonton… fontos,
 ha az éjjeli égbolt alapján tájékozódsz.
 
 **Lara:** A maja naptárban ez kétezer évnyi különbség! Akkoriban a kígyó szíve nyugat felé vezetett.
 
 **Jonah:** Akkor ezért van Peruban, nem Brazíliában. A Szentháromság rossz helyen keresgél.
 
-**Lara:** Pontosan. Egy ezüstkoronás hegyet keresünk Peruban. Van még itt valami... öö... valami egy-- egy kulcsról. Mit
+**Lara:** Pontosan. Egy ezüstkoronás hegyet keresünk Peruban. Van még itt valami... öö... valami egy… egy kulcsról. Mit
 keres a Szentháromság a Rejtett Városban?
 
 **Szentháromság-katona:** Doktor! Megtaláltuk!
@@ -211,7 +211,7 @@ keres a Szentháromság a Rejtett Városban?
 **Jonah:** Nem turistáknak való.
 
 **Jonah:** Á, dehogy, tudod, Maria hívott meg. Ismered? Az unokatestvérem. Az abuelám, innen származik, bár nem úgy néz
-ki, isten nyugosztalja. Öö, csak egy ajánlást, egy felajánlást akartam tenni-- mit is kell csinálni azokkal a
+ki, isten nyugosztalja. Öö, csak egy ajánlást, egy felajánlást akartam tenni… mit is kell csinálni azokkal a
 takarókkal?
 
 **Jonah:** Rendben, tudjátok mit? Látom, elfoglaltak vagytok. Nem vesztegetem tovább az időtöket... Nyomassátok csak...
@@ -400,9 +400,9 @@ amire szükségük volt.
 
 **Lara:** Nem tudom. Azt... azt hiszi, hogy meg tudja szabadítani a bűntől és a szenvedéstől...
 
-**Lara:** Egy ilyen ember... Meg-- Meg kell állítanunk! Ez mind az én hibám.
+**Lara:** Egy ilyen ember... Meg… Meg kell állítanunk! Ez mind az én hibám.
 
-**Jonah:** Öhm-- Kitalálunk valamit, oké? Ígérem.
+**Jonah:** Öhm… Kitalálunk valamit, oké? Ígérem.
 
 **Lara:** Nem, nem, nem, nem, nem! Oda kell érnünk a rejtett városba a Szentháromság előtt és meg kell keresnünk az
 Ezüst szelencét!
@@ -445,7 +445,7 @@ megállítjuk a Szentháromságot.
 
 **Jonah:** Oké. De honnan fogjuk tudni?
 
-**Lara:** Jonah, amit a tőr megszerzésekor éreztem--
+**Lara:** Jonah, amit a tőr megszerzésekor éreztem…
 
 **Jonah:** Mármint a cunami rengéseire gondolsz?
 
@@ -551,7 +551,7 @@ fog.
 **Lara:** Nem tudom.
 
 **Jonah:** (grimasz) Talán meg kéne állnunk és átgondolnunk a helyzetet. Annyira nyomultunk előre, közvetlenül bele abba
-a viharba--
+a viharba…
 
 **Lara:** Nem gondoltam, hogy ennyire rossz lesz. Én...
 
@@ -757,7 +757,7 @@ ha ilyen hatalommal rendelkeznél?
 **Jonah:** Öh... Hogy minden mást elveszítsek? Ki van zárva. (sóhaj) Én így szeretem a világot. Nem... nem tökéletes, de
 benne van minden, amit most szeretek.
 
-**Lara:** Hogy megszerezze a kincset, a kalandor Lara Croftnak túl kell járnia a király eszén,el kell jutnia a Tiltott
+**Lara:** Hogy megszerezze a kincset, a kalandor Lara Croftnak túl kell járnia a király eszén, el kell jutnia a Tiltott
 Sírhoz, és meg kell oldania a Fehér királynő rejtélyét. Az út tele van megpróbáltatásokkal.
 
 **Lord Croft:** Lara? A matematika házi feladatodat csinálod?
@@ -792,7 +792,7 @@ Sírhoz, és meg kell oldania a Fehér királynő rejtélyét. Az út tele van m
 
 **Lara:** Hősünk felfedezett egy másik bejáratot!
 
-**Lara:** A fiatal Lara szembenéz a szédítő magassággal és a veszéllyel-- aztán elhessegeti őket a gondolataiból.
+**Lara:** A fiatal Lara szembenéz a szédítő magassággal és a veszéllyel… aztán elhessegeti őket a gondolataiból.
 
 **Lara:** Megacélozza magát, és a célra koncentrál. Irány a Tiltott Sír!
 
@@ -887,7 +887,7 @@ találhattak.
 
 **Amelia Croft:** Miért nem tudsz boldog lenni azzal, amid van?
 
-**Lord Croft:** Az ég szerelmére, nem kell foglalkoznod vele--
+**Lord Croft:** Az ég szerelmére, nem kell foglalkoznod vele…
 
 **Lord Croft:** Kérlek, az ég szerelmére, értsd meg, ez valószínűleg a legjelentősebb áttörés, ami eddig történt!
 
@@ -913,7 +913,7 @@ találhattak.
 
 **Jonah:** Odavesztek a barátai. A családja elveszítette az üzletét.
 
-**Jonah:** De utána előre megérzett dolgokat-- vulkánkitöréseket, viharokat... egyéb dolgokat.
+**Jonah:** De utána előre megérzett dolgokat… vulkánkitöréseket, viharokat... egyéb dolgokat.
 
 **Jonah:** Milyen volt a nagymamád? Nem sokat beszélsz róla.
 
@@ -923,7 +923,7 @@ találhattak.
 
 **Jonah:** Van valami ötleted, hogy mi lehet az Ikrek a rejtvényben?
 
-**Lara:** Lehet bármi-- egy szoborpár, vagy hegyek, vagy források.
+**Lara:** Lehet bármi… egy szoborpár, vagy hegyek, vagy források.
 
 ## 4. Kuwaq Yaku
 
@@ -1215,7 +1215,7 @@ mentén halad egy ezüst szem felé."
 
 **Lara:** Francba.
 
-**Lara:** Jonah, azt hiszem, megtaláltam-- a Rejtett Várost. Megkeresem az Ezüstszemű Kígyót.
+**Lara:** Jonah, azt hiszem, megtaláltam… a Rejtett Várost. Megkeresem az Ezüstszemű Kígyót.
 
 **Lara:** Segíthetek neked.
 
@@ -1223,7 +1223,7 @@ mentén halad egy ezüst szem felé."
 
 **Lara:** Figyelj, tudom, hogy fáj, de...
 
-**Etzli:** (lélegzetvétel) Köszönöm--
+**Etzli:** (lélegzetvétel) Köszönöm…
 
 **Unuratu:** Ki vagy? Mi célból jöttél?
 
@@ -1238,19 +1238,19 @@ nem lettél volna ott, megtalál minket ez a nő?
 
 **Unuratu:** Ha nem a Szektával vagy, hogy találtad meg ezt a helyet?
 
-**Lara:** Egy térképet követtem egy templomtól-- Romokra számítottam, nem rátok... vagy ilyesmire.
+**Lara:** Egy térképet követtem egy templomtól… Romokra számítottam, nem rátok... vagy ilyesmire.
 
-**Lara:** A Szekta-- miért támadta meg a fiadat?
+**Lara:** A Szekta… miért támadta meg a fiadat?
 
 **Lara:** Felismerem a jelvényüket. Szentháromság a nevük. Igyekszem megállítani őket.
 
 **Unuratu:** Megállítani? Miért?
 
-**Lara:** Egy ereklyét keresnek-- valamiféle szelencét... ami egy holdistennőhöz kapcsolódik.
+**Lara:** Egy ereklyét keresnek… valamiféle szelencét... ami egy holdistennőhöz kapcsolódik.
 
 **Unuratu:** Te miért keresed? Hogy ellopd? Hogy eladd?
 
-**Lara:** Nem. Nem hagyhatom a Szentháromságot-- a Szektát-- hogy rátegyék a kezüket. Túl veszélyesek.
+**Lara:** Nem. Nem hagyhatom a Szentháromságot… a Szektát… hogy rátegyék a kezüket. Túl veszélyesek.
 
 **Unuratu:** Miért? Mit tettek veled?
 
@@ -1296,7 +1296,7 @@ nem lettél volna ott, megtalál minket ez a nő?
 
 **Lara:** Erre semmi szükség.
 
-**Jonah:** Semmi-- semmi gond, maradok.
+**Jonah:** Semmi… semmi gond, maradok.
 
 **Unuratu:** Etzli, keríts néhány ruhát ennek a nőnek.
 
@@ -1440,14 +1440,14 @@ A lázadók ebből kimaradnak.
 
 **Lara:** Nem hiszem, hogy bármi felkészített volna engem erre a helyre.
 
-**Lara:** Az emberek, a történelmük-- minden, amit átéltek, és ami ma meghatározza őket.
+**Lara:** Az emberek, a történelmük… minden, amit átéltek, és ami ma meghatározza őket.
 
 **Lara:** És azt hallani Amarutól - Domingueztől -, hogy Kukulkánnak csak Paititi biztonsága számít.
 
-**Jonah:** Dominguez azt állítja, hogy Paititi biztonságáért cselekszik. De láttam, mit tesz-- a gyilkolást és
+**Jonah:** Dominguez azt állítja, hogy Paititi biztonságáért cselekszik. De láttam, mit tesz… a gyilkolást és
 kegyetlenséget...
 
-**Lara:** De láttam, meddig hajlandó elmenni-- a gyilkosságokat, a kegyetlenséget...
+**Lara:** De láttam, meddig hajlandó elmenni… a gyilkosságokat, a kegyetlenséget...
 
 ## 6. A Rejtett Város (Paititi)
 
@@ -1548,7 +1548,7 @@ szelencéhez.
 
 **Unuratu:** Ix Chel szelencéje kapcsolódik valahogy a barakkokhoz? Ezért foglalta el a szekta a templomot?
 
-**Unuratu:** Nagyon erősen őrzik. Mikor behatolunk, finomnak kell lennünk-- csendesnek.
+**Unuratu:** Nagyon erősen őrzik. Mikor behatolunk, finomnak kell lennünk… csendesnek.
 
 **Lara:** Van egy hátsó bejárat?
 
@@ -1702,7 +1702,7 @@ szelencéhez.
 
 **Lara:** Értettem. Kiszabadítjuk, Etzli.
 
-**Etzli:** Van még egy dolog-- Hakant elfogták... Kayara barátom apja. Ha feláldozták, én...
+**Etzli:** Van még egy dolog… Hakant elfogták... Kayara barátom apja. Ha feláldozták, én...
 
 **Lara:** Meglátom, mit tehetek.
 
@@ -1716,7 +1716,7 @@ szelencéhez.
 
 **Unuratu:** Tényleg. Ezért fogattál el?
 
-**Amaru:** Ha a testvérem még élne -- Isten nyugosztalja--
+**Amaru:** Ha a testvérem még élne … Isten nyugosztalja…
 
 **Unuratu:** Igen, azt gondolná, hogy ez a marakodás csak időpocsékolás.
 
@@ -1761,7 +1761,7 @@ kormányozhatsz, ahogy csak jólesik. Neked adom a trónt. Így fogok tenni.
 
 **Amaru:** Így csak cserbenhagyod őket. A szelencének nyoma veszett.
 
-**Amaru:** (nevet) Egy misszionárius, Andres Lopez-- lopta el négyszáz évvel ezelőtt.
+**Amaru:** (nevet) Egy misszionárius, Andres Lopez… lopta el négyszáz évvel ezelőtt.
 
 **Amaru:** Elpazaroltad az életedet, rossz helyen kutatva.
 
@@ -1907,7 +1907,7 @@ halált választaná.
 **Amaru:** Vezetőjük, az áruló Unuratu, a bukott királynőtök, az én felügyeletem alatt áll! De még nem késő, hogy
 megmentsük.
 
-**Amaru:** Ma egy áldozatot mutatunk be Kukulkánnak -- áldozatot a védelemért, mivel a napfogyatkozás közeledik.
+**Amaru:** Ma egy áldozatot mutatunk be Kukulkánnak … áldozatot a védelemért, mivel a napfogyatkozás közeledik.
 
 **Amaru:** Áldozatával ez a lázadó megkapta a megváltást. Lássák meg társai a fényt, és térjenek vissza hozzánk.
 
@@ -1919,7 +1919,7 @@ megmentsük.
 
 **Unuratu:** Nincs már messze. A sír azon az ajtón túl van.
 
-**Unuratu:** A sír ott van fent-- azon a szobron. Figyelni fogom a kaput.
+**Unuratu:** A sír ott van fent… azon a szobron. Figyelni fogom a kaput.
 
 **Lara:** Jonah, közel vagyunk a Császár Sírjához.
 
@@ -1941,7 +1941,7 @@ megmentsük.
 
 **Lara:** Oké, a Napfogyatkozás, és a Kócsag. Mit hagytam ki?
 
-**Lara:** Várjunk csak-- ezt Lopez hagyta hátra?
+**Lara:** Várjunk csak… ezt Lopez hagyta hátra?
 
 **Lara:** A Kígyó Szíve a Kupában van.
 
@@ -1961,7 +1961,7 @@ megmentsük.
 
 **Lara:** Ne menj. Beszélj hozzám.
 
-**Unuratu:** A szelence-- megkísért majd. Állj ellen neki.
+**Unuratu:** A szelence… megkísért majd. Állj ellen neki.
 
 **Unuratu:** Mi alakítjuk a sorsunkat.
 
@@ -1985,7 +1985,7 @@ megmentsük.
 
 **Etzli:** Hol van az anyám?
 
-**Lara:** Az anyád-- keményen harcolt.
+**Lara:** Az anyád… keményen harcolt.
 
 **Etzli:** De... az a vezető amulettje.
 
@@ -2029,7 +2029,7 @@ megmentsük.
 
 **Lara:** Mi a francot... mi a francot kéne csinálnom?
 
-**Lara:** Unuratu meghalt, Rourke hátbalőtte. Nincs nálam a szelence. Jonah-- Istenem. Ha bármi történik vele...
+**Lara:** Unuratu meghalt, Rourke hátbalőtte. Nincs nálam a szelence. Jonah… Istenem. Ha bármi történik vele...
 
 **Jonah:** Lara? Jól vagy? Ez a földrengés volt? Közel vagyok egy olajfinomítóhoz, és minden felrobban.
 
@@ -2112,7 +2112,7 @@ keres.
 
 **Lara:** Felismertelek a fényképedről. Mi dolgod van ezzel a hellyel?
 
-**Lara:** Egy rejtvényt próbálok megoldani-- "A kígyó szíve a kupában van, a sok kőarc közelében."
+**Lara:** Egy rejtvényt próbálok megoldani… "A kígyó szíve a kupában van, a sok kőarc közelében."
 
 **Lara:** Kőarcok? Én is azért vagyok itt.
 
