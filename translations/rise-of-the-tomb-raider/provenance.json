@@ -7,7 +7,7 @@
   "status": "All extracted nonblank interface and subtitle records translated; historical subtitle imports individually reviewed against English in scene context. Native double-accent font candidate included. Complete-package GUI-backend install, installed-state detection, byte-exact restoration and renewed translation availability verified on a copy. Independent proofreading and in-game appearance remain pending.",
   "complete_translation_review_20261027": {
     "before_sha256": "9128f0d12ab62ef2830615ff4696267c73fa908410da22166e416f4064f9822c",
-    "after_sha256": "592cc3774a7f8c343af458b5c61e9c657000d9c08a68843784b3584d7914b340",
+    "after_sha256": "92c8309e4135811ea508b770fe1ff4c61bfbf8b2782bbcd009e42472f4d6f112",
     "reference_package": "RotTR_20YCB_hun_v107",
     "reference_comparison": "Eight VCDIFF patches decoded with checksums enabled into local outputs; the three SCH archives match the earlier assembled reference by full SHA-256. The five language archives have 8,919 matching extracted text/prefix records; the separate interface file is unchanged.",
     "method": "Each of 8,129 distinct English/Hungarian pairs and the remaining distinct VO contexts was compared individually for meaning, omissions, terminology and surrounding dialogue. Identical physical copies within the same VO context share an explicit decision; matching text in a different context was not automatically approved. Remaining missing prose was translated from English. This is AI-assisted review, not independent proofreading or in-game sign-off.",
@@ -74,6 +74,15 @@
     "review_report": "work/runs/rottr/9575745/reference-v107-20261027/review-coverage.json",
     "final_report": "work/runs/rottr/9575745/reference-v107-20261027/final-reviewed-report.json",
     "readback_report": "work/runs/rottr/9575745/reference-v107-20261027/final-readback-report.json"
+  },
+  "story_transcript_backport_20261027": {
+    "before_sha256": "592cc3774a7f8c343af458b5c61e9c657000d9c08a68843784b3584d7914b340",
+    "after_sha256": "92c8309e4135811ea508b770fe1ff4c61bfbf8b2782bbcd009e42472f4d6f112",
+    "method": "Backported the independently audited Hungarian story-transcript wording to exact matching translation fields in every retained archive variant. Speaker-label, ordering, duplicate-removal, Markdown-only and source-significant punctuation edits were not applied to the package. Source text, keys, comments, timing markers, line-break controls and real line breaks were preserved.",
+    "changed_translation_records": 52,
+    "source_metadata_and_timing_unchanged": true,
+    "game_installations_modified": false,
+    "in_game_verified": false
   },
   "interface_layer_fill_20261026": {
     "report": "work/runs/rottr/9575745/interface-fill-20261026/report.json",

@@ -4,7 +4,9 @@
 
 ## Szerkesztési elvek
 
-Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólalások sorrendjét egy kommentár nélküli végigjátszás felirata adja. A harci gúnyolódások, ismétlődő riasztások, mellékes ellenséges beszélgetések, kereskedők és a történettől független háttérpárbeszédek nem szerepelnek.
+Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólalások sorrendjét egy kommentár nélküli
+végigjátszás felirata adja. A harci gúnyolódások, ismétlődő riasztások, mellékes ellenséges beszélgetések, kereskedők
+és a történettől független háttérpárbeszédek nem szerepelnek.
 
 ## 1. Hegycsúcs
 
@@ -29,8 +31,6 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 **Jonah:** Ezt a kilátást látnod kell, Lara!
 
 **Jonah:** Csodálatos... de a csúcsokról lezúduló hó rossz jel.
-
-**Jonah:** de a csúcsokról lezúduló hó rossz jel.
 
 **Lara:** Az ösvény felvezet a hegyre.
 
@@ -76,13 +76,13 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Jonah:** Mit gondolsz?
 
-**Ismeretlen beszélő:** Érzem.
+**Lara:** Érzem.
 
 **Lara:** Közel járunk valamihez, Jonah.
 
 **Lara:** Már csak ez az utolsó szakasz van a csúcsig.
 
-**Ismeretlen beszélő:** Nézzük meg, mi van odafenn.
+**Jonah:** Nézzük meg, mi van odafenn.
 
 **Jonah:** Itt elég szilárdnak tűnik, de maradj a fal mellett.
 
@@ -96,7 +96,7 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Jonah:** Át tudsz jutni?
 
-**Ismeretlen beszélő:** Rögzítem magam!
+**Jonah:** Rögzítem magam!
 
 **Lara:** Át tudok jutni!
 
@@ -112,13 +112,11 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Lara:** Jonah! Sikerült! Látom a romokat!
 
-**Ismeretlen beszélő:** Lara, hallasz engem!?
-
-**Ismeretlen beszélő:** Lara! Lara, hallasz engem?
+**Jonah:** Lara! Lara, hallasz engem?
 
 **Jonah:** Visszahúzlak! ...Baszki!
 
-**Ismeretlen beszélő:** Ott, arra!
+**Lara:** Ott, arra!
 
 **Lara:** Gyorsan! Lendíts át a túloldalra...
 
@@ -132,31 +130,31 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Lord Croft:** Megöregszünk, elsorvadunk, meghalunk...
 
-**Lord Croft:** Csontokat?
-
 **Lord Croft:** de mit hagyunk magunk után?
 
-**Ismeretlen beszélő:** Port?
+**Lord Croft:** Csontokat?
 
-**Ismeretlen beszélő:** És mi lesz a lélekkel?
+**Lord Croft:** Port?
+
+**Lord Croft:** És mi lesz a lélekkel?
 
 **Lord Croft:** Fennmarad földi létünk után is?
 
 **Lord Croft:** Sok mítosz és történet mélyén egy igazság rejlik...
 
-**Ismeretlen beszélő:** Hiszem, hogy igen.
+**Lord Croft:** Hiszem, hogy igen.
 
-**Ismeretlen beszélő:** Nem tudományos igazság, hanem valami mélyebb:
+**Lord Croft:** Nem tudományos igazság, hanem valami mélyebb:
 
 **Lord Croft:** az örök élet kulcsa.
 
-**Lord Croft:** Talán megtaláltam a kirakós következő darabját.
+**Lord Croft:** Talán megtaláltam a rejtvény következő darabját.
 
-**Ismeretlen beszélő:** Nem csak én kutatok utána.
+**Lord Croft:** Nem csak én kutatok utána.
 
-**Ismeretlen beszélő:** Követnek, minden lépésemet figyelik.
+**Lord Croft:** Követnek, minden lépésemet figyelik.
 
-**Ismeretlen beszélő:** Most már a nevüket is tudom:
+**Lord Croft:** Most már a nevüket is tudom:
 
 **Lord Croft:** Egy ősi, erőszakos szekta, amely az emberiség jövőjét akarja irányítani.
 
@@ -188,13 +186,13 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Lara:** A Próféta legendája igaz. Apának igaza volt.
 
-**Sofia:** Lara, az apád…
+**Ana:** Lara, az apád…
 
-**Ismeretlen beszélő:** Nem, közel járt egy nagy felfedezéshez. A halhatatlan lélek kézzelfogható bizonyítékához.
+**Lara:** Nem, közel járt egy nagy felfedezéshez. A halhatatlan lélek kézzelfogható bizonyítékához.
 
-**Ismeretlen beszélő:** beteg volt.
+**Ana:** beteg volt.
 
-**Ismeretlen beszélő:** Szerettem Richardot.
+**Ana:** Szerettem Richardot.
 
 **Ana:** Hozzámentem volna, ha megkér.
 
@@ -206,53 +204,51 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Lara:** Mindenki más tévedett.
 
-**Lara:** Istenem, Lara! Ne! Ez őrültség!
+**Ana:** Istenem, Lara! Ne! Ez őrültség!
 
-**Ismeretlen beszélő:** A sír Szíriában van.
+**Lara:** A sír Szíriában van.
 
 **Ana:** Tedd rendbe az életed!
 
-**Ismeretlen beszélő:** Menj haza a kastélyba!
+**Ana:** Menj haza a kastélyba!
 
 **Lara:** Tudod, hogy nem mehetek vissza oda.
 
-**Ismeretlen beszélő:** De ez a megszállottság tette tönkre az apádat.
+**Ana:** De ez a megszállottság tette tönkre az apádat.
 
-**Ismeretlen beszélő:** Láttam valamit…
+**Lara:** Láttam valamit…
+
+**Lara:** valamit, amit…
 
 **Lara:** nem tudok megmagyarázni. Most már értem, min ment keresztül apa.
 
-**Ismeretlen beszélő:** valamit, amit…
+**Ana:** Badarság.
+
+**Ana:** Tudod, hová vezet.
 
 **Ana:** Ne lépj erre az útra!
 
-**Ismeretlen beszélő:** Badarság.
-
-**Ismeretlen beszélő:** Tudod, hová vezet.
-
 **Lara:** Most ez az egyetlen dolog, aminek értelmét látom.
 
-**Lara:** Meg fogom találni a Próféta sírját, Ana…\n
+**Lara:** Meg fogom találni a Próféta sírját, Ana…
 
-**Lara:** Most háborús övezetbe hajtunk.
-
-**Ismeretlen beszélő:** Csak az idődet vesztegeted. Nincs itt semmi.
+**Sofőr:** Most háborús övezetbe hajtunk.
 
 **Sofőr:** Csak az idődet vesztegeted.
 
 **Lara:** Csak vezess tovább, kérlek!
 
-**Lara:** Ők... ők többet fizettek nálad.
+**Sofőr:** Ők... ők többet fizettek, mint te.
 
 **Lara:** Már nincs visszaút... Itt kell lennie...
 
-**Lara:** Volt erről valami apa feljegyzései között.
+**Lara:** Apa feljegyzéseiben volt erről valami.
 
 **Lord Croft:** Azt mesélték, hogy a Próféta sírja az egyik elfeledett város fölé magasodó sziklák közt rejtőzik.
 
 **Lord Croft:** A legenda egy oázisról szól, ahol a Prófétát örök nyugalomra helyezték.
 
-**Lara:** Létezik, hogy tényleg ez az?
+**Lara:** Lehetséges, hogy tényleg ez az?
 
 **Lara:** Nem tudom pontosan lefordítani.
 
@@ -260,7 +256,7 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Lara:** Bizánci szöveg, de nem igazán tudom kivenni.
 
-**Lara:** Ezek Konstantinápoly Prófétájának csodatételei,
+**Lara:** Ezek a konstantinápolyi Próféta csodatételei,
 
 **Lara:** akit igazságtalanul gyilkolt meg a...
 
@@ -290,9 +286,7 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Lara:** Utat robbantanak maguknak...
 
-**Lara:** Megcsináltuk, apa.
-
-**Lara:** Lenyűgöző… Megcsináltuk, apa.
+**Lara:** Lenyűgöző… Sikerült, apa.
 
 **Lara:** Valahogy feljebb kell jutnom.
 
@@ -312,7 +306,7 @@ Az elsődleges szövegforrás a játék eredeti angol exportja. A megszólaláso
 
 **Lara:** (odafentről) Hé, itt van lent!
 
-**Parancsnok:** Tölteteket kihelyezni.
+**Parancsnok:** Helyezzétek el a tölteteket.
 
 **Parancsnok:** Ennyi idő után.
 
@@ -444,8 +438,6 @@ mennem.
 **Lara:** Meg tudod csinálni...
 
 **Lara:** Gyerünk, meg tudod csinálni!
-
-**Lara:** Rendben... tüzet kell gyújtanom...
 
 **Lara:** Rendben... rendben... tüzet kell gyújtanom...
 
@@ -757,7 +749,7 @@ tartottam magamnál egy kis mérget arra az esetre, ha a hajót elrabolnák. Mos
 
 **Lara:** De gondolom, ez is vele jár.
 
-**Lara:** Az embere a rádióban valami fogolyról beszélt, akinek információja van…
+**Lara:** Az emberei a rádióban egy fogolyról beszéltek, aki tudhat valamit…
 
 **Lara:** lehet, hogy azok közül a helyiek közül való, akikkel találkoztam?
 
@@ -839,9 +831,9 @@ Forrásról.
 **Lara:** Oké... most már átúszhatok.
 
 **Lara:** Ennyi olajnak bőven elegendőnek kell lennie az odalenti járatok megvilágítására, de óvatosan szállítsátok. A
-finomítás módszerét még nem tökéletesítettük, így az olaj továbbra is illékony. \nIsmeritek az építkezést felügyelő
+finomítás módszerét még nem tökéletesítettük, így az olaj továbbra is illékony. Ismeritek az építkezést felügyelő
 férfit, mindannyian ismerjük. A földről szerzett tudása nélkül egyikünk sem élte volna túl a nehéz utat. Ne időzzetek
-sokáig, és ha a feleségéről és gyermekéről kérdez, tegyetek úgy, mintha semmit sem tudnátok. \nNem képes elfogadni, hogy
+sokáig, és ha a feleségéről és gyermekéről kérdez, tegyetek úgy, mintha semmit sem tudnátok. Nem képes elfogadni, hogy
 odavesztek a kivonulásunk során, és bármelyik napra várja az érkezésüket. Szükségünk van a lángelméjére, és félek, hogy
 ha szembesülne az igazsággal, végleg elveszítenénk őt.
 
@@ -1471,7 +1463,7 @@ Hozzám is szólnak.
 
 **Pajzsos zsoldos:** Látom a célpontot.
 
-## 6. A Gulag és a rézbánya
+## 6. A Gulag és a rézkohó
 
 *Lara megszökik Jacobbal, visszatér a létesítménybe, és az Atlasz után kutat.*
 
@@ -1485,7 +1477,7 @@ Hozzám is szólnak.
 
 ## 7. Elhagyatott bányák
 
-*A hegyek alatti út a Maradványok völgye felé vezet.*
+*A hegyek alatti út a Leszármazottak völgye felé vezet.*
 
 **Jacob:** Nem kell ezt tenned.
 
@@ -1569,7 +1561,7 @@ Hozzám is szólnak.
 
 **Lara:** Letelepedtek egy eldugott völgyben, és építettek egy hatalmas várost. Kityezst...
 
-**Lara:** Hogy megvédje a várost és a lakóit, a Próféta felállított egy harcos sereget...
+**Lara:** Hogy megvédje a várost és a lakóit, a Próféta harcosokból álló sereget szervezett...
 
 **Lara:** De mit ábrázol ez itt?
 
@@ -2590,11 +2582,11 @@ elesettek már békére leltek. Mi mikor fogunk?
 
 **Lara:** Az életét kockáztatta, hogy velem jöjjön ide.
 
-**Ismeretlen beszélő:** Egyszer már majdnem elveszítettem. Soha többé!
+**Lara:** Egyszer már majdnem elveszítettem. Soha többé!
 
-**Ismeretlen beszélő:** Akkor menj.
+**Jacob:** Akkor menj.
 
-**Ismeretlen beszélő:** Tedd, amit tenned kell.\n
+**Jacob:** Tedd, amit tenned kell.
 
 **Lara:** Ha Jonah életben van, biztosan a régi szovjet gulágon tartják fogva.
 
@@ -2758,25 +2750,25 @@ elesettek már békére leltek. Mi mikor fogunk?
 
 **2. rádió:** (a rádióban) Mindjárt elfoglaljuk a pozíciónkat.
 
-**Lord Croft:** Tudom, hogy szeretsz régészeti lapokat olvasni,
+**Lord Croft:** Tudom, hogy szeretsz régészeti folyóiratokat olvasni,
 
-**Lord Croft:** de arra kérlek, ha látsz valami...
+**Lord Croft:** de arra kérlek, ha bármi olyat olvasol...
 
 **Lord Croft:** nem túl szépet rólam...
 
 **Lord Croft:** Vannak, akik egyszerűen képtelenek megérteni, min dolgozom.
 
-**Lord Croft:** Talán még meg is rémíti őket.
+**Lord Croft:** Talán még félnek is tőle.
 
-**Lord Croft:** De a félelmük és az ostobaságuk nem az én gondom, és a tiéd sem kellene hogy legyen.
+**Lord Croft:** De a félelmük és az ostobaságuk nem az én gondom, és neked sem kell törődnöd vele.
 
 **Lord Croft:** Idővel majd mindent elmagyarázok, drága kislányom.
 
-**Lara:** Az emberek, akik féltek... ez vajon a Szentháromságra utal?
+**Lara:** Akik féltek... a Szentháromság emberei voltak?
 
 **Lara:** Soha nem árultad el nekem. Gondolom most már nem is számít.
 
-**Lara:** Meglelték a módját, hogy eljussanak hozzám.
+**Lara:** Most már engem is megtaláltak.
 
 **Lara:** Most nekem kell szembeszállnom velük.
 
@@ -2942,7 +2934,7 @@ elesettek már békére leltek. Mi mikor fogunk?
 
 **Lara:** Jacob emberei jóval megelőzték a korukat...
 
-**Lara:** A fejlett íjász technikákról szól, amelyeket a Bizánci Birodalomban fejlesztettek ki....
+**Lara:** A Bizánci Birodalomban alkalmazott fejlett íjásztechnikákról szól....
 
 **Lara:** Látjátok a Szentháromságot?
 
@@ -2962,7 +2954,7 @@ elesettek már békére leltek. Mi mikor fogunk?
 
 ## 14. Az Elveszett Város és a Lelkek Kamrája
 
-*A Maradványok megrohamozzák Kityezst, miközben Lara versenyt fut a Szentháromsággal az Isteni Forrásért.*
+*A Leszármazottak megrohamozzák Kityezst, miközben Lara versenyt fut a Szentháromsággal az Isteni Forrásért.*
 
 **Lara:** Biztos ott van az Isteni Forrás.
 
@@ -3269,4 +3261,6 @@ betöltötte a kórházat.
 - Sorrendi referencia: helyi, kommentár nélküli végigjátszás SRT-je.
 - Másodlagos beszélőforrás: [Game Scripts Wiki Blog](https://game-scripts-wiki.blogspot.com/2018/09/rise-of-the-tomb-raider-full-transcript.html).
 
-Ez a munkaváltozat csak biztosan illesztett vagy az SRT által pontosan alátámasztott párbeszédeket tartalmaz. Egy sor hiánya nem bizonyítja, hogy nem része a történetnek: a párbeszéd elhalkulhat, ha a játékos eltávolodik, az automatikus felirat pedig hiányos lehet. A nem azonosított beszélők találgatás helyett külön jelölést kaptak.
+Ez a munkaváltozat csak biztosan illesztett vagy az SRT által pontosan alátámasztott párbeszédeket tartalmaz. Egy sor
+hiánya nem bizonyítja, hogy nem része a történetnek: a párbeszéd elhalkulhat, ha a játékos eltávolodik, az automatikus
+felirat pedig hiányos lehet. A nem azonosított beszélők találgatás helyett külön jelölést kaptak.
